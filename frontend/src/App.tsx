@@ -31,6 +31,8 @@ function App() {
                       <GitHubHeatmap
                         key={widget.id}
                         username={widget.config.username}
+                        githubToken={widget.config.githubToken}
+                        includePrivate={widget.config.includePrivate}
                       />
                     )
                   }

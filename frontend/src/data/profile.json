@@ -37,7 +37,7 @@
       "id": "saas-citas-whatsapp",
       "title": "SaaS de citas por WhatsApp",
       "description": "Sistema multicliente para gestionar citas, recordatorios y conversaciones usando WhatsApp, reglas deterministas e IA.",
-      "url": "https://citasdemo.anderdata.es",
+      "url": "https://citas.anderdata.es/comercial",
       "status": "En desarrollo",
       "public": true
     },
@@ -55,7 +55,9 @@
       "id": "github-activity",
       "type": "github-heatmap",
       "config": {
-        "username": "mazapander"
+        "username": "mazapander",
+        "githubToken": "",
+        "includePrivate": true
       },
       "public": true
     }

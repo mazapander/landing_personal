@@ -10,6 +10,8 @@ interface DayData {
 interface GitHubHeatmapProps {
   username: string
   fallbackData?: DayData[]
+  githubToken?: string
+  includePrivate?: boolean
 }
 
 const FALLBACK_HEATMAP: DayData[] = generateFallbackData()
@@ -60,6 +62,8 @@ function formatDate(dateStr: string): string {
   return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })
 }
 
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN as string | undefined
+
 export default function GitHubHeatmap({ username, fallbackData }: GitHubHeatmapProps) {
   const [data, setData] = useState<DayData[]>(fallbackData || FALLBACK_HEATMAP)
   const [loading, setLoading] = useState(!fallbackData)
@@ -70,10 +74,20 @@ export default function GitHubHeatmap({ username, fallbackData }: GitHubHeatmapP
   useEffect(() => {
     async function fetchCommits() {
       try {
-        const response = await fetch(
-          `https://api.github.com/users/${username}/events/public?per_page=100`,
-          { headers: { 'Accept': 'application/vnd.github.v3+json' } }
-        )
+        const endpoint = includePrivate
+          ? `https://api.github.com/users/${username}/events?per_page=100`
+          : `https://api.github.com/users/${username}/events/public?per_page=100`
+
+        const headers: HeadersInit = {
+          'Accept': 'application/vnd.github.v3+json',
+        }
+
+        const token = githubToken || GITHUB_TOKEN
+        if (token) {
+          headers['Authorization'] = `Bearer ${token}`
+        }
+
+        const response = await fetch(endpoint, { headers })
 
         if (!response.ok) throw new Error(`HTTP ${response.status}`)
 
@@ -118,7 +132,7 @@ export default function GitHubHeatmap({ username, fallbackData }: GitHubHeatmapP
     if (!fallbackData) {
       fetchCommits()
     }
-  }, [username, fallbackData])
+  }, [username, fallbackData, githubToken, includePrivate])
 
   const handleMouseEnter = (day: DayData, e: React.MouseEvent) => {
     const rect = (e.target as HTMLElement).getBoundingClientRect()
@@ -165,6 +179,21 @@ export default function GitHubHeatmap({ username, fallbackData }: GitHubHeatmapP
   const longestStreak = calculateLongestStreak(data)
   const currentStreak = calculateCurrentStreak(data)
 
+  const monthLabels: { month: string; weekIndex: number }[] = []
+  let lastMonth = -1
+
+  weeks.forEach((week, weekIndex) => {
+    const firstDay = week.find(d => d.date)
+    if (firstDay) {
+      const date = new Date(firstDay.date)
+      const month = date.getMonth()
+      if (month !== lastMonth) {
+        monthLabels.push({ month: MONTHS[month], weekIndex })
+        lastMonth = month
+      }
+    }
+  })
+
   return (
     <div className="github-heatmap">
       <div className="github-heatmap-header">
@@ -195,8 +224,19 @@ export default function GitHubHeatmap({ username, fallbackData }: GitHubHeatmapP
       ) : (
         <>
           <div className="github-heatmap-grid-container">
-            <div className="github-heatmap-months">
-              {MONTHS.map(m => <span key={m} className="github-heatmap-month">{m}</span>)}
+            <div
+              className="github-heatmap-months"
+              style={{ gridTemplateColumns: `repeat(${weeks.length}, 13px)` }}
+            >
+              {monthLabels.map(({ month, weekIndex }) => (
+                <span
+                  key={`${month}-${weekIndex}`}
+                  className="github-heatmap-month"
+                  style={{ gridColumn: weekIndex + 1 }}
+                >
+                  {month}
+                </span>
+              ))}
             </div>
             <div className="github-heatmap-grid-wrapper">
               <div className="github-heatmap-days">

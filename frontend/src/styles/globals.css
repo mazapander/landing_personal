@@ -534,7 +534,7 @@ main {
 }
 
 .github-heatmap-months {
-  display: flex;
+  display: grid;
   gap: 3px;
   margin-left: 32px;
   margin-bottom: 0.25rem;

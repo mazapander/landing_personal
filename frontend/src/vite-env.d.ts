@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_UMAMI_WEBSITE_ID?: string
+  readonly VITE_GITHUB_TOKEN?: string
 }
 
 interface ImportMeta {

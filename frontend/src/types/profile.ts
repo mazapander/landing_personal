@@ -26,6 +26,8 @@ export interface Project {
 
 export interface WidgetConfig {
   username?: string
+  githubToken?: string
+  includePrivate?: boolean
 }
 
 export interface Widget {
