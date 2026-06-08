@@ -1,0 +1,53 @@
+{
+  "profile": {
+    "name": "Ander Fernández",
+    "headline": "Data, AI & Product Builder",
+    "description": "Construyo soluciones de datos, inteligencia artificial y automatización para convertir procesos complejos en productos útiles.",
+    "location": "Bilbao / Remoto",
+    "avatar": "/profile.jpg"
+  },
+  "socialLinks": [
+    {
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "description": "Contenido sobre IA, datos, producto y automatización",
+      "url": "https://www.linkedin.com/in/ander-fernandez",
+      "type": "social",
+      "featured": true
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "description": "Repositorios, pruebas técnicas y proyectos personales",
+      "url": "https://github.com/mazapander",
+      "type": "code",
+      "featured": true
+    },
+    {
+      "id": "email",
+      "label": "Contacto",
+      "description": "Escríbeme para proyectos, colaboraciones o consultoría",
+      "url": "mailto:mazapander@gmail.com",
+      "type": "contact",
+      "featured": false
+    }
+  ],
+  "projects": [
+    {
+      "id": "saas-citas-whatsapp",
+      "title": "SaaS de citas por WhatsApp",
+      "description": "Sistema multicliente para gestionar citas, recordatorios y conversaciones usando WhatsApp, reglas deterministas e IA.",
+      "url": "https://citasdemo.anderdata.es",
+      "status": "En desarrollo",
+      "public": true
+    },
+    {
+      "id": "personal-github",
+      "title": "Proyectos públicos en GitHub",
+      "description": "Repositorio de pruebas, automatizaciones, análisis de datos y productos personales.",
+      "url": "https://github.com/mazapander",
+      "status": "Público",
+      "public": true
+    }
+  ]
+}

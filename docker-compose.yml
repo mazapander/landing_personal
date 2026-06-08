@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  anderdata-landing:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: anderdata-landing
+    restart: unless-stopped
+    networks:
+      - edge
+    expose:
+      - "80"
+
+networks:
+  edge:
+    external: true
