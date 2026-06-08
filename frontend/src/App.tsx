@@ -5,6 +5,7 @@ import ProjectList from './components/Projects/ProjectList'
 import Footer from './components/Footer/Footer'
 import PageContainer from './components/Layout/PageContainer'
 import GitHubHeatmap from './components/Widgets/GitHubHeatmap'
+import TechStackTimeline from './components/Widgets/TechStackTimeline'
 import WidgetGrid from './components/Widgets/WidgetGrid'
 
 function App() {
@@ -31,6 +32,14 @@ function App() {
                         username={widget.config.username}
                         githubToken={widget.config.githubToken}
                         includePrivate={widget.config.includePrivate}
+                      />
+                    )
+                  }
+                  if (widget.type === 'tech-stack' && widget.config.items) {
+                    return (
+                      <TechStackTimeline
+                        key={widget.id}
+                        items={widget.config.items}
                       />
                     )
                   }

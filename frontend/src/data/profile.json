@@ -60,6 +60,27 @@
         "includePrivate": true
       },
       "public": true
+    },
+    {
+      "id": "tech-stack",
+      "type": "tech-stack",
+      "config": {
+        "items": [
+          { "name": "Python", "logo": "python", "since": "2019-01-15", "description": "Mi primer lenguaje de programación. Lo uso para data science, automatización y scripts." },
+          { "name": "React", "logo": "react", "since": "2020-06-01", "description": "Framework principal para interfaces de usuario." },
+          { "name": "TypeScript", "logo": "typescript", "since": "2021-03-20", "description": "Typed JavaScript para proyectos más robustos." },
+          { "name": "Node.js", "logo": "nodejs", "since": "2020-09-10", "description": "Backend con JavaScript/TypeScript." },
+          { "name": "PostgreSQL", "logo": "postgresql", "since": "2020-11-05", "description": "Base de datos principal para proyectos." },
+          { "name": "Docker", "logo": "docker", "since": "2021-02-28", "description": "Contenedores para desarrollo y producción." },
+          { "name": "FastAPI", "logo": "fastapi", "since": "2021-08-15", "description": "APIs rápidas con Python." },
+          { "name": "AWS", "logo": "aws", "since": "2022-01-10", "description": "Infraestructura en la nube." },
+          { "name": "Kubernetes", "logo": "kubernetes", "since": "2022-06-20", "description": "Orquestación de contenedores." },
+          { "name": "Terraform", "logo": "terraform", "since": "2022-08-01", "description": "Infraestructura como código." },
+          { "name": "PyTorch", "logo": "pytorch", "since": "2020-04-12", "description": "Deep learning y modelos de IA." },
+          { "name": "LangChain", "logo": "langchain", "since": "2023-05-01", "description": "Aplicaciones con LLMs." }
+        ]
+      },
+      "public": true
     }
   ]
 }
