@@ -64,7 +64,7 @@ function formatDate(dateStr: string): string {
 
 const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN as string | undefined
 
-export default function GitHubHeatmap({ username, fallbackData }: GitHubHeatmapProps) {
+export default function GitHubHeatmap({ username, fallbackData, githubToken, includePrivate }: GitHubHeatmapProps) {
   const [data, setData] = useState<DayData[]>(fallbackData || FALLBACK_HEATMAP)
   const [loading, setLoading] = useState(!fallbackData)
   const [isFromApi, setIsFromApi] = useState(false)
