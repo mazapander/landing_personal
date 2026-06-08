@@ -24,8 +24,20 @@ export interface Project {
   public: boolean
 }
 
+export interface WidgetConfig {
+  username?: string
+}
+
+export interface Widget {
+  id: string
+  type: string
+  config: WidgetConfig
+  public: boolean
+}
+
 export interface ProfileData {
   profile: Profile
   socialLinks: SocialLink[]
   projects: Project[]
+  widgets?: Widget[]
 }

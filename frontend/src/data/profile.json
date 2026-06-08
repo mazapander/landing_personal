@@ -1,7 +1,7 @@
 {
   "profile": {
     "name": "Ander Fernández",
-    "headline": "Data, AI & Product Builder/Owner",
+    "headline": "Data, AI & Product Builder",
     "description": "Construyo soluciones de datos, inteligencia artificial y automatización para convertir procesos complejos en productos útiles.",
     "location": "Bilbao / Remoto",
     "avatar": "/profile.jpg"
@@ -47,6 +47,16 @@
       "description": "Repositorio de pruebas, automatizaciones, análisis de datos y productos personales.",
       "url": "https://github.com/mazapander",
       "status": "Público",
+      "public": true
+    }
+  ],
+  "widgets": [
+    {
+      "id": "github-activity",
+      "type": "github",
+      "config": {
+        "username": "mazapander"
+      },
       "public": true
     }
   ]
