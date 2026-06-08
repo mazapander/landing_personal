@@ -68,31 +68,74 @@ export default function GitHubHeatmap({ username, fallbackData, githubToken, inc
   const [data, setData] = useState<DayData[]>(fallbackData || FALLBACK_HEATMAP)
   const [loading, setLoading] = useState(!fallbackData)
   const [isFromApi, setIsFromApi] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [tooltip, setTooltip] = useState<{ date: string; count: number; x: number; y: number } | null>(null)
   const { trackEvent } = useAnalytics()
 
   useEffect(() => {
     async function fetchCommits() {
+      const headers: HeadersInit = {
+        Accept: 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+      }
+
+      const token = githubToken || GITHUB_TOKEN
+      if (token) {
+        headers.Authorization = `Bearer ${token}`
+      }
+
       try {
-        const endpoint = includePrivate
-          ? `https://api.github.com/users/${username}/events?per_page=100`
-          : `https://api.github.com/users/${username}/events/public?per_page=100`
+        if (includePrivate && token) {
+          const authResponse = await fetch('https://api.github.com/user', { headers })
+          if (!authResponse.ok) {
+            throw new Error(`No se pudo validar el token de GitHub: HTTP ${authResponse.status}`)
+          }
 
-        const headers: HeadersInit = {
-          'Accept': 'application/vnd.github.v3+json',
+          const authUser = await authResponse.json() as { login?: string }
+          if (authUser.login && authUser.login.toLowerCase() !== username.toLowerCase()) {
+            setErrorMessage(
+              `El token autenticado pertenece a @${authUser.login}, no a @${username}. GitHub solo devuelve eventos privados al usuario autenticado.`
+            )
+          } else {
+            setErrorMessage(null)
+          }
+        } else if (includePrivate && !token) {
+          setErrorMessage('Falta el token de GitHub: sin autenticación no se pueden cargar eventos privados.')
+        } else {
+          setErrorMessage(null)
         }
 
-        const token = githubToken || GITHUB_TOKEN
-        if (token) {
-          headers['Authorization'] = `Bearer ${token}`
-        }
+        const endpointBase = includePrivate
+          ? `https://api.github.com/users/${username}/events`
+          : `https://api.github.com/users/${username}/events/public`
 
-        const response = await fetch(endpoint, { headers })
-
-        if (!response.ok) throw new Error(`HTTP ${response.status}`)
-
-        const events = await response.json()
         const commitsByDate: Record<string, number> = {}
+        const cutoff = new Date()
+        cutoff.setDate(cutoff.getDate() - 365)
+
+        const events: Array<{ type: string; created_at: string }> = []
+        const maxPages = 10
+        const perPage = 100
+
+        for (let page = 1; page <= maxPages; page++) {
+          const response = await fetch(`${endpointBase}?per_page=${perPage}&page=${page}`, { headers })
+
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status} al consultar eventos de GitHub`)
+          }
+
+          const pageEvents = await response.json() as Array<{ type: string; created_at: string }>
+          if (!Array.isArray(pageEvents) || pageEvents.length === 0) {
+            break
+          }
+
+          events.push(...pageEvents)
+
+          const oldestEventDate = new Date(pageEvents[pageEvents.length - 1].created_at)
+          if (pageEvents.length < perPage || oldestEventDate < cutoff) {
+            break
+          }
+        }
 
         events
           .filter((e: { type: string }) => e.type === 'PushEvent')
@@ -122,8 +165,12 @@ export default function GitHubHeatmap({ username, fallbackData, githubToken, inc
 
         setData(heatmapData)
         setIsFromApi(true)
-      } catch {
+      } catch (error) {
+        console.error('GitHubHeatmap: no se pudieron cargar los eventos', error)
         setIsFromApi(false)
+        if (!errorMessage) {
+          setErrorMessage('No se pudieron cargar los eventos privados de GitHub.')
+        }
       } finally {
         setLoading(false)
       }
@@ -203,6 +250,12 @@ export default function GitHubHeatmap({ username, fallbackData, githubToken, inc
         <span>Contribuciones</span>
         {!isFromApi && <span className="github-heatmap-badge">Demo</span>}
       </div>
+
+      {errorMessage && (
+        <div className="github-heatmap-error">
+          {errorMessage}
+        </div>
+      )}
 
       <div className="github-heatmap-stats">
         <div className="github-heatmap-stat">

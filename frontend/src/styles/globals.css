@@ -498,6 +498,17 @@ main {
   margin-left: auto;
 }
 
+.github-heatmap-error {
+  margin-bottom: 1rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid rgba(220, 38, 38, 0.18);
+  background: rgba(220, 38, 38, 0.06);
+  color: #991b1b;
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
 .github-icon {
   width: 20px;
   height: 20px;

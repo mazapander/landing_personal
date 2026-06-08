@@ -30,6 +30,18 @@ export interface WidgetConfig {
   includePrivate?: boolean
 }
 
+export interface TechItem {
+  name: string
+  logo: string
+  since: string
+  category?: string
+  description?: string
+}
+
+export interface TechStackConfig {
+  items: TechItem[]
+}
+
 export interface Widget {
   id: string
   type: string

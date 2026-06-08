@@ -3,7 +3,6 @@ import ProfileHeader from './components/Profile/ProfileHeader'
 import LinkList from './components/Links/LinkList'
 import ProjectList from './components/Projects/ProjectList'
 import Footer from './components/Footer/Footer'
-import UmamiScript from './components/Analytics/UmamiScript'
 import PageContainer from './components/Layout/PageContainer'
 import GitHubHeatmap from './components/Widgets/GitHubHeatmap'
 import WidgetGrid from './components/Widgets/WidgetGrid'
@@ -15,7 +14,6 @@ function App() {
 
   return (
     <>
-      <UmamiScript />
       <main>
         <PageContainer>
           <ProfileHeader profile={profile} />
