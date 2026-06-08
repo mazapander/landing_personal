@@ -1,7 +1,7 @@
 {
   "profile": {
     "name": "Ander Fernández",
-    "headline": "Data, AI & Product Builder",
+    "headline": "Data, AI & Product Builder/Owner",
     "description": "Construyo soluciones de datos, inteligencia artificial y automatización para convertir procesos complejos en productos útiles.",
     "location": "Bilbao / Remoto",
     "avatar": "/profile.jpg"
@@ -11,7 +11,7 @@
       "id": "linkedin",
       "label": "LinkedIn",
       "description": "Contenido sobre IA, datos, producto y automatización",
-      "url": "https://www.linkedin.com/in/ander-fernandez",
+      "url": "https://www.linkedin.com/in/ander-data-projects",
       "type": "social",
       "featured": true
     },
@@ -27,7 +27,7 @@
       "id": "email",
       "label": "Contacto",
       "description": "Escríbeme para proyectos, colaboraciones o consultoría",
-      "url": "mailto:mazapander@gmail.com",
+      "url": "mailto:ander.fernandez.gonzalbo@gmail.com",
       "type": "contact",
       "featured": false
     }

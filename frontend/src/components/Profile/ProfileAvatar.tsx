@@ -9,12 +9,7 @@ export default function ProfileAvatar({ profile }: ProfileAvatarProps) {
     <img
       src={profile.avatar}
       alt={profile.name}
-      style={{
-        width: '120px',
-        height: '120px',
-        borderRadius: '50%',
-        objectFit: 'cover',
-      }}
+      className="profile-avatar"
     />
   )
 }
