@@ -32,6 +32,7 @@ docker-compose up -d --build
 
 ## Variables de entorno
 
-Copiar `.env.example` a `.env` y configurar:
+Copiar `.env.example` a `.env` en la raíz del proyecto y configurar:
 
-- `UMAMI_WEBSITE_ID` - ID del website en Umami
+- `VITE_UMAMI_WEBSITE_ID` - ID del website en Umami
+- `VITE_GITHUB_TOKEN` - token de GitHub para el heatmap
