@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   anderdata-landing:
     build:
@@ -11,10 +9,10 @@ services:
     container_name: anderdata-landing
     restart: unless-stopped
     networks:
-      - edge
+      - apps
     expose:
       - "80"
 
 networks:
-  edge:
+  apps:
     external: true
