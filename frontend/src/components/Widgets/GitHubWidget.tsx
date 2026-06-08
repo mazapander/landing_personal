@@ -10,21 +10,57 @@ interface GitHubCommit {
 
 interface GitHubWidgetProps {
   username: string
+  fallbackData?: GitHubCommit[]
 }
 
-export default function GitHubWidget({ username }: GitHubWidgetProps) {
-  const [commits, setCommits] = useState<GitHubCommit[]>([])
+const FALLBACK_COMMITS: GitHubCommit[] = [
+  {
+    sha: 'a1b2c3d',
+    repo: 'mazapander/anderdata-landing',
+    message: 'Update landing page components and styles',
+    date: new Date().toISOString(),
+  },
+  {
+    sha: 'e4f5g6h',
+    repo: 'mazapander/citas-whatsapp',
+    message: 'Add WhatsApp integration module',
+    date: new Date().toISOString(),
+  },
+  {
+    sha: 'i7j8k9l',
+    repo: 'mazapander/data-pipeline',
+    message: 'Implement ETL process for analytics',
+    date: new Date().toISOString(),
+  },
+]
+
+export default function GitHubWidget({ username, fallbackData }: GitHubWidgetProps) {
+  const [commits, setCommits] = useState<GitHubCommit[]>(fallbackData || FALLBACK_COMMITS)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+  const [isFromApi, setIsFromApi] = useState(false)
   const { trackEvent } = useAnalytics()
 
   useEffect(() => {
     async function fetchCommits() {
       try {
         const response = await fetch(
-          `https://api.github.com/users/${username}/events/public?per_page=30`
+          `https://api.github.com/users/${username}/events/public?per_page=30`,
+          {
+            headers: {
+              'Accept': 'application/vnd.github.v3+json',
+            },
+          }
         )
-        if (!response.ok) throw new Error('Failed to fetch')
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`)
+        }
+
+        const rateLimit = response.headers.get('X-RateLimit-Remaining')
+        if (rateLimit && parseInt(rateLimit) === 0) {
+          throw new Error('Rate limited')
+        }
+
         const events = await response.json()
 
         const pushEvents = events
@@ -39,9 +75,12 @@ export default function GitHubWidget({ username }: GitHubWidgetProps) {
           )
           .slice(0, 5)
 
-        setCommits(pushEvents)
+        if (pushEvents.length > 0) {
+          setCommits(pushEvents)
+          setIsFromApi(true)
+        }
       } catch {
-        setError(true)
+        setIsFromApi(false)
       } finally {
         setLoading(false)
       }
@@ -51,7 +90,7 @@ export default function GitHubWidget({ username }: GitHubWidgetProps) {
   }, [username])
 
   const handleClick = () => {
-    trackEvent('click_github_widget', { username })
+    trackEvent('click_github_widget', { username, source: isFromApi ? 'api' : 'fallback' })
   }
 
   if (loading) {
@@ -68,20 +107,6 @@ export default function GitHubWidget({ username }: GitHubWidgetProps) {
     )
   }
 
-  if (error) {
-    return (
-      <div className="github-widget github-widget-error">
-        <div className="github-widget-header">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="github-icon">
-            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-          </svg>
-          <span>Actividad reciente</span>
-        </div>
-        <p className="github-widget-status">No se pudo cargar la actividad</p>
-      </div>
-    )
-  }
-
   return (
     <div className="github-widget">
       <div className="github-widget-header">
@@ -89,6 +114,7 @@ export default function GitHubWidget({ username }: GitHubWidgetProps) {
           <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
         </svg>
         <span>Actividad reciente</span>
+        {!isFromApi && <span className="github-widget-badge">Demo</span>}
       </div>
       <ul className="github-widget-list">
         {commits.map((commit, index) => (
@@ -100,7 +126,7 @@ export default function GitHubWidget({ username }: GitHubWidgetProps) {
               onClick={handleClick}
               className="github-widget-link"
             >
-              <span className="github-widget-repo">{commit.repo.replace('mazapander/', '')}</span>
+              <span className="github-widget-repo">{commit.repo.replace(`${username}/`, '')}</span>
               <span className="github-widget-message">{commit.message}</span>
               <code className="github-widget-sha">{commit.sha}</code>
             </a>

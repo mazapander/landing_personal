@@ -4,7 +4,7 @@ export default function UmamiScript() {
   if (!websiteId) return null
 
   return (
-    <script defer src="https://analytics.anderdata.es/script.js" 
+    <script defer src="https://u.anderdata.es/script.js" 
       data-website-id="4122aa5e-073c-4251-ac0f-fe2d65270d02">
 
     </script>

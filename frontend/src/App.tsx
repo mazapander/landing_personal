@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <script defer src="https://analytics.anderdata.es/script.js" 
+      <script defer src="https://u.anderdata.es/script.js" 
         data-website-id="4122aa5e-073c-4251-ac0f-fe2d65270d02">
       </script>
       <UmamiScript />
@@ -34,6 +34,7 @@ function App() {
                       <GitHubWidget
                         key={widget.id}
                         username={widget.config.username}
+                        fallbackData={widget.config.fallback}
                       />
                     )
                   }
