@@ -53,41 +53,9 @@
   "widgets": [
     {
       "id": "github-activity",
-      "type": "github",
+      "type": "github-heatmap",
       "config": {
-        "username": "mazapander",
-        "fallback": [
-          {
-            "sha": "a1b2c3d",
-            "repo": "mazapander/anderdata-landing",
-            "message": "Update landing page components and styles",
-            "date": "2026-06-08T10:00:00Z"
-          },
-          {
-            "sha": "e4f5g6h",
-            "repo": "mazapander/citas-whatsapp",
-            "message": "Add WhatsApp integration module",
-            "date": "2026-06-07T15:30:00Z"
-          },
-          {
-            "sha": "i7j8k9l",
-            "repo": "mazapander/data-pipeline",
-            "message": "Implement ETL process for analytics",
-            "date": "2026-06-06T09:15:00Z"
-          },
-          {
-            "sha": "m1n2o3p",
-            "repo": "mazapander/automation-scripts",
-            "message": "Add CI/CD pipeline configuration",
-            "date": "2026-06-05T14:45:00Z"
-          },
-          {
-            "sha": "q4r5s6t",
-            "repo": "mazapander/ai-models",
-            "message": "Update ML model training scripts",
-            "date": "2026-06-04T11:20:00Z"
-          }
-        ]
+        "username": "mazapander"
       },
       "public": true
     }

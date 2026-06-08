@@ -5,7 +5,7 @@ import ProjectList from './components/Projects/ProjectList'
 import Footer from './components/Footer/Footer'
 import UmamiScript from './components/Analytics/UmamiScript'
 import PageContainer from './components/Layout/PageContainer'
-import GitHubWidget from './components/Widgets/GitHubWidget'
+import GitHubHeatmap from './components/Widgets/GitHubHeatmap'
 import WidgetGrid from './components/Widgets/WidgetGrid'
 
 function App() {
@@ -15,9 +15,6 @@ function App() {
 
   return (
     <>
-      <script defer src="https://u.anderdata.es/script.js" 
-        data-website-id="4122aa5e-073c-4251-ac0f-fe2d65270d02">
-      </script>
       <UmamiScript />
       <main>
         <PageContainer>
@@ -29,12 +26,11 @@ function App() {
               <h2 className="section-title">Actividad</h2>
               <WidgetGrid>
                 {publicWidgets.map(widget => {
-                  if (widget.type === 'github' && widget.config.username) {
+                  if (widget.type === 'github-heatmap' && widget.config.username) {
                     return (
-                      <GitHubWidget
+                      <GitHubHeatmap
                         key={widget.id}
                         username={widget.config.username}
-                        fallbackData={widget.config.fallback}
                       />
                     )
                   }
