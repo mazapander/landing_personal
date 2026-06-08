@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="AWS">
+  <rect width="256" height="256" rx="56" fill="#111827"/>
+  <path d="M58 162c24 18 48 26 72 26 26 0 53-8 80-26" fill="none" stroke="#ff9900" stroke-width="14" stroke-linecap="round"/>
+  <path d="M70 102c10-18 28-30 52-30 22 0 40 10 52 28 9-8 20-12 34-12" fill="none" stroke="#fbbf24" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="94" cy="102" r="10" fill="#ff9900"/>
+  <circle cx="162" cy="124" r="10" fill="#fbbf24"/>
+  <text x="128" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="38" font-weight="900" fill="#fff7ed">AWS</text>
+</svg>

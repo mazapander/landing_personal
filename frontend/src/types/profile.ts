@@ -22,6 +22,7 @@ export interface Project {
   url: string
   status: string
   public: boolean
+  stack?: string[]
 }
 
 export interface WidgetConfig {
@@ -30,16 +31,15 @@ export interface WidgetConfig {
   includePrivate?: boolean
 }
 
-export interface TechItem {
+export interface Technology {
+  id: string
   name: string
-  logo: string
+  icon: string
   since: string
   category?: string
   description?: string
-}
-
-export interface TechStackConfig {
-  items: TechItem[]
+  top?: boolean
+  accent?: string
 }
 
 export interface Widget {
@@ -53,5 +53,6 @@ export interface ProfileData {
   profile: Profile
   socialLinks: SocialLink[]
   projects: Project[]
+  technologies: Technology[]
   widgets?: Widget[]
 }

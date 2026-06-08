@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="PyTorch">
+  <rect width="256" height="256" rx="56" fill="#111827"/>
+  <path d="M166 82c-14-14-34-18-52-10-18 9-28 27-26 48 2 18 12 32 28 40 15 8 35 7 50-3 14-9 22-24 22-41 0-13-4-23-12-34z" fill="#ee4c2c"/>
+  <path d="M126 66c-8 12-8 28 0 40 8 12 24 16 37 10" fill="none" stroke="#ffd7cf" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="94" cy="168" r="12" fill="#f97316"/>
+  <text x="128" y="212" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#fff7ed">PyTorch</text>
+</svg>

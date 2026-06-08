@@ -6,12 +6,12 @@ import Footer from './components/Footer/Footer'
 import PageContainer from './components/Layout/PageContainer'
 import GitHubHeatmap from './components/Widgets/GitHubHeatmap'
 import TechStackTimeline from './components/Widgets/TechStackTimeline'
-import WidgetGrid from './components/Widgets/WidgetGrid'
 
 function App() {
-  const { profile, socialLinks, projects, widgets } = profileData
+  const { profile, socialLinks, projects, technologies, widgets } = profileData
 
   const publicWidgets = widgets?.filter(w => w.public) || []
+  const githubWidget = publicWidgets.find(widget => widget.type === 'github-heatmap' && widget.config.username)
 
   return (
     <>
@@ -19,33 +19,18 @@ function App() {
         <PageContainer>
           <ProfileHeader profile={profile} />
           <LinkList links={socialLinks} />
-          <ProjectList projects={projects.filter(p => p.public)} />
-          {publicWidgets.length > 0 && (
+          <section className="section tech-stack-section">
+            <TechStackTimeline technologies={technologies} />
+          </section>
+          <ProjectList projects={projects.filter(p => p.public)} technologies={technologies} />
+          {githubWidget && (
             <section className="section">
               <h2 className="section-title">Actividad</h2>
-              <WidgetGrid>
-                {publicWidgets.map(widget => {
-                  if (widget.type === 'github-heatmap' && widget.config.username) {
-                    return (
-                      <GitHubHeatmap
-                        key={widget.id}
-                        username={widget.config.username}
-                        githubToken={widget.config.githubToken}
-                        includePrivate={widget.config.includePrivate}
-                      />
-                    )
-                  }
-                  if (widget.type === 'tech-stack' && widget.config.items) {
-                    return (
-                      <TechStackTimeline
-                        key={widget.id}
-                        items={widget.config.items}
-                      />
-                    )
-                  }
-                  return null
-                })}
-              </WidgetGrid>
+              <GitHubHeatmap
+                username={githubWidget.config.username}
+                githubToken={githubWidget.config.githubToken}
+                includePrivate={githubWidget.config.includePrivate}
+              />
             </section>
           )}
         </PageContainer>

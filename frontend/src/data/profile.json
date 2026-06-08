@@ -32,6 +32,128 @@
       "featured": false
     }
   ],
+  "technologies": [
+    {
+      "id": "python",
+      "name": "Python",
+      "icon": "/tech/python.svg",
+      "since": "2019-01-15",
+      "category": "Data",
+      "description": "Mi primer lenguaje de programación. Lo uso para data science, automatización y scripts.",
+      "top": true,
+      "accent": "#3776ab"
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "icon": "/tech/react.svg",
+      "since": "2020-06-01",
+      "category": "Frontend",
+      "description": "Base de mis interfaces y paneles de producto.",
+      "top": true,
+      "accent": "#61dafb"
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "icon": "/tech/typescript.svg",
+      "since": "2021-03-20",
+      "category": "Frontend",
+      "description": "Typed JavaScript para proyectos más robustos.",
+      "top": true,
+      "accent": "#3178c6"
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "icon": "/tech/nodejs.svg",
+      "since": "2020-09-10",
+      "category": "Backend",
+      "description": "Backend con JavaScript y TypeScript.",
+      "top": false,
+      "accent": "#3c873a"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "icon": "/tech/postgresql.svg",
+      "since": "2020-11-05",
+      "category": "Data",
+      "description": "Base de datos principal para proyectos.",
+      "top": true,
+      "accent": "#336791"
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "icon": "/tech/docker.svg",
+      "since": "2021-02-28",
+      "category": "Infra",
+      "description": "Contenedores para desarrollo y producción.",
+      "top": true,
+      "accent": "#2496ed"
+    },
+    {
+      "id": "fastapi",
+      "name": "FastAPI",
+      "icon": "/tech/fastapi.svg",
+      "since": "2021-08-15",
+      "category": "Backend",
+      "description": "APIs rápidas con Python.",
+      "top": true,
+      "accent": "#009688"
+    },
+    {
+      "id": "aws",
+      "name": "AWS",
+      "icon": "/tech/aws.svg",
+      "since": "2022-01-10",
+      "category": "Infra",
+      "description": "Infraestructura en la nube.",
+      "top": false,
+      "accent": "#ff9900"
+    },
+    {
+      "id": "kubernetes",
+      "name": "Kubernetes",
+      "icon": "/tech/kubernetes.svg",
+      "since": "2022-06-20",
+      "category": "Infra",
+      "description": "Orquestación de contenedores.",
+      "top": false,
+      "accent": "#326ce5"
+    },
+    {
+      "id": "terraform",
+      "name": "Terraform",
+      "icon": "/tech/terraform.svg",
+      "since": "2022-08-01",
+      "category": "Infra",
+      "description": "Infraestructura como código.",
+      "top": false,
+      "accent": "#7b42bc"
+    },
+    {
+      "id": "pytorch",
+      "name": "PyTorch",
+      "icon": "/tech/pytorch.svg",
+      "since": "2020-04-12",
+      "category": "AI",
+      "description": "Deep learning y modelos de IA.",
+      "top": false,
+      "accent": "#ee4c2c"
+    },
+    {
+      "id": "langchain",
+      "name": "LangChain",
+      "icon": "/tech/langchain.svg",
+      "since": "2023-05-01",
+      "category": "AI",
+      "description": "Aplicaciones con LLMs.",
+      "top": false,
+      "accent": "#f5a524"
+    }
+  ],
   "projects": [
     {
       "id": "saas-citas-whatsapp",
@@ -39,7 +161,17 @@
       "description": "Sistema multicliente para gestionar citas, recordatorios y conversaciones usando WhatsApp, reglas deterministas e IA.",
       "url": "https://citas.anderdata.es/comercial",
       "status": "En desarrollo",
-      "public": true
+      "public": true,
+      "stack": [
+        "typescript",
+        "react",
+        "nodejs",
+        "postgresql",
+        "fastapi",
+        "docker",
+        "aws",
+        "langchain"
+      ]
     },
     {
       "id": "personal-github",
@@ -47,7 +179,14 @@
       "description": "Repositorio de pruebas, automatizaciones, análisis de datos y productos personales.",
       "url": "https://github.com/mazapander",
       "status": "Público",
-      "public": true
+      "public": true,
+      "stack": [
+        "python",
+        "typescript",
+        "react",
+        "docker",
+        "postgresql"
+      ]
     }
   ],
   "widgets": [
@@ -58,27 +197,6 @@
         "username": "mazapander",
         "githubToken": "",
         "includePrivate": true
-      },
-      "public": true
-    },
-    {
-      "id": "tech-stack",
-      "type": "tech-stack",
-      "config": {
-        "items": [
-          { "name": "Python", "logo": "python", "since": "2019-01-15", "description": "Mi primer lenguaje de programación. Lo uso para data science, automatización y scripts." },
-          { "name": "React", "logo": "react", "since": "2020-06-01", "description": "Framework principal para interfaces de usuario." },
-          { "name": "TypeScript", "logo": "typescript", "since": "2021-03-20", "description": "Typed JavaScript para proyectos más robustos." },
-          { "name": "Node.js", "logo": "nodejs", "since": "2020-09-10", "description": "Backend con JavaScript/TypeScript." },
-          { "name": "PostgreSQL", "logo": "postgresql", "since": "2020-11-05", "description": "Base de datos principal para proyectos." },
-          { "name": "Docker", "logo": "docker", "since": "2021-02-28", "description": "Contenedores para desarrollo y producción." },
-          { "name": "FastAPI", "logo": "fastapi", "since": "2021-08-15", "description": "APIs rápidas con Python." },
-          { "name": "AWS", "logo": "aws", "since": "2022-01-10", "description": "Infraestructura en la nube." },
-          { "name": "Kubernetes", "logo": "kubernetes", "since": "2022-06-20", "description": "Orquestación de contenedores." },
-          { "name": "Terraform", "logo": "terraform", "since": "2022-08-01", "description": "Infraestructura como código." },
-          { "name": "PyTorch", "logo": "pytorch", "since": "2020-04-12", "description": "Deep learning y modelos de IA." },
-          { "name": "LangChain", "logo": "langchain", "since": "2023-05-01", "description": "Aplicaciones con LLMs." }
-        ]
       },
       "public": true
     }
