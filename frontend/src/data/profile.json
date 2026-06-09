@@ -64,16 +64,6 @@
       "accent": "#3178c6"
     },
     {
-      "id": "nodejs",
-      "name": "Node.js",
-      "icon": "/tech/nodejs.svg",
-      "since": "2020-09-10",
-      "category": "Backend",
-      "description": "Backend con JavaScript y TypeScript.",
-      "top": false,
-      "accent": "#3c873a"
-    },
-    {
       "id": "postgresql",
       "name": "PostgreSQL",
       "icon": "/tech/postgresql.svg",
@@ -114,26 +104,6 @@
       "accent": "#ff9900"
     },
     {
-      "id": "kubernetes",
-      "name": "Kubernetes",
-      "icon": "/tech/kubernetes.svg",
-      "since": "2022-06-20",
-      "category": "Infra",
-      "description": "Orquestación de contenedores.",
-      "top": false,
-      "accent": "#326ce5"
-    },
-    {
-      "id": "terraform",
-      "name": "Terraform",
-      "icon": "/tech/terraform.svg",
-      "since": "2022-08-01",
-      "category": "Infra",
-      "description": "Infraestructura como código.",
-      "top": false,
-      "accent": "#7b42bc"
-    },
-    {
       "id": "pytorch",
       "name": "PyTorch",
       "icon": "/tech/pytorch.svg",
@@ -169,23 +139,18 @@
         "postgresql",
         "fastapi",
         "docker",
-        "aws",
         "langchain"
       ]
     },
     {
-      "id": "personal-github",
-      "title": "Proyectos públicos en GitHub",
-      "description": "Repositorio de pruebas, automatizaciones, análisis de datos y productos personales.",
-      "url": "https://github.com/mazapander",
+      "id": "framework-agentes",
+      "title": "Framework de desarrollo de agentes",
+      "description": "Repositorio para el desarrollo de codigo usando herramientas de IA.",
+      "url": "https://github.com/mazapander/developer-framework-ander-fernandez",
       "status": "Público",
       "public": true,
       "stack": [
-        "python",
-        "typescript",
-        "react",
-        "docker",
-        "postgresql"
+        "langchain"
       ]
     }
   ],

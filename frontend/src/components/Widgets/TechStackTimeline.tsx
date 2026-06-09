@@ -70,7 +70,7 @@ export default function TechStackTimeline({ technologies }: TechStackTimelinePro
           <span className="tech-stack-block-hint">Lo que más define mi stack</span>
         </div>
 
-        <div className="tech-stack-scroll tech-stack-scroll--top">
+        <div className="tech-stack-top-grid">
           {topTechnologies.map(technology => (
             <article
               key={technology.id}
@@ -98,32 +98,38 @@ export default function TechStackTimeline({ technologies }: TechStackTimelinePro
           <span className="tech-stack-block-hint">Ordenada por el momento en que la fui incorporando</span>
         </div>
 
-        <div className="tech-stack-scroll tech-stack-scroll--timeline">
+        <div className="tech-stack-marquee" aria-label="Línea temporal del stack">
           <div className="tech-stack-rail" aria-hidden="true" />
-          {sortedTechnologies.map(technology => (
-            <article
-              key={technology.id}
-              className={`tech-stack-event${technology.top ? ' tech-stack-event--top' : ''}`}
-              style={getCardStyle(technology.accent)}
-              title={`${technology.name} · ${technology.description ?? technology.category ?? ''}`.trim()}
-            >
-              <div className="tech-stack-event-marker" />
-              <div className="tech-stack-event-year">{getYear(technology.since)}</div>
-              <div className="tech-stack-event-card">
-                <div className="tech-stack-event-logo">
-                  <img src={technology.icon} alt="" loading="lazy" />
-                </div>
-                <div className="tech-stack-event-copy">
-                  <div className="tech-stack-event-title-row">
-                    <span className="tech-stack-event-name">{technology.name}</span>
-                    {technology.top && <span className="tech-stack-event-badge">Top</span>}
-                  </div>
-                  <span className="tech-stack-event-meta">{technology.category ?? 'Stack'} · {getExperienceLabel(technology.since)}</span>
-                  {technology.description && <p className="tech-stack-event-description">{technology.description}</p>}
-                </div>
+          <div className="tech-stack-marquee-track">
+            {[0, 1].map(loopIndex => (
+              <div className="tech-stack-marquee-group" key={loopIndex} aria-hidden={loopIndex === 1}>
+                {sortedTechnologies.map((technology, index) => (
+                  <article
+                    key={`${loopIndex}-${technology.id}`}
+                    className={`tech-stack-event tech-stack-event--depth-${(index % 4) + 1}${technology.top ? ' tech-stack-event--top' : ''}`}
+                    style={getCardStyle(technology.accent)}
+                    title={`${technology.name} · ${technology.description ?? technology.category ?? ''}`.trim()}
+                  >
+                    <div className="tech-stack-event-marker" />
+                    <div className="tech-stack-event-year">{getYear(technology.since)}</div>
+                    <div className="tech-stack-event-card">
+                      <div className="tech-stack-event-logo">
+                        <img src={technology.icon} alt="" loading="lazy" />
+                      </div>
+                      <div className="tech-stack-event-copy">
+                        <div className="tech-stack-event-title-row">
+                          <span className="tech-stack-event-name">{technology.name}</span>
+                          {technology.top && <span className="tech-stack-event-badge">Top</span>}
+                        </div>
+                        <span className="tech-stack-event-meta">{technology.category ?? 'Stack'} · {getExperienceLabel(technology.since)}</span>
+                        {technology.description && <p className="tech-stack-event-description">{technology.description}</p>}
+                      </div>
+                    </div>
+                  </article>
+                ))}
               </div>
-            </article>
-          ))}
+            ))}
+          </div>
           {supportingTechnologies.length === 0 && (
             <div className="tech-stack-empty">Todavía no hay tecnologías secundarias configuradas.</div>
           )}
