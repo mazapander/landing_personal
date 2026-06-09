@@ -12,7 +12,39 @@ services:
       - apps
     expose:
       - "80"
+    depends_on:
+      - cv-api
 
+  cv-api:
+    build:
+      context: ./cv-api
+      dockerfile: Dockerfile
+    container_name: anderdata-cv-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      PORT: 3000
+      DATABASE_URL: ${DATABASE_URL}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_SECURE: ${SMTP_SECURE}
+      CV_FROM_EMAIL: ${CV_FROM_EMAIL}
+      CV_PUBLIC_BASE_URL: ${CV_PUBLIC_BASE_URL}
+      CV_FILE_PATH: ${CV_FILE_PATH}
+      CV_TOKEN_TTL_HOURS: ${CV_TOKEN_TTL_HOURS}
+      CV_MAX_DOWNLOADS: ${CV_MAX_DOWNLOADS}
+      CV_REQUEST_LIMIT_PER_HOUR: ${CV_REQUEST_LIMIT_PER_HOUR}
+      CV_REQUEST_WINDOW_MINUTES: ${CV_REQUEST_WINDOW_MINUTES}
+    volumes:
+      - ./cv-private:/private/cv:ro
+    networks:
+      - apps
+    expose:
+      - "3000"
+    
 networks:
   apps:
     external: true

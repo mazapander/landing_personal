@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Kubernetes">
-  <rect width="256" height="256" rx="56" fill="#0f172a"/>
-  <circle cx="128" cy="124" r="72" fill="#326ce5"/>
-  <circle cx="128" cy="124" r="42" fill="#dbeafe"/>
-  <path d="M128 62l12 18 22 4-16 16 4 22-22-12-22 12 4-22-16-16 22-4z" fill="#326ce5"/>
-  <text x="128" y="208" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="900" fill="#dbeafe">K8s</text>
-</svg>
