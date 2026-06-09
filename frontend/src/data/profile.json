@@ -1,16 +1,16 @@
 {
   "profile": {
     "name": "Ander Fernández",
-    "headline": "Data, AI & Product Builder",
-    "description": "Construyo soluciones de datos, inteligencia artificial y automatización para convertir procesos complejos en productos útiles.",
-    "location": "Bilbao / Remoto",
+    "headline": "Technical Product Owner | Data, AI & Governance | IT Delivery Lead",
+    "description": "Lidero iniciativas de datos, IA, gobierno del dato y producto digital en entornos industriales. Conecto necesidades de negocio, arquitectura técnica y ejecución para llevar casos de uso desde la idea hasta la adopción real.",
+    "location": "Bilbao / España / Remoto",
     "avatar": "/profile.jpg"
   },
   "socialLinks": [
     {
       "id": "linkedin",
       "label": "LinkedIn",
-      "description": "Contenido sobre IA, datos, producto y automatización",
+      "description": "Perfil profesional, publicaciones sobre IA, datos, producto y automatización",
       "url": "https://www.linkedin.com/in/ander-data-projects",
       "type": "social",
       "featured": true
@@ -18,7 +18,7 @@
     {
       "id": "github",
       "label": "GitHub",
-      "description": "Repositorios, pruebas técnicas y proyectos personales",
+      "description": "Repositorios, pruebas técnicas, automatizaciones y productos personales",
       "url": "https://github.com/mazapander",
       "type": "code",
       "featured": true
@@ -26,9 +26,17 @@
     {
       "id": "email",
       "label": "Contacto",
-      "description": "Escríbeme para proyectos, colaboraciones o consultoría",
+      "description": "Escríbeme para proyectos, colaboraciones, producto o consultoría",
       "url": "mailto:ander.fernandez.gonzalbo@gmail.com",
       "type": "contact",
+      "featured": true
+    },
+    {
+      "id": "anderdata",
+      "label": "AnderData",
+      "description": "Landing personal y punto de entrada a mis proyectos públicos",
+      "url": "https://anderdata.es",
+      "type": "web",
       "featured": false
     }
   ],
@@ -38,10 +46,30 @@
       "name": "Python",
       "icon": "/tech/python.svg",
       "since": "2019-01-15",
-      "category": "Data",
-      "description": "Mi primer lenguaje de programación. Lo uso para data science, automatización y scripts.",
+      "category": "Data & Backend",
+      "description": "Automatización, pipelines, APIs, análisis de datos y prototipos de IA aplicada.",
       "top": true,
       "accent": "#3776ab"
+    },
+    {
+      "id": "sql",
+      "name": "SQL",
+      "icon": "/tech/postgresql.svg",
+      "since": "2019-06-01",
+      "category": "Data",
+      "description": "Modelado, explotación, reporting, calidad de dato y definición de KPIs.",
+      "top": true,
+      "accent": "#336791"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "icon": "/tech/postgresql.svg",
+      "since": "2020-11-05",
+      "category": "Data",
+      "description": "Base de datos principal para productos personales, analítica y servicios desplegados.",
+      "top": true,
+      "accent": "#336791"
     },
     {
       "id": "react",
@@ -49,7 +77,7 @@
       "icon": "/tech/react.svg",
       "since": "2020-06-01",
       "category": "Frontend",
-      "description": "Base de mis interfaces y paneles de producto.",
+      "description": "Interfaces de producto, paneles internos, landings y herramientas de gestión.",
       "top": true,
       "accent": "#61dafb"
     },
@@ -59,19 +87,9 @@
       "icon": "/tech/typescript.svg",
       "since": "2021-03-20",
       "category": "Frontend",
-      "description": "Typed JavaScript para proyectos más robustos.",
+      "description": "Frontend más robusto para proyectos React y productos con lógica compleja.",
       "top": true,
       "accent": "#3178c6"
-    },
-    {
-      "id": "postgresql",
-      "name": "PostgreSQL",
-      "icon": "/tech/postgresql.svg",
-      "since": "2020-11-05",
-      "category": "Data",
-      "description": "Base de datos principal para proyectos.",
-      "top": true,
-      "accent": "#336791"
     },
     {
       "id": "docker",
@@ -79,7 +97,7 @@
       "icon": "/tech/docker.svg",
       "since": "2021-02-28",
       "category": "Infra",
-      "description": "Contenedores para desarrollo y producción.",
+      "description": "Despliegue de servicios, entornos reproducibles y arquitectura self-hosted.",
       "top": true,
       "accent": "#2496ed"
     },
@@ -89,29 +107,49 @@
       "icon": "/tech/fastapi.svg",
       "since": "2021-08-15",
       "category": "Backend",
-      "description": "APIs rápidas con Python.",
+      "description": "APIs rápidas para productos de datos, automatización e integraciones.",
       "top": true,
       "accent": "#009688"
     },
     {
-      "id": "aws",
-      "name": "AWS",
-      "icon": "/tech/aws.svg",
-      "since": "2022-01-10",
-      "category": "Infra",
-      "description": "Infraestructura en la nube.",
-      "top": false,
-      "accent": "#ff9900"
+      "id": "qlik",
+      "name": "Qlik Sense",
+      "icon": "/tech/qlik.svg",
+      "since": "2022-01-01",
+      "category": "BI",
+      "description": "Dashboards, adopción analítica, reporting corporativo y estandarización de KPIs.",
+      "top": true,
+      "accent": "#009845"
     },
     {
-      "id": "pytorch",
-      "name": "PyTorch",
-      "icon": "/tech/pytorch.svg",
-      "since": "2020-04-12",
-      "category": "AI",
-      "description": "Deep learning y modelos de IA.",
+      "id": "pentaho",
+      "name": "Pentaho",
+      "icon": "/tech/pentaho.svg",
+      "since": "2022-01-01",
+      "category": "ETL",
+      "description": "Estandarización de pipelines ETL, controles internos y monitorización de cargas.",
       "top": false,
-      "accent": "#ee4c2c"
+      "accent": "#cc0000"
+    },
+    {
+      "id": "datahub",
+      "name": "DataHub",
+      "icon": "/tech/datahub.svg",
+      "since": "2024-01-01",
+      "category": "Data Governance",
+      "description": "Catálogo, ownership, definiciones de KPI y gobierno del dato empresarial.",
+      "top": false,
+      "accent": "#533fd7"
+    },
+    {
+      "id": "jira",
+      "name": "Jira",
+      "icon": "/tech/jira.svg",
+      "since": "2022-01-01",
+      "category": "Delivery",
+      "description": "Gestión de demanda, delivery, visibilidad de proyectos y automatización de reporting.",
+      "top": false,
+      "accent": "#0052cc"
     },
     {
       "id": "langchain",
@@ -119,23 +157,32 @@
       "icon": "/tech/langchain.svg",
       "since": "2023-05-01",
       "category": "AI",
-      "description": "Aplicaciones con LLMs.",
+      "description": "Construcción de agentes, flujos con LLMs y aplicaciones GenAI controladas.",
       "top": false,
       "accent": "#f5a524"
+    },
+    {
+      "id": "azure",
+      "name": "Azure",
+      "icon": "/tech/azure.svg",
+      "since": "2023-01-01",
+      "category": "Cloud",
+      "description": "Servicios cloud, integración corporativa y despliegue de soluciones empresariales.",
+      "top": false,
+      "accent": "#0078d4"
     }
   ],
   "projects": [
     {
       "id": "saas-citas-whatsapp",
       "title": "SaaS de citas por WhatsApp",
-      "description": "Sistema multicliente para gestionar citas, recordatorios y conversaciones usando WhatsApp, reglas deterministas e IA.",
+      "description": "Producto multicliente para gestionar reservas, recordatorios y conversaciones por WhatsApp combinando reglas deterministas, plantillas, botones e IA.",
       "url": "https://citas.anderdata.es/comercial",
       "status": "En desarrollo",
       "public": true,
       "stack": [
         "typescript",
         "react",
-        "nodejs",
         "postgresql",
         "fastapi",
         "docker",
@@ -143,14 +190,81 @@
       ]
     },
     {
+      "id": "advanced-feb-basketball-analytics",
+      "title": "Advanced FEB Basketball Analytics Platform",
+      "description": "Sistema para scraping, modelado de datos y generación automática de informes avanzados sobre partidos y jugadores de baloncesto.",
+      "url": "https://github.com/mazapander",
+      "status": "Portfolio",
+      "public": true,
+      "stack": [
+        "python",
+        "sql",
+        "postgresql",
+        "docker"
+      ]
+    },
+    {
+      "id": "speaker-diarization-transcription",
+      "title": "Speaker Diarization & Transcription System",
+      "description": "Pipeline para separar hablantes, transcribir sesiones presenciales y extraer métricas útiles de reuniones o sesiones profesionales.",
+      "url": "https://github.com/mazapander",
+      "status": "Concepto / prototipo",
+      "public": true,
+      "stack": [
+        "python",
+        "langchain"
+      ]
+    },
+    {
+      "id": "jira-intake-reporting",
+      "title": "Jira Intake & Reporting Automation",
+      "description": "Sistema para estructurar la entrada de peticiones, explotar datos de Jira y mejorar la visibilidad de proyectos, demanda y delivery.",
+      "url": "https://github.com/mazapander",
+      "status": "Portfolio",
+      "public": true,
+      "stack": [
+        "python",
+        "sql",
+        "jira",
+        "qlik"
+      ]
+    },
+    {
+      "id": "corporate-apps-licenses-portal",
+      "title": "Corporate Applications & Licenses Portal",
+      "description": "Launcher interno para centralizar acceso a herramientas, licencias, aprobaciones y tracking de uso en entornos corporativos.",
+      "url": "https://github.com/mazapander",
+      "status": "Idea de producto",
+      "public": true,
+      "stack": [
+        "react",
+        "typescript",
+        "fastapi",
+        "postgresql"
+      ]
+    },
+    {
+      "id": "vehicle-telemetry-alerts",
+      "title": "Vehicle Telemetry & Alerts System",
+      "description": "Plataforma con mapas, geocercas y alertas para monitorizar vehículos en tiempo real con foco en IoT, geolocalización y seguridad de servicios expuestos.",
+      "url": "https://github.com/mazapander",
+      "status": "Self-hosted lab",
+      "public": true,
+      "stack": [
+        "docker",
+        "postgresql"
+      ]
+    },
+    {
       "id": "framework-agentes",
-      "title": "Framework de desarrollo de agentes",
-      "description": "Repositorio para el desarrollo de codigo usando herramientas de IA.",
+      "title": "Developer Framework para agentes IA",
+      "description": "Repositorio para estructurar desarrollo con herramientas de IA, agentes, automatizaciones y patrones reutilizables.",
       "url": "https://github.com/mazapander/developer-framework-ander-fernandez",
       "status": "Público",
       "public": true,
       "stack": [
-        "langchain"
+        "langchain",
+        "python"
       ]
     }
   ],
