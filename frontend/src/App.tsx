@@ -13,7 +13,7 @@ import TechStackTimeline from './components/Widgets/TechStackTimeline'
 function App() {
   const { profile, socialLinks, projects, technologies, widgets } = profileData
   //const { trackEvent } = useAnalytics()
-  {//const [isCvModalOpen, setIsCvModalOpen] = useState(false)}
+  //const [isCvModalOpen, setIsCvModalOpen] = useState(false)
 
   const publicWidgets = widgets?.filter(w => w.public) || []
   const githubWidget = publicWidgets.find(widget => widget.type === 'github-heatmap' && widget.config.username)
