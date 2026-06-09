@@ -1,4 +1,4 @@
-import { useState } from 'react'
+//import { useState } from 'react'
 import profileData from './data/profile.json'
 import ProfileHeader from './components/Profile/ProfileHeader'
 import LinkList from './components/Links/LinkList'
@@ -7,23 +7,23 @@ import Footer from './components/Footer/Footer'
 import PageContainer from './components/Layout/PageContainer'
 import GitHubHeatmap from './components/Widgets/GitHubHeatmap'
 import TechStackTimeline from './components/Widgets/TechStackTimeline'
-import CvRequestModal from './components/CV/CvRequestModal'
-import { useAnalytics } from './hooks/useAnalytics'
+//import CvRequestModal from './components/CV/CvRequestModal'
+//import { useAnalytics } from './hooks/useAnalytics'
 
 function App() {
   const { profile, socialLinks, projects, technologies, widgets } = profileData
-  const { trackEvent } = useAnalytics()
-  const [isCvModalOpen, setIsCvModalOpen] = useState(false)
+  //const { trackEvent } = useAnalytics()
+  {//const [isCvModalOpen, setIsCvModalOpen] = useState(false)}
 
   const publicWidgets = widgets?.filter(w => w.public) || []
   const githubWidget = publicWidgets.find(widget => widget.type === 'github-heatmap' && widget.config.username)
 
-  const handleOpenCvModal = () => {
+  /*const handleOpenCvModal = () => {
     setIsCvModalOpen(true)
     trackEvent('open_cv_modal', {
       source: 'profile_cta',
     })
-  }
+  }*/
 
   return (
     <>
