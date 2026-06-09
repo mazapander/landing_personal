@@ -34,8 +34,21 @@ interface LinkCardProps {
 export default function LinkCard({ link }: LinkCardProps) {
   const { trackEvent } = useAnalytics()
 
+  const getEventName = () => {
+    switch (link.type) {
+      case 'contact':
+        return 'click_contact'
+      case 'code':
+        return link.id === 'github' ? 'click_github' : 'click_link'
+      case 'social':
+        return link.id === 'linkedin' ? 'click_linkedin' : 'click_social'
+      default:
+        return 'click_link'
+    }
+  }
+
   const handleClick = () => {
-    trackEvent('click_link', {
+    trackEvent(getEventName(), {
       id: link.id,
       label: link.label,
       url: link.url,

@@ -13,7 +13,8 @@ export default function ProjectCard({ project, technologies }: ProjectCardProps)
     .filter((technology): technology is Technology => Boolean(technology))
 
   const handleClick = () => {
-    trackEvent('click_project', {
+    const eventName = `click_project_${project.id}`
+    trackEvent(eventName, {
       id: project.id,
       title: project.title,
       url: project.url,
