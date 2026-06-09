@@ -1,7 +1,7 @@
 //import { useState } from 'react'
 import profileData from './data/profile.json'
 import ProfileHeader from './components/Profile/ProfileHeader'
-import LinkList from './components/Links/LinkList'
+import LinkButtons from './components/Links/LinkButtons'
 import ProjectList from './components/Projects/ProjectList'
 import Footer from './components/Footer/Footer'
 import PageContainer from './components/Layout/PageContainer'
@@ -30,22 +30,7 @@ function App() {
       <main>
         <PageContainer>
           <ProfileHeader profile={profile} />
-          {/*
-          <div className="profile-cta">
-            <button type="button" className="button button-primary profile-cta-button" onClick={handleOpenCvModal}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 3v12" />
-                <path d="m7 10 5 5 5-5" />
-                <path d="M5 21h14" />
-              </svg>
-              Descargar CV
-            </button>
-            <p className="profile-cta-note">
-              Solicitud privada con enlace temporal. No hay PDF público indexable.
-            </p>
-          </div>
-          */}
-          <LinkList links={socialLinks} />
+          <LinkButtons links={socialLinks} />
           <section className="section tech-stack-section">
             <TechStackTimeline technologies={technologies} />
           </section>

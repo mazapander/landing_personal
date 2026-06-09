@@ -54,7 +54,7 @@
     {
       "id": "sql",
       "name": "SQL",
-      "icon": "/tech/postgresql.svg",
+      "icon": "/tech/sql.svg",
       "since": "2019-06-01",
       "category": "Data",
       "description": "Modelado, explotación, reporting, calidad de dato y definición de KPIs.",
@@ -88,7 +88,7 @@
       "since": "2021-03-20",
       "category": "Frontend",
       "description": "Frontend más robusto para proyectos React y productos con lógica compleja.",
-      "top": true,
+      "top": false,
       "accent": "#3178c6"
     },
     {
@@ -138,7 +138,7 @@
       "since": "2024-01-01",
       "category": "Data Governance",
       "description": "Catálogo, ownership, definiciones de KPI y gobierno del dato empresarial.",
-      "top": false,
+      "top": true,
       "accent": "#533fd7"
     },
     {
@@ -148,7 +148,7 @@
       "since": "2022-01-01",
       "category": "Delivery",
       "description": "Gestión de demanda, delivery, visibilidad de proyectos y automatización de reporting.",
-      "top": false,
+      "top": true,
       "accent": "#0052cc"
     },
     {

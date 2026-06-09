@@ -43,8 +43,8 @@ export default function TechStackTimeline({ technologies }: TechStackTimelinePro
           <p className="tech-stack-kicker">Stack principal</p>
           <h2 className="tech-stack-title">Tecnología que uso de verdad para construir producto</h2>
           <p className="tech-stack-description">
-            Un recorrido horizontal por las herramientas con más peso en mi trabajo.
-            Las marcadas como top son las que más aparecen en proyectos reales y decisiones de arquitectura.
+            Los frameworks, lenguajes y herramientas que realmente forman parte de mis proyectos. 
+            No es una lista de "conocimientos", sino de uso activo y continuo en proyectos reales.
           </p>
         </div>
 

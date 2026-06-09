@@ -18,6 +18,14 @@ const icons: Record<string, JSX.Element> = {
       <polyline points="22,6 12,13 2,6"/>
     </svg>
   ),
+  andерdata: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 2a10 10 0 0 10 20"/>
+      <path d="M12 2a10 10 0 0 0 0 20"/>
+      <path d="M2 12h20"/>
+    </svg>
+  ),
   default: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -27,14 +35,14 @@ const icons: Record<string, JSX.Element> = {
   ),
 }
 
-interface LinkCardProps {
-  link: SocialLink
+interface LinkButtonsProps {
+  links: SocialLink[]
 }
 
-export default function LinkCard({ link }: LinkCardProps) {
+export default function LinkButtons({ links }: LinkButtonsProps) {
   const { trackEvent } = useAnalytics()
 
-  const getEventName = () => {
+  const getEventName = (link: SocialLink) => {
     switch (link.type) {
       case 'contact':
         return 'click_contact'
@@ -47,30 +55,34 @@ export default function LinkCard({ link }: LinkCardProps) {
     }
   }
 
-  const handleClick = () => {
-    trackEvent(getEventName(), {
+  const handleClick = (link: SocialLink) => {
+    trackEvent(getEventName(link), {
       id: link.id,
       label: link.label,
       url: link.url,
     })
   }
 
-  const iconKey = link.id.toLowerCase()
-  const icon = icons[iconKey] || icons.default
-
   return (
-    <a
-      href={link.url}
-      onClick={handleClick}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="link-card"
-    >
-      <div className="link-icon">{icon}</div>
-      <div className="link-content">
-        <div className="link-label">{link.label}</div>
-        <div className="link-description">{link.description}</div>
-      </div>
-    </a>
+    <div className="link-buttons">
+      {links.map(link => {
+        const iconKey = link.id.toLowerCase()
+        const icon = icons[iconKey] || icons.default
+
+ return (
+          <a
+            key={link.id}
+            href={link.url}
+            onClick={() => handleClick(link)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-button"
+            title={link.label}
+          >
+            {icon}
+          </a>
+        )
+      })}
+    </div>
   )
 }

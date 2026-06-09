@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useAnalytics } from '../../hooks/useAnalytics'
 
 interface DayData {
@@ -71,6 +71,7 @@ export default function GitHubHeatmap({ username, fallbackData, githubToken, inc
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [tooltip, setTooltip] = useState<{ date: string; count: number; x: number; y: number } | null>(null)
   const { trackEvent } = useAnalytics()
+  const gridContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     async function fetchCommits() {
@@ -181,6 +182,13 @@ export default function GitHubHeatmap({ username, fallbackData, githubToken, inc
     }
   }, [username, fallbackData, githubToken, includePrivate])
 
+  useEffect(() => {
+    if (gridContainerRef.current) {
+      const el = gridContainerRef.current
+      el.scrollLeft = el.scrollWidth
+    }
+  }, [data])
+
   const handleMouseEnter = (day: DayData, e: React.MouseEvent) => {
     const rect = (e.target as HTMLElement).getBoundingClientRect()
     setTooltip({
@@ -276,7 +284,7 @@ export default function GitHubHeatmap({ username, fallbackData, githubToken, inc
         <div className="github-heatmap-loading">Cargando...</div>
       ) : (
         <>
-          <div className="github-heatmap-grid-container">
+          <div className="github-heatmap-grid-container" ref={gridContainerRef}>
             <div
               className="github-heatmap-months"
               style={{ gridTemplateColumns: `repeat(${weeks.length}, 13px)` }}
