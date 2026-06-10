@@ -1,5 +1,6 @@
 import type { Project, Technology } from '../../types/profile'
 import { useAnalytics } from '../../hooks/useAnalytics'
+import TechIcon from '../Tech/TechIcon'
 
 interface ProjectCardProps {
   project: Project
@@ -42,7 +43,7 @@ export default function ProjectCard({ project, technologies }: ProjectCardProps)
               className="project-stack-pill"
               title={technology.name}
             >
-              <img src={technology.icon} alt="" loading="lazy" />
+              <TechIcon technology={technology} />
               <span>{technology.name}</span>
             </span>
           ))}
