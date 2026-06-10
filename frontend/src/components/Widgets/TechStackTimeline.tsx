@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import type { Technology } from '../../types/profile'
+import TechIcon from '../Tech/TechIcon'
 
 interface TechStackTimelineProps {
   technologies: Technology[]
@@ -43,7 +44,7 @@ export default function TechStackTimeline({ technologies }: TechStackTimelinePro
           <p className="tech-stack-kicker">Stack principal</p>
           <h2 className="tech-stack-title">Tecnología que uso de verdad para construir producto</h2>
           <p className="tech-stack-description">
-            Los frameworks, lenguajes y herramientas que realmente forman parte de mis proyectos. 
+            Los frameworks, lenguajes y herramientas que realmente forman parte de mis proyectos.
             No es una lista de "conocimientos", sino de uso activo y continuo en proyectos reales.
           </p>
         </div>
@@ -79,7 +80,7 @@ export default function TechStackTimeline({ technologies }: TechStackTimelinePro
               title={`${technology.name} · ${technology.description ?? technology.category ?? ''}`.trim()}
             >
               <div className="tech-stack-pill-icon">
-                <img src={technology.icon} alt="" loading="lazy" />
+                <TechIcon technology={technology} />
               </div>
               <div className="tech-stack-pill-copy">
                 <span className="tech-stack-pill-name">{technology.name}</span>
@@ -114,7 +115,7 @@ export default function TechStackTimeline({ technologies }: TechStackTimelinePro
                     <div className="tech-stack-event-year">{getYear(technology.since)}</div>
                     <div className="tech-stack-event-card">
                       <div className="tech-stack-event-logo">
-                        <img src={technology.icon} alt="" loading="lazy" />
+                        <TechIcon technology={technology} />
                       </div>
                       <div className="tech-stack-event-copy">
                         <div className="tech-stack-event-title-row">
