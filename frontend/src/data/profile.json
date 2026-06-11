@@ -216,20 +216,6 @@
       ]
     },
     {
-      "id": "jira-intake-reporting",
-      "title": "Jira Intake & Reporting Automation",
-      "description": "Sistema para estructurar la entrada de peticiones, explotar datos de Jira y mejorar la visibilidad de proyectos, demanda y delivery.",
-      "url": "https://github.com/mazapander",
-      "status": "Portfolio",
-      "public": true,
-      "stack": [
-        "python",
-        "sql",
-        "jira",
-        "qlik"
-      ]
-    },
-    {
       "id": "corporate-apps-licenses-portal",
       "title": "Corporate Applications & Licenses Portal",
       "description": "Launcher interno para centralizar acceso a herramientas, licencias, aprobaciones y tracking de uso en entornos corporativos.",
@@ -240,18 +226,6 @@
         "react",
         "typescript",
         "fastapi",
-        "postgresql"
-      ]
-    },
-    {
-      "id": "vehicle-telemetry-alerts",
-      "title": "Vehicle Telemetry & Alerts System",
-      "description": "Plataforma con mapas, geocercas y alertas para monitorizar vehículos en tiempo real con foco en IoT, geolocalización y seguridad de servicios expuestos.",
-      "url": "https://github.com/mazapander",
-      "status": "Self-hosted lab",
-      "public": true,
-      "stack": [
-        "docker",
         "postgresql"
       ]
     },
