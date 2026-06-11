@@ -1,5 +1,6 @@
 import type { SocialLink } from '../../types/profile'
 import { useAnalytics } from '../../hooks/useAnalytics'
+import AnderdataLogo from '../../../public/favicon.svg'
 
 const icons: Record<string, JSX.Element> = {
   linkedin: (
@@ -18,14 +19,7 @@ const icons: Record<string, JSX.Element> = {
       <polyline points="22,6 12,13 2,6"/>
     </svg>
   ),
-  andерdata: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10"/>
-      <path d="M12 2a10 10 0 0 10 20"/>
-      <path d="M12 2a10 10 0 0 0 0 20"/>
-      <path d="M2 12h20"/>
-    </svg>
-  ),
+  anderdata: <AnderdataLogo />,
   default: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -69,7 +63,7 @@ export default function LinkButtons({ links }: LinkButtonsProps) {
         const iconKey = link.id.toLowerCase()
         const icon = icons[iconKey] || icons.default
 
- return (
+        return (
           <a
             key={link.id}
             href={link.url}
