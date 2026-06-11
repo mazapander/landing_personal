@@ -5,7 +5,18 @@ interface TechIconProps {
   className?: string
 }
 
-const WIDE_TECH_IDS = new Set(['datahub', 'pentaho', 'qlik', 'langchain', 'aws', 'pytorch', 'nodejs', 'terraform'])
+const WIDE_TECH_IDS = new Set([
+  'datahub',
+  'pentaho',
+  'qlik',
+  'langchain',
+  'aws',
+  'pytorch',
+  'nodejs',
+  'terraform',
+])
+
+const SVG_CACHE_BUSTER = String(Date.now())
 
 const normalizeTechIconPath = (technology: Technology) => {
   const safeId = technology.id.trim().toLowerCase()
@@ -14,7 +25,7 @@ const normalizeTechIconPath = (technology: Technology) => {
     return technology.icon
   }
 
-  return `/tech/${safeId}.svg`
+  return `/tech/${safeId}.svg?v=${SVG_CACHE_BUSTER}`
 }
 
 export default function TechIcon({ technology, className = '' }: TechIconProps) {
