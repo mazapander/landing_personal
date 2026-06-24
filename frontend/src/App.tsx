@@ -7,11 +7,12 @@ import Footer from './components/Footer/Footer'
 import PageContainer from './components/Layout/PageContainer'
 import GitHubHeatmap from './components/Widgets/GitHubHeatmap'
 import TechStackTimeline from './components/Widgets/TechStackTimeline'
+import CompanyExperienceWidget from './components/Widgets/CompanyExperienceWidget'
 //import CvRequestModal from './components/CV/CvRequestModal'
 //import { useAnalytics } from './hooks/useAnalytics'
 
 function App() {
-  const { profile, socialLinks, projects, technologies, widgets } = profileData
+  const { profile, socialLinks, projects, technologies, widgets, workExperience } = profileData
   //const { trackEvent } = useAnalytics()
   //const [isCvModalOpen, setIsCvModalOpen] = useState(false)
 
@@ -34,6 +35,9 @@ function App() {
           <section className="section tech-stack-section">
             <TechStackTimeline technologies={technologies} />
           </section>
+          {workExperience && workExperience.length > 0 && (
+            <CompanyExperienceWidget companies={workExperience} />
+          )}
           <ProjectList projects={projects.filter(p => p.public)} technologies={technologies} />
           {githubWidget && (
             <section className="section">
