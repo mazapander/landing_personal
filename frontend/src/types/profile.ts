@@ -25,6 +25,35 @@ export interface Project {
   stack?: string[]
 }
 
+export interface CompanyMetric {
+  label: string
+  value: string
+  detail?: string
+}
+
+export interface CompanyExperienceDetail {
+  context?: string
+  responsibilities?: string[]
+  achievements?: string[]
+  projects?: string[]
+}
+
+export interface CompanyExperience {
+  id: string
+  company: string
+  role: string
+  period: string
+  location?: string
+  employmentType?: string
+  logo?: string
+  shortDescription: string
+  highlights: string[]
+  metrics?: CompanyMetric[]
+  stack?: string[]
+  detail?: CompanyExperienceDetail
+  public?: boolean
+}
+
 export interface WidgetConfig {
   username?: string
   githubToken?: string
@@ -54,5 +83,6 @@ export interface ProfileData {
   socialLinks: SocialLink[]
   projects: Project[]
   technologies: Technology[]
+  workExperience?: CompanyExperience[]
   widgets?: Widget[]
 }

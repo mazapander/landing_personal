@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Ferchau placeholder mark</title>
+  <desc id="desc">Marca visual simplificada para la tarjeta de experiencia de Ferchau.</desc>
+  <rect width="160" height="160" rx="42" fill="#f8fafc"/>
+  <path d="M42 42h78v22H66v22h45v21H66v29H42V42Z" fill="#334155"/>
+  <path d="M114 118l20 18" stroke="#2563eb" stroke-width="10" stroke-linecap="round"/>
+</svg>

@@ -172,6 +172,242 @@
       "accent": "#0078d4"
     }
   ],
+  "workExperience": [
+    {
+      "id": "tubacex",
+      "company": "TUBACEX",
+      "role": "Technical Product Owner / AI & Data Project Manager",
+      "period": "2023 — Actualidad",
+      "location": "Entorno industrial internacional",
+      "employmentType": "Actual",
+      "logo": "/companies/tubacex.svg",
+      "shortDescription": "Liderazgo técnico de iniciativas corporativas de datos, IA, BI, gobierno del dato y automatización en entorno industrial.",
+      "highlights": [
+        "Refactorización de ingestas ERP y consolidación de arquitectura DWH.",
+        "Escalado del ecosistema BI corporativo de 30 a 150 dashboards.",
+        "Despliegue de iniciativas GenAI con foco en adopción, seguridad y control."
+      ],
+      "metrics": [
+        {
+          "value": "30 → 150",
+          "label": "dashboards",
+          "detail": "Evolución del ecosistema BI corporativo y estandarización de reporting."
+        },
+        {
+          "value": "150",
+          "label": "usuarios GenAI",
+          "detail": "Adopción interna de capacidades de IA generativa con control de uso."
+        },
+        {
+          "value": "SAP + DWH",
+          "label": "datos enterprise",
+          "detail": "Integración y explotación de datos corporativos para negocio."
+        }
+      ],
+      "stack": [
+        "Python",
+        "SQL",
+        "Qlik Sense",
+        "SAP",
+        "LangChain",
+        "Jira",
+        "DataHub",
+        "Azure"
+      ],
+      "detail": {
+        "context": "Rol híbrido entre producto, delivery técnico y arquitectura de datos para llevar casos de uso desde demanda de negocio hasta soluciones reales desplegadas.",
+        "responsibilities": [
+          "Priorizar demanda de negocio y traducir necesidades funcionales en productos técnicos entregables.",
+          "Coordinar iniciativas de datos, BI, IA y gobierno del dato con equipos técnicos y usuarios de negocio.",
+          "Definir criterios de adopción, trazabilidad, seguridad y medición para soluciones corporativas."
+        ],
+        "achievements": [
+          "Impulso de una plataforma BI más amplia y estructurada, pasando de decenas a más de cien dashboards activos.",
+          "Refactorización de cargas e ingestas vinculadas a ERP y sistemas corporativos.",
+          "Puesta en marcha de casos GenAI internos orientados a productividad y acceso controlado al conocimiento."
+        ],
+        "projects": [
+          "Evolución de DWH e ingestas corporativas.",
+          "Gobierno del dato, ownership, catálogo y definiciones de KPI.",
+          "Infraestructura GenAI y automatización de procesos internos."
+        ]
+      },
+      "public": true
+    },
+    {
+      "id": "helix",
+      "company": "Helix",
+      "role": "Technical Lead / Data & Energy Analytics",
+      "period": "Proyecto previo",
+      "location": "Sector energía / edificios públicos",
+      "employmentType": "Proyecto",
+      "logo": "/companies/helix.svg",
+      "shortDescription": "Dirección técnica de un proyecto de estimación de consumo energético en edificios públicos, con foco en datos, modelado y visualización.",
+      "highlights": [
+        "Estimación de consumo energético en edificios públicos como hospitales.",
+        "Coordinación técnica de un equipo pequeño de 2–3 personas.",
+        "Conversión de datos dispersos en indicadores útiles para decisión."
+      ],
+      "metrics": [
+        {
+          "value": "2–3",
+          "label": "personas",
+          "detail": "Coordinación técnica y reparto de trabajo dentro del proyecto."
+        },
+        {
+          "value": "Energía",
+          "label": "analytics",
+          "detail": "Modelado y visualización aplicada a consumo energético."
+        },
+        {
+          "value": "Hospital",
+          "label": "caso público",
+          "detail": "Aplicación del análisis a edificios públicos complejos."
+        }
+      ],
+      "stack": [
+        "Python",
+        "SQL",
+        "Data Analytics",
+        "Dashboards",
+        "Modelado"
+      ],
+      "detail": {
+        "context": "Proyecto orientado a estimar y comprender consumos energéticos en edificios públicos, combinando datos técnicos y enfoque de producto analítico.",
+        "responsibilities": [
+          "Definir el enfoque técnico del análisis y estructurar los datos disponibles.",
+          "Coordinar tareas de modelado, visualización y validación con el equipo.",
+          "Aterrizar los resultados en una narrativa entendible para usuarios no técnicos."
+        ],
+        "achievements": [
+          "Diseño de una aproximación analítica para estimar consumo y facilitar lectura ejecutiva.",
+          "Integración de visión técnica y contexto de negocio en un entregable accionable."
+        ],
+        "projects": [
+          "Modelo de estimación de consumo energético.",
+          "Dashboard o capa de visualización para seguimiento e interpretación."
+        ]
+      },
+      "public": true
+    },
+    {
+      "id": "ferchau",
+      "company": "Ferchau",
+      "role": "AI / Data Consultant",
+      "period": "Proyecto previo",
+      "location": "Consultoría tecnológica",
+      "employmentType": "Consultoría",
+      "logo": "/companies/ferchau.svg",
+      "shortDescription": "Diseño de soluciones de matching entre candidatos y ofertas usando LLMs, scoring y automatización de procesos de selección.",
+      "highlights": [
+        "Matching candidatos-ofertas con modelos de lenguaje y criterios explicables.",
+        "Scoring orientado a reducir fricción en procesos de selección.",
+        "Liderazgo técnico de equipo junior en componentes de IA."
+      ],
+      "metrics": [
+        {
+          "value": "LLM",
+          "label": "matching",
+          "detail": "Uso de modelos de lenguaje para comparar perfiles y necesidades de oferta."
+        },
+        {
+          "value": "Score",
+          "label": "ranking",
+          "detail": "Criterios de evaluación para ordenar candidatos de forma interpretable."
+        },
+        {
+          "value": "Equipo",
+          "label": "liderazgo",
+          "detail": "Guía técnica y soporte a perfiles junior."
+        }
+      ],
+      "stack": [
+        "Python",
+        "LLMs",
+        "NLP",
+        "Scoring",
+        "APIs",
+        "Data Pipelines"
+      ],
+      "detail": {
+        "context": "Proyecto de IA aplicada a selección de talento, con foco en transformar texto libre de perfiles y ofertas en señales comparables y útiles.",
+        "responsibilities": [
+          "Diseñar la lógica de extracción, comparación y scoring de candidatos frente a ofertas.",
+          "Estructurar prompts, criterios de evaluación y validaciones para respuestas más consistentes.",
+          "Acompañar técnicamente al equipo en decisiones de arquitectura y entrega."
+        ],
+        "achievements": [
+          "Prototipo funcional de matching candidato-oferta usando IA generativa y reglas de scoring.",
+          "Mayor claridad sobre criterios de encaje y automatización del cribado inicial."
+        ],
+        "projects": [
+          "Motor de matching semántico de candidatos.",
+          "Sistema de scoring y explicación de encaje."
+        ]
+      },
+      "public": true
+    },
+    {
+      "id": "anderdata",
+      "company": "AnderData",
+      "role": "Builder / Freelance Data, IA & Automatización",
+      "period": "Actualidad",
+      "location": "Proyectos propios y consultoría independiente",
+      "employmentType": "Marca personal",
+      "logo": "/companies/anderdata.svg",
+      "shortDescription": "Laboratorio personal para construir productos reales de datos, IA, automatización, dashboards y herramientas verticales desplegables.",
+      "highlights": [
+        "Productos propios con React, TypeScript, FastAPI, Postgres y Docker.",
+        "Automatizaciones WhatsApp, dashboards y herramientas de scraping/ingesta.",
+        "Foco en soluciones pequeñas, útiles, mantenibles y monetizables."
+      ],
+      "metrics": [
+        {
+          "value": "Full-stack",
+          "label": "producto",
+          "detail": "Diseño, desarrollo, despliegue y mejora continua."
+        },
+        {
+          "value": "Self-hosted",
+          "label": "infraestructura",
+          "detail": "Despliegues con Docker, VPS, Nginx y dominios propios."
+        },
+        {
+          "value": "IA + datos",
+          "label": "especialidad",
+          "detail": "Aplicaciones prácticas de IA, automatización y analítica."
+        }
+      ],
+      "stack": [
+        "React",
+        "TypeScript",
+        "FastAPI",
+        "PostgreSQL",
+        "Docker",
+        "LangChain",
+        "GitHub",
+        "Nginx"
+      ],
+      "detail": {
+        "context": "Espacio de construcción y validación de productos propios, con foco en convertir problemas reales en herramientas pequeñas pero desplegables.",
+        "responsibilities": [
+          "Definir producto, alcance MVP, arquitectura y modelo de despliegue.",
+          "Construir frontend, backend, base de datos, automatizaciones e integración con APIs.",
+          "Medir adopción, costes, mantenibilidad y posibilidad de venta B2B."
+        ],
+        "achievements": [
+          "Desarrollo de varias aplicaciones verticales con infraestructura propia.",
+          "Aprendizaje práctico acelerado en producto, IA aplicada, datos e integración."
+        ],
+        "projects": [
+          "SaaS de citas por WhatsApp.",
+          "Plataforma de analítica FEB/baloncesto.",
+          "Herramientas de auditoría de datos, ingesta pública y automatización empresarial."
+        ]
+      },
+      "public": true
+    }
+  ],
   "projects": [
     {
       "id": "saas-citas-whatsapp",
@@ -256,7 +492,7 @@
       "stack": [
         "react",
         "typescript",
-        "fastapi", 
+        "fastapi",
         "docker"
       ]
     }
