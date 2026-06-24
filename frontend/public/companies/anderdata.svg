@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">AnderData placeholder mark</title>
+  <desc id="desc">Marca visual simplificada para la tarjeta de experiencia de AnderData.</desc>
+  <rect width="160" height="160" rx="42" fill="#eef2ff"/>
+  <path d="M33 121 72 39h17l38 82h-25l-7-16H65l-7 16H33Z" fill="#2563eb"/>
+  <path d="M72 87h16L80 67l-8 20Z" fill="#eef2ff"/>
+  <path d="M40 129h80" stroke="#93c5fd" stroke-width="8" stroke-linecap="round"/>
+</svg>
