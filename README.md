@@ -11,13 +11,12 @@ La idea es sencilla: una página rápida, limpia y mantenible para compartir en 
 
 ## Qué incluye
 
-- Perfil profesional cargado desde JSON.
+- Perfil y tecnologías en módulos TypeScript tipados.
 - Links principales: LinkedIn, GitHub, contacto y web.
 - Proyectos destacados.
 - Stack tecnológico y experiencia técnica.
 - Widget de actividad GitHub.
 - Analítica con Umami.
-- Descarga segura de CV bajo solicitud.
 - Build estático servido con Nginx.
 - Despliegue con Docker Compose.
 
@@ -28,7 +27,6 @@ La idea es sencilla: una página rápida, limpia y mantenible para compartir en 
 | Capa | Tecnología |
 |---|---|
 | Frontend | Astro + React + TypeScript |
-| API CV | Node.js + Express + PostgreSQL |
 | Estilos | CSS modular/global del proyecto |
 | Analítica | Umami |
 | Servidor estático | Nginx |
@@ -44,24 +42,28 @@ La idea es sencilla: una página rápida, limpia y mantenible para compartir en 
 ├── docker-compose.yml
 ├── .env.example
 ├── README.md
-├── cv-api/
 └── frontend/
     ├── Dockerfile
     ├── astro.config.mjs
     ├── package.json
     └── src/
         ├── data/
-        │   └── profile.json
+        │   ├── profile.ts
+        │   ├── technologies.ts
+        │   └── projects.ts
+        ├── content/
+        ├── layouts/
         ├── components/
         ├── hooks/
         ├── styles/
         └── types/
 ```
 
-El contenido editable está principalmente en:
+El contenido y los datos editables están en:
 
 ```bash
-frontend/src/data/profile.json
+frontend/src/data/
+frontend/src/content/
 ```
 
 Ahí se modifican:
@@ -73,7 +75,6 @@ Ahí se modifican:
 - tecnologías;
 - proyectos;
 - widgets visibles.
-- botón y modal de solicitud de CV.
 
 ---
 
@@ -113,29 +114,12 @@ Variables disponibles:
 ```env
 PUBLIC_UMAMI_WEBSITE_ID=your-umami-website-id-here
 PUBLIC_GITHUB_TOKEN=your-github-token-here
-POSTGRES_DB=cv_requests
-POSTGRES_USER=cv_user
-POSTGRES_PASSWORD=change-me
-DATABASE_URL=postgresql://cv_user:change-me@cv-postgres:5432/cv_requests
-SMTP_HOST=smtp.example.com
-SMTP_PORT=587
-SMTP_SECURE=false
-SMTP_USER=your-smtp-user@example.com
-SMTP_PASSWORD=your-smtp-password
-CV_FROM_EMAIL=no-reply@anderdata.es
-CV_PUBLIC_BASE_URL=https://anderdata.es
-CV_FILE_PATH=/private/cv/cv.pdf
-CV_TOKEN_TTL_HOURS=72
-CV_MAX_DOWNLOADS=5
-CV_REQUEST_LIMIT_PER_HOUR=5
-CV_REQUEST_WINDOW_MINUTES=60
 ```
 
 Notas:
 
 - `PUBLIC_UMAMI_WEBSITE_ID` es necesario para asociar la web con el proyecto correcto en Umami.
 - `PUBLIC_GITHUB_TOKEN` debe usarse solo si el widget de GitHub necesita acceder a datos no públicos.
-- `CV_FILE_PATH` apunta a un PDF montado en una ruta privada del contenedor. No debe estar dentro de `frontend/public`.
 - No subas tokens reales al repositorio.
 - Si el token no es necesario, déjalo vacío.
 
@@ -264,7 +248,7 @@ Mantener un único dominio principal mejora marca, SEO y medición en Umami.
 Editar:
 
 ```bash
-frontend/src/data/profile.json
+frontend/src/data/profile.ts
 ```
 
 Después reconstruir:
@@ -307,10 +291,6 @@ click_link
 click_project
 click_github
 click_contact
-open_cv_modal
-submit_cv_request
-cv_request_success
-cv_request_error
 ```
 
 Validación rápida desde navegador:
@@ -351,7 +331,6 @@ Si devuelve `undefined`, revisar:
 - Añadir CTA principal: `Hablemos`, `Ver proyectos` o `Contactar`.
 - Añadir imagen Open Graph específica para compartir en LinkedIn.
 - Añadir eventos personalizados de Umami por cada link y proyecto.
-- Completar la descarga controlada del CV con expiración y rate limit.
 
 ---
 

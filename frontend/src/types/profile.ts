@@ -56,3 +56,16 @@ export interface ProfileData {
   technologies: Technology[]
   widgets?: Widget[]
 }
+
+export interface Experience {
+  company: string
+  role: string
+  period: string
+  highlights: string[]
+}
+
+export interface Education {
+  institution: string
+  title: string
+  year?: string
+}
