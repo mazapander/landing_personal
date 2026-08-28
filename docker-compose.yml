@@ -4,8 +4,8 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        VITE_UMAMI_WEBSITE_ID: ${VITE_UMAMI_WEBSITE_ID}
-        VITE_GITHUB_TOKEN: ${VITE_GITHUB_TOKEN}
+        PUBLIC_UMAMI_WEBSITE_ID: ${PUBLIC_UMAMI_WEBSITE_ID}
+        PUBLIC_GITHUB_TOKEN: ${PUBLIC_GITHUB_TOKEN}
     container_name: anderdata-landing
     restart: unless-stopped
     networks:

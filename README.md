@@ -27,7 +27,7 @@ La idea es sencilla: una página rápida, limpia y mantenible para compartir en 
 
 | Capa | Tecnología |
 |---|---|
-| Frontend | React + Vite + TypeScript |
+| Frontend | Astro + React + TypeScript |
 | API CV | Node.js + Express + PostgreSQL |
 | Estilos | CSS modular/global del proyecto |
 | Analítica | Umami |
@@ -47,7 +47,7 @@ La idea es sencilla: una página rápida, limpia y mantenible para compartir en 
 ├── cv-api/
 └── frontend/
     ├── Dockerfile
-    ├── index.html
+    ├── astro.config.mjs
     ├── package.json
     └── src/
         ├── data/
@@ -111,8 +111,8 @@ cp .env.example .env
 Variables disponibles:
 
 ```env
-VITE_UMAMI_WEBSITE_ID=your-umami-website-id-here
-VITE_GITHUB_TOKEN=your-github-token-here
+PUBLIC_UMAMI_WEBSITE_ID=your-umami-website-id-here
+PUBLIC_GITHUB_TOKEN=your-github-token-here
 POSTGRES_DB=cv_requests
 POSTGRES_USER=cv_user
 POSTGRES_PASSWORD=change-me
@@ -133,8 +133,8 @@ CV_REQUEST_WINDOW_MINUTES=60
 
 Notas:
 
-- `VITE_UMAMI_WEBSITE_ID` es necesario para asociar la web con el proyecto correcto en Umami.
-- `VITE_GITHUB_TOKEN` debe usarse solo si el widget de GitHub necesita acceder a datos no públicos.
+- `PUBLIC_UMAMI_WEBSITE_ID` es necesario para asociar la web con el proyecto correcto en Umami.
+- `PUBLIC_GITHUB_TOKEN` debe usarse solo si el widget de GitHub necesita acceder a datos no públicos.
 - `CV_FILE_PATH` apunta a un PDF montado en una ruta privada del contenedor. No debe estar dentro de `frontend/public`.
 - No subas tokens reales al repositorio.
 - Si el token no es necesario, déjalo vacío.
@@ -155,10 +155,10 @@ npm install
 npm run dev
 ```
 
-Vite levantará la aplicación normalmente en:
+Astro levantará la aplicación normalmente en:
 
 ```bash
-http://localhost:5173
+http://localhost:4321
 ```
 
 ---
@@ -321,7 +321,7 @@ window.umami
 
 Si devuelve `undefined`, revisar:
 
-- que `VITE_UMAMI_WEBSITE_ID` esté definido;
+- que `PUBLIC_UMAMI_WEBSITE_ID` esté definido;
 - que el script `https://u.anderdata.es/script.js` cargue correctamente;
 - que no haya bloqueo por CSP, adblocker o proxy;
 - que el dominio esté dado de alta en Umami.
