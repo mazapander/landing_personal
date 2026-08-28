@@ -1,0 +1,14 @@
+---
+const links = [
+  ['Inicio', '/'], ['Proyectos', '/proyectos/'], ['Servicios', '/servicios/'], ['Lab', '/lab/'],
+  ['Cómo trabajo', '/como-trabajo/'], ['Sobre mí', '/sobre-mi/'], ['Notas', '/notas/'], ['Contacto', '/contacto/'],
+]
+---
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/">Ander Fernández</a>
+    <nav class="site-nav" aria-label="Navegación principal">
+      {links.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+  </div>
+</header>

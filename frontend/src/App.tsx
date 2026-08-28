@@ -3,7 +3,6 @@ import profileData from './data/profile.json'
 import ProfileHeader from './components/Profile/ProfileHeader'
 import LinkButtons from './components/Links/LinkButtons'
 import ProjectList from './components/Projects/ProjectList'
-import Footer from './components/Footer/Footer'
 import PageContainer from './components/Layout/PageContainer'
 import GitHubHeatmap from './components/Widgets/GitHubHeatmap'
 import TechStackTimeline from './components/Widgets/TechStackTimeline'
@@ -27,7 +26,7 @@ function App() {
 
   return (
     <>
-      <main>
+      <div>
         <PageContainer>
           <ProfileHeader profile={profile} />
           <LinkButtons links={socialLinks} />
@@ -49,8 +48,7 @@ function App() {
           <CvRequestModal open={isCvModalOpen} onClose={() => setIsCvModalOpen(false)} />
           */}
         </PageContainer>
-      </main>
-      <Footer />
+      </div>
     </>
   )
 }
