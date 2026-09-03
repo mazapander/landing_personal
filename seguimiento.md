@@ -69,7 +69,7 @@ Las colecciones empiezan vacías deliberadamente: añadir casos de estudio o ser
 
 No incorpora tracking, rutas finales ni casos de estudio: esos cambios siguen teniendo commits propios para mantener el diff revisable.
 
-### 5. En curso — sistema de casos de estudio
+### 5. `5121603` — sistema de casos de estudio
 
 **Alcance**
 
@@ -80,6 +80,17 @@ No incorpora tracking, rutas finales ni casos de estudio: esos cambios siguen te
 **Decisión**
 
 El sistema no añade casos ficticios: el índice muestra un estado vacío hasta el siguiente commit de contenido. Así cada caso se revisa por separado.
+
+### 6. En curso — primeros casos de estudio
+
+**Alcance**
+
+- Casos de WhatsApp SaaS, IA Compra Pisos y StatsFEB como Markdown validado.
+- IA Compra Pisos se presenta como caso en evolución; no se inventan métricas ni resultados.
+
+**Decisión**
+
+Payload CMS se pospone como opción editorial después de estabilizar el portfolio. Sus colecciones, administración, API y control de acceso son adecuados cuando la edición requiera usuarios no técnicos, pero hoy añadirían base de datos, autenticación y operación innecesarias.
 
 ## Próximo alcance
 

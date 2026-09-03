@@ -38,17 +38,24 @@ La home solo mostrará un resumen de esto. Su objetivo será llevar al visitante
 Plan de commits
 Commit	Alcance	Resultado verificable
 1. chore: migrate frontend from Vite to Astro	Astro, integración React, TypeScript, aliases, Docker y Nginx estático	La web compila y despliega con la nueva base sin introducir todavía el rediseño
+    Done - Commit: `892cc16`
 2. refactor: create layouts and design foundations	BaseLayout, cabecera, navegación, footer, tokens, tipografía y estilos globales separados	Shell común responsive y sin grandes hojas CSS monolíticas
+    Done - Commit: `4ba9ff6`
 3. feat: define portfolio content models	Colecciones y esquemas para proyectos, servicios y notas; datos tipados para perfil, experiencia, formación y tecnologías	El contenido deja de depender de un único profile.json
+    Done - Commit: `325ad2d`
 4. feat: build portfolio home	Hero, propuesta de valor, “Construyo/Conecto/Ordeno”, proyectos destacados, resumen profesional y CTA	Nueva home completa con textos editables
+    Done - Commit: `db43851`
 5. feat: add project case study system	Índice, tarjetas, layout de caso, arquitectura, capacidades, enlaces y breadcrumbs	Plantilla reutilizable para todos los proyectos
+    Done - Commit: `5121603`
 6. content: add first three case studies	WhatsApp SaaS, IA Compra Pisos y StatsFEB	Tres casos completos y revisables por separado dentro del commit
+    Done - Commit: this commit
 7. feat: build professional about page	Experiencia, empresas, formación, tecnologías y CV; reutilización selectiva de la rama anterior	/sobre-mi demuestra trayectoria y conocimientos sin parecer un inventario
 8. feat: add services and conversion flow	Servicios concretos, formulario, modal y estados de envío	Recorrido freelance claro desde problema hasta contacto
 9. feat: add lab and how-i-work pages	Demos, productos accesibles y metodología de arquitectura/producto	Evidencia interactiva y explicación de cómo construyes
 10. feat: implement Umami event taxonomy	Eventos normalizados, CTA, proyectos, demos, servicios, contacto, UTM y atributos comunes	Tracking consistente sin nombres dinámicos difíciles de explotar
 11. feat: implement technical SEO	Canonical, sitemap, robots, metadatos por ruta, OG, JSON-LD, breadcrumbs y 404 real	Todas las páginas públicas salen indexables desde el build
 12. test: add quality gates and deployment docs	Astro check, tests unitarios, smoke tests, accesibilidad básica, enlaces y README	Refactor reproducible y protegido frente a regresiones
+13. feat: add Payload editorial CMS (opcional)	Payload como servicio editorial, colecciones compatibles, acceso de administradores, media y previsualización	Contenido editable por usuarios no técnicos cuando la frecuencia editorial justifique base de datos y operación adicional
 
 Cada commit deberá:
 
