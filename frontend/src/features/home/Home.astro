@@ -1,0 +1,68 @@
+---
+import { home } from '@/data/home'
+import { profile } from '@/data/profile'
+import { projects } from '@/data/projects'
+
+const featuredProjects = projects.filter((project) => project.public).slice(0, 3)
+---
+
+<div class="home">
+  <section class="home-hero">
+    <p class="home-eyebrow">Data, IA y producto digital</p>
+    <h1>{home.hero.title}</h1>
+    <p class="home-intro">{home.hero.description}</p>
+    <div class="home-actions">
+      <a class="home-button home-button--primary" href={home.hero.primaryCta.href}>{home.hero.primaryCta.label}</a>
+      <a class="home-button home-button--secondary" href={home.hero.secondaryCta.href}>{home.hero.secondaryCta.label}</a>
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="capabilities-title">
+    <p class="home-eyebrow">Cómo aporto valor</p>
+    <h2 id="capabilities-title">De la necesidad a una solución que se puede operar.</h2>
+    <div class="home-capabilities">
+      {home.capabilities.map(([title, description]) => (
+        <article>
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="home-section" aria-labelledby="projects-title">
+    <div class="home-section-heading">
+      <div>
+        <p class="home-eyebrow">Trabajo seleccionado</p>
+        <h2 id="projects-title">Proyectos que conectan producto y tecnología.</h2>
+      </div>
+      <a class="home-text-link" href="/proyectos/">Ver todos los proyectos</a>
+    </div>
+    <div class="home-projects">
+      {featuredProjects.map((project) => (
+        <article class="home-project">
+          <p class="home-project-status">{project.status}</p>
+          <h3>{project.title}</h3>
+          <p>{project.description}</p>
+          <a href={project.url} target="_blank" rel="noopener noreferrer">Conocer proyecto <span aria-hidden="true">→</span></a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="home-summary" aria-labelledby="summary-title">
+    <img src={profile.avatar} alt="" width="96" height="96" />
+    <div>
+      <p class="home-eyebrow">Sobre mí</p>
+      <h2 id="summary-title">{profile.headline}</h2>
+      <p>{profile.description}</p>
+      <a class="home-text-link" href="/sobre-mi/">Conocer mi trayectoria</a>
+    </div>
+  </section>
+
+  <section class="home-contact">
+    <p class="home-eyebrow">¿Hablamos?</p>
+    <h2>Si tienes un proceso que mejorar o un producto que construir, cuéntamelo.</h2>
+    <a class="home-button home-button--primary" href={home.hero.secondaryCta.href}>{home.hero.secondaryCta.label}</a>
+  </section>
+</div>

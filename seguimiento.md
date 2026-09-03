@@ -58,6 +58,17 @@ La navegación se publica antes de crear las páginas destino para fijar la arqu
 
 Las colecciones empiezan vacías deliberadamente: añadir casos de estudio o servicios corresponde a sus commits de contenido, no al modelo.
 
+### 4. En curso — home de portfolio
+
+**Alcance**
+
+- Hero, propuesta de valor, proyectos destacados, resumen profesional y CTA.
+- La home se construye con Astro y los datos tipados ya existentes.
+
+**Decisión**
+
+No incorpora tracking, rutas finales ni casos de estudio: esos cambios siguen teniendo commits propios para mantener el diff revisable.
+
 ## Próximo alcance
 
 El siguiente commit construirá la home de portfolio sobre estos modelos. No debe reintroducir la API de CV ni acoplar el contenido a un único fichero.
