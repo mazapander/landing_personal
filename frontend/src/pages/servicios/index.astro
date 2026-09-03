@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content'
+import ContactForm from '@/components/Contact/ContactForm'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const services = (await getCollection('services', ({ data }) => !data.draft)).sort((a, b) => a.data.order - b.data.order)
+---
+
+<BaseLayout title="Servicios — Ander Fernández">
+  <div class="services-page">
+    <header class="conversion-hero">
+      <p class="conversion-eyebrow">Servicios</p>
+      <h1>Del problema a una solución que se puede usar.</h1>
+      <p>Colaboro en iniciativas donde datos, IA, software y entrega deben encajar con una necesidad de negocio concreta.</p>
+      <ContactForm client:load />
+    </header>
+    <section class="services-list" aria-label="Servicios disponibles">
+      {services.map((service) => <article>
+        <p class="conversion-eyebrow">Servicio {service.data.order}</p>
+        <h2>{service.data.title}</h2>
+        <p>{service.data.description}</p>
+        <ul>{service.data.outcomes.map((outcome) => <li>{outcome}</li>)}</ul>
+      </article>)}
+    </section>
+  </div>
+</BaseLayout>

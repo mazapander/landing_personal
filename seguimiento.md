@@ -92,7 +92,7 @@ El sistema no añade casos ficticios: el índice muestra un estado vacío hasta 
 
 Payload CMS se pospone como opción editorial después de estabilizar el portfolio. Sus colecciones, administración, API y control de acceso son adecuados cuando la edición requiera usuarios no técnicos, pero hoy añadirían base de datos, autenticación y operación innecesarias.
 
-### 7. Este commit — página profesional Sobre mí
+### 7. `fe377b9` — página profesional Sobre mí
 
 **Hecho**
 
@@ -110,6 +110,24 @@ La descarga del CV se resuelve por correo, sin restaurar la API eliminada. La ra
 - `npx tsc --noEmit`
 - `npm run build`
 
+### 8. Este commit — servicios y flujo de conversión
+
+**Hecho**
+
+- Publicadas las rutas `/servicios/` y `/contacto/` con tres servicios editables desde la colección Astro.
+- Añadido un formulario único reutilizado en ambas rutas, con diálogo nativo, validación HTML y estado de correo preparado.
+- Añadida prueba del enlace `mailto:` para conservar asunto y contexto de la consulta.
+
+**Decisión**
+
+No se incorpora un proveedor de formularios ni un endpoint propio. El flujo prepara un correo en el cliente del visitante, por lo que no almacena datos personales ni reintroduce infraestructura de backend antes de necesitarla.
+
+**Validado**
+
+- `npm test`
+- `npx tsc --noEmit`
+- `npm run build`
+
 ## Próximo alcance
 
-El siguiente commit añadirá servicios y el flujo de conversión: ofertas concretas, formulario, modal y estados de envío.
+El siguiente commit añadirá Lab y Cómo trabajo: demos o productos accesibles y la metodología de arquitectura y producto.

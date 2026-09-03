@@ -1,0 +1,27 @@
+.services-page, .contact-page { width: min(100% - 2rem, 1120px); margin: 0 auto; padding: clamp(3rem, 8vw, 7rem) 0; }
+.conversion-hero { max-width: 800px; padding: 3rem 0 6rem; }
+.conversion-hero h1, .services-list h2 { letter-spacing: -.04em; line-height: 1.05; }
+.conversion-hero h1 { max-width: 16ch; font-size: clamp(2.7rem, 7vw, 5.8rem); }
+.conversion-hero > p:not(.conversion-eyebrow) { max-width: 64ch; margin-top: 1.5rem; color: var(--color-text-secondary); font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.65; }
+.conversion-eyebrow { color: var(--color-accent); font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.conversion-button { min-height: 48px; margin-top: 2rem; padding: .75rem 1rem; border-radius: var(--radius-full); background: var(--color-accent); color: white; font: inherit; font-weight: 700; }
+.conversion-button:hover { background: var(--color-accent-hover); }
+.services-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border); }
+.services-list article { padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+.services-list h2 { margin-top: .65rem; font-size: 1.45rem; }
+.services-list article > p:not(.conversion-eyebrow) { margin-top: .75rem; color: var(--color-text-secondary); line-height: 1.6; }
+.services-list ul { padding-left: 1.25rem; margin-top: 1rem; color: var(--color-text-secondary); line-height: 1.6; }
+.services-list li + li { margin-top: .5rem; }
+.contact-dialog { width: min(calc(100% - 2rem), 560px); padding: 0; border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+.contact-dialog::backdrop { background: rgba(17, 24, 39, .55); }
+.contact-dialog__content { display: grid; gap: 1rem; padding: 1.5rem; }
+.contact-dialog__content h2 { letter-spacing: -.03em; }
+.contact-dialog__content p, .contact-dialog__note { color: var(--color-text-secondary); line-height: 1.6; }
+.contact-dialog__heading { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
+.contact-dialog__heading button { padding: 0; color: var(--color-text-secondary); font-size: 1.75rem; line-height: 1; }
+.contact-dialog label { display: grid; gap: .4rem; color: var(--color-text-primary); font-weight: 700; }
+.contact-dialog input, .contact-dialog select, .contact-dialog textarea { width: 100%; padding: .7rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-bg); color: var(--color-text-primary); font: inherit; font-weight: 400; }
+.contact-dialog textarea { resize: vertical; }
+.contact-dialog .conversion-button { width: max-content; margin: .5rem 0 0; }
+.contact-dialog__note { margin: 0; font-size: .875rem; }
+@media (max-width: 720px) { .services-list { grid-template-columns: 1fr; } }

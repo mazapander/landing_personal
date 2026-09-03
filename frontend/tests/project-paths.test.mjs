@@ -4,6 +4,7 @@ import path from 'node:path'
 import test from 'node:test'
 import { projectPath } from '../src/lib/project-paths.mjs'
 import { groupTechnologies } from '../src/lib/technology-groups.mjs'
+import { contactMailto } from '../src/lib/contact-mailto.mjs'
 
 test('crea rutas de casos de estudio estables', () => {
   assert.equal(projectPath('stats-feb'), '/proyectos/stats-feb/')
@@ -24,4 +25,13 @@ test('agrupa tecnologías conservando su capacidad y cubriendo categorías ausen
 
   assert.deepEqual(Object.keys(groups), ['Datos', 'Infra', 'Otras tecnologías'])
   assert.equal(groups.Datos[0].name, 'Python')
+})
+
+test('prepara un correo de contacto sin perder el contexto introducido', () => {
+  const url = new URL(contactMailto({ name: 'Ana & Co', email: 'ana@example.com', service: 'Automatización de procesos', message: 'Reducir tareas manuales.' }))
+
+  assert.equal(url.protocol, 'mailto:')
+  assert.equal(url.searchParams.get('subject'), 'Consulta web: Automatización de procesos')
+  assert.match(url.searchParams.get('body'), /Ana & Co/)
+  assert.match(url.searchParams.get('body'), /Reducir tareas manuales\./)
 })

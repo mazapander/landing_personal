@@ -1,0 +1,15 @@
+---
+import ContactForm from '@/components/Contact/ContactForm'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Contacto — Ander Fernández">
+  <div class="contact-page">
+    <header class="conversion-hero">
+      <p class="conversion-eyebrow">Contacto</p>
+      <h1>Cuéntame qué quieres resolver.</h1>
+      <p>Describe brevemente el contexto, el resultado que buscas y cualquier restricción importante. Prepararé el correo para que puedas enviarlo desde tu aplicación habitual.</p>
+      <ContactForm client:load />
+    </header>
+  </div>
+</BaseLayout>

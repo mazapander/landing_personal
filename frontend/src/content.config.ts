@@ -16,7 +16,7 @@ const projects = defineCollection({
 })
 
 const services = defineCollection({
-  schema: z.object({ title: z.string(), description: z.string(), order: z.number().int(), draft: z.boolean().default(false) }),
+  schema: z.object({ title: z.string(), description: z.string(), outcomes: z.array(z.string()).default([]), order: z.number().int(), draft: z.boolean().default(false) }),
 })
 
 const notes = defineCollection({
