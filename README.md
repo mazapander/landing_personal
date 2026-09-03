@@ -139,6 +139,16 @@ npm install
 npm run dev
 ```
 
+## Validación antes de publicar
+
+Desde `frontend/`:
+
+```bash
+npm run verify
+```
+
+El comando ejecuta `astro check`, pruebas unitarias, build estático y smoke tests sobre `dist/`. Estos últimos comprueban rutas, enlaces internos, metadatos SEO básicos, idioma, título, salto al contenido, alternativas de imágenes y enlaces externos seguros.
+
 Astro levantará la aplicación normalmente en:
 
 ```bash
@@ -310,7 +320,7 @@ Si devuelve `undefined`, revisar:
 
 ## Checklist antes de publicar
 
-- [ ] `npm run build` funciona sin errores.
+- [ ] `npm run verify` funciona sin errores.
 - [ ] `docker compose up -d --build` levanta el contenedor.
 - [ ] `https://anderdata.es` carga correctamente.
 - [ ] `https://www.anderdata.es` redirige o carga correctamente.

@@ -167,7 +167,7 @@ La taxonomía no construye nombres dinámicos: usa `cta_click`, `project_open`, 
 - `npx tsc --noEmit`
 - `npm run build`
 
-### 11. Este commit — SEO técnico
+### 11. `4886b81` — SEO técnico
 
 **Hecho**
 
@@ -186,6 +186,80 @@ El sitemap se genera con Astro y la colección existente, sin dependencia adicio
 - `npx tsc --noEmit`
 - `npm run build`
 
-## Próximo alcance
+### 12. Este commit — controles de calidad y documentación
 
-El siguiente commit añadirá controles de calidad y documentación de despliegue: comprobación Astro, pruebas, smoke tests, accesibilidad básica y README.
+**Hecho**
+
+- Añadido `npm run verify`: `astro check`, pruebas unitarias, build y smoke tests sobre `dist/`.
+- Incorporada la página `/notas/` como estado vacío con `noindex`, para que la navegación no tenga enlaces rotos antes de publicar notas.
+- Los smoke tests comprueban rutas, enlaces internos, SEO básico, idioma, título, salto al contenido, texto alternativo y enlaces externos seguros.
+- Actualizado README con el comando de validación previo al despliegue.
+
+**Decisión**
+
+Se usa `node:test` y lectura de HTML estático para la cobertura básica. Un navegador automatizado se añadirá solo si aparecen interacciones que no puedan verificarse con el build y pruebas unitarias.
+
+**Validado**
+
+- `npm run verify`: Astro check sin errores, siete pruebas unitarias y build correcto.
+- `npm run test:smoke`: dos pruebas sobre la salida estática.
+- `docker compose config -q`: configuración válida.
+- El motor Docker local no estaba iniciado, por lo que no se pudo comprobar un contenedor en ejecución.
+- `npm audit --omit=dev`: 5 vulnerabilidades altas y 1 baja en la cadena actual de Astro 5; la solución automática propone Astro 7 y requiere una migración mayor separada.
+
+## Auditoría de cumplimiento frente a `cambios.md`
+
+| Commit | Estado | Evidencia y límite relevante |
+|---|---|---|
+| 1. Migración Astro | Cumple | Astro, React, TypeScript, aliases, Docker y Nginx estático (`892cc16`). |
+| 2. Shell y diseño | Cumple | Layout, navegación, footer, tokens y estilos modulares (`4ba9ff6`). |
+| 3. Modelos y CV | Cumple | Colecciones y datos tipados; `cv-api` eliminado (`325ad2d`). |
+| 4. Home | Cumple | Hero, capacidades, proyectos, resumen y CTA (`db43851`). |
+| 5. Casos | Cumple | Índice, rutas, layout, Markdown, arquitectura y breadcrumbs (`5121603`). |
+| 6. Contenido | Cumple | WhatsApp SaaS, IA Compra Pisos y StatsFEB (`7dab180`). |
+| 7. Sobre mí | Cumple con dato pendiente | Trayectoria, tecnologías y perfiles (`fe377b9`); formación no se inventa y se deriva al CV. |
+| 8. Servicios | Cumple con entrega por correo | Servicios, diálogo y estados (`73267a5`); el envío prepara `mailto:` y no almacena datos. |
+| 9. Lab y metodología | Cumple | Solo muestra productos con URL pública verificable (`2974b2e`). |
+| 10. Umami | Cumple | Eventos normalizados, contexto y UTM (`8f6c17c`). |
+| 11. SEO | Cumple | Canonical, sitemap, robots, OG, JSON-LD, breadcrumbs y 404 real (`4886b81`). |
+| 12. Calidad y documentación | Cumple | `npm run verify`, smoke, accesibilidad estática, README y control de enlaces. |
+
+La fila opcional de Payload no forma parte del `cambios.md` local actual. Sigue siendo una decisión futura, no una carencia del portfolio estático: solo tiene sentido al necesitar edición por usuarios no técnicos y operación de base de datos.
+
+## Escenario actual
+
+```text
+Visitante
+  │
+  ├── enlaces, SEO y páginas Astro estáticas
+  ▼
+Proxy público ──► Nginx del contenedor ──► dist/ de Astro
+                         │                    ├── HTML/CSS estático
+                         │                    ├── casos Markdown publicados
+                         │                    ├── sitemap.xml, robots.txt y 404.html
+                         │                    └── isla React: formulario de contacto
+                         │
+                         ├── Umami opcional (solo con PUBLIC_UMAMI_WEBSITE_ID)
+                         └── mailto: del visitante (sin backend ni persistencia)
+```
+
+## Cambios respecto al plan y al repositorio inicial
+
+```text
+Antes: Vite/React + profile.json + fallback SPA + cv-api
+                    │
+                    ├── contenido tipado y Markdown
+                    ├── Astro estático y Nginx con 404 real
+                    ├── React solo para el diálogo de contacto
+                    ├── tracking Umami uniforme y opcional
+                    └── SEO y calidad ejecutables en un comando
+                    ▼
+Ahora: portfolio estático verificable, sin API de CV ni CMS operativo
+```
+
+- Se conserva la decisión original de no crear `/go/:project`; los CTA registran el contexto en el navegador.
+- La rama histórica se reutilizó solo para datos y logotipos, no para su componente ni CSS monolíticos.
+- `/notas/` se añadió como placeholder `noindex` para corregir la navegación mientras no haya publicaciones; por eso no figura en sitemap.
+- Payload permanece aplazado y no se han creado demos ni métricas ficticias.
+- La única validación pendiente de entorno es arrancar Docker Desktop y ejecutar el contenedor; build, configuración Compose y salida estática sí han sido verificados.
+- La deuda técnica de seguridad es actualizar Astro y dependencias a una versión corregida en un cambio mayor y revisable; no se aplica `npm audit fix --force` en este commit.

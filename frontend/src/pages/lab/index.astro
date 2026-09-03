@@ -3,7 +3,8 @@ import { getCollection } from 'astro:content'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { labItems } from '@/lib/lab-items.mjs'
 
-const items = labItems(await getCollection('projects'))
+interface LabItem { id: string; title: string; description: string; status: string; href: string }
+const items = labItems(await getCollection('projects')) as LabItem[]
 ---
 
 <BaseLayout title="Lab — Ander Fernández" description="Productos y experimentos públicos de datos, IA y software.">

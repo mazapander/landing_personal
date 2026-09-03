@@ -11,7 +11,7 @@ const breadcrumbSchema = JSON.stringify({ '@context': 'https://schema.org', '@ty
 ---
 
 <BaseLayout title={`${project.data.title} — Ander Fernández`} description={project.data.description}>
-  <Fragment slot="head"><script type="application/ld+json" set:html={breadcrumbSchema}></script></Fragment>
+  <Fragment slot="head"><script is:inline type="application/ld+json" set:html={breadcrumbSchema}></script></Fragment>
   <article class="case-study">
     <nav aria-label="Miga de pan"><ol><li><a href="/">Inicio</a></li><li><a href="/proyectos/">Proyectos</a></li><li aria-current="page">{project.data.title}</li></ol></nav>
     <header>

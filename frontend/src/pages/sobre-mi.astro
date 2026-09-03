@@ -6,7 +6,7 @@ import { profile, socialLinks } from '@/data/profile'
 import { technologies } from '@/data/technologies'
 import { groupTechnologies } from '@/lib/technology-groups.mjs'
 
-const technologyGroups = groupTechnologies(technologies)
+const technologyGroups = groupTechnologies(technologies) as Record<string, typeof technologies>
 const professionalLinks = socialLinks.filter(({ id }) => id === 'linkedin' || id === 'github')
 const contact = socialLinks.find(({ id }) => id === 'email')
 ---

@@ -1,6 +1,6 @@
 ---
-import Header from '@/components/layout/Header.astro'
-import Footer from '@/components/layout/Footer.astro'
+import Header from '@/components/Layout/Header.astro'
+import Footer from '@/components/Layout/Footer.astro'
 import { absoluteUrl } from '@/lib/site.mjs'
 import '@/styles/globals.css'
 
@@ -38,7 +38,7 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebP
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
-    <script type="application/ld+json" set:html={schema}></script>
+    <script is:inline type="application/ld+json" set:html={schema}></script>
     <slot name="head" />
     {umamiWebsiteId && <script is:inline defer src="https://u.anderdata.es/script.js" data-website-id={umamiWebsiteId}></script>}
   </head>
