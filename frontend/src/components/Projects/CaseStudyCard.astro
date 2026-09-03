@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { projectPath } from '@/lib/project-paths.mjs'
+
+interface Props { project: CollectionEntry<'projects'> }
+const { project } = Astro.props
+---
+
+<article class="case-study-card">
+  <p>{project.data.status}</p>
+  <h2><a href={projectPath(project.id)}>{project.data.title}</a></h2>
+  <p>{project.data.description}</p>
+  {project.data.stack.length > 0 && <ul aria-label={`Tecnologías de ${project.data.title}`}>
+    {project.data.stack.map((technology) => <li>{technology}</li>)}
+  </ul>}
+  <a href={projectPath(project.id)}>Ver caso de estudio <span aria-hidden="true">→</span></a>
+</article>

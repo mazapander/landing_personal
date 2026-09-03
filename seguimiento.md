@@ -58,7 +58,7 @@ La navegación se publica antes de crear las páginas destino para fijar la arqu
 
 Las colecciones empiezan vacías deliberadamente: añadir casos de estudio o servicios corresponde a sus commits de contenido, no al modelo.
 
-### 4. En curso — home de portfolio
+### 4. `db43851` — home de portfolio
 
 **Alcance**
 
@@ -69,6 +69,18 @@ Las colecciones empiezan vacías deliberadamente: añadir casos de estudio o ser
 
 No incorpora tracking, rutas finales ni casos de estudio: esos cambios siguen teniendo commits propios para mantener el diff revisable.
 
+### 5. En curso — sistema de casos de estudio
+
+**Alcance**
+
+- Índice de proyectos, tarjetas y rutas estáticas por slug.
+- Layout reutilizable con breadcrumbs, contenido Markdown, arquitectura, capacidades y enlaces.
+- Prueba de generación de URLs para rutas simples, anidadas y con caracteres no ASCII.
+
+**Decisión**
+
+El sistema no añade casos ficticios: el índice muestra un estado vacío hasta el siguiente commit de contenido. Así cada caso se revisa por separado.
+
 ## Próximo alcance
 
-El siguiente commit construirá la home de portfolio sobre estos modelos. No debe reintroducir la API de CV ni acoplar el contenido a un único fichero.
+El siguiente commit añadirá los tres primeros casos de estudio: WhatsApp SaaS, IA Compra Pisos y StatsFEB.
