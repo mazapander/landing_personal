@@ -3,7 +3,7 @@ import { getCollection, getEntry } from 'astro:content'
 import ProjectLayout from '@/layouts/ProjectLayout.astro'
 
 export async function getStaticPaths() {
-  return (await getCollection('projects', ({ data }) => !data.draft)).map((project) => ({ params: { slug: project.slug }, props: { slug: project.slug } }))
+  return (await getCollection('projects', ({ data }) => !data.draft)).map((project) => ({ params: { slug: project.id }, props: { slug: project.id } }))
 }
 
 interface Props { slug: string }

@@ -41,9 +41,9 @@ test('prepara un correo de contacto sin perder el contexto introducido', () => {
 
 test('Lab muestra solo productos publicados con un enlace público', () => {
   const items = labItems([
-    { slug: 'demo', data: { title: 'Demo', description: 'Visible', status: 'Público', draft: false, externalUrl: 'https://example.com' } },
-    { slug: 'borrador', data: { title: 'Borrador', description: 'Oculto', status: 'Borrador', draft: true, externalUrl: 'https://example.com' } },
-    { slug: 'sin-enlace', data: { title: 'Interno', description: 'Sin demo', status: 'Interno', draft: false } },
+    { id: 'demo', data: { title: 'Demo', description: 'Visible', status: 'Público', draft: false, externalUrl: 'https://example.com' } },
+    { id: 'borrador', data: { title: 'Borrador', description: 'Oculto', status: 'Borrador', draft: true, externalUrl: 'https://example.com' } },
+    { id: 'sin-enlace', data: { title: 'Interno', description: 'Sin demo', status: 'Interno', draft: false } },
   ])
 
   assert.deepEqual(items, [{ id: 'demo', title: 'Demo', description: 'Visible', status: 'Público', href: 'https://example.com' }])
@@ -60,7 +60,7 @@ test('normaliza contexto, UTM y atributos de eventos de clic', () => {
 })
 
 test('el sitemap incluye rutas públicas y excluye borradores', () => {
-  const urls = sitemapUrls([{ slug: 'caso-publico', data: { draft: false } }, { slug: 'borrador', data: { draft: true } }])
+  const urls = sitemapUrls([{ id: 'caso-publico', data: { draft: false } }, { id: 'borrador', data: { draft: true } }])
 
   assert.equal(urls[0], 'https://anderdata.es/')
   assert.ok(urls.includes('https://anderdata.es/proyectos/caso-publico/'))

@@ -261,5 +261,25 @@ Ahora: portfolio estático verificable, sin API de CV ni CMS operativo
 - La rama histórica se reutilizó solo para datos y logotipos, no para su componente ni CSS monolíticos.
 - `/notas/` se añadió como placeholder `noindex` para corregir la navegación mientras no haya publicaciones; por eso no figura en sitemap.
 - Payload permanece aplazado y no se han creado demos ni métricas ficticias.
-- La única validación pendiente de entorno es arrancar Docker Desktop y ejecutar el contenedor; build, configuración Compose y salida estática sí han sido verificados.
-- La deuda técnica de seguridad es actualizar Astro y dependencias a una versión corregida en un cambio mayor y revisable; no se aplica `npm audit fix --force` en este commit.
+- Docker Desktop ha validado la imagen de producción, Nginx y las respuestas HTTP `200` de un caso publicado y `404` de una ruta inexistente.
+- Astro y sus integraciones se han actualizado de forma explícita, sin aplicar una corrección automática indiscriminada de dependencias.
+
+## Actualización posterior — Astro 7 y validación Docker
+
+**Hecho**
+
+- Actualizados Astro a `7.3.1`, `@astrojs/react` a `6.0.5` y `@astrojs/check` a `0.9.10`.
+- Adaptadas las colecciones al cargador `glob`, y sus consumidores a las APIs `id` y `render(entry)` de Astro 7.
+- Añadido `frontend/.dockerignore` para no enviar `node_modules` ni `dist` al contexto de construcción.
+
+**Decisión**
+
+Se conserva el contenido Markdown y las pruebas existentes: el cambio es una migración de API, no un rediseño del modelo de datos. El `.dockerignore` evita transportar dependencias que Docker instala dentro de la imagen.
+
+**Validado**
+
+- `npm run check`: 0 errores y 0 avisos.
+- `npm test`: 7 pruebas superadas; `npm run test:smoke`: 2 superadas.
+- `npm run build`: 12 rutas estáticas generadas, incluidos los tres casos de estudio.
+- `npm audit --omit=dev --audit-level=high`: 0 vulnerabilidades.
+- `docker compose build anderdata-landing`, Nginx válido y contenedor en ejecución; `GET /proyectos/stats-feb/` devuelve 200 y una ruta inexistente devuelve 404.
