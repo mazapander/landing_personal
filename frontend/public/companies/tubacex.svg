@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">TUBACEX placeholder mark</title>
+  <desc id="desc">Marca visual simplificada para la tarjeta de experiencia de TUBACEX.</desc>
+  <rect width="160" height="160" rx="42" fill="#eff6ff"/>
+  <circle cx="124" cy="36" r="38" fill="#dbeafe"/>
+  <path d="M35 47h90v22H91v53H69V69H35V47Z" fill="#1d4ed8"/>
+  <path d="M43 119h74" stroke="#93c5fd" stroke-width="10" stroke-linecap="round"/>
+</svg>

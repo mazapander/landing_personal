@@ -1,0 +1,37 @@
+.about { width: min(100% - 2rem, 1120px); margin: 0 auto; padding: clamp(3rem, 8vw, 7rem) 0; }
+.about h1, .about h2, .about h3 { letter-spacing: -.035em; line-height: 1.08; }
+.about h1 { max-width: 15ch; font-size: clamp(2.7rem, 7vw, 5.8rem); }
+.about h2 { font-size: clamp(1.8rem, 4vw, 3.25rem); }
+.about h3 { font-size: 1.2rem; }
+.about p { color: var(--color-text-secondary); line-height: 1.65; }
+.about-hero { max-width: 800px; padding: 3rem 0 6rem; }
+.about-hero > p:not(.about-eyebrow) { max-width: 65ch; margin-top: 1.5rem; font-size: clamp(1.1rem, 2vw, 1.35rem); }
+.about-eyebrow, .about-job__meta { color: var(--color-accent) !important; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.about-button, .about-link { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .75rem 1rem; border-radius: var(--radius-full); font-weight: 700; }
+.about-button { margin-top: 2rem; background: var(--color-accent); color: white; }
+.about-button:hover { background: var(--color-accent-hover); }
+.about-section { padding: clamp(3rem, 8vw, 6rem) 0; border-top: 1px solid var(--color-border); }
+.about-section > h2 { margin-top: .65rem; }
+.about-experience { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+.about-job, .about-principles article, .about-technologies section { padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+.about-job { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 1rem; }
+.about-job img { border-radius: var(--radius-md); }
+.about-job h3, .about-job__role, .about-job div > p:not(.about-job__meta) { margin-top: .5rem; }
+.about-job__role { color: var(--color-text-primary) !important; font-weight: 700; }
+.about-job ul, .about-education ul { padding-left: 1.25rem; margin-top: 1rem; color: var(--color-text-secondary); line-height: 1.6; }
+.about-job li + li { margin-top: .5rem; }
+.about-principles, .about-technologies { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+.about-principles p { margin-top: .75rem; }
+.about-technologies { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.about-technologies h3 { font-size: 1rem; }
+.about-technologies ul { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 1rem 0 0; list-style: none; }
+.about-technologies li { padding: .25rem .5rem; border-radius: var(--radius-full); background: var(--color-bg-secondary); font-size: .85rem; }
+.about-education > p { margin-top: 1rem; }
+.about-contact { margin-top: 2rem; padding: clamp(2rem, 6vw, 4rem); border-radius: var(--radius-lg); background: var(--color-text-primary); }
+.about-contact h2 { margin-top: .65rem; color: white; }
+.about-contact p { max-width: 60ch; margin-top: 1rem; color: #d1d5db; }
+.about-contact .about-eyebrow { color: #93c5fd !important; }
+.about-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+.about-contact .about-button { margin: 0; background: white; color: var(--color-text-primary); }
+.about-link { border: 1px solid #4b5563; color: white; }
+@media (max-width: 720px) { .about-experience, .about-principles { grid-template-columns: 1fr; } }

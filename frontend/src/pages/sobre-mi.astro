@@ -1,0 +1,79 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { education } from '@/data/education'
+import { experience } from '@/data/experience'
+import { profile, socialLinks } from '@/data/profile'
+import { technologies } from '@/data/technologies'
+import { groupTechnologies } from '@/lib/technology-groups.mjs'
+
+const technologyGroups = groupTechnologies(technologies)
+const professionalLinks = socialLinks.filter(({ id }) => id === 'linkedin' || id === 'github')
+const contact = socialLinks.find(({ id }) => id === 'email')
+---
+
+<BaseLayout title="Sobre mí — Ander Fernández">
+  <div class="about">
+    <header class="about-hero">
+      <p class="about-eyebrow">Sobre mí</p>
+      <h1>Datos, IA y producto para resolver problemas que importan.</h1>
+      <p>{profile.description}</p>
+      {contact && <a class="about-button" href={contact.url}>Solicitar CV</a>}
+    </header>
+
+    <section class="about-section" aria-labelledby="experiencia">
+      <p class="about-eyebrow">Trayectoria</p>
+      <h2 id="experiencia">Experiencia y empresas</h2>
+      <div class="about-experience">
+        {experience.map((job) => <article class="about-job">
+          <img src={job.logo} alt="" width="56" height="56" />
+          <div>
+            <p class="about-job__meta">{job.period} · {job.location}</p>
+            <h3>{job.company}</h3>
+            <p class="about-job__role">{job.role}</p>
+            <p>{job.description}</p>
+            <ul>{job.highlights.map((highlight) => <li>{highlight}</li>)}</ul>
+          </div>
+        </article>)}
+      </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="forma-de-trabajo">
+      <p class="about-eyebrow">En la práctica</p>
+      <h2 id="forma-de-trabajo">Cómo trabajo</h2>
+      <div class="about-principles">
+        <article><h3>Entender antes de construir</h3><p>Conecto la necesidad de negocio con datos, usuarios, restricciones y una métrica de resultado.</p></article>
+        <article><h3>Entregar por partes</h3><p>Priorizo una primera solución útil, medible y mantenible antes de ampliar el alcance.</p></article>
+        <article><h3>Dejarlo operable</h3><p>La arquitectura, los procesos y la adopción importan tanto como la primera demostración.</p></article>
+      </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="tecnologias">
+      <p class="about-eyebrow">Capacidades</p>
+      <h2 id="tecnologias">Tecnologías agrupadas por capacidad</h2>
+      <div class="about-technologies">
+        {Object.entries(technologyGroups).map(([category, tools]) => <section>
+          <h3>{category}</h3>
+          <ul>{tools.map((tool) => <li title={tool.description}>{tool.name}</li>)}</ul>
+        </section>)}
+      </div>
+    </section>
+
+    <section class="about-section about-education" aria-labelledby="formacion">
+      <p class="about-eyebrow">Formación</p>
+      <h2 id="formacion">Formación y certificaciones</h2>
+      {education.length > 0
+        ? <ul>{education.map((item) => <li><strong>{item.title}</strong>, {item.institution}{item.year && ` · ${item.year}`}</li>)}</ul>
+        : <p>El detalle de formación y certificaciones se comparte en el CV actualizado.</p>}
+    </section>
+
+    <section class="about-contact" aria-labelledby="perfiles">
+      <p class="about-eyebrow">Contacto</p>
+      <h2 id="perfiles">CV y perfiles profesionales</h2>
+      <p>Si crees que puedo ayudar, escríbeme. Comparto el CV actualizado y contexto relevante para la conversación.</p>
+      <div class="about-actions">
+        {contact && <a class="about-button" href={contact.url}>Solicitar CV</a>}
+        {professionalLinks.map((link) => <a class="about-link" href={link.url} target="_blank" rel="noreferrer">{link.label}</a>)}
+      </div>
+    </section>
+  </div>
+</BaseLayout>

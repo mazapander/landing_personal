@@ -46,7 +46,7 @@ La navegación se publica antes de crear las páginas destino para fijar la arqu
 - `npx tsc --noEmit`
 - `npm run build`
 
-### 3. En curso — content models and API removal
+### 3. `325ad2d` — content models and API removal
 
 **Hecho**
 
@@ -81,7 +81,7 @@ No incorpora tracking, rutas finales ni casos de estudio: esos cambios siguen te
 
 El sistema no añade casos ficticios: el índice muestra un estado vacío hasta el siguiente commit de contenido. Así cada caso se revisa por separado.
 
-### 6. En curso — primeros casos de estudio
+### 6. `7dab180` — primeros casos de estudio
 
 **Alcance**
 
@@ -92,6 +92,24 @@ El sistema no añade casos ficticios: el índice muestra un estado vacío hasta 
 
 Payload CMS se pospone como opción editorial después de estabilizar el portfolio. Sus colecciones, administración, API y control de acceso son adecuados cuando la edición requiera usuarios no técnicos, pero hoy añadirían base de datos, autenticación y operación innecesarias.
 
+### 7. Este commit — página profesional Sobre mí
+
+**Hecho**
+
+- Creada `/sobre-mi` con propuesta profesional, experiencia, resultados relevantes, capacidades, forma de trabajo y perfiles.
+- Recuperados selectivamente de `feature/company-experience-widget` los cuatro registros de experiencia y sus SVG; no se ha fusionado el componente ni la hoja de estilos monolíticos.
+- Añadida una prueba mínima para el agrupado de tecnologías por capacidad.
+
+**Decisión**
+
+La descarga del CV se resuelve por correo, sin restaurar la API eliminada. La rama histórica no aporta datos verificables de formación o certificaciones, por lo que la página no inventa credenciales y dirige al CV actualizado.
+
+**Validado**
+
+- `npm test`
+- `npx tsc --noEmit`
+- `npm run build`
+
 ## Próximo alcance
 
-El siguiente commit añadirá los tres primeros casos de estudio: WhatsApp SaaS, IA Compra Pisos y StatsFEB.
+El siguiente commit añadirá servicios y el flujo de conversión: ofertas concretas, formulario, modal y estados de envío.

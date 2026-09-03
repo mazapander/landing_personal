@@ -48,8 +48,9 @@ Commit	Alcance	Resultado verificable
 5. feat: add project case study system	Índice, tarjetas, layout de caso, arquitectura, capacidades, enlaces y breadcrumbs	Plantilla reutilizable para todos los proyectos
     Done - Commit: `5121603`
 6. content: add first three case studies	WhatsApp SaaS, IA Compra Pisos y StatsFEB	Tres casos completos y revisables por separado dentro del commit
-    Done - Commit: this commit
+    Done - Commit: `7dab180`
 7. feat: build professional about page	Experiencia, empresas, formación, tecnologías y CV; reutilización selectiva de la rama anterior	/sobre-mi demuestra trayectoria y conocimientos sin parecer un inventario
+    Done - Commit: this commit
 8. feat: add services and conversion flow	Servicios concretos, formulario, modal y estados de envío	Recorrido freelance claro desde problema hasta contacto
 9. feat: add lab and how-i-work pages	Demos, productos accesibles y metodología de arquitectura/producto	Evidencia interactiva y explicación de cómo construyes
 10. feat: implement Umami event taxonomy	Eventos normalizados, CTA, proyectos, demos, servicios, contacto, UTM y atributos comunes	Tracking consistente sin nombres dinámicos difíciles de explotar
