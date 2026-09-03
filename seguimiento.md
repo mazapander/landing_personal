@@ -110,7 +110,7 @@ La descarga del CV se resuelve por correo, sin restaurar la API eliminada. La ra
 - `npx tsc --noEmit`
 - `npm run build`
 
-### 8. Este commit — servicios y flujo de conversión
+### 8. `73267a5` — servicios y flujo de conversión
 
 **Hecho**
 
@@ -128,6 +128,25 @@ No se incorpora un proveedor de formularios ni un endpoint propio. El flujo prep
 - `npx tsc --noEmit`
 - `npm run build`
 
+### 9. Este commit — Lab y Cómo trabajo
+
+**Hecho**
+
+- Añadidas `/lab/` y `/como-trabajo/` como rutas Astro estáticas.
+- Lab reutiliza los proyectos publicados con URL externa; hoy muestra WhatsApp SaaS y StatsFEB.
+- Documentado el proceso desde el problema hasta la evolución, con principios de utilidad, claridad y operación.
+- Añadida una prueba que evita publicar en Lab borradores o casos sin enlace público.
+
+**Decisión**
+
+No se han creado demos ficticias ni una capa de datos adicional. IA Compra Pisos conserva su caso de estudio hasta que tenga una demo o enlace público verificable.
+
+**Validado**
+
+- `npm test`
+- `npx tsc --noEmit`
+- `npm run build`
+
 ## Próximo alcance
 
-El siguiente commit añadirá Lab y Cómo trabajo: demos o productos accesibles y la metodología de arquitectura y producto.
+El siguiente commit implementará la taxonomía de eventos Umami para CTA, proyectos, servicios, demos y contacto.

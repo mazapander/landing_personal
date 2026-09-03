@@ -5,6 +5,7 @@ import test from 'node:test'
 import { projectPath } from '../src/lib/project-paths.mjs'
 import { groupTechnologies } from '../src/lib/technology-groups.mjs'
 import { contactMailto } from '../src/lib/contact-mailto.mjs'
+import { labItems } from '../src/lib/lab-items.mjs'
 
 test('crea rutas de casos de estudio estables', () => {
   assert.equal(projectPath('stats-feb'), '/proyectos/stats-feb/')
@@ -34,4 +35,14 @@ test('prepara un correo de contacto sin perder el contexto introducido', () => {
   assert.equal(url.searchParams.get('subject'), 'Consulta web: Automatización de procesos')
   assert.match(url.searchParams.get('body'), /Ana & Co/)
   assert.match(url.searchParams.get('body'), /Reducir tareas manuales\./)
+})
+
+test('Lab muestra solo productos publicados con un enlace público', () => {
+  const items = labItems([
+    { slug: 'demo', data: { title: 'Demo', description: 'Visible', status: 'Público', draft: false, externalUrl: 'https://example.com' } },
+    { slug: 'borrador', data: { title: 'Borrador', description: 'Oculto', status: 'Borrador', draft: true, externalUrl: 'https://example.com' } },
+    { slug: 'sin-enlace', data: { title: 'Interno', description: 'Sin demo', status: 'Interno', draft: false } },
+  ])
+
+  assert.deepEqual(items, [{ title: 'Demo', description: 'Visible', status: 'Público', href: 'https://example.com' }])
 })

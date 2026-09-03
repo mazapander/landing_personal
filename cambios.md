@@ -52,8 +52,9 @@ Commit	Alcance	Resultado verificable
 7. feat: build professional about page	Experiencia, empresas, formación, tecnologías y CV; reutilización selectiva de la rama anterior	/sobre-mi demuestra trayectoria y conocimientos sin parecer un inventario
     Done - Commit: `fe377b9`
 8. feat: add services and conversion flow	Servicios concretos, formulario, modal y estados de envío	Recorrido freelance claro desde problema hasta contacto
-    Done - Commit: this commit
+    Done - Commit: `73267a5`
 9. feat: add lab and how-i-work pages	Demos, productos accesibles y metodología de arquitectura/producto	Evidencia interactiva y explicación de cómo construyes
+    Done - Commit: this commit
 10. feat: implement Umami event taxonomy	Eventos normalizados, CTA, proyectos, demos, servicios, contacto, UTM y atributos comunes	Tracking consistente sin nombres dinámicos difíciles de explotar
 11. feat: implement technical SEO	Canonical, sitemap, robots, metadatos por ruta, OG, JSON-LD, breadcrumbs y 404 real	Todas las páginas públicas salen indexables desde el build
 12. test: add quality gates and deployment docs	Astro check, tests unitarios, smoke tests, accesibilidad básica, enlaces y README	Refactor reproducible y protegido frente a regresiones

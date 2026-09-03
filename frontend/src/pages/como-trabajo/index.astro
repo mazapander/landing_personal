@@ -1,0 +1,36 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const steps = [
+  ['Entender el problema', 'Aterrizo la necesidad, las personas implicadas, el proceso actual y una señal clara de éxito.'],
+  ['Recortar el alcance', 'Defino la primera entrega que resuelve una parte relevante sin asumir complejidad futura.'],
+  ['Construir y conectar', 'Diseño datos, aplicación e integraciones con una arquitectura proporcional al uso real.'],
+  ['Medir y evolucionar', 'Compruebo adopción, operación y resultado antes de decidir la siguiente iteración.'],
+]
+---
+
+<BaseLayout title="Cómo trabajo — Ander Fernández">
+  <div class="practice-page">
+    <header class="practice-hero">
+      <p class="practice-eyebrow">Cómo trabajo</p>
+      <h1>Producto y arquitectura al servicio de una decisión concreta.</h1>
+      <p>No separo la conversación de negocio de la entrega técnica: el objetivo es llegar a una solución útil, operable y capaz de evolucionar.</p>
+    </header>
+    <section class="practice-steps" aria-label="Proceso de trabajo">
+      {steps.map(([title, description], index) => <article>
+        <p class="practice-eyebrow">Paso {index + 1}</p>
+        <h2>{title}</h2>
+        <p>{description}</p>
+      </article>)}
+    </section>
+    <section class="practice-principles" aria-labelledby="principios">
+      <p class="practice-eyebrow">Principios</p>
+      <h2 id="principios">Lo que busco proteger en cada entrega</h2>
+      <ul>
+        <li><strong>Utilidad:</strong> la solución debe facilitar una acción real, no solo enseñar tecnología.</li>
+        <li><strong>Claridad:</strong> decisiones, límites y responsabilidades visibles para las personas implicadas.</li>
+        <li><strong>Operación:</strong> seguridad, mantenimiento y adopción se consideran desde el inicio.</li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
