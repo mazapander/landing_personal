@@ -12,8 +12,8 @@ const featuredProjects = projects.filter((project) => project.public).slice(0, 3
     <h1>{home.hero.title}</h1>
     <p class="home-intro">{home.hero.description}</p>
     <div class="home-actions">
-      <a class="home-button home-button--primary" href={home.hero.primaryCta.href}>{home.hero.primaryCta.label}</a>
-      <a class="home-button home-button--secondary" href={home.hero.secondaryCta.href}>{home.hero.secondaryCta.label}</a>
+      <a class="home-button home-button--primary" href={home.hero.primaryCta.href} data-track-event="cta_click" data-track-location="home_hero_projects">{home.hero.primaryCta.label}</a>
+      <a class="home-button home-button--secondary" href={home.hero.secondaryCta.href} data-track-event="contact_open" data-track-location="home_hero">{home.hero.secondaryCta.label}</a>
     </div>
   </section>
 
@@ -36,7 +36,7 @@ const featuredProjects = projects.filter((project) => project.public).slice(0, 3
         <p class="home-eyebrow">Trabajo seleccionado</p>
         <h2 id="projects-title">Proyectos que conectan producto y tecnología.</h2>
       </div>
-      <a class="home-text-link" href="/proyectos/">Ver todos los proyectos</a>
+      <a class="home-text-link" href="/proyectos/" data-track-event="cta_click" data-track-location="home_projects">Ver todos los proyectos</a>
     </div>
     <div class="home-projects">
       {featuredProjects.map((project) => (
@@ -44,7 +44,7 @@ const featuredProjects = projects.filter((project) => project.public).slice(0, 3
           <p class="home-project-status">{project.status}</p>
           <h3>{project.title}</h3>
           <p>{project.description}</p>
-          <a href={project.url} target="_blank" rel="noopener noreferrer">Conocer proyecto <span aria-hidden="true">→</span></a>
+          <a href={project.url} target="_blank" rel="noopener noreferrer" data-track-event="project_open" data-track-location="home_project" data-track-project={project.id}>Conocer proyecto <span aria-hidden="true">→</span></a>
         </article>
       ))}
     </div>
@@ -56,13 +56,13 @@ const featuredProjects = projects.filter((project) => project.public).slice(0, 3
       <p class="home-eyebrow">Sobre mí</p>
       <h2 id="summary-title">{profile.headline}</h2>
       <p>{profile.description}</p>
-      <a class="home-text-link" href="/sobre-mi/">Conocer mi trayectoria</a>
+      <a class="home-text-link" href="/sobre-mi/" data-track-event="cta_click" data-track-location="home_profile">Conocer mi trayectoria</a>
     </div>
   </section>
 
   <section class="home-contact">
     <p class="home-eyebrow">¿Hablamos?</p>
     <h2>Si tienes un proceso que mejorar o un producto que construir, cuéntamelo.</h2>
-    <a class="home-button home-button--primary" href={home.hero.secondaryCta.href}>{home.hero.secondaryCta.label}</a>
+    <a class="home-button home-button--primary" href={home.hero.secondaryCta.href} data-track-event="contact_open" data-track-location="home_footer">{home.hero.secondaryCta.label}</a>
   </section>
 </div>

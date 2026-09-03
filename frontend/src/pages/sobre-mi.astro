@@ -17,7 +17,7 @@ const contact = socialLinks.find(({ id }) => id === 'email')
       <p class="about-eyebrow">Sobre mí</p>
       <h1>Datos, IA y producto para resolver problemas que importan.</h1>
       <p>{profile.description}</p>
-      {contact && <a class="about-button" href={contact.url}>Solicitar CV</a>}
+      {contact && <a class="about-button" href={contact.url} data-track-event="contact_open" data-track-location="about_hero">Solicitar CV</a>}
     </header>
 
     <section class="about-section" aria-labelledby="experiencia">
@@ -71,8 +71,8 @@ const contact = socialLinks.find(({ id }) => id === 'email')
       <h2 id="perfiles">CV y perfiles profesionales</h2>
       <p>Si crees que puedo ayudar, escríbeme. Comparto el CV actualizado y contexto relevante para la conversación.</p>
       <div class="about-actions">
-        {contact && <a class="about-button" href={contact.url}>Solicitar CV</a>}
-        {professionalLinks.map((link) => <a class="about-link" href={link.url} target="_blank" rel="noreferrer">{link.label}</a>)}
+        {contact && <a class="about-button" href={contact.url} data-track-event="contact_open" data-track-location="about_contact">Solicitar CV</a>}
+        {professionalLinks.map((link) => <a class="about-link" href={link.url} target="_blank" rel="noreferrer" data-track-event="profile_open" data-track-location="about_contact">{link.label}</a>)}
       </div>
     </section>
   </div>

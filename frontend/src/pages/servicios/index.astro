@@ -12,7 +12,7 @@ const services = (await getCollection('services', ({ data }) => !data.draft)).so
       <p class="conversion-eyebrow">Servicios</p>
       <h1>Del problema a una solución que se puede usar.</h1>
       <p>Colaboro en iniciativas donde datos, IA, software y entrega deben encajar con una necesidad de negocio concreta.</p>
-      <ContactForm client:load />
+      <ContactForm client:load placement="services_hero" />
     </header>
     <section class="services-list" aria-label="Servicios disponibles">
       {services.map((service) => <article>
@@ -20,6 +20,7 @@ const services = (await getCollection('services', ({ data }) => !data.draft)).so
         <h2>{service.data.title}</h2>
         <p>{service.data.description}</p>
         <ul>{service.data.outcomes.map((outcome) => <li>{outcome}</li>)}</ul>
+        <a class="services-list__contact" href="/contacto/" data-track-event="service_contact" data-track-location="services_list" data-track-service={service.data.title}>Hablar sobre este servicio <span aria-hidden="true">→</span></a>
       </article>)}
     </section>
   </div>

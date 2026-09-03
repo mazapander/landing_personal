@@ -6,9 +6,9 @@ const links = [
 ---
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="site-brand" href="/">Ander Fernández</a>
+    <a class="site-brand" href="/" data-track-event="navigation_open" data-track-location="header_brand">Ander Fernández</a>
     <nav class="site-nav" aria-label="Navegación principal">
-      {links.map(([label, href]) => <a href={href}>{label}</a>)}
+      {links.map(([label, href]) => <a href={href} data-track-event="navigation_open" data-track-location="header">{label}</a>)}
     </nav>
   </div>
 </header>

@@ -1,9 +1,12 @@
 import { useRef, useState, type FormEvent } from 'react'
 import { contactMailto } from '@/lib/contact-mailto.mjs'
+import { trackEvent } from '@/lib/analytics.mjs'
 
 const services = ['Productos de datos e IA', 'Automatización de procesos', 'Delivery y arquitectura de producto']
 
-export default function ContactForm() {
+interface Props { placement: string }
+
+export default function ContactForm({ placement }: Props) {
   const dialog = useRef<HTMLDialogElement>(null)
   const [sent, setSent] = useState(false)
 
@@ -15,17 +18,19 @@ export default function ContactForm() {
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const fields = new FormData(event.currentTarget)
+    const service = String(fields.get('service'))
+    trackEvent('contact_submit', { placement, service }, window.location, window.umami)
     window.location.href = contactMailto({
       name: String(fields.get('name')),
       email: String(fields.get('email')),
-      service: String(fields.get('service')),
+      service,
       message: String(fields.get('message')),
     })
     setSent(true)
   }
 
   return <>
-    <button className="conversion-button" type="button" onClick={open}>Cuéntame qué quieres resolver</button>
+    <button className="conversion-button" type="button" onClick={open} data-track-event="contact_open" data-track-location={placement}>Cuéntame qué quieres resolver</button>
     <dialog className="contact-dialog" ref={dialog} aria-labelledby="contact-title">
       {sent ? <div className="contact-dialog__content"><h2 id="contact-title">Correo preparado</h2><p>Se ha abierto tu aplicación de correo con el mensaje. Revísalo y envíalo cuando quieras.</p><button type="button" onClick={() => dialog.current?.close()}>Cerrar</button></div> :
         <form className="contact-dialog__content" onSubmit={submit}>

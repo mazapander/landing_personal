@@ -1,8 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import Home from '@/features/home/Home.astro'
-
-const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID
 ---
 
 <BaseLayout title="Ander Fernández — Data, IA y producto digital">
@@ -29,12 +27,6 @@ const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID
     <meta name="twitter:title" content="Ander Fernández — Data, IA y producto digital" />
     <meta name="twitter:description" content="Convierto problemas de negocio en productos de datos, IA y software que funcionan en producción." />
     <meta name="twitter:image" content="https://anderdata.es/image.jpg" />
-    <script
-      is:inline
-      defer
-      src="https://u.anderdata.es/script.js"
-      data-website-id={umamiWebsiteId}
-    ></script>
   </Fragment>
   <Home />
 </BaseLayout>

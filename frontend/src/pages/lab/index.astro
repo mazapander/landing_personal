@@ -18,7 +18,7 @@ const items = labItems(await getCollection('projects'))
         <p class="practice-eyebrow">{item.status}</p>
         <h2>{item.title}</h2>
         <p>{item.description}</p>
-        <a href={item.href} target="_blank" rel="noreferrer">Explorar <span aria-hidden="true">→</span></a>
+        <a href={item.href} target="_blank" rel="noreferrer" data-track-event="demo_open" data-track-location="lab" data-track-project={item.id}>Explorar <span aria-hidden="true">→</span></a>
       </article>)}
     </section>
   </div>

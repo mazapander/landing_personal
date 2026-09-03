@@ -6,6 +6,7 @@ import { projectPath } from '../src/lib/project-paths.mjs'
 import { groupTechnologies } from '../src/lib/technology-groups.mjs'
 import { contactMailto } from '../src/lib/contact-mailto.mjs'
 import { labItems } from '../src/lib/lab-items.mjs'
+import { analyticsContext, trackClick } from '../src/lib/analytics.mjs'
 
 test('crea rutas de casos de estudio estables', () => {
   assert.equal(projectPath('stats-feb'), '/proyectos/stats-feb/')
@@ -44,5 +45,15 @@ test('Lab muestra solo productos publicados con un enlace público', () => {
     { slug: 'sin-enlace', data: { title: 'Interno', description: 'Sin demo', status: 'Interno', draft: false } },
   ])
 
-  assert.deepEqual(items, [{ title: 'Demo', description: 'Visible', status: 'Público', href: 'https://example.com' }])
+  assert.deepEqual(items, [{ id: 'demo', title: 'Demo', description: 'Visible', status: 'Público', href: 'https://example.com' }])
+})
+
+test('normaliza contexto, UTM y atributos de eventos de clic', () => {
+  const calls = []
+  const element = { dataset: { trackEvent: 'demo_open', trackLocation: 'lab', trackProject: 'demo' }, getAttribute: () => 'https://example.com' }
+  const location = { pathname: '/lab/', search: '?utm_source=linkedin&utm_campaign=septiembre' }
+
+  assert.deepEqual(analyticsContext(location), { page_path: '/lab/', utm_source: 'linkedin', utm_campaign: 'septiembre' })
+  assert.equal(trackClick({ target: { closest: () => element } }, location, { track: (...args) => calls.push(args) }), true)
+  assert.deepEqual(calls, [['demo_open', { page_path: '/lab/', utm_source: 'linkedin', utm_campaign: 'septiembre', placement: 'lab', project: 'demo', destination: 'https://example.com' }]])
 })

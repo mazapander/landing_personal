@@ -54,8 +54,9 @@ Commit	Alcance	Resultado verificable
 8. feat: add services and conversion flow	Servicios concretos, formulario, modal y estados de envío	Recorrido freelance claro desde problema hasta contacto
     Done - Commit: `73267a5`
 9. feat: add lab and how-i-work pages	Demos, productos accesibles y metodología de arquitectura/producto	Evidencia interactiva y explicación de cómo construyes
-    Done - Commit: this commit
+    Done - Commit: `2974b2e`
 10. feat: implement Umami event taxonomy	Eventos normalizados, CTA, proyectos, demos, servicios, contacto, UTM y atributos comunes	Tracking consistente sin nombres dinámicos difíciles de explotar
+    Done - Commit: this commit
 11. feat: implement technical SEO	Canonical, sitemap, robots, metadatos por ruta, OG, JSON-LD, breadcrumbs y 404 real	Todas las páginas públicas salen indexables desde el build
 12. test: add quality gates and deployment docs	Astro check, tests unitarios, smoke tests, accesibilidad básica, enlaces y README	Refactor reproducible y protegido frente a regresiones
 13. feat: add Payload editorial CMS (opcional)	Payload como servicio editorial, colecciones compatibles, acceso de administradores, media y previsualización	Contenido editable por usuarios no técnicos cuando la frecuencia editorial justifique base de datos y operación adicional

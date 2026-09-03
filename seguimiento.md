@@ -7,6 +7,7 @@ Este documento registra las decisiones que cambian la arquitectura o el alcance.
 - Astro genera las páginas estáticas y React queda reservado para interacciones ya existentes o futuras.
 - La navegación usa rutas públicas estables: Inicio, Proyectos, Servicios, Lab, Cómo trabajo, Sobre mí, Notas y Contacto.
 - No se crea `/go/:project`: los CTA usarán eventos Umami y UTM. Un redirector solo tendrá sentido con registro backend.
+- Umami usa eventos estables y atributos comunes; solo se carga cuando existe `PUBLIC_UMAMI_WEBSITE_ID`.
 - El CV no tendrá API ni descarga privada por ahora. Se elimina `cv-api/`, su proxy Nginx, Compose, variables de entorno, modal y estilos asociados.
 - El contenido no se concentra en un JSON: datos actuales en `src/data/*.ts`; proyectos, servicios y notas se validan con colecciones Astro.
 
@@ -128,7 +129,7 @@ No se incorpora un proveedor de formularios ni un endpoint propio. El flujo prep
 - `npx tsc --noEmit`
 - `npm run build`
 
-### 9. Este commit — Lab y Cómo trabajo
+### 9. `2974b2e` — Lab y Cómo trabajo
 
 **Hecho**
 
@@ -146,6 +147,29 @@ No se han creado demos ficticias ni una capa de datos adicional. IA Compra Pisos
 - `npm test`
 - `npx tsc --noEmit`
 - `npm run build`
+
+### 10. Este commit — taxonomía de eventos Umami
+
+**Hecho**
+
+- Centralizado el tracking de clics en el layout mediante atributos `data-track-*` y un único módulo cliente.
+- Instrumentados CTA, navegación, apertura de proyectos y casos, demos de Lab, servicios, perfiles y contacto.
+- Los eventos incluyen `page_path`, `placement`, destino, proyecto o servicio cuando aplica y UTM (`source`, `medium`, `campaign`, `term`, `content`).
+- Añadida una prueba de normalización del contexto y de envío a Umami.
+
+**Decisión**
+
+La taxonomía no construye nombres dinámicos: usa `cta_click`, `project_open`, `project_case_open`, `demo_open`, `service_contact`, `contact_open`, `contact_submit`, `profile_open` y `navigation_open`. Esto permite agrupar datos sin una capa de transformación posterior.
+
+**Validado**
+
+- `npm test`
+- `npx tsc --noEmit`
+- `npm run build`
+
+## Próximo alcance
+
+El siguiente commit implementará SEO técnico: canonical, sitemap, robots, metadatos por ruta, OG, JSON-LD, breadcrumbs y 404.
 
 ## Próximo alcance
 
