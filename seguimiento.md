@@ -148,7 +148,7 @@ No se han creado demos ficticias ni una capa de datos adicional. IA Compra Pisos
 - `npx tsc --noEmit`
 - `npm run build`
 
-### 10. Este commit — taxonomía de eventos Umami
+### 10. `8f6c17c` — taxonomía de eventos Umami
 
 **Hecho**
 
@@ -167,10 +167,25 @@ La taxonomía no construye nombres dinámicos: usa `cta_click`, `project_open`, 
 - `npx tsc --noEmit`
 - `npm run build`
 
+### 11. Este commit — SEO técnico
+
+**Hecho**
+
+- Centralizados canonical, descripción, Open Graph, Twitter Cards y JSON-LD de tipo `WebPage` en `BaseLayout`.
+- Añadidos `robots.txt`, `sitemap.xml` estático con las rutas y casos publicados, `site` en Astro y `404.html` con `noindex`.
+- Los casos de estudio añaden JSON-LD `BreadcrumbList` alineado con la miga de pan visible.
+- Añadida una prueba que excluye los borradores del sitemap.
+
+**Decisión**
+
+El sitemap se genera con Astro y la colección existente, sin dependencia adicional. No lista `/notas/` porque aún no existe una página pública para esa ruta.
+
+**Validado**
+
+- `npm test`
+- `npx tsc --noEmit`
+- `npm run build`
+
 ## Próximo alcance
 
-El siguiente commit implementará SEO técnico: canonical, sitemap, robots, metadatos por ruta, OG, JSON-LD, breadcrumbs y 404.
-
-## Próximo alcance
-
-El siguiente commit implementará la taxonomía de eventos Umami para CTA, proyectos, servicios, demos y contacto.
+El siguiente commit añadirá controles de calidad y documentación de despliegue: comprobación Astro, pruebas, smoke tests, accesibilidad básica y README.

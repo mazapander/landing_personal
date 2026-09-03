@@ -6,7 +6,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 const services = (await getCollection('services', ({ data }) => !data.draft)).sort((a, b) => a.data.order - b.data.order)
 ---
 
-<BaseLayout title="Servicios — Ander Fernández">
+<BaseLayout title="Servicios — Ander Fernández" description="Servicios de productos de datos e IA, automatización y delivery técnico.">
   <div class="services-page">
     <header class="conversion-hero">
       <p class="conversion-eyebrow">Servicios</p>

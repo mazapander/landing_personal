@@ -7,6 +7,7 @@ import { groupTechnologies } from '../src/lib/technology-groups.mjs'
 import { contactMailto } from '../src/lib/contact-mailto.mjs'
 import { labItems } from '../src/lib/lab-items.mjs'
 import { analyticsContext, trackClick } from '../src/lib/analytics.mjs'
+import { sitemapUrls } from '../src/lib/sitemap-urls.mjs'
 
 test('crea rutas de casos de estudio estables', () => {
   assert.equal(projectPath('stats-feb'), '/proyectos/stats-feb/')
@@ -56,4 +57,12 @@ test('normaliza contexto, UTM y atributos de eventos de clic', () => {
   assert.deepEqual(analyticsContext(location), { page_path: '/lab/', utm_source: 'linkedin', utm_campaign: 'septiembre' })
   assert.equal(trackClick({ target: { closest: () => element } }, location, { track: (...args) => calls.push(args) }), true)
   assert.deepEqual(calls, [['demo_open', { page_path: '/lab/', utm_source: 'linkedin', utm_campaign: 'septiembre', placement: 'lab', project: 'demo', destination: 'https://example.com' }]])
+})
+
+test('el sitemap incluye rutas públicas y excluye borradores', () => {
+  const urls = sitemapUrls([{ slug: 'caso-publico', data: { draft: false } }, { slug: 'borrador', data: { draft: true } }])
+
+  assert.equal(urls[0], 'https://anderdata.es/')
+  assert.ok(urls.includes('https://anderdata.es/proyectos/caso-publico/'))
+  assert.ok(!urls.some((url) => url.includes('borrador')))
 })
