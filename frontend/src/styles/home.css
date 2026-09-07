@@ -1,6 +1,6 @@
-.home { width: min(100% - 2rem, 1120px); margin: 0 auto; padding: clamp(3rem, 8vw, 7rem) 0; }
+.home { width: var(--page-width); margin: 0 auto; padding: clamp(2.5rem, 5vw, 5rem) 0; }
 .home h1, .home h2, .home h3 { letter-spacing: -.035em; line-height: 1.08; }
-.home h1 { max-width: 14ch; font-size: clamp(2.7rem, 7vw, 5.8rem); }
+.home h1 { max-width: 16ch; font-size: clamp(2.5rem, 5vw, 4.75rem); }
 .home h2 { max-width: 22ch; font-size: clamp(1.8rem, 4vw, 3.25rem); }
 .home h3 { font-size: 1.3rem; }
 .home p { color: var(--color-text-secondary); }

@@ -1,7 +1,7 @@
-.services-page, .contact-page { width: min(100% - 2rem, 1120px); margin: 0 auto; padding: clamp(3rem, 8vw, 7rem) 0; }
+.services-page, .contact-page { width: var(--page-width); margin: 0 auto; padding: clamp(2.5rem, 5vw, 5rem) 0; }
 .conversion-hero { max-width: 800px; padding: 3rem 0 4rem; }
 .conversion-hero h1, .services-list h2 { letter-spacing: -.04em; line-height: 1.05; }
-.conversion-hero h1 { max-width: 16ch; font-size: clamp(2.7rem, 7vw, 5.8rem); }
+.conversion-hero h1 { max-width: 18ch; font-size: clamp(2.5rem, 5vw, 4.75rem); }
 .conversion-hero > p:not(.conversion-eyebrow) { max-width: 64ch; margin-top: 1.5rem; color: var(--color-text-secondary); font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.65; }
 .conversion-eyebrow { color: var(--color-accent); font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .conversion-button { min-height: 48px; margin-top: 2rem; padding: .75rem 1rem; border-radius: var(--radius-full); background: var(--color-accent); color: white; font: inherit; font-weight: 700; }

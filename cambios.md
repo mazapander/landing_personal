@@ -118,15 +118,15 @@ En Astro, pages/ serán las vistas. React se reservará para elementos que realm
 
 Refuerzo visual posterior
 
-- `Layout/Header.astro` concentra marca, navegación y accesos profesionales; los símbolos de navegación son decorativos y los nombres siguen disponibles para lectores de pantalla.
+- `Layout/Header.astro` concentra marca, navegación contextual y accesos profesionales; cada ruta selecciona un grupo corto de destinos relacionados.
 - La identidad se apoya en el favicon ya existente, sin crear otro activo de marca ni descargar una librería de iconos.
 - La home añade una ficha profesional y señales verificables derivadas de los casos y capacidades publicadas; no se introducen métricas de negocio no demostrables.
-- Los breakpoints de la cabecera priorizan navegación horizontal desplazable en móvil y dos filas en tablet para evitar solapes o saltos de contenido.
+- Los contenedores comparten un ancho del `90vw` con límite máximo y títulos fluidos acotados; por debajo de `860px`, el header cambia a un menú desplegable de una sola fila.
 
 Revisión de navegación
 
-- La navegación global queda limitada a Inicio, Proyectos, Servicios y Sobre mí; Contacto es el CTA persistente.
-- Lab, Cómo trabajo y Notas se enlazan desde los contextos donde aportan continuidad, no desde una cabecera sobrecargada.
+- Inicio muestra Inicio, Proyectos, Servicios y Quién soy; el área de trabajo muestra Proyectos, Servicios, Arquitectura y Lab; el área personal muestra Quién soy, Cómo trabajo, Notas y Proyectos.
+- Contacto permanece como CTA y el menú móvil reproduce únicamente el contexto de la ruta actual.
 - Por debajo de `860px`, un elemento HTML `details` presenta el menú completo; no requiere JavaScript ni desplazamiento horizontal del header.
 
 Primera propuesta de textos

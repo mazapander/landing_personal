@@ -1,7 +1,7 @@
-.case-study-index, .case-study { width: min(100% - 2rem, 900px); margin: 0 auto; padding: clamp(3rem, 8vw, 6rem) 0; }
+.case-study-index, .case-study { width: min(90vw, 960px); margin: 0 auto; padding: clamp(2.5rem, 5vw, 5rem) 0; }
 .case-study-index > header { max-width: 62ch; }
 .case-study-index header > p:first-child, .case-study > header > p:first-child { color: var(--color-accent); font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.case-study-index h1, .case-study h1 { margin-top: .5rem; letter-spacing: -.04em; line-height: 1.05; font-size: clamp(2.5rem, 6vw, 4.5rem); }
+.case-study-index h1, .case-study h1 { margin-top: .5rem; letter-spacing: -.04em; line-height: 1.05; font-size: clamp(2.4rem, 4.5vw, 4.25rem); }
 .case-study-index header > p:last-child, .case-study > header > p:last-of-type { margin-top: 1rem; color: var(--color-text-secondary); font-size: 1.1rem; line-height: 1.65; }
 .case-study-grid { display: grid; gap: 1rem; margin-top: 3rem; }
 .case-study-card { padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }

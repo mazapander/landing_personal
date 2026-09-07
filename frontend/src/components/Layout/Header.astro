@@ -1,6 +1,14 @@
 ---
-const primaryLinks = [['Inicio', '/'], ['Proyectos', '/proyectos/'], ['Servicios', '/servicios/'], ['Sobre mí', '/sobre-mi/']]
-const secondaryLinks = [['Lab', '/lab/'], ['Cómo trabajo', '/como-trabajo/'], ['Notas', '/notas/']]
+const pathname = Astro.url.pathname
+const defaultLinks = [['Inicio', '/'], ['Proyectos', '/proyectos/'], ['Servicios', '/servicios/'], ['Quién soy', '/sobre-mi/']]
+const workLinks = [['Proyectos', '/proyectos/'], ['Servicios', '/servicios/'], ['Arquitectura', '/como-trabajo/'], ['Lab', '/lab/']]
+const profileLinks = [['Quién soy', '/sobre-mi/'], ['Cómo trabajo', '/como-trabajo/'], ['Notas', '/notas/'], ['Proyectos', '/proyectos/']]
+const contextLinks = pathname.startsWith('/proyectos') || pathname.startsWith('/servicios') || pathname.startsWith('/lab') || pathname.startsWith('/como-trabajo')
+  ? workLinks
+  : pathname.startsWith('/sobre-mi') || pathname.startsWith('/notas')
+    ? profileLinks
+    : defaultLinks
+const isCurrent = (href: string) => href === '/' ? pathname === '/' : pathname.startsWith(href)
 ---
 <header class="site-header">
   <div class="site-header__inner">
@@ -9,7 +17,7 @@ const secondaryLinks = [['Lab', '/lab/'], ['Cómo trabajo', '/como-trabajo/'], [
       <span><strong>Ander Fernández</strong><small>Data · IA · Producto</small></span>
     </a>
     <nav class="site-nav" aria-label="Navegación principal">
-      {primaryLinks.map(([label, href]) => <a href={href} data-track-event="navigation_open" data-track-location="header">{label}</a>)}
+      {contextLinks.map(([label, href]) => <a href={href} aria-current={isCurrent(href) ? 'page' : undefined} data-track-event="navigation_open" data-track-location="header">{label}</a>)}
     </nav>
     <div class="site-header__actions" aria-label="Acciones principales">
       <a href="https://www.linkedin.com/in/ander-data-projects" target="_blank" rel="noreferrer" aria-label="Abrir LinkedIn" data-track-event="profile_open" data-track-location="header">in</a>
@@ -18,9 +26,7 @@ const secondaryLinks = [['Lab', '/lab/'], ['Cómo trabajo', '/como-trabajo/'], [
     <details class="site-mobile-menu">
       <summary aria-label="Abrir navegación">Menú <span aria-hidden="true">+</span></summary>
       <nav aria-label="Navegación móvil">
-        {primaryLinks.map(([label, href]) => <a href={href} data-track-event="navigation_open" data-track-location="mobile_menu">{label}</a>)}
-        <p>Explorar</p>
-        {secondaryLinks.map(([label, href]) => <a href={href} data-track-event="navigation_open" data-track-location="mobile_menu">{label}</a>)}
+        {contextLinks.map(([label, href]) => <a href={href} aria-current={isCurrent(href) ? 'page' : undefined} data-track-event="navigation_open" data-track-location="mobile_menu">{label}</a>)}
         <a href="/contacto/" data-track-event="contact_open" data-track-location="mobile_menu">Hablemos →</a>
       </nav>
     </details>

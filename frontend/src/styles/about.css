@@ -1,6 +1,6 @@
-.about { width: min(100% - 2rem, 1120px); margin: 0 auto; padding: clamp(3rem, 8vw, 7rem) 0; }
+.about { width: var(--page-width); margin: 0 auto; padding: clamp(2.5rem, 5vw, 5rem) 0; }
 .about h1, .about h2, .about h3 { letter-spacing: -.035em; line-height: 1.08; }
-.about h1 { max-width: 15ch; font-size: clamp(2.7rem, 7vw, 5.8rem); }
+.about h1 { max-width: 18ch; font-size: clamp(2.5rem, 5vw, 4.75rem); }
 .about h2 { font-size: clamp(1.8rem, 4vw, 3.25rem); }
 .about h3 { font-size: 1.2rem; }
 .about p { color: var(--color-text-secondary); line-height: 1.65; }

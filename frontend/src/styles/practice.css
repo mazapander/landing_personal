@@ -1,7 +1,7 @@
-.practice-page { width: min(100% - 2rem, 1120px); margin: 0 auto; padding: clamp(3rem, 8vw, 7rem) 0; }
+.practice-page { width: var(--page-width); margin: 0 auto; padding: clamp(2.5rem, 5vw, 5rem) 0; }
 .practice-hero { max-width: 820px; padding: 3rem 0 4rem; }
 .practice-hero h1, .lab-grid h2, .practice-steps h2, .practice-principles h2 { letter-spacing: -.04em; line-height: 1.05; }
-.practice-hero h1 { max-width: 16ch; font-size: clamp(2.7rem, 7vw, 5.8rem); }
+.practice-hero h1 { max-width: 18ch; font-size: clamp(2.5rem, 5vw, 4.75rem); }
 .practice-hero > p:not(.practice-eyebrow) { max-width: 65ch; margin-top: 1.5rem; color: var(--color-text-secondary); font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.65; }
 .practice-eyebrow { color: var(--color-accent); font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .lab-grid, .practice-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border); }

@@ -59,3 +59,17 @@ test('la cabecera conserva la marca y una navegación principal reducida', () =>
   assert.match(page, /class="site-mobile-menu"/)
   assert.match(page, /Hablemos/)
 })
+
+test('la navegación cambia con el contexto de la ruta', () => {
+  const projectNav = html('/proyectos/').match(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || ''
+  const profileNav = html('/sobre-mi/').match(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || ''
+
+  assert.match(projectNav, /Proyectos/)
+  assert.match(projectNav, /Servicios/)
+  assert.match(projectNav, /Arquitectura/)
+  assert.doesNotMatch(projectNav, /Inicio|Quién soy|Notas/)
+  assert.match(profileNav, /Quién soy/)
+  assert.match(profileNav, /Cómo trabajo/)
+  assert.match(profileNav, /Notas/)
+  assert.doesNotMatch(profileNav, /Inicio|Servicios|Lab/)
+})

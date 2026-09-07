@@ -308,3 +308,17 @@ Se reutiliza el favicon como marca y CSS nativo para los estados interactivos. N
 **Decisión**
 
 La jerarquía de navegación prima la intención de un potencial cliente. Los contenidos secundarios siguen accesibles desde su contexto y desde el menú móvil, sin competir con los recorridos principales en escritorio.
+
+## Corrección posterior — header contextual y escala fluida
+
+**Hecho**
+
+- El header obtiene el contexto desde la ruta: trabajo, perfil o inicio presentan cuatro destinos distintos y relacionados.
+- Escritorio y menú móvil comparten el mismo grupo contextual; desaparece el listado secundario completo del desplegable.
+- Centralizado el ancho principal en `--page-width: min(90vw, 1280px)` y aplicado a home, servicios, contacto, perfil, metodología, header y footer.
+- Reducida y acotada la escala fluida de los títulos en todas las familias de páginas para evitar cortes en pantallas de portátil.
+
+**Validado**
+
+- `npm run check`, 7 pruebas unitarias, build de 12 páginas y 4 smoke tests.
+- Los smoke tests verifican que Proyectos muestra Servicios y Arquitectura, mientras Sobre mí muestra Cómo trabajo y Notas.
