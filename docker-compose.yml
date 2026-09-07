@@ -12,6 +12,8 @@ services:
       - apps
     expose:
       - "80"
+    ports:
+      - "4321:80"
 networks:
   apps:
     external: true
