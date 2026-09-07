@@ -123,6 +123,12 @@ Refuerzo visual posterior
 - La home añade una ficha profesional y señales verificables derivadas de los casos y capacidades publicadas; no se introducen métricas de negocio no demostrables.
 - Los breakpoints de la cabecera priorizan navegación horizontal desplazable en móvil y dos filas en tablet para evitar solapes o saltos de contenido.
 
+Revisión de navegación
+
+- La navegación global queda limitada a Inicio, Proyectos, Servicios y Sobre mí; Contacto es el CTA persistente.
+- Lab, Cómo trabajo y Notas se enlazan desde los contextos donde aportan continuidad, no desde una cabecera sobrecargada.
+- Por debajo de `860px`, un elemento HTML `details` presenta el menú completo; no requiere JavaScript ni desplazamiento horizontal del header.
+
 Primera propuesta de textos
 
 Mi opción recomendada para el hero:

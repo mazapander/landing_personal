@@ -296,3 +296,15 @@ Se conserva el contenido Markdown y las pruebas existentes: el cambio es una mig
 **Decisión**
 
 Se reutiliza el favicon como marca y CSS nativo para los estados interactivos. No se añaden iconos externos, animaciones ni cifras comerciales inventadas: la mejora se apoya exclusivamente en el contenido ya verificable.
+
+## Ajuste posterior — navegación reducida
+
+**Hecho**
+
+- La cabecera muestra cuatro destinos principales y un CTA de contacto; los accesos secundarios se trasladan a los slugs relevantes.
+- En móvil y tablet el menú se despliega mediante `details`, de forma que el header conserva una sola fila y no depende de un carrusel horizontal.
+- Añadidos enlaces de continuidad entre proyectos, Lab, metodología y notas.
+
+**Decisión**
+
+La jerarquía de navegación prima la intención de un potencial cliente. Los contenidos secundarios siguen accesibles desde su contexto y desde el menú móvil, sin competir con los recorridos principales en escritorio.

@@ -13,6 +13,7 @@ const items = labItems(await getCollection('projects')) as LabItem[]
       <p class="practice-eyebrow">Lab</p>
       <h1>Productos y experimentos que se pueden explorar.</h1>
       <p>Una selección de trabajo público para comprobar cómo conecto producto, datos, IA y software más allá de una descripción.</p>
+      <nav class="page-context" aria-label="Explorar el Lab"><a href="/proyectos/">Casos de estudio <span aria-hidden="true">→</span></a><a href="/notas/">Notas <span aria-hidden="true">→</span></a></nav>
     </header>
     <section class="lab-grid" aria-label="Productos públicos">
       {items.map((item) => <article>

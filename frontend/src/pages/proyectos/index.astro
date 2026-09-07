@@ -8,7 +8,7 @@ const projects = (await getCollection('projects', ({ data }) => !data.draft)).so
 
 <BaseLayout title="Proyectos — Ander Fernández" description="Casos de estudio de producto, datos, IA y software.">
   <div class="case-study-index">
-    <header><p>Proyectos</p><h1>Casos de estudio</h1><p>Producto, datos, IA y software explicados desde el problema hasta la solución.</p></header>
+    <header><p>Proyectos</p><h1>Casos de estudio</h1><p>Producto, datos, IA y software explicados desde el problema hasta la solución.</p><nav class="page-context" aria-label="Explorar proyectos"><a href="/lab/">Ver el Lab <span aria-hidden="true">→</span></a><a href="/como-trabajo/">Cómo trabajo <span aria-hidden="true">→</span></a></nav></header>
     {projects.length > 0 ? <div class="case-study-grid">{projects.map((project) => <CaseStudyCard project={project} />)}</div> : <p class="case-study-empty">Los primeros casos de estudio se están preparando.</p>}
   </div>
 </BaseLayout>

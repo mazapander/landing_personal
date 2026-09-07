@@ -1,8 +1,6 @@
 ---
-const links = [
-  ['Inicio', '/', '01'], ['Proyectos', '/proyectos/', '02'], ['Servicios', '/servicios/', '03'], ['Lab', '/lab/', '04'],
-  ['Cómo trabajo', '/como-trabajo/', '05'], ['Sobre mí', '/sobre-mi/', '06'], ['Notas', '/notas/', '07'], ['Contacto', '/contacto/', '08'],
-]
+const primaryLinks = [['Inicio', '/'], ['Proyectos', '/proyectos/'], ['Servicios', '/servicios/'], ['Sobre mí', '/sobre-mi/']]
+const secondaryLinks = [['Lab', '/lab/'], ['Cómo trabajo', '/como-trabajo/'], ['Notas', '/notas/']]
 ---
 <header class="site-header">
   <div class="site-header__inner">
@@ -11,11 +9,20 @@ const links = [
       <span><strong>Ander Fernández</strong><small>Data · IA · Producto</small></span>
     </a>
     <nav class="site-nav" aria-label="Navegación principal">
-      {links.map(([label, href, symbol]) => <a href={href} data-track-event="navigation_open" data-track-location="header"><span aria-hidden="true">{symbol}</span>{label}</a>)}
+      {primaryLinks.map(([label, href]) => <a href={href} data-track-event="navigation_open" data-track-location="header">{label}</a>)}
     </nav>
-    <div class="site-header__profiles" aria-label="Perfiles profesionales">
+    <div class="site-header__actions" aria-label="Acciones principales">
       <a href="https://www.linkedin.com/in/ander-data-projects" target="_blank" rel="noreferrer" aria-label="Abrir LinkedIn" data-track-event="profile_open" data-track-location="header">in</a>
-      <a href="https://github.com/mazapander" target="_blank" rel="noreferrer" aria-label="Abrir GitHub" data-track-event="profile_open" data-track-location="header">⌘</a>
+      <a class="site-header__contact" href="/contacto/" data-track-event="contact_open" data-track-location="header">Hablemos <span aria-hidden="true">→</span></a>
     </div>
+    <details class="site-mobile-menu">
+      <summary aria-label="Abrir navegación">Menú <span aria-hidden="true">+</span></summary>
+      <nav aria-label="Navegación móvil">
+        {primaryLinks.map(([label, href]) => <a href={href} data-track-event="navigation_open" data-track-location="mobile_menu">{label}</a>)}
+        <p>Explorar</p>
+        {secondaryLinks.map(([label, href]) => <a href={href} data-track-event="navigation_open" data-track-location="mobile_menu">{label}</a>)}
+        <a href="/contacto/" data-track-event="contact_open" data-track-location="mobile_menu">Hablemos →</a>
+      </nav>
+    </details>
   </div>
 </header>

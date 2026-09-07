@@ -48,10 +48,14 @@ test('los enlaces internos generados y los ficheros SEO existen', () => {
   assert.match(html('/notas/'), /noindex,follow/)
 })
 
-test('la cabecera conserva la marca, perfiles y navegación accesible', () => {
+test('la cabecera conserva la marca y una navegación principal reducida', () => {
   const page = html('/')
   assert.match(page, /class="site-brand__logo"[^>]*alt="Logotipo AnderData"/)
   assert.match(page, /<nav class="site-nav" aria-label="Navegación principal">/)
+  const primaryNav = page.match(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || ''
+  assert.equal((primaryNav.match(/<a /g) || []).length, 4)
+  assert.doesNotMatch(primaryNav, /Lab|Cómo trabajo|Notas/)
   assert.match(page, /aria-label="Abrir LinkedIn"/)
-  assert.match(page, /aria-label="Abrir GitHub"/)
+  assert.match(page, /class="site-mobile-menu"/)
+  assert.match(page, /Hablemos/)
 })
