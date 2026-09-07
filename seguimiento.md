@@ -283,3 +283,16 @@ Se conserva el contenido Markdown y las pruebas existentes: el cambio es una mig
 - `npm run build`: 12 rutas estáticas generadas, incluidos los tres casos de estudio.
 - `npm audit --omit=dev --audit-level=high`: 0 vulnerabilidades.
 - `docker compose build anderdata-landing`, Nginx válido y contenedor en ejecución; `GET /proyectos/stats-feb/` devuelve 200 y una ruta inexistente devuelve 404.
+
+## Actualización posterior — jerarquía visual y navegación
+
+**Hecho**
+
+- Integrados el logotipo existente, nombre y descriptor profesional en la cabecera global, junto a accesos directos a LinkedIn y GitHub.
+- La navegación conserva sus etiquetas y añade referencias numéricas discretas; en móvil se desplaza horizontalmente y en tablet pasa a dos filas sin desbordar.
+- La home incorpora una ficha profesional y señales basadas en casos y capacidades publicadas, reduciendo el espacio vacío inicial y dando contexto antes de los proyectos.
+- Compactados los espacios finales de los encabezados de inicio, servicios, contacto, sobre mí y cómo trabajo.
+
+**Decisión**
+
+Se reutiliza el favicon como marca y CSS nativo para los estados interactivos. No se añaden iconos externos, animaciones ni cifras comerciales inventadas: la mejora se apoya exclusivamente en el contenido ya verificable.

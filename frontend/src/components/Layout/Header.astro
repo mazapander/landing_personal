@@ -1,14 +1,21 @@
 ---
 const links = [
-  ['Inicio', '/'], ['Proyectos', '/proyectos/'], ['Servicios', '/servicios/'], ['Lab', '/lab/'],
-  ['Cómo trabajo', '/como-trabajo/'], ['Sobre mí', '/sobre-mi/'], ['Notas', '/notas/'], ['Contacto', '/contacto/'],
+  ['Inicio', '/', '01'], ['Proyectos', '/proyectos/', '02'], ['Servicios', '/servicios/', '03'], ['Lab', '/lab/', '04'],
+  ['Cómo trabajo', '/como-trabajo/', '05'], ['Sobre mí', '/sobre-mi/', '06'], ['Notas', '/notas/', '07'], ['Contacto', '/contacto/', '08'],
 ]
 ---
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="site-brand" href="/" data-track-event="navigation_open" data-track-location="header_brand">Ander Fernández</a>
+    <a class="site-brand" href="/" data-track-event="navigation_open" data-track-location="header_brand">
+      <img class="site-brand__logo" src="/favicon.png" alt="Logotipo AnderData" width="40" height="40" />
+      <span><strong>Ander Fernández</strong><small>Data · IA · Producto</small></span>
+    </a>
     <nav class="site-nav" aria-label="Navegación principal">
-      {links.map(([label, href]) => <a href={href} data-track-event="navigation_open" data-track-location="header">{label}</a>)}
+      {links.map(([label, href, symbol]) => <a href={href} data-track-event="navigation_open" data-track-location="header"><span aria-hidden="true">{symbol}</span>{label}</a>)}
     </nav>
+    <div class="site-header__profiles" aria-label="Perfiles profesionales">
+      <a href="https://www.linkedin.com/in/ander-data-projects" target="_blank" rel="noreferrer" aria-label="Abrir LinkedIn" data-track-event="profile_open" data-track-location="header">in</a>
+      <a href="https://github.com/mazapander" target="_blank" rel="noreferrer" aria-label="Abrir GitHub" data-track-event="profile_open" data-track-location="header">⌘</a>
+    </div>
   </div>
 </header>

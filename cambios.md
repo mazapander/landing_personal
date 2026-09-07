@@ -58,8 +58,10 @@ Commit	Alcance	Resultado verificable
 10. feat: implement Umami event taxonomy	Eventos normalizados, CTA, proyectos, demos, servicios, contacto, UTM y atributos comunes	Tracking consistente sin nombres dinámicos difíciles de explotar
     Done - Commit: this commit
 11. feat: implement technical SEO	Canonical, sitemap, robots, metadatos por ruta, OG, JSON-LD, breadcrumbs y 404 real	Todas las páginas públicas salen indexables desde el build
+    Done
 12. test: add quality gates and deployment docs	Astro check, tests unitarios, smoke tests, accesibilidad básica, enlaces y README	Refactor reproducible y protegido frente a regresiones
-13. feat: add Payload editorial CMS (opcional)	Payload como servicio editorial, colecciones compatibles, acceso de administradores, media y previsualización	Contenido editable por usuarios no técnicos cuando la frecuencia editorial justifique base de datos y operación adicional
+    Done
+13. feat: improve visual hierarchy and navigation	Cabecera de marca responsive, enlaces de perfiles, señales de especialidad y ritmo vertical más compacto	La web comunica más contexto sin introducir contenido ficticio ni dependencias visuales
 
 Cada commit deberá:
 
@@ -113,6 +115,13 @@ frontend/
 └── astro.config.mjs
 
 En Astro, pages/ serán las vistas. React se reservará para elementos que realmente necesiten interacción: modales, filtros, formularios complejos, visualizaciones o demos.
+
+Refuerzo visual posterior
+
+- `Layout/Header.astro` concentra marca, navegación y accesos profesionales; los símbolos de navegación son decorativos y los nombres siguen disponibles para lectores de pantalla.
+- La identidad se apoya en el favicon ya existente, sin crear otro activo de marca ni descargar una librería de iconos.
+- La home añade una ficha profesional y señales verificables derivadas de los casos y capacidades publicadas; no se introducen métricas de negocio no demostrables.
+- Los breakpoints de la cabecera priorizan navegación horizontal desplazable en móvil y dos filas en tablet para evitar solapes o saltos de contenido.
 
 Primera propuesta de textos
 

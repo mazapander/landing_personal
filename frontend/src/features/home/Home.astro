@@ -8,13 +8,30 @@ const featuredProjects = projects.filter((project) => project.public).slice(0, 3
 
 <div class="home">
   <section class="home-hero">
-    <p class="home-eyebrow">Data, IA y producto digital</p>
-    <h1>{home.hero.title}</h1>
-    <p class="home-intro">{home.hero.description}</p>
-    <div class="home-actions">
-      <a class="home-button home-button--primary" href={home.hero.primaryCta.href} data-track-event="cta_click" data-track-location="home_hero_projects">{home.hero.primaryCta.label}</a>
-      <a class="home-button home-button--secondary" href={home.hero.secondaryCta.href} data-track-event="contact_open" data-track-location="home_hero">{home.hero.secondaryCta.label}</a>
+    <div>
+      <p class="home-eyebrow">Data, IA y producto digital</p>
+      <h1>{home.hero.title}</h1>
+      <p class="home-intro">{home.hero.description}</p>
+      <div class="home-actions">
+        <a class="home-button home-button--primary" href={home.hero.primaryCta.href} data-track-event="cta_click" data-track-location="home_hero_projects">{home.hero.primaryCta.label}</a>
+        <a class="home-button home-button--secondary" href={home.hero.secondaryCta.href} data-track-event="contact_open" data-track-location="home_hero">{home.hero.secondaryCta.label}</a>
+      </div>
     </div>
+    <aside class="home-hero__brief" aria-label="Resumen profesional">
+      <img src={profile.avatar} alt="Ander Fernández" width="72" height="72" />
+      <p>Trabajo con equipos que necesitan convertir datos y procesos complejos en productos útiles.</p>
+      <ul>
+        <li><span>Áreas</span>Datos · IA · Producto</li>
+        <li><span>Enfoque</span>De la idea a operación</li>
+        <li><span>Base</span>{profile.location} · remoto</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="home-signals" aria-label="Áreas de especialidad">
+    <p><strong>{featuredProjects.length}</strong><span>casos de estudio<br />publicados</span></p>
+    <p><strong>{home.capabilities.length}</strong><span>capacidades<br />conectadas</span></p>
+    <p><strong>∞</strong><span>visión de producto<br />y operación</span></p>
   </section>
 
   <section class="home-section" aria-labelledby="capabilities-title">

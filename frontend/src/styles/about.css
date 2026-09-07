@@ -4,7 +4,7 @@
 .about h2 { font-size: clamp(1.8rem, 4vw, 3.25rem); }
 .about h3 { font-size: 1.2rem; }
 .about p { color: var(--color-text-secondary); line-height: 1.65; }
-.about-hero { max-width: 800px; padding: 3rem 0 6rem; }
+.about-hero { max-width: 800px; padding: 3rem 0 4rem; }
 .about-hero > p:not(.about-eyebrow) { max-width: 65ch; margin-top: 1.5rem; font-size: clamp(1.1rem, 2vw, 1.35rem); }
 .about-eyebrow, .about-job__meta { color: var(--color-accent) !important; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .about-button, .about-link { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .75rem 1rem; border-radius: var(--radius-full); font-weight: 700; }

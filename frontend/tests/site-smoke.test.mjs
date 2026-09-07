@@ -47,3 +47,11 @@ test('los enlaces internos generados y los ficheros SEO existen', () => {
   assert.match(fs.readFileSync(path.join(dist, '404.html'), 'utf8'), /noindex,follow/)
   assert.match(html('/notas/'), /noindex,follow/)
 })
+
+test('la cabecera conserva la marca, perfiles y navegación accesible', () => {
+  const page = html('/')
+  assert.match(page, /class="site-brand__logo"[^>]*alt="Logotipo AnderData"/)
+  assert.match(page, /<nav class="site-nav" aria-label="Navegación principal">/)
+  assert.match(page, /aria-label="Abrir LinkedIn"/)
+  assert.match(page, /aria-label="Abrir GitHub"/)
+})
