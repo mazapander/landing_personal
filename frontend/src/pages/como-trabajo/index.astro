@@ -1,37 +1,52 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 
-const steps = [
-  ['Entender el problema', 'Aterrizo la necesidad, las personas implicadas, el proceso actual y una señal clara de éxito.'],
-  ['Recortar el alcance', 'Defino la primera entrega que resuelve una parte relevante sin asumir complejidad futura.'],
-  ['Construir y conectar', 'Diseño datos, aplicación e integraciones con una arquitectura proporcional al uso real.'],
-  ['Medir y evolucionar', 'Compruebo adopción, operación y resultado antes de decidir la siguiente iteración.'],
+const stages = [
+  ['IDEA', 'Empiezo por el problema, la curiosidad o la fricción. Antes de decidir tecnología, intento entender qué merece la pena construir.'],
+  ['CONTRACT', 'Escribo alcance, decisiones, límites y non-goals. El contrato sirve para que el desarrollo no se convierta en una sucesión de cambios oportunistas.'],
+  ['PLAN', 'Divido el trabajo en incrementos pequeños y revisables, con una hipótesis principal por fase y criterios claros para cerrar cada bloque.'],
+  ['BUILD', 'Uso agentes y automatización para acelerar ejecución, pero mantengo explícitas las decisiones de arquitectura, naming, datos y dominio.'],
+  ['REVIEW', 'Reviso contra contrato, tests, simplicidad y mantenimiento. Si una abstracción no resuelve complejidad real, no entra.'],
+  ['SHIP', 'Documento lo construido, qué cambió, qué queda pendiente y cuál es el siguiente paso antes de seguir iterando.'],
 ]
 ---
 
-<BaseLayout title="Cómo trabajo — Ander Fernández" description="Metodología de producto y arquitectura para construir soluciones operables.">
-  <div class="practice-page">
-    <header class="practice-hero">
-      <p class="practice-eyebrow">Cómo trabajo</p>
-      <h1>Producto y arquitectura al servicio de una decisión concreta.</h1>
-      <p>No separo la conversación de negocio de la entrega técnica: el objetivo es llegar a una solución útil, operable y capaz de evolucionar.</p>
-      <nav class="page-context" aria-label="Explorar el proceso"><a href="/servicios/">Ver servicios <span aria-hidden="true">→</span></a><a href="/contacto/">Hablemos <span aria-hidden="true">→</span></a></nav>
+<BaseLayout
+  title="Building how I build — AnderData"
+  description="Framework personal para construir software con agentes de IA manteniendo criterio, alcance, revisión y trazabilidad."
+>
+  <div class="build-method-page">
+    <header class="build-method-hero">
+      <p class="build-method-stamp">AD / PROCESS / BUILDING HOW I BUILD</p>
+      <h1>Building how I build.</h1>
+      <p>Estoy construyendo un framework personal para trabajar con agentes de IA sin entregarles el criterio. La velocidad importa, pero también saber qué se está cambiando, por qué y dónde parar.</p>
+      <p class="build-method-flow" aria-label="Flujo del framework">IDEA <span>→</span> CONTRACT <span>→</span> PLAN <span>→</span> BUILD <span>→</span> REVIEW <span>→</span> SHIP</p>
+      <nav class="build-method-links" aria-label="Explorar el framework">
+        <a href="/proyectos/">Projects <span aria-hidden="true">←</span></a>
+        <a href="https://github.com/mazapander/developer-framework-ander-fernandez" target="_blank" rel="noreferrer">Framework on GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
     </header>
-    <section class="practice-steps" aria-label="Proceso de trabajo">
-      {steps.map(([title, description], index) => <article>
-        <p class="practice-eyebrow">Paso {index + 1}</p>
-        <h2>{title}</h2>
-        <p>{description}</p>
-      </article>)}
+
+    <section class="build-method-stages" aria-label="Etapas del proceso">
+      {stages.map(([title, description], index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <h2>{title}</h2>
+            <p>{description}</p>
+          </div>
+        </article>
+      ))}
     </section>
-    <section class="practice-principles" aria-labelledby="principios">
-      <p class="practice-eyebrow">Principios</p>
-      <h2 id="principios">Lo que busco proteger en cada entrega</h2>
-      <ul>
-        <li><strong>Utilidad:</strong> la solución debe facilitar una acción real, no solo enseñar tecnología.</li>
-        <li><strong>Claridad:</strong> decisiones, límites y responsabilidades visibles para las personas implicadas.</li>
-        <li><strong>Operación:</strong> seguridad, mantenimiento y adopción se consideran desde el inicio.</li>
-      </ul>
+
+    <section class="build-method-principles" aria-labelledby="build-principles-title">
+      <p class="build-method-stamp">AD / PRINCIPLES</p>
+      <h2 id="build-principles-title">What the process is trying to protect.</h2>
+      <dl>
+        <div><dt>Criterion before automation</dt><dd>Los agentes aceleran trabajo. No deciden por sí solos qué merece entrar en el producto.</dd></div>
+        <div><dt>Clean code, not ceremony</dt><dd>Busco código legible y cambios fáciles de revisar, sin añadir capas por parecer más sofisticado.</dd></div>
+        <div><dt>Traceability</dt><dd>Contratos, decisiones y siguiente paso quedan visibles para poder retomar un proyecto sin reconstruir su historia.</dd></div>
+      </dl>
     </section>
   </div>
 </BaseLayout>
