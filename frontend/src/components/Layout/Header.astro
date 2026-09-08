@@ -1,5 +1,6 @@
 ---
 const pathname = Astro.url.pathname
+const isHome = pathname === '/'
 const links = [
   ['Proyectos', '/proyectos/'],
   ['Ideas', '/ideas/'],
@@ -13,11 +14,11 @@ const isCurrent = (label: string) => {
   return false
 }
 ---
-<header class="site-header">
+<header class={`site-header${isHome ? ' site-header--home' : ''}`}>
   <div class="site-header__inner">
     <a class="site-brand" href="/" data-track-event="navigation_open" data-track-location="header_brand" aria-label="AnderData — Inicio">
       <span class="site-brand__mark" aria-hidden="true">AF</span>
-      <span class="site-brand__name">anderdata</span>
+      <span class="site-brand__name">ANDERDATA</span>
     </a>
 
     <nav class="site-nav" aria-label="Navegación principal">

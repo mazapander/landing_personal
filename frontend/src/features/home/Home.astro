@@ -8,31 +8,44 @@ const currentBuilding = currentBuildingIds
   .filter(Boolean)
 
 const explore = [
-  { index: '01', title: 'Proyectos', description: 'Productos y herramientas que han pasado de idea a algo que se puede usar.', href: '/proyectos/' },
+  { index: '01', title: 'Proyectos', description: 'Productos, sistemas y herramientas que han pasado de idea a algo que se puede usar.', href: '/proyectos/' },
   { index: '02', title: 'Lab', description: 'Experimentos, prototipos y cosas que todavía estoy intentando entender.', href: '/lab/' },
-  { index: '03', title: 'Ideas', description: 'Notas sobre Data, IA, producto, arquitectura y decisiones de construcción.', href: '/ideas/' },
+  { index: '03', title: 'Ideas', description: 'Notas sobre datos, IA, software, arquitectura y decisiones de construcción.', href: '/ideas/' },
 ]
 ---
 
-<div class="home-v2">
+<div class="home-v3">
   <section class="home-hero" aria-labelledby="home-title">
-    <p class="home-kicker">Hola, soy Ander.</p>
-    <h1 id="home-title">Construyo cosas con <span>datos, IA y software.</span></h1>
-    <p class="home-lead">Product manager e ingeniero. Me gusta llevar ideas desde el primer boceto hasta que funcionan de verdad.</p>
-    <p class="home-meta">Product · Data · AI · Engineering</p>
-    <div class="home-actions">
-      <a class="home-action home-action--primary" href={home.hero.primaryCta.href} data-track-event="cta_click" data-track-location="home_hero_projects">{home.hero.primaryCta.label} <span aria-hidden="true">→</span></a>
-      <a class="home-action" href="https://github.com/mazapander" target="_blank" rel="noreferrer" data-track-event="profile_open" data-track-location="home_hero">GitHub <span aria-hidden="true">↗</span></a>
+    <div class="home-hero__inner">
+      <div class="home-hero__topline" aria-label="AnderData Personal Technology Lab">
+        <span>AD / PERSONAL TECHNOLOGY LAB</span>
+        <span class="home-hero__status"><i aria-hidden="true"></i> BUILDING</span>
+      </div>
+
+      <div class="home-hero__content">
+        <p class="home-hero__identity">Ander Fernández <span>/</span> Product · Data · AI · Engineering</p>
+        <h1 id="home-title">I build things with <span>software, data &amp; AI.</span></h1>
+        <p class="home-lead">Curiosidad, problemas reales y ganas de llevar ideas hasta algo que funciona.</p>
+        <div class="home-actions">
+          <a class="home-action home-action--primary" href={home.hero.primaryCta.href} data-track-event="cta_click" data-track-location="home_hero_projects">{home.hero.primaryCta.label} <span aria-hidden="true">→</span></a>
+          <a class="home-action home-action--quiet" href="https://github.com/mazapander" target="_blank" rel="noreferrer" data-track-event="profile_open" data-track-location="home_hero">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <div class="home-hero__brand-stamp" aria-hidden="true">
+        <img src="/favicon.svg" alt="" width="520" height="520" loading="eager" />
+        <span>ANDERDATA / 2026</span>
+      </div>
     </div>
   </section>
 
   <section class="home-building" aria-labelledby="building-title">
     <header class="home-section-heading">
       <div>
-        <p class="home-kicker">Ahora mismo</p>
+        <p class="home-kicker">AD / NOW</p>
         <h2 id="building-title">Currently building</h2>
       </div>
-      <p>Trabajo vivo, no una lista cerrada de portfolio.</p>
+      <p>Trabajo vivo. Proyectos que todavía cambian mientras los construyo.</p>
     </header>
 
     <div class="building-list">
@@ -53,7 +66,7 @@ const explore = [
   <section class="home-explore" aria-labelledby="explore-title">
     <header class="home-section-heading home-section-heading--compact">
       <div>
-        <p class="home-kicker">Explorar</p>
+        <p class="home-kicker">AD / EXPLORE</p>
         <h2 id="explore-title">Tres formas de entrar.</h2>
       </div>
     </header>
@@ -71,9 +84,9 @@ const explore = [
   </section>
 
   <section class="home-note" aria-labelledby="note-title">
-    <p class="home-kicker">Una web en movimiento</p>
+    <p class="home-kicker">AD / NOTES</p>
     <div>
-      <h2 id="note-title">También documento lo que voy aprendiendo mientras construyo.</h2>
+      <h2 id="note-title">Documento lo que aprendo mientras construyo.</h2>
       <a href="/ideas/" data-track-event="navigation_open" data-track-location="home_latest">Ir a Ideas <span aria-hidden="true">→</span></a>
     </div>
   </section>
