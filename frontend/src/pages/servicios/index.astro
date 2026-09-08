@@ -1,26 +1,28 @@
 ---
 import { getCollection } from 'astro:content'
-import ContactForm from '@/components/Contact/ContactForm'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 
 const services = (await getCollection('services', ({ data }) => !data.draft)).sort((a, b) => a.data.order - b.data.order)
 ---
 
-<BaseLayout title="Servicios — Ander Fernández" description="Servicios de productos de datos e IA, automatización y delivery técnico.">
+<BaseLayout title="Software, datos e IA — áreas y proyectos | Ander Fernández" description="Áreas en las que construyo y experimento: productos de datos e IA, automatización, software y arquitectura de producto.">
   <div class="services-page">
     <header class="conversion-hero">
-      <p class="conversion-eyebrow">Servicios</p>
-      <h1>Del problema a una solución que se puede usar.</h1>
-      <p>Colaboro en iniciativas donde datos, IA, software y entrega deben encajar con una necesidad de negocio concreta.</p>
-      <ContactForm client:load placement="services_hero" />
+      <p class="conversion-eyebrow">Áreas</p>
+      <h1>Problemas que me gusta explorar y construir.</h1>
+      <p>AnderData es mi espacio para probar ideas alrededor de software, datos e IA. Estas son algunas de las áreas que aparecen de forma recurrente en los proyectos.</p>
+      <nav class="page-context" aria-label="Explorar trabajo relacionado">
+        <a href="/proyectos/">Ver proyectos <span aria-hidden="true">→</span></a>
+        <a href="/lab/">Explorar el Lab <span aria-hidden="true">→</span></a>
+      </nav>
     </header>
-    <section class="services-list" aria-label="Servicios disponibles">
+    <section class="services-list" aria-label="Áreas de trabajo y experimentación">
       {services.map((service) => <article>
-        <p class="conversion-eyebrow">Servicio {service.data.order}</p>
+        <p class="conversion-eyebrow">Área {service.data.order}</p>
         <h2>{service.data.title}</h2>
         <p>{service.data.description}</p>
         <ul>{service.data.outcomes.map((outcome) => <li>{outcome}</li>)}</ul>
-        <a class="services-list__contact" href="/contacto/" data-track-event="service_contact" data-track-location="services_list" data-track-service={service.data.title}>Hablar sobre este servicio <span aria-hidden="true">→</span></a>
+        <a class="services-list__contact" href="/proyectos/" data-track-event="cta_click" data-track-location="areas_list" data-track-service={service.data.title}>Ver proyectos relacionados <span aria-hidden="true">→</span></a>
       </article>)}
     </section>
   </div>

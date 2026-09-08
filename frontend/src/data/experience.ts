@@ -12,8 +12,8 @@ export const experience = [
     highlights: [
       'Refactorización de ingestas ERP y consolidación de arquitectura DWH.',
       'Escalado del ecosistema BI corporativo de 30 a 150 dashboards.',
-      'Despliegue de iniciativas GenAI con foco en adopción, seguridad y control.'
-    ]
+      'Despliegue de iniciativas GenAI con foco en adopción, seguridad y control.',
+    ],
   },
   {
     id: 'helix',
@@ -26,8 +26,8 @@ export const experience = [
     highlights: [
       'Estimación de consumo energético en edificios públicos como hospitales.',
       'Coordinación técnica de un equipo pequeño de 2–3 personas.',
-      'Conversión de datos dispersos en indicadores útiles para decisión.'
-    ]
+      'Conversión de datos dispersos en indicadores útiles para decisión.',
+    ],
   },
   {
     id: 'ferchau',
@@ -40,21 +40,21 @@ export const experience = [
     highlights: [
       'Matching candidatos-ofertas con modelos de lenguaje y criterios explicables.',
       'Scoring orientado a reducir fricción en procesos de selección.',
-      'Liderazgo técnico de equipo junior en componentes de IA.'
-    ]
+      'Liderazgo técnico de equipo junior en componentes de IA.',
+    ],
   },
   {
     id: 'anderdata',
     company: 'AnderData',
-    role: 'Builder / Freelance Data, IA & Automatización',
-    period: 'Actualidad',
-    location: 'Proyectos propios y consultoría independiente',
+    role: 'Personal Product Lab · Software, Data & AI',
+    period: 'Proyecto personal',
+    location: 'Proyectos propios y experimentación',
     logo: '/companies/anderdata.svg',
-    description: 'Laboratorio personal para construir productos reales de datos, IA, automatización, dashboards y herramientas verticales desplegables.',
+    description: 'Marca personal y laboratorio donde construyo productos, prototipos y herramientas para aprender, probar ideas y resolver problemas concretos con software, datos e IA.',
     highlights: [
-      'Productos propios con React, TypeScript, FastAPI, Postgres y Docker.',
-      'Automatizaciones WhatsApp, dashboards y herramientas de scraping e ingesta.',
-      'Foco en soluciones pequeñas, útiles, mantenibles y monetizables.'
-    ]
-  }
+      'Productos y herramientas propias con Astro, React, TypeScript, FastAPI, Postgres y Docker.',
+      'Experimentos de automatización, computer vision, analítica, scraping e integración de sistemas.',
+      'Documentación pública del proceso: qué funciona, qué no y cómo evoluciona cada idea.',
+    ],
+  },
 ] satisfies Experience[]

@@ -1,11 +1,11 @@
 ---
 title: Automatización de procesos
-description: Conecto herramientas, datos y reglas de negocio para reducir trabajo manual y hacer los procesos más fiables.
+description: Exploro cómo conectar herramientas, datos y reglas para reducir trabajo manual y hacer los procesos más fiables.
 outcomes:
-  - Mapa del proceso y puntos de fricción.
-  - Automatización con controles y trazabilidad.
-  - Métrica para comprobar el tiempo o errores ahorrados.
+  - Entender el proceso y localizar puntos de fricción.
+  - Automatizar pasos repetitivos con controles y trazabilidad.
+  - Medir si realmente se ahorra tiempo o se reducen errores.
 order: 2
 ---
 
-Para operaciones que dependen de hojas de cálculo, mensajes o tareas repetitivas entre sistemas.
+Me interesan especialmente los procesos que todavía dependen de hojas de cálculo, mensajes o tareas repetitivas entre sistemas.

@@ -9,22 +9,24 @@ import { groupTechnologies } from '@/lib/technology-groups.mjs'
 const technologyGroups = groupTechnologies(technologies) as Record<string, typeof technologies>
 const professionalLinks = socialLinks.filter(({ id }) => id === 'linkedin' || id === 'github')
 const contact = socialLinks.find(({ id }) => id === 'email')
+const professionalExperience = experience.filter(({ id }) => id !== 'anderdata')
+const anderData = experience.find(({ id }) => id === 'anderdata')
 ---
 
-<BaseLayout title="Sobre mí — Ander Fernández" description="Trayectoria en datos, IA, producto digital y delivery técnico.">
+<BaseLayout title="Sobre mí — Ander Fernández" description="Trayectoria profesional y proyectos personales alrededor de producto, datos, IA y software.">
   <div class="about">
     <header class="about-hero">
       <p class="about-eyebrow">Sobre mí</p>
-      <h1>Datos, IA y producto para resolver problemas que importan.</h1>
+      <h1>Construyo, pruebo y aprendo alrededor de producto, datos e IA.</h1>
       <p>{profile.description}</p>
-      {contact && <a class="about-button" href={contact.url} data-track-event="contact_open" data-track-location="about_hero">Solicitar CV</a>}
+      <a class="about-button" href="/proyectos/" data-track-event="cta_click" data-track-location="about_hero">Ver proyectos</a>
     </header>
 
     <section class="about-section" aria-labelledby="experiencia">
-      <p class="about-eyebrow">Trayectoria</p>
-      <h2 id="experiencia">Experiencia y empresas</h2>
+      <p class="about-eyebrow">Trayectoria profesional</p>
+      <h2 id="experiencia">Experiencia profesional</h2>
       <div class="about-experience">
-        {experience.map((job) => <article class="about-job">
+        {professionalExperience.map((job) => <article class="about-job">
           <img src={job.logo} alt="" width="56" height="56" />
           <div>
             <p class="about-job__meta">{job.period} · {job.location}</p>
@@ -37,13 +39,28 @@ const contact = socialLinks.find(({ id }) => id === 'email')
       </div>
     </section>
 
+    {anderData && <section class="about-section" aria-labelledby="anderdata-lab">
+      <p class="about-eyebrow">AnderData</p>
+      <h2 id="anderdata-lab">Un laboratorio personal para construir cosas.</h2>
+      <article class="about-job">
+        <img src={anderData.logo} alt="" width="56" height="56" />
+        <div>
+          <p class="about-job__meta">{anderData.period} · {anderData.location}</p>
+          <h3>{anderData.company}</h3>
+          <p class="about-job__role">{anderData.role}</p>
+          <p>{anderData.description}</p>
+          <ul>{anderData.highlights.map((highlight) => <li>{highlight}</li>)}</ul>
+        </div>
+      </article>
+    </section>}
+
     <section class="about-section" aria-labelledby="forma-de-trabajo">
       <p class="about-eyebrow">En la práctica</p>
       <h2 id="forma-de-trabajo">Cómo trabajo</h2>
       <div class="about-principles">
-        <article><h3>Entender antes de construir</h3><p>Conecto la necesidad de negocio con datos, usuarios, restricciones y una métrica de resultado.</p></article>
-        <article><h3>Entregar por partes</h3><p>Priorizo una primera solución útil, medible y mantenible antes de ampliar el alcance.</p></article>
-        <article><h3>Dejarlo operable</h3><p>La arquitectura, los procesos y la adopción importan tanto como la primera demostración.</p></article>
+        <article><h3>Entender antes de construir</h3><p>Intento entender el problema, los datos, las restricciones y qué tendría que pasar para considerar que una idea funciona.</p></article>
+        <article><h3>Construir por partes</h3><p>Prefiero una primera versión pequeña que se pueda probar antes que diseñar durante meses una solución perfecta.</p></article>
+        <article><h3>Dejarlo operable</h3><p>Si algo merece seguir vivo, la arquitectura, el mantenimiento y la forma de medirlo importan tanto como la demo inicial.</p></article>
       </div>
     </section>
 
@@ -68,10 +85,10 @@ const contact = socialLinks.find(({ id }) => id === 'email')
 
     <section class="about-contact" aria-labelledby="perfiles">
       <p class="about-eyebrow">Contacto</p>
-      <h2 id="perfiles">CV y perfiles profesionales</h2>
-      <p>Si crees que puedo ayudar, escríbeme. Comparto el CV actualizado y contexto relevante para la conversación.</p>
+      <h2 id="perfiles">Ideas, proyectos y perfiles</h2>
+      <p>Si quieres comentar una idea, un proyecto, una colaboración o simplemente intercambiar contexto, puedes escribirme.</p>
       <div class="about-actions">
-        {contact && <a class="about-button" href={contact.url} data-track-event="contact_open" data-track-location="about_contact">Solicitar CV</a>}
+        {contact && <a class="about-button" href={contact.url} data-track-event="contact_open" data-track-location="about_contact">Escríbeme</a>}
         {professionalLinks.map((link) => <a class="about-link" href={link.url} target="_blank" rel="noreferrer" data-track-event="profile_open" data-track-location="about_contact">{link.label}</a>)}
       </div>
     </section>

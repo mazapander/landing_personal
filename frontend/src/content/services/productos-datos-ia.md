@@ -1,11 +1,11 @@
 ---
 title: Productos de datos e IA
-description: Diseño y construyo productos que convierten datos y modelos en herramientas que un equipo puede usar y medir.
+description: Construyo productos y experimentos que convierten datos y modelos en herramientas que se pueden probar, medir y mejorar.
 outcomes:
-  - Caso de uso priorizado y criterio de éxito.
-  - Flujo de datos, IA y aplicación preparado para producción.
-  - Entrega inicial medible y un plan claro de evolución.
+  - Detectar un caso de uso concreto y una forma de medir si funciona.
+  - Conectar datos, modelos y aplicación sin perder de vista la operación real.
+  - Probar una primera versión útil antes de ampliar el alcance.
 order: 1
 ---
 
-Para equipos que necesitan pasar de una oportunidad de datos o IA a un producto útil, no a una demo aislada.
+Esta área aparece en proyectos donde quiero pasar de una idea o un dataset a algo que una persona pueda usar de verdad.

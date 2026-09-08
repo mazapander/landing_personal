@@ -1,11 +1,11 @@
 ---
-title: Delivery y arquitectura de producto
-description: Alineo necesidad, alcance y decisiones técnicas para que un equipo pueda entregar con menos incertidumbre.
+title: Producto y arquitectura de software
+description: Me interesa ordenar alcance, decisiones técnicas y entrega para convertir una idea en algo pequeño, entendible y mantenible.
 outcomes:
-  - Alcance inicial priorizado y entregable.
-  - Arquitectura proporcional al problema.
-  - Ritmo de entrega, riesgos y métricas compartidas.
+  - Delimitar una primera versión que se pueda probar.
+  - Elegir una arquitectura proporcional al problema.
+  - Hacer visibles riesgos, decisiones y siguientes pasos.
 order: 3
 ---
 
-Para iniciativas que necesitan ordenar el camino entre una demanda de negocio y una solución desplegable.
+Esta área aparece cuando una idea necesita pasar de conversación o prototipo a un producto que pueda seguir evolucionando.
