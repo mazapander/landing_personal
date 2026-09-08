@@ -92,32 +92,56 @@ Contenido nuevo:
 
 Pendiente para cerrar completamente la fase:
 
-- [ ] llevar la misma jerarquía de familias a `/proyectos/`;
+- [x] llevar la misma jerarquía de familias a `/proyectos/`;
 - [ ] revisar qué contenido legacy de `data/projects.ts` puede retirarse sin romper usos;
 - [ ] validar visualmente las cuatro historias en todas las anchuras objetivo.
 
 ## Fase 3 — Projects information architecture
 
-**Estado:** NEXT
+**Estado:** DONE — implementation shipped  
+**Commits:** `427b59988ac4b38b6178ce8cff1e0d3123b0cc28`, `e2bdbea4d7a68eee3f6ddad3eefa98c9fb512117`
 
 **Objetivo:** convertir `/proyectos/` en la puerta de entrada al trabajo construido.
 
-Scope:
+Entregado:
 
-- [ ] navegación secundaria `Featured / Lab / Systems / Automations`;
-- [ ] listado editorial en vez de grid SaaS cuando sea posible;
-- [ ] utilizar Basketball Intelligence, AnderData Systems y Connected Home como páginas paraguas;
-- [ ] ordenar proyectos secundarios dentro de esas historias;
-- [ ] reubicar `Cómo trabajo` como contenido contextual del framework;
-- [ ] mantener rutas existentes o redirects si cambian.
+- [x] navegación secundaria `Featured / Lab / Systems / Automations`;
+- [x] listado editorial en vez de grid SaaS;
+- [x] cuatro historias destacadas con prioridad explícita;
+- [x] Basketball Intelligence presentado como ecosistema `structured data → labelled video → computer vision`;
+- [x] AnderData Systems y Connected Home agrupados como sistemas, no como listas de herramientas;
+- [x] Automations presentado como librería extensible sin crear rutas vacías antes de Fase 4;
+- [x] WhatsApp Appointments e Industrial Cutting Optimizer mantenidos como proyectos secundarios con identidad propia;
+- [x] `Cómo trabajo` reubicado conceptualmente como `Building how I build` dentro de Projects;
+- [x] `/como-trabajo/` reescrito alrededor de `IDEA → CONTRACT → PLAN → BUILD → REVIEW → SHIP`;
+- [x] eliminada de esa página la narrativa de servicios/consultoría y sustituida por el framework real de trabajo con agentes;
+- [x] rutas existentes mantenidas, por lo que no hacen falta redirects en esta fase;
+- [x] no se añadieron nuevas pestañas al header principal;
+- [x] no se añadieron dependencias ni abstracciones nuevas.
 
-Criterio de aceptación:
+Ficheros principales:
 
-- entrar en `/proyectos/` debe explicar el mapa del Lab sin parecer una lista de repositorios;
-- las páginas paraguas deben funcionar como clusters SEO y como navegación humana;
-- no añadir nuevas pestañas al header principal.
+- `frontend/src/pages/proyectos/index.astro`
+- `frontend/src/styles/case-studies.css`
+- `frontend/src/pages/como-trabajo/index.astro`
+- `frontend/src/styles/practice.css`
+
+Decisiones:
+
+- `/proyectos/` explica primero historias y universos; GitHub sigue siendo el lugar donde viven los repositorios.
+- `Automations` existe ya como lenguaje y flujo visual, pero la colección de contenido se reserva para Fase 4.
+- `Building how I build` demuestra proceso mediante artefactos, contratos y revisión; no se vende como metodología abstracta.
+- Las tecnologías siguen siendo evidencia secundaria frente al problema y al sistema construido.
+
+Verificación:
+
+- La implementación evita `<main>` anidados y mantiene semántica del `BaseLayout`.
+- Se han mantenido los breakpoints existentes de marca y los nuevos layouts degradan a una columna en móvil.
+- GitHub no expone actualmente un check de CI asociado a estos commits; no se marca `npm run verify` como ejecutado desde el conector.
 
 ## Fase 4 — Automations library
+
+**Estado:** NEXT
 
 **Objetivo:** añadir contenido incremental de bajo coste editorial.
 
