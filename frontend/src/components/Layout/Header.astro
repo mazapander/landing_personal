@@ -1,33 +1,42 @@
 ---
 const pathname = Astro.url.pathname
-const defaultLinks = [['Inicio', '/'], ['Proyectos', '/proyectos/'], ['Servicios', '/servicios/'], ['Quién soy', '/sobre-mi/']]
-const workLinks = [['Proyectos', '/proyectos/'], ['Servicios', '/servicios/'], ['Arquitectura', '/como-trabajo/'], ['Lab', '/lab/']]
-const profileLinks = [['Quién soy', '/sobre-mi/'], ['Cómo trabajo', '/como-trabajo/'], ['Notas', '/notas/'], ['Proyectos', '/proyectos/']]
-const contextLinks = pathname.startsWith('/proyectos') || pathname.startsWith('/servicios') || pathname.startsWith('/lab') || pathname.startsWith('/como-trabajo')
-  ? workLinks
-  : pathname.startsWith('/sobre-mi') || pathname.startsWith('/notas')
-    ? profileLinks
-    : defaultLinks
-const isCurrent = (href: string) => href === '/' ? pathname === '/' : pathname.startsWith(href)
+const links = [
+  ['Proyectos', '/proyectos/'],
+  ['Ideas', '/ideas/'],
+  ['Sobre mí', '/sobre-mi/'],
+]
+
+const isCurrent = (label: string) => {
+  if (label === 'Proyectos') return pathname.startsWith('/proyectos') || pathname.startsWith('/lab') || pathname.startsWith('/como-trabajo')
+  if (label === 'Ideas') return pathname.startsWith('/ideas') || pathname.startsWith('/notas')
+  if (label === 'Sobre mí') return pathname.startsWith('/sobre-mi') || pathname.startsWith('/contacto')
+  return false
+}
 ---
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="site-brand" href="/" data-track-event="navigation_open" data-track-location="header_brand">
-      <img class="site-brand__logo" src="/favicon.png" alt="Logotipo AnderData" width="40" height="40" />
-      <span><strong>Ander Fernández</strong><small>Data · IA · Producto</small></span>
+    <a class="site-brand" href="/" data-track-event="navigation_open" data-track-location="header_brand" aria-label="AnderData — Inicio">
+      <span class="site-brand__mark" aria-hidden="true">AF</span>
+      <span class="site-brand__name">anderdata</span>
     </a>
+
     <nav class="site-nav" aria-label="Navegación principal">
-      {contextLinks.map(([label, href]) => <a href={href} aria-current={isCurrent(href) ? 'page' : undefined} data-track-event="navigation_open" data-track-location="header">{label}</a>)}
+      {links.map(([label, href]) => (
+        <a href={href} aria-current={isCurrent(label) ? 'page' : undefined} data-track-event="navigation_open" data-track-location="header">{label}</a>
+      ))}
     </nav>
-    <div class="site-header__actions" aria-label="Acciones principales">
-      <a href="https://www.linkedin.com/in/ander-data-projects" target="_blank" rel="noreferrer" aria-label="Abrir LinkedIn" data-track-event="profile_open" data-track-location="header">in</a>
-      <a class="site-header__contact" href="/contacto/" data-track-event="contact_open" data-track-location="header">Hablemos <span aria-hidden="true">→</span></a>
-    </div>
+
+    <a class="site-header__external" href="https://github.com/mazapander" target="_blank" rel="noreferrer" data-track-event="profile_open" data-track-location="header">
+      GitHub <span aria-hidden="true">↗</span>
+    </a>
+
     <details class="site-mobile-menu">
-      <summary aria-label="Abrir navegación">Menú <span aria-hidden="true">+</span></summary>
+      <summary aria-label="Abrir navegación"><span>Menú</span><span aria-hidden="true">+</span></summary>
       <nav aria-label="Navegación móvil">
-        {contextLinks.map(([label, href]) => <a href={href} aria-current={isCurrent(href) ? 'page' : undefined} data-track-event="navigation_open" data-track-location="mobile_menu">{label}</a>)}
-        <a href="/contacto/" data-track-event="contact_open" data-track-location="mobile_menu">Hablemos →</a>
+        {links.map(([label, href]) => (
+          <a href={href} aria-current={isCurrent(label) ? 'page' : undefined} data-track-event="navigation_open" data-track-location="mobile_menu">{label}</a>
+        ))}
+        <a href="https://github.com/mazapander" target="_blank" rel="noreferrer" data-track-event="profile_open" data-track-location="mobile_menu">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
     </details>
   </div>
