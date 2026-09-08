@@ -16,7 +16,8 @@
 
 ## Fase 0 — Contratos
 
-**Estado:** en ejecución.
+**Estado:** DONE  
+**Commit:** `b08325125ce2b8c77fbeaa7ceb205f7c71d58e63`
 
 Entregables:
 
@@ -26,64 +27,78 @@ Entregables:
 - [x] brand system V3;
 - [x] plan de ejecución V3.
 
-Criterio de cierre:
+Decisión principal:
 
-- cualquier developer puede decidir si un cambio encaja sin reinterpretar conversaciones previas.
+> AnderData se diseña como marca personal tecnológica reconocible, no como consultora, CV web o catálogo de repositorios.
 
 ## Fase 1 — Brand foundation + Hero
 
-**Objetivo:** hacer que una captura de la home empiece a ser reconocible como AnderData.
+**Estado:** DONE  
+**Commit:** `d4602b474f7b0e3c1010e68bff9429d224619156`
 
-Scope:
+Entregado:
 
-- [ ] convertir el Hero en el principal bloque `ink` de la web;
-- [ ] introducir `signal` como acento único y controlado;
-- [ ] usar el logo completo como brand stamp de gran formato y baja interferencia;
-- [ ] mantener `AF` como mark pequeño hasta disponer de simplificación específica;
-- [ ] incorporar technical stamp `AD / PERSONAL TECHNOLOGY LAB`;
-- [ ] reducir aún más el copy del primer viewport;
-- [ ] revisar CTA principal/secundario;
-- [ ] asegurar responsive sin saltos manuales;
-- [ ] añadir soporte de `prefers-reduced-motion` para cualquier microinteracción nueva.
+- [x] Hero `ink` a ancho completo;
+- [x] `signal` coral como acento de marca;
+- [x] logo completo usado como brand stamp de gran formato;
+- [x] `AF` mantenido como mark pequeño por legibilidad;
+- [x] technical stamp `AD / PERSONAL TECHNOLOGY LAB`;
+- [x] copy del primer viewport reducido;
+- [x] CTA principal + enlace secundario;
+- [x] responsive fluido sin saltos manuales;
+- [x] soporte de `prefers-reduced-motion`.
 
-Fuera de scope:
+Ficheros principales:
 
-- rediseñar todos los case studies;
-- dark mode global;
-- nuevas dependencias;
-- animaciones complejas.
+- `frontend/src/components/Layout/Header.astro`
+- `frontend/src/features/home/Home.astro`
+- `frontend/src/styles/home.css`
+- `frontend/src/styles/shell.css`
+- `frontend/src/styles/tokens.css`
 
-Criterio de aceptación:
+Fuera de scope respetado:
 
-- primer viewport entendible en <5 s;
-- Hero identificable en una captura sin ver el dominio;
-- no parece consultora ni SaaS;
-- funciona de 320 a 1440+ px;
-- no aumenta el número de CTAs.
+- no se añadieron dependencias;
+- no se creó un dark mode global;
+- no se rediseñaron case studies;
+- no se añadieron animaciones complejas.
 
 ## Fase 2 — Families on Home
 
-**Objetivo:** dejar de enseñar repos aislados y empezar a enseñar ecosistemas.
+**Estado:** PARTIAL — foundation shipped  
+**Commit:** `33f516726c2843e42e35540a16e14a776699a134`
 
-Scope:
+Entregado:
 
-- [ ] crear un modelo ligero de familias de proyecto;
-- [ ] `Data & AI Products`;
-- [ ] `Basketball Intelligence`;
-- [ ] `AnderData Systems`;
-- [ ] `Connected Home Lab`;
-- [ ] `Automations`;
-- [ ] `Building how I build`;
-- [ ] incluir `Industrial Cutting Optimizer` sin crear todavía una categoría independiente;
-- [ ] limitar destacados en home a 3–4 historias.
+- [x] modelo ligero de historias/familias para la Home;
+- [x] máximo cuatro historias principales;
+- [x] IA Compra Pisos como producto destacado;
+- [x] Basketball Intelligence como ecosistema;
+- [x] AnderData Systems como ecosistema;
+- [x] Connected Home Lab como ecosistema;
+- [x] Automations presentado como extensión del Lab;
+- [x] Building how I build presentado como extensión del Lab;
+- [x] Industrial Cutting Optimizer añadido como proyecto sin crear una categoría prematura;
+- [x] Basketball Video Tagger añadido como proyecto propio;
+- [x] la Home lee `Currently building` desde Astro Content en vez de duplicar esos datos en `data/projects.ts`.
 
-Criterio de aceptación:
+Contenido nuevo:
 
-- la home no se convierte en catálogo;
-- cada familia explica una capacidad mediante piezas reales;
-- tecnologías quedan en segundo plano.
+- `frontend/src/content/projects/basketball-intelligence.md`
+- `frontend/src/content/projects/anderdata-systems.md`
+- `frontend/src/content/projects/connected-home-lab.md`
+- `frontend/src/content/projects/basketball-video-tagger.md`
+- `frontend/src/content/projects/industrial-cutting-optimizer.md`
+
+Pendiente para cerrar completamente la fase:
+
+- [ ] llevar la misma jerarquía de familias a `/proyectos/`;
+- [ ] revisar qué contenido legacy de `data/projects.ts` puede retirarse sin romper usos;
+- [ ] validar visualmente las cuatro historias en todas las anchuras objetivo.
 
 ## Fase 3 — Projects information architecture
+
+**Estado:** NEXT
 
 **Objetivo:** convertir `/proyectos/` en la puerta de entrada al trabajo construido.
 
@@ -91,9 +106,16 @@ Scope:
 
 - [ ] navegación secundaria `Featured / Lab / Systems / Automations`;
 - [ ] listado editorial en vez de grid SaaS cuando sea posible;
-- [ ] páginas paraguas para Basketball Intelligence, AnderData Systems y Connected Home;
+- [ ] utilizar Basketball Intelligence, AnderData Systems y Connected Home como páginas paraguas;
+- [ ] ordenar proyectos secundarios dentro de esas historias;
 - [ ] reubicar `Cómo trabajo` como contenido contextual del framework;
 - [ ] mantener rutas existentes o redirects si cambian.
+
+Criterio de aceptación:
+
+- entrar en `/proyectos/` debe explicar el mapa del Lab sin parecer una lista de repositorios;
+- las páginas paraguas deben funcionar como clusters SEO y como navegación humana;
+- no añadir nuevas pestañas al header principal.
 
 ## Fase 4 — Automations library
 
@@ -159,9 +181,7 @@ Solo después de que estructura y contenido funcionen.
 - [ ] revisión de Core Web Vitals;
 - [ ] limpiar CSS y componentes que hayan quedado obsoletos.
 
-## Seguimiento
-
-Formato para cerrar cada fase:
+## Formato de cierre de fase
 
 ```md
 ### Fase X — Nombre
