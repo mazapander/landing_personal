@@ -1,17 +1,14 @@
 ---
+import { getCollection } from 'astro:content'
 import { home } from '@/data/home'
-import { projects } from '@/data/projects'
+import { labExtensions, projectFamilies } from '@/data/project-families'
+import { projectPath } from '@/lib/project-paths.mjs'
 
-const currentBuildingIds = ['ia-compra-pisos', 'motion-lab', 'stats-feb']
+const contentProjects = await getCollection('projects', ({ data }) => !data.draft)
+const currentBuildingIds = ['ia-compra-pisos', 'basketball-intelligence', 'anderdata-systems']
 const currentBuilding = currentBuildingIds
-  .map((id) => projects.find((project) => project.id === id))
+  .map((id) => contentProjects.find((project) => project.id === id))
   .filter(Boolean)
-
-const explore = [
-  { index: '01', title: 'Proyectos', description: 'Productos, sistemas y herramientas que han pasado de idea a algo que se puede usar.', href: '/proyectos/' },
-  { index: '02', title: 'Lab', description: 'Experimentos, prototipos y cosas que todavía estoy intentando entender.', href: '/lab/' },
-  { index: '03', title: 'Ideas', description: 'Notas sobre datos, IA, software, arquitectura y decisiones de construcción.', href: '/ideas/' },
-]
 ---
 
 <div class="home-v3">
@@ -53,31 +50,44 @@ const explore = [
         <article class="building-row">
           <span class="building-index">{String(index + 1).padStart(2, '0')}</span>
           <div class="building-copy">
-            <h3><a href={project.url} target={project.url.startsWith('http') ? '_blank' : undefined} rel={project.url.startsWith('http') ? 'noreferrer' : undefined}>{project.title}</a></h3>
-            <p>{project.description}</p>
+            <h3><a href={projectPath(project.id)}>{project.data.title}</a></h3>
+            <p>{project.data.description}</p>
           </div>
-          <span class="building-status"><span aria-hidden="true"></span>{project.status}</span>
-          <a class="building-arrow" href={project.url} target={project.url.startsWith('http') ? '_blank' : undefined} rel={project.url.startsWith('http') ? 'noreferrer' : undefined} aria-label={`Abrir ${project.title}`}>↗</a>
+          <span class="building-status"><span aria-hidden="true"></span>{project.data.status}</span>
+          <a class="building-arrow" href={projectPath(project.id)} aria-label={`Abrir ${project.data.title}`}>→</a>
         </article>
       ))}
     </div>
   </section>
 
   <section class="home-explore" aria-labelledby="explore-title">
-    <header class="home-section-heading home-section-heading--compact">
+    <header class="home-section-heading">
       <div>
-        <p class="home-kicker">AD / EXPLORE</p>
-        <h2 id="explore-title">Tres formas de entrar.</h2>
+        <p class="home-kicker">AD / LAB</p>
+        <h2 id="explore-title">Cuatro historias. Un mismo laboratorio.</h2>
       </div>
+      <p>No organizo la web por tecnologías. La organizo por problemas y cosas que estoy intentando construir.</p>
     </header>
 
-    <div class="explore-grid">
-      {explore.map((item) => (
-        <a class="explore-link" href={item.href} data-track-event="navigation_open" data-track-location="home_explore">
-          <span class="explore-index">{item.index}</span>
-          <h3>{item.title}</h3>
+    <div class="family-grid">
+      {projectFamilies.map((family) => (
+        <a class="family-link" href={family.href} data-track-event="project_family_open" data-track-location="home_families" data-track-project={family.title}>
+          <div class="family-meta"><span>{family.index}</span><span>AD / {family.type}</span></div>
+          <h3>{family.title}</h3>
+          <p>{family.description}</p>
+          <ul aria-label={`Piezas de ${family.title}`}>{family.items.map((item) => <li>{item}</li>)}</ul>
+          <span class="family-arrow" aria-hidden="true">→</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="family-secondary" aria-label="Más áreas del laboratorio">
+      {labExtensions.map((item) => (
+        <a href={item.href} data-track-event="navigation_open" data-track-location="home_lab_extensions">
+          <span>AD / {item.type}</span>
+          <strong>{item.title}</strong>
           <p>{item.description}</p>
-          <span class="explore-arrow" aria-hidden="true">→</span>
+          <i aria-hidden="true">→</i>
         </a>
       ))}
     </div>
