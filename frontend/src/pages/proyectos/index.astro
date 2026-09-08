@@ -1,14 +1,173 @@
 ---
 import { getCollection } from 'astro:content'
-import CaseStudyCard from '@/components/Projects/CaseStudyCard.astro'
+import { projectPath } from '@/lib/project-paths.mjs'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 
-const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort((a, b) => Number(b.data.featured) - Number(a.data.featured))
+const projects = await getCollection('projects', ({ data }) => !data.draft)
+const projectById = new Map(projects.map((project) => [project.id, project]))
+const pick = (ids: string[]) => ids.map((id) => projectById.get(id)).filter(Boolean)
+
+const featured = pick([
+  'ia-compra-pisos',
+  'basketball-intelligence',
+  'anderdata-systems',
+  'connected-home-lab',
+])
+
+const labProjects = pick([
+  'basketball-video-tagger',
+  'stats-feb',
+])
+
+const systems = pick([
+  'anderdata-systems',
+  'connected-home-lab',
+])
+
+const moreBuilt = pick([
+  'whatsapp-saas',
+  'industrial-cutting-optimizer',
+])
+
+const basketball = projectById.get('basketball-intelligence')
 ---
 
-<BaseLayout title="Proyectos — Ander Fernández" description="Casos de estudio de producto, datos, IA y software.">
-  <div class="case-study-index">
-    <header><p>Proyectos</p><h1>Casos de estudio</h1><p>Producto, datos, IA y software explicados desde el problema hasta la solución.</p><nav class="page-context" aria-label="Explorar proyectos"><a href="/lab/">Ver el Lab <span aria-hidden="true">→</span></a><a href="/como-trabajo/">Cómo trabajo <span aria-hidden="true">→</span></a></nav></header>
-    {projects.length > 0 ? <div class="case-study-grid">{projects.map((project) => <CaseStudyCard project={project} />)}</div> : <p class="case-study-empty">Los primeros casos de estudio se están preparando.</p>}
+<BaseLayout
+  title="Projects — AnderData"
+  description="Productos, sistemas y experimentos de AnderData: software, datos, IA, automatización, infraestructura y connected home."
+>
+  <div class="projects-index">
+    <header class="projects-intro">
+      <p class="projects-stamp">AD / PROJECTS / INDEX</p>
+      <h1>Things I've built.</h1>
+      <p class="projects-intro__lead">Productos, sistemas y experimentos nacidos de problemas que parecían suficientemente interesantes como para construir algo alrededor.</p>
+
+      <nav class="projects-subnav" aria-label="Explorar proyectos">
+        <a href="#featured">Featured</a>
+        <a href="#lab">Lab</a>
+        <a href="#systems">Systems</a>
+        <a href="#automations">Automations</a>
+      </nav>
+    </header>
+
+    <section id="featured" class="projects-section projects-featured" aria-labelledby="featured-title">
+      <header class="projects-section__heading">
+        <p class="projects-stamp">AD / FEATURED / 01</p>
+        <div>
+          <h2 id="featured-title">Four stories worth starting with.</h2>
+          <p>No son los únicos proyectos. Son los que mejor explican cómo conecto producto, datos, software y sistemas.</p>
+        </div>
+      </header>
+
+      <div class="project-feature-list">
+        {featured.map((project, index) => project && (
+          <a class="project-feature-row" href={projectPath(project.id)} data-track-event="project_case_open" data-track-location="projects_featured" data-track-project={project.id}>
+            <span class="project-feature-row__index">{String(index + 1).padStart(2, '0')}</span>
+            <div class="project-feature-row__copy">
+              <p>{project.data.status}</p>
+              <h3>{project.data.title}</h3>
+              <p>{project.data.description}</p>
+            </div>
+            <span class="project-feature-row__arrow" aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section id="lab" class="projects-section projects-universe projects-universe--ink" aria-labelledby="lab-title">
+      <div class="projects-universe__inner">
+        <header class="projects-universe__heading">
+          <p class="projects-stamp">AD / LAB / 02</p>
+          <div>
+            <h2 id="lab-title">Basketball Intelligence.</h2>
+            <p>Un laboratorio para conectar datos estructurados, vídeo etiquetado y computer vision.</p>
+          </div>
+        </header>
+
+        <p class="projects-flow" aria-label="Flujo del laboratorio de baloncesto">STRUCTURED DATA <span>→</span> LABELLED VIDEO <span>→</span> COMPUTER VISION</p>
+
+        {basketball && (
+          <a class="projects-universe__primary" href={projectPath(basketball.id)} data-track-event="project_case_open" data-track-location="projects_lab" data-track-project={basketball.id}>
+            <span>Explore the ecosystem</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        )}
+
+        <div class="projects-related-list">
+          {labProjects.map((project, index) => project && (
+            <a href={projectPath(project.id)} data-track-event="project_case_open" data-track-location="projects_lab_piece" data-track-project={project.id}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <div><strong>{project.data.title}</strong><small>{project.data.status}</small></div>
+              <span aria-hidden="true">→</span>
+            </a>
+          ))}
+        </div>
+
+        <a class="projects-text-link projects-text-link--on-ink" href="/lab/" data-track-event="navigation_open" data-track-location="projects_lab">Ver todos los experimentos del Lab <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section id="systems" class="projects-section projects-systems" aria-labelledby="systems-title">
+      <header class="projects-section__heading">
+        <p class="projects-stamp">AD / SYSTEM / 03</p>
+        <div>
+          <h2 id="systems-title">Systems that keep things running.</h2>
+          <p>Infraestructura, accesos, observabilidad y automatización local. La tecnología aparece como consecuencia del sistema, no como una lista de herramientas.</p>
+        </div>
+      </header>
+
+      <div class="system-list">
+        {systems.map((project, index) => project && (
+          <a class="system-row" href={projectPath(project.id)} data-track-event="project_case_open" data-track-location="projects_systems" data-track-project={project.id}>
+            <span class="system-row__index">0{index + 1}</span>
+            <div>
+              <p>{project.data.status}</p>
+              <h3>{project.data.title}</h3>
+              <p>{project.data.description}</p>
+            </div>
+            <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section id="automations" class="projects-section projects-automations" aria-labelledby="automations-title">
+      <div class="projects-automations__intro">
+        <p class="projects-stamp">AD / AUTOMATION / 001 → ∞</p>
+        <h2 id="automations-title">Small flows. Real outcomes.</h2>
+        <p>Una biblioteca en crecimiento para automatizaciones que resuelven tareas concretas: reporting, ingestas, recordatorios, alertas y checks de infraestructura.</p>
+      </div>
+
+      <ol class="automation-preview" aria-label="Ejemplos de automatizaciones">
+        <li><span>01</span><strong>Vehicle reports</strong><small>tracking → transform → report</small></li>
+        <li><span>02</span><strong>Data ingestion</strong><small>source → validate → persist</small></li>
+        <li><span>03</span><strong>Reminders & alerts</strong><small>event → rule → notification</small></li>
+      </ol>
+
+      <p class="projects-automations__note">La colección publicable llegará como una librería propia; de momento este bloque marca el flujo sin crear páginas vacías.</p>
+    </section>
+
+    <section class="projects-section projects-more" aria-labelledby="more-title">
+      <header class="projects-section__heading projects-section__heading--compact">
+        <p class="projects-stamp">AD / MORE / 04</p>
+        <div>
+          <h2 id="more-title">More built.</h2>
+          <p>Proyectos con sustancia propia que no necesitan competir con las historias principales para demostrar otra forma de resolver problemas.</p>
+        </div>
+      </header>
+
+      <div class="projects-more-list">
+        {moreBuilt.map((project) => project && (
+          <a href={projectPath(project.id)} data-track-event="project_case_open" data-track-location="projects_more" data-track-project={project.id}>
+            <div>
+              <p>{project.data.status}</p>
+              <h3>{project.data.title}</h3>
+              <p>{project.data.description}</p>
+            </div>
+            <span aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </section>
   </div>
 </BaseLayout>
