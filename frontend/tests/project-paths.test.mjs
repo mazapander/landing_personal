@@ -28,8 +28,10 @@ test('mantiene los contenidos clave del mapa AnderData sin acoplar el test al n�
   assert.match(fs.readFileSync(path.join(projectsDirectory, 'template.md'), 'utf8'), /draft: true/)
 
   const automationsDirectory = path.join(import.meta.dirname, '../src/content/automations')
-  const automations = fs.readdirSync(automationsDirectory).filter((file) => file.endsWith('.md')).sort()
-  assert.deepEqual(automations, ['appointment-reminders.md', 'infrastructure-health-check.md', 'periodic-data-ingestion.md', 'vehicle-daily-report.md'])
+  const automations = fs.readdirSync(automationsDirectory).filter((file) => file.endsWith('.md'))
+  for (const expected of ['vehicle-daily-report.md', 'periodic-data-ingestion.md', 'appointment-reminders.md', 'infrastructure-health-check.md']) {
+    assert.ok(automations.includes(expected), `falta ${expected}`)
+  }
 })
 
 test('agrupa tecnologías conservando su capacidad y cubriendo categorías ausentes', () => {
