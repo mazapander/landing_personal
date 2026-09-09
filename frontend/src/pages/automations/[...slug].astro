@@ -1,7 +1,6 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content'
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import { automationPath } from '@/lib/automation-paths.mjs'
 import { projectPath } from '@/lib/project-paths.mjs'
 
 export async function getStaticPaths() {
@@ -31,7 +30,7 @@ const { Content } = await render(automation)
 
       <div class="automation-detail__flow" aria-label="Flujo de automatización">
         {automation.data.flow.map((step, index) => (
-          <><span>{step}</span>{index < automation.data.flow.length - 1 && <b aria-hidden="true">→</b>}</>
+          <span class="automation-flow-step">{step}{index < automation.data.flow.length - 1 && <b aria-hidden="true">→</b>}</span>
         ))}
       </div>
 
