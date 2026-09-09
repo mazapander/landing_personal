@@ -18,6 +18,20 @@ const projects = defineCollection({
   }),
 })
 
+const automations = defineCollection({
+  loader: glob({ base: './src/content/automations', pattern: '**/*.md' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    number: z.number().int().positive(),
+    status: z.string(),
+    flow: z.array(z.string()).min(2),
+    tools: z.array(z.string()).default([]),
+    relatedProject: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+})
+
 const services = defineCollection({
   loader: glob({ base: './src/content/services', pattern: '**/*.md' }),
   schema: z.object({ title: z.string(), description: z.string(), outcomes: z.array(z.string()).default([]), order: z.number().int(), draft: z.boolean().default(false) }),
@@ -28,4 +42,4 @@ const notes = defineCollection({
   schema: z.object({ title: z.string(), description: z.string(), publishedAt: z.coerce.date(), draft: z.boolean().default(false) }),
 })
 
-export const collections = { projects, services, notes }
+export const collections = { projects, automations, services, notes }
