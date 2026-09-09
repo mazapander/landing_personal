@@ -4,7 +4,23 @@ import path from 'node:path'
 import test from 'node:test'
 
 const dist = path.join(import.meta.dirname, '../dist')
-const routes = ['/', '/proyectos/', '/proyectos/whatsapp-saas/', '/proyectos/ia-compra-pisos/', '/proyectos/stats-feb/', '/servicios/', '/lab/', '/como-trabajo/', '/sobre-mi/', '/notas/', '/contacto/']
+const routes = [
+  '/',
+  '/proyectos/',
+  '/proyectos/ia-compra-pisos/',
+  '/proyectos/basketball-intelligence/',
+  '/proyectos/anderdata-systems/',
+  '/proyectos/connected-home-lab/',
+  '/automations/',
+  '/automations/vehicle-daily-report/',
+  '/automations/periodic-data-ingestion/',
+  '/lab/',
+  '/como-trabajo/',
+  '/ideas/',
+  '/sobre-mi/',
+  '/notas/',
+  '/contacto/',
+]
 
 function outputPath(route) {
   return route === '/' ? path.join(dist, 'index.html') : path.join(dist, route.slice(1), 'index.html')
@@ -43,33 +59,37 @@ test('los enlaces internos generados y los ficheros SEO existen', () => {
   }
 
   assert.match(fs.readFileSync(path.join(dist, 'robots.txt'), 'utf8'), /Sitemap: https:\/\/anderdata\.es\/sitemap\.xml/)
-  assert.match(fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8'), /proyectos\/stats-feb/)
+  const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8')
+  assert.match(sitemap, /proyectos\/basketball-intelligence/)
+  assert.match(sitemap, /automations\/vehicle-daily-report/)
   assert.match(fs.readFileSync(path.join(dist, '404.html'), 'utf8'), /noindex,follow/)
   assert.match(html('/notas/'), /noindex,follow/)
 })
 
-test('la cabecera conserva la marca y una navegación principal reducida', () => {
+test('la cabecera conserva una navegación principal estable de tres universos', () => {
   const page = html('/')
-  assert.match(page, /class="site-brand__logo"[^>]*alt="Logotipo AnderData"/)
+  assert.match(page, /class="site-brand"/)
+  assert.match(page, /class="site-brand__mark"[^>]*>AF</)
+  assert.match(page, /class="site-brand__name"[^>]*>ANDERDATA</)
   assert.match(page, /<nav class="site-nav" aria-label="Navegación principal">/)
   const primaryNav = page.match(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || ''
-  assert.equal((primaryNav.match(/<a /g) || []).length, 4)
-  assert.doesNotMatch(primaryNav, /Lab|Cómo trabajo|Notas/)
-  assert.match(page, /aria-label="Abrir LinkedIn"/)
+  assert.equal((primaryNav.match(/<a /g) || []).length, 3)
+  assert.match(primaryNav, /Proyectos/)
+  assert.match(primaryNav, /Ideas/)
+  assert.match(primaryNav, /Sobre mí/)
+  assert.doesNotMatch(primaryNav, /Servicios|Lab|Cómo trabajo|Automations/)
+  assert.match(page, /class="site-header__external"[^>]*href="https:\/\/github\.com\/mazapander"/)
   assert.match(page, /class="site-mobile-menu"/)
-  assert.match(page, /Hablemos/)
 })
 
-test('la navegación cambia con el contexto de la ruta', () => {
+test('el universo activo se mantiene estable en proyectos, automations, ideas y perfil', () => {
   const projectNav = html('/proyectos/').match(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || ''
+  const automationNav = html('/automations/').match(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || ''
+  const ideasNav = html('/ideas/').match(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || ''
   const profileNav = html('/sobre-mi/').match(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || ''
 
-  assert.match(projectNav, /Proyectos/)
-  assert.match(projectNav, /Servicios/)
-  assert.match(projectNav, /Arquitectura/)
-  assert.doesNotMatch(projectNav, /Inicio|Quién soy|Notas/)
-  assert.match(profileNav, /Quién soy/)
-  assert.match(profileNav, /Cómo trabajo/)
-  assert.match(profileNav, /Notas/)
-  assert.doesNotMatch(profileNav, /Inicio|Servicios|Lab/)
+  assert.match(projectNav, /href="\/proyectos\/" aria-current="page"/)
+  assert.match(automationNav, /href="\/proyectos\/" aria-current="page"/)
+  assert.match(ideasNav, /href="\/ideas\/" aria-current="page"/)
+  assert.match(profileNav, /href="\/sobre-mi\/" aria-current="page"/)
 })
