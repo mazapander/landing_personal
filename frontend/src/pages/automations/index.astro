@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { automationPath } from '@/lib/automation-paths.mjs'
+
+const automations = (await getCollection('automations', ({ data }) => !data.draft)).sort((a, b) => a.data.number - b.data.number)
+---
+
+<BaseLayout
+  title="Automations — AnderData"
+  description="Automatizaciones y workflows de AnderData: reporting, ingestas, recordatorios, alertas y procesos conectados con n8n, APIs y backend."
+>
+  <div class="automations-index">
+    <header class="automations-hero">
+      <p class="automation-stamp">AD / AUTOMATIONS / INDEX</p>
+      <h1>Small flows.<br />Real outcomes.</h1>
+      <p>Automatizaciones que quitan trabajo repetitivo, conectan sistemas o convierten datos en una acción útil. n8n aparece cuando encaja; el resultado manda sobre la herramienta.</p>
+      <nav class="page-context" aria-label="Contexto de automatizaciones">
+        <a href="/proyectos/#automations">Ver el mapa de Projects <span aria-hidden="true">→</span></a>
+      </nav>
+    </header>
+
+    <section class="automation-list" aria-label="Biblioteca de automatizaciones">
+      {automations.map((automation) => (
+        <a
+          class="automation-row"
+          href={automationPath(automation.id)}
+          data-track-event="automation_open"
+          data-track-location="automations_index"
+          data-track-project={automation.id}
+        >
+          <span class="automation-row__number">{String(automation.data.number).padStart(3, '0')}</span>
+          <div class="automation-row__body">
+            <div class="automation-row__meta">
+              <span>{automation.data.status}</span>
+              {automation.data.tools[0] && <span>{automation.data.tools[0]}</span>}
+            </div>
+            <h2>{automation.data.title}</h2>
+            <p>{automation.data.description}</p>
+            <p class="automation-row__flow">
+              {automation.data.flow.map((step, index) => (
+                <><span>{step}</span>{index < automation.data.flow.length - 1 && <b aria-hidden="true">→</b>}</>
+              ))}
+            </p>
+          </div>
+          <span class="automation-row__arrow" aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </section>
+
+    <section class="automations-principle" aria-labelledby="automation-principle-title">
+      <p class="automation-stamp">AD / PRINCIPLE</p>
+      <div>
+        <h2 id="automation-principle-title">Automate the repetition. Keep the decision visible.</h2>
+        <p>Una automatización buena no es la que tiene más nodos. Es la que elimina una tarea repetitiva sin esconder estados, errores o decisiones que una persona todavía necesita entender.</p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
