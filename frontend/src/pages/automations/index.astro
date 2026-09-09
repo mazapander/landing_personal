@@ -13,7 +13,7 @@ const automations = (await getCollection('automations', ({ data }) => !data.draf
   <div class="automations-index">
     <header class="automations-hero">
       <p class="automation-stamp">AD / AUTOMATIONS / INDEX</p>
-      <h1>Small flows.<br />Real outcomes.</h1>
+      <h1>Small flows. Real outcomes.</h1>
       <p>Automatizaciones que quitan trabajo repetitivo, conectan sistemas o convierten datos en una acción útil. n8n aparece cuando encaja; el resultado manda sobre la herramienta.</p>
       <nav class="page-context" aria-label="Contexto de automatizaciones">
         <a href="/proyectos/#automations">Ver el mapa de Projects <span aria-hidden="true">→</span></a>
@@ -39,7 +39,7 @@ const automations = (await getCollection('automations', ({ data }) => !data.draf
             <p>{automation.data.description}</p>
             <p class="automation-row__flow">
               {automation.data.flow.map((step, index) => (
-                <><span>{step}</span>{index < automation.data.flow.length - 1 && <b aria-hidden="true">→</b>}</>
+                <span class="automation-flow-step">{step}{index < automation.data.flow.length - 1 && <b aria-hidden="true">→</b>}</span>
               ))}
             </p>
           </div>
