@@ -14,6 +14,7 @@
 .automation-row h2 { margin-top: .4rem; font-size: clamp(1.8rem, 1.35rem + 1.6vw, 3rem); line-height: 1; transition: color 180ms ease; }
 .automation-row__body > p:not(.automation-row__flow) { max-width: 68ch; margin-top: .75rem; color: var(--color-text-secondary); font-size: var(--text-sm); line-height: 1.6; }
 .automation-row__flow { display: flex; flex-wrap: wrap; gap: .35rem .55rem; margin-top: 1rem; color: var(--color-text-muted); font-family: var(--font-mono); font-size: var(--text-xs); }
+.automation-flow-step { display: inline-flex; align-items: center; gap: .55rem; }
 .automation-row__flow b { color: var(--color-accent); font-weight: 700; }
 .automation-row__arrow { justify-self: end; color: var(--color-text-muted); font-size: 1.2rem; transition: color 180ms ease, transform 180ms ease; }
 .automation-row:hover h2, .automation-row:focus-visible h2, .automation-row:hover .automation-row__arrow, .automation-row:focus-visible .automation-row__arrow { color: var(--color-accent); }
