@@ -1,0 +1,59 @@
+.automations-index, .automation-detail { width: var(--page-width); margin-inline: auto; }
+.automations-index h1, .automations-index h2, .automation-detail h1, .automation-detail h2 { color: var(--color-text-primary); letter-spacing: -.045em; text-wrap: balance; }
+.automation-stamp { color: var(--color-accent) !important; font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+
+.automations-hero { padding: clamp(5rem, 11vw, 9rem) 0 clamp(3.5rem, 8vw, 6rem); }
+.automations-hero h1 { max-width: 10ch; margin-top: .8rem; font-size: clamp(3.5rem, 2.2rem + 6vw, 8rem); line-height: .9; }
+.automations-hero > p:not(.automation-stamp) { max-width: 62ch; margin-top: 1.75rem; color: var(--color-text-secondary); font-size: var(--text-lead); line-height: 1.65; }
+
+.automation-list { border-top: 1px solid var(--color-text-primary); }
+.automation-row { display: grid; grid-template-columns: 4rem minmax(0, 1fr) 2rem; gap: clamp(1rem, 3vw, 2rem); align-items: start; padding: clamp(1.6rem, 3vw, 2.2rem) 0; border-bottom: 1px solid var(--color-border); }
+.automation-row__number { padding-top: .25rem; color: var(--color-text-muted); font-family: var(--font-mono); font-size: var(--text-xs); }
+.automation-row__meta { display: flex; flex-wrap: wrap; gap: .5rem 1rem; color: var(--color-accent); font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 750; text-transform: uppercase; }
+.automation-row__meta span + span::before { margin-right: 1rem; color: var(--color-border); content: '/'; }
+.automation-row h2 { margin-top: .4rem; font-size: clamp(1.8rem, 1.35rem + 1.6vw, 3rem); line-height: 1; transition: color 180ms ease; }
+.automation-row__body > p:not(.automation-row__flow) { max-width: 68ch; margin-top: .75rem; color: var(--color-text-secondary); font-size: var(--text-sm); line-height: 1.6; }
+.automation-row__flow { display: flex; flex-wrap: wrap; gap: .35rem .55rem; margin-top: 1rem; color: var(--color-text-muted); font-family: var(--font-mono); font-size: var(--text-xs); }
+.automation-row__flow b { color: var(--color-accent); font-weight: 700; }
+.automation-row__arrow { justify-self: end; color: var(--color-text-muted); font-size: 1.2rem; transition: color 180ms ease, transform 180ms ease; }
+.automation-row:hover h2, .automation-row:focus-visible h2, .automation-row:hover .automation-row__arrow, .automation-row:focus-visible .automation-row__arrow { color: var(--color-accent); }
+.automation-row:hover .automation-row__arrow, .automation-row:focus-visible .automation-row__arrow { transform: translate(3px, -3px); }
+
+.automations-principle { display: grid; grid-template-columns: minmax(150px, .35fr) minmax(0, 1fr); gap: clamp(2rem, 7vw, 6rem); padding: clamp(5rem, 10vw, 8rem) 0; border-top: 1px solid var(--color-border); }
+.automations-principle > div { max-width: 760px; }
+.automations-principle h2 { font-size: var(--text-h2); line-height: .98; }
+.automations-principle div > p { max-width: 58ch; margin-top: 1.25rem; color: var(--color-text-secondary); font-size: var(--text-body); line-height: 1.65; }
+
+.automation-detail { max-width: 960px; padding: clamp(3rem, 7vw, 6rem) 0; }
+.automation-breadcrumb { display: flex; flex-wrap: wrap; gap: .5rem; color: var(--color-text-muted); font-family: var(--font-mono); font-size: var(--text-xs); }
+.automation-breadcrumb a:hover, .automation-breadcrumb a:focus-visible { color: var(--color-accent); }
+.automation-detail__hero { padding: clamp(3rem, 7vw, 5.5rem) 0; border-bottom: 1px solid var(--color-text-primary); }
+.automation-detail__topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.automation-detail__topline > span { color: var(--color-text-muted); font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; }
+.automation-detail h1 { max-width: 13ch; margin-top: .8rem; font-size: clamp(3rem, 2rem + 4.5vw, 6.5rem); line-height: .92; }
+.automation-detail__lead { max-width: 64ch; margin-top: 1.5rem; color: var(--color-text-secondary); font-size: var(--text-lead); line-height: 1.65; }
+.automation-detail__flow { display: flex; flex-wrap: wrap; gap: .5rem .75rem; margin-top: 2rem; padding: 1rem 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); color: var(--color-text-primary); font-family: var(--font-mono); font-size: var(--text-xs); }
+.automation-detail__flow b { color: var(--color-accent); }
+.automation-detail__tools { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 0; margin: 1.25rem 0 0; list-style: none; color: var(--color-text-muted); font-family: var(--font-mono); font-size: var(--text-xs); }
+.automation-detail__tools li + li::before { margin-right: 1rem; color: var(--color-border); content: '/'; }
+.automation-detail__content { max-width: 760px; padding: clamp(3rem, 7vw, 5rem) 0; color: var(--color-text-secondary); font-size: var(--text-body); line-height: 1.75; }
+.automation-detail__content > * + * { margin-top: 1.15rem; }
+.automation-detail__content h2 { margin-top: 2.5rem; font-size: var(--text-h3); line-height: 1.08; }
+.automation-detail__content pre { overflow-x: auto; padding: 1rem 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); color: var(--color-text-primary); font-size: var(--text-sm); }
+.automation-related { display: grid; grid-template-columns: minmax(150px, .35fr) minmax(0, 1fr); gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+.automation-related a { font-weight: 800; }
+.automation-related a:hover, .automation-related a:focus-visible { color: var(--color-accent); }
+.automation-detail__back { display: inline-block; margin-top: 2rem; color: var(--color-text-secondary); font-size: var(--text-sm); font-weight: 750; }
+.automation-detail__back:hover, .automation-detail__back:focus-visible { color: var(--color-accent); }
+
+@media (max-width: 760px) {
+  .automations-hero h1 { font-size: clamp(3.1rem, 16vw, 5.5rem); }
+  .automation-row { grid-template-columns: 2.5rem minmax(0, 1fr) auto; gap: .9rem; }
+  .automations-principle, .automation-related { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+@media (max-width: 420px) {
+  .automation-row { grid-template-columns: 2rem minmax(0, 1fr); }
+  .automation-row__arrow { display: none; }
+  .automation-detail__topline { align-items: flex-start; flex-direction: column; }
+}
