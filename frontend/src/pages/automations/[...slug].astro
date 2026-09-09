@@ -1,0 +1,56 @@
+---
+import { getCollection, getEntry, render } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { automationPath } from '@/lib/automation-paths.mjs'
+import { projectPath } from '@/lib/project-paths.mjs'
+
+export async function getStaticPaths() {
+  return (await getCollection('automations', ({ data }) => !data.draft)).map((automation) => ({ params: { slug: automation.id }, props: { slug: automation.id } }))
+}
+
+interface Props { slug: string }
+const { slug } = Astro.props
+const automation = await getEntry('automations', slug)
+if (!automation) throw new Error(`No existe la automatización ${slug}`)
+const { Content } = await render(automation)
+---
+
+<BaseLayout title={`${automation.data.title} — AnderData Automations`} description={automation.data.description}>
+  <article class="automation-detail">
+    <nav class="automation-breadcrumb" aria-label="Miga de pan">
+      <a href="/">Inicio</a><span>/</span><a href="/automations/">Automations</a><span>/</span><span aria-current="page">{automation.data.title}</span>
+    </nav>
+
+    <header class="automation-detail__hero">
+      <div class="automation-detail__topline">
+        <p class="automation-stamp">AD / AUTOMATION / {String(automation.data.number).padStart(3, '0')}</p>
+        <span>{automation.data.status}</span>
+      </div>
+      <h1>{automation.data.title}</h1>
+      <p class="automation-detail__lead">{automation.data.description}</p>
+
+      <div class="automation-detail__flow" aria-label="Flujo de automatización">
+        {automation.data.flow.map((step, index) => (
+          <><span>{step}</span>{index < automation.data.flow.length - 1 && <b aria-hidden="true">→</b>}</>
+        ))}
+      </div>
+
+      {automation.data.tools.length > 0 && (
+        <ul class="automation-detail__tools" aria-label="Herramientas utilizadas">
+          {automation.data.tools.map((tool) => <li>{tool}</li>)}
+        </ul>
+      )}
+    </header>
+
+    <div class="automation-detail__content"><Content /></div>
+
+    {automation.data.relatedProject && (
+      <aside class="automation-related">
+        <p class="automation-stamp">RELATED / PROJECT</p>
+        <a href={projectPath(automation.data.relatedProject)}>Ver el sistema del que forma parte <span aria-hidden="true">→</span></a>
+      </aside>
+    )}
+
+    <a class="automation-detail__back" href="/automations/">← Volver a Automations</a>
+  </article>
+</BaseLayout>
