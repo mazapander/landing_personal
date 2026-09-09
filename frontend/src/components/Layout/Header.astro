@@ -8,7 +8,7 @@ const links = [
 ]
 
 const isCurrent = (label: string) => {
-  if (label === 'Proyectos') return pathname.startsWith('/proyectos') || pathname.startsWith('/lab') || pathname.startsWith('/como-trabajo')
+  if (label === 'Proyectos') return pathname.startsWith('/proyectos') || pathname.startsWith('/lab') || pathname.startsWith('/automations') || pathname.startsWith('/como-trabajo')
   if (label === 'Ideas') return pathname.startsWith('/ideas') || pathname.startsWith('/notas')
   if (label === 'Sobre mí') return pathname.startsWith('/sobre-mi') || pathname.startsWith('/contacto')
   return false
