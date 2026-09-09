@@ -141,23 +141,68 @@ Verificación:
 
 ## Fase 4 — Automations library
 
-**Estado:** NEXT
+**Estado:** DONE — implementation shipped; runtime verification unavailable  
+**Implementation span:** `a7e94b479018717e1bb02515007bfce5ceff02b4` → `0b916406e7bb4a49e14819d53d34a2dce87816d9`
 
 **Objetivo:** añadir contenido incremental de bajo coste editorial.
 
-Scope:
+Entregado:
 
-- [ ] colección `automations` en Astro Content;
-- [ ] schema pequeño y estable;
-- [ ] índice de automatizaciones;
-- [ ] detalle SEO solo cuando haya contenido suficiente;
-- [ ] primera tanda: vehicle report, data ingestion, reminders, infrastructure alert/check.
+- [x] colección `automations` en Astro Content;
+- [x] schema pequeño y estable;
+- [x] helper de rutas `/automations/:slug/`;
+- [x] índice editorial `/automations/`;
+- [x] páginas de detalle para piezas con contenido suficiente;
+- [x] flujo visual `AD / AUTOMATION / 001` coherente con la marca;
+- [x] integración de Automations dentro del universo Projects;
+- [x] `Proyectos` permanece activo en el header al navegar por `/automations/`;
+- [x] sitemap ampliado con índice y detalles de automatizaciones públicas;
+- [x] smoke tests y unit tests actualizados al contrato V3;
+- [x] tests desacoplados del número total de automatizaciones para que añadir una pieza no obligue a modificar código;
+- [x] plantilla `frontend/src/content/automations/template.md` para nuevas piezas.
 
-Criterio de aceptación:
+Primera tanda publicada:
 
-- añadir una automatización nueva requiere principalmente un fichero de contenido, no tocar componentes.
+1. `Vehicle Daily Report` — tracking → aggregation → report → notification.
+2. `Periodic Data Ingestion` — source → validate → normalize → persist → alert.
+3. `Appointment Reminders` — appointment → schedule → reminder → response → update.
+4. `Infrastructure Health Check` — health signal → evaluate → enrich → alert → review.
+
+Decisiones:
+
+- la colección representa **resultados y flujos**, no una galería de nodos de n8n;
+- n8n se muestra cuando actúa realmente como orquestador;
+- backend, scheduler o scripts pueden formar parte de la misma colección cuando sean la herramienta correcta;
+- una automatización nueva debe requerir principalmente un `.md`, no un componente nuevo;
+- no se publican detalles de infraestructura sensibles dentro de los flujos.
+
+Verificación:
+
+- se detectó y corrigió deuda previa en `site-smoke.test.mjs`, que todavía validaba la navegación anterior al V3;
+- se actualizó la cobertura de rutas, sitemap y navegación de tres universos;
+- se intentó ejecutar `npm run verify` clonando `master`, pero el entorno de ejecución no pudo resolver `github.com` por DNS y no pudo descargar el repositorio/dependencias;
+- por tanto, no se afirma que `npm run verify` haya pasado todavía.
+
+## Building how I build — evolución pendiente
+
+La página actual es un **framework overview**, no la versión madura.
+
+La evolución queda contratada en [`HOW_I_BUILD_EVOLUTION.md`](./HOW_I_BUILD_EVOLUTION.md).
+
+Antes de considerarla una sección fuerte deberá incorporar:
+
+- casos reales;
+- contratos saneados;
+- decisiones antes/después;
+- ejemplos de trabajo agente → review → corrección;
+- errores y simplificaciones;
+- enlaces a proyectos reales.
+
+El objetivo es pasar de “así digo que trabajo” a “aquí puedes ver cómo tomé y revisé decisiones reales”.
 
 ## Fase 5 — Project stories + SEO
+
+**Estado:** NEXT
 
 **Objetivo:** convertir proyectos fuertes en activos de descubrimiento.
 
@@ -179,6 +224,8 @@ Cada página debe responder:
 - resultado/estado;
 - siguiente evolución;
 - tecnologías secundarias.
+
+Además, esta fase debe empezar a recopilar artefactos reutilizables para futuros casos de `Building how I build`.
 
 ## Fase 6 — Ideas
 
