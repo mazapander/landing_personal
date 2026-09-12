@@ -1,6 +1,7 @@
 ---
 title: AnderData Systems
-description: Infraestructura autoalojada para desplegar, conectar, proteger y observar los productos y experimentos de AnderData.
+seoTitle: "AnderData Systems: infraestructura autoalojada y observabilidad"
+description: "Infraestructura autoalojada con Docker, acceso controlado, monitorización y reporting de vehículos. Decisiones de operación del laboratorio AnderData."
 status: Running
 featured: true
 stack:
@@ -23,36 +24,44 @@ capabilities:
   - Integración de sistemas con alertas y reporting.
 ---
 
-## Más que un VPS
+## El problema: una aplicación necesita seguir funcionando
 
-AnderData Systems es la infraestructura sobre la que pruebo muchas de las cosas que construyo.
+Desplegar una demo resuelve el primer acceso. Mantener varios productos encendidos introduce otras preguntas: quién puede entrar, dónde persisten los datos, cómo detectar una caída y cómo revisar un comportamiento inesperado.
 
-El objetivo no es acumular servicios. Es disponer de un entorno propio donde pueda desplegar productos, conectarlos entre sí, controlar cómo se accede a ellos y aprender qué ocurre cuando una demo pasa a estar encendida todos los días.
+AnderData Systems es la infraestructura propia donde esas preguntas se convierten en trabajo de operación. Da soporte a productos y experimentos sin convertir cada despliegue en un entorno completamente distinto.
 
-## Vehicle Tracking System
+## Por qué construir una base compartida
 
-Uno de los sistemas desplegados recibe posiciones de vehículos y mantiene histórico de recorridos. Sobre esa información he construido automatizaciones para generar alertas e informes de uso y kilómetros.
+El objetivo es disponer de un entorno donde desplegar, conectar y observar servicios con criterios repetibles. Ubuntu, Docker y los servicios de datos son herramientas de esa base; la historia está en cómo permiten operar sistemas que tienen que seguir siendo útiles después de la primera demostración.
 
-La parte interesante no es el producto base utilizado, sino la cadena completa:
+Autoalojar también implica asumir mantenimiento y diagnóstico. Por eso acceso, persistencia y observabilidad forman parte del proyecto desde su definición.
 
-```text
-position → event → history → automation → report
-```
+## Cómo funciona: del servicio al resultado
 
-## Secure Service Exposure
+La infraestructura combina acceso controlado, servicios compartidos de datos y almacenamiento, y monitorización del host y las aplicaciones.
 
-No todos los servicios deben estar directamente expuestos a Internet.
+Un caso concreto es el sistema de seguimiento de vehículos: recibe posiciones, conserva un histórico de recorridos y utiliza automatizaciones para producir alertas e informes de uso y kilómetros. La secuencia conecta posición, evento, histórico y reporte.
 
-La infraestructura separa accesos públicos y privados y utiliza capas de red, proxy e identidad para que cada herramienta tenga únicamente la superficie necesaria.
+El [informe diario de vehículos](/automations/vehicle-daily-report/) explica esa transformación desde eventos hasta una salida útil. El [chequeo de infraestructura](/automations/infrastructure-health-check/) desarrolla el patrón de revisar una señal de salud antes de generar una alerta.
 
-En esta web se explica la arquitectura por capacidades y decisiones. No se publican IPs, puertos internos, credenciales ni topología operativa sensible.
+## Decisiones: acceso, separación y diagnóstico
 
-## Observability
+**Separar servicios públicos y privados.** La necesidad de acceder remotamente a una herramienta no exige que todas las aplicaciones sean públicas. Las capas de red, proxy e identidad delimitan el acceso que necesita cada servicio.
 
-Un servicio desplegado también necesita poder diagnosticarse.
+**Compartir capacidades sin unir los productos.** La persistencia y el almacenamiento comunes reducen trabajo repetido. El criterio es reutilizar la operación sin obligar a que los proyectos dependan de los detalles internos de otros.
 
-El lab mantiene monitorización del servidor Ubuntu y de distintos servicios para revisar disponibilidad, recursos y estado operativo. La siguiente evolución es hacer que alertas y automatizaciones formen una capa común para todos los proyectos.
+**Observar para poder actuar.** Saber que un proceso arrancó no basta para diagnosticar un sistema. La monitorización del host y de servicios aporta contexto sobre disponibilidad, recursos y estado operativo.
 
-## Visión
+La arquitectura pública se describe mediante capacidades y decisiones. Los ejemplos se mantienen libres de configuración de acceso y datos de localización personales.
 
-AnderData Systems debe evolucionar hacia una base sencilla para añadir servicios nuevos con patrones repetibles de despliegue, acceso, datos, observabilidad y automatización.
+## Estado actual y resultado
+
+La infraestructura está en funcionamiento. El caso documenta servicios autoalojados, seguimiento de vehículos con histórico, alertas e informes, y monitorización de Ubuntu y aplicaciones.
+
+No se publica un objetivo de disponibilidad cumplido ni un ahorro operativo medido. La evidencia descrita es funcional: sistemas desplegados y flujos de información utilizados para observarlos y producir reportes.
+
+## Siguiente evolución
+
+La dirección es unificar patrones de despliegue, acceso, datos y alertas para incorporar servicios nuevos con menos trabajo repetido. Un futuro caso puede mostrar una incorporación concreta y los pasos necesarios para diagnosticarla.
+
+[Connected Home Lab](/proyectos/connected-home-lab/) comparte el interés por sistemas observables, pero añade una exigencia distinta: comprobar lo que sucede en el mundo físico.

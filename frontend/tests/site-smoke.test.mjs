@@ -93,3 +93,37 @@ test('el universo activo se mantiene estable en proyectos, automations, ideas y 
   assert.match(ideasNav, /href="\/ideas\/" aria-current="page"/)
   assert.match(profileNav, /href="\/sobre-mi\/" aria-current="page"/)
 })
+
+const stories = ['ia-compra-pisos', 'basketball-intelligence', 'anderdata-systems', 'connected-home-lab', 'basketball-video-tagger', 'industrial-cutting-optimizer']
+
+test('las seis historias tienen SEO único, índice navegable y enlaces resolubles', () => {
+  const titles = new Set()
+  const descriptions = new Set()
+  const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8')
+  for (const slug of stories) {
+    const route = `/proyectos/${slug}/`
+    const page = html(route)
+    const title = page.match(/<title>([^<]+)<\/title>/)?.[1]
+    const description = page.match(/<meta name="description" content="([^"]+)"/)?.[1]
+    assert.ok(title && description, route)
+    titles.add(title)
+    descriptions.add(description)
+    assert.equal((page.match(/<h1[ >]/g) || []).length, 1, route)
+    assert.ok(page.includes(`rel="canonical" href="https://anderdata.es${route}"`), route)
+    assert.ok(sitemap.includes(`https://anderdata.es${route}`), route)
+    assert.doesNotMatch(page, /noindex/)
+    const outline = page.match(/<nav aria-label="En esta historia">([\s\S]*?)<\/nav>/)?.[1]
+    assert.ok(outline, route)
+    assert.ok((outline.match(/href="#/g) || []).length >= 6, route)
+    for (const [, href] of page.matchAll(/\bhref="([^"]+)"/g)) {
+      if (href.startsWith('#')) assert.ok(page.includes(`id="${href.slice(1)}"`), `${route}: ${href}`)
+      else if (href.startsWith('/')) assert.ok(fs.existsSync(localTarget(href)), `${route}: ${href}`)
+    }
+    for (const [, schema] of page.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) {
+      const data = JSON.parse(schema)
+      if (data['@type'] === 'BreadcrumbList') assert.equal(data.itemListElement.at(-1).item, `https://anderdata.es${route}`)
+    }
+  }
+  assert.equal(titles.size, stories.length)
+  assert.equal(descriptions.size, stories.length)
+})

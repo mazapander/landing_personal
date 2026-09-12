@@ -1,6 +1,7 @@
 ---
 title: Basketball Intelligence
-description: Un laboratorio que conecta datos de competiciones, etiquetado de vídeo y computer vision para entender mejor lo que ocurre en una pista.
+seoTitle: "Basketball Intelligence: datos y análisis de vídeo de baloncesto"
+description: "Datos de competiciones, etiquetado de partidos y visión por computador: un laboratorio de análisis de baloncesto con evidencia revisable."
 status: Active lab
 featured: true
 stack:
@@ -22,28 +23,42 @@ capabilities:
   - Experimentación con modelos de visión por computador.
 ---
 
-## No son tres proyectos aislados
+## El problema: datos y vídeo cuentan partes distintas del partido
 
-La parte interesante aparece cuando las piezas se conectan.
+Una estadística permite localizar un patrón, pero no siempre explica la acción que lo produjo. Un vídeo conserva ese contexto, aunque revisarlo y registrar lo relevante requiere trabajo manual. Cuando ambos viven separados, el análisis obliga a reconstruir una y otra vez la relación entre partido, jugador y acción.
 
-`StatsFEB` aporta datos estructurados e histórico. `Basketball Video Tagger` permite convertir vídeo completo en acciones etiquetadas y datasets revisables. `Motion Lab` utiliza ese contexto para experimentar con detección y medición automática mediante computer vision.
+Basketball Intelligence organiza ese problema en tres piezas: datos de competiciones, vídeo etiquetado y experimentación con visión por computador.
 
-```text
-structured data → labelled video → computer vision
-```
+## Por qué construir un ecosistema
 
-## Qué estoy intentando resolver
+La motivación es acercar el análisis deportivo a una cadena de información revisable. Cada pieza puede ser útil por separado, pero juntas plantean una dirección más interesante: que una pregunta sobre el juego pueda contrastarse con datos y ejemplos de vídeo.
 
-Gran parte del análisis de baloncesto sigue dependiendo de observar, registrar y conectar manualmente información que ya existe en vídeo o en fuentes públicas.
+Agruparlas no significa que exista ya una integración automática completa. Es una arquitectura de trabajo que permite avanzar sin condicionar todos los proyectos al mismo ritmo.
 
-Este laboratorio intenta reducir esa distancia: datos más accesibles, vídeo más estructurado y modelos que puedan ayudar a medir acciones de forma reproducible.
+## Cómo funciona: tres capas de contexto
 
-## Piezas actuales
+1. **Datos estructurados.** [StatsFEB](/proyectos/stats-feb/) trabaja la ingesta, el histórico y los boxscores de competiciones FEB. Es la capa que organiza partidos, jugadores y competiciones.
+2. **Vídeo etiquetado.** [Basketball Video Tagger](/proyectos/basketball-video-tagger/) registra acciones y segmentos temporales. Convierte un partido completo en ejemplos localizables y revisables.
+3. **Visión por computador.** Motion Lab explora detección y medición a partir de vídeo. Su papel es experimentar con reconocimiento automático y contrastarlo con observación humana.
 
-- **StatsFEB** — ingesta, histórico, boxscores y analytics de competiciones FEB.
-- **Basketball Video Tagger** — etiquetado de acciones, rangos, frames y exportación de clips.
-- **Motion Lab** — pruebas de computer vision y modelos para identificar momentos y métricas en vídeo.
+El recorrido conceptual es datos estructurados, acciones etiquetadas y modelos contrastables. El dato aporta contexto; el vídeo permite volver a observar lo que sucedió.
 
-## Estado
+## Decisiones: conservar el camino de vuelta a la acción
 
-Es un laboratorio activo. Cada pieza puede evolucionar por separado, pero la dirección común es construir una cadena de datos y vídeo que permita entrenar, validar y revisar modelos con mejor contexto.
+**Dar identidad propia a cada pieza.** La ingesta deportiva y la edición temporal de vídeo tienen necesidades diferentes. Mantenerlas separadas permite mejorar una herramienta sin rehacer las otras.
+
+**Etiquetar antes de automatizar.** Un ejemplo revisado ayuda a precisar qué se considera una acción. Ese lenguaje compartido es una base más útil para evaluar un modelo que una demostración visual sin criterio de comparación.
+
+**Tratar los modelos como experimentos.** Detectar un movimiento no implica haber medido correctamente una acción deportiva. El laboratorio necesita ejemplos, revisión y límites explícitos antes de convertir una salida del modelo en una métrica de uso habitual.
+
+## Estado actual y resultado
+
+Es un laboratorio activo con tres líneas de trabajo documentadas. StatsFEB aporta el trabajo sobre datos e histórico; Tagger desarrolla la estructura temporal y los clips; Motion Lab mantiene la exploración de visión por computador.
+
+No se presenta todavía un benchmark común ni un flujo integrado validado de extremo a extremo. El resultado de esta organización es una dirección técnica compartida con piezas que pueden evolucionar por separado.
+
+## Siguiente evolución
+
+El siguiente caso demostrable debería seguir una pregunta concreta desde el dato hasta el clip y su revisión. Hará falta identificar el partido, definir la acción y comprobar si los ejemplos permiten evaluar una detección de forma consistente.
+
+Ese recorrido puede convertirse después en un caso de [Building how I build](/como-trabajo/), mostrando decisiones y límites con artefactos reales.

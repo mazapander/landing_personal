@@ -1,6 +1,7 @@
 ---
 title: Connected Home Lab
-description: Un laboratorio de domótica local para conectar sensores, energía, accesos y rutinas físicas entre distintas viviendas.
+seoTitle: "Connected Home Lab: domótica local con Home Assistant"
+description: "Domótica local con Home Assistant, sensores y Zigbee: estado del garaje, consumo y rutinas. Decisiones y límites de una arquitectura entre viviendas."
 status: Active lab
 featured: true
 stack:
@@ -23,32 +24,44 @@ capabilities:
   - Diseño de nodos distribuidos y control central.
 ---
 
-## Domótica como laboratorio de integración
+## El problema: una orden no confirma lo que ha ocurrido
 
-Connected Home no nace para llenar una casa de dispositivos. El interés está en conectar señales físicas con software de una manera útil y mantenible.
+Una aplicación puede indicar que ha enviado una orden sin saber si el dispositivo actuó. En domótica esa diferencia importa: un acceso, un electrodoméstico o una rutina tienen un estado físico que debe observarse, no deducirse únicamente de un comando.
 
-Home Assistant actúa como plataforma de integración, pero no es el producto de la historia. Las piezas interesantes son los problemas que se resuelven alrededor.
+Connected Home Lab explora cómo conectar esas señales con software útil y mantenible. El centro del proyecto son sensores, energía, accesos y rutinas cotidianas.
 
-## Multi-home architecture
+## Por qué construirlo
 
-Estoy explorando una arquitectura en la que distintas viviendas puedan compartir una capa central de gestión sin perder su separación lógica.
+La motivación es integrar dispositivos y eventos físicos sin depender siempre de abrir una aplicación. Home Assistant proporciona la plataforma; Zigbee, MQTT y nodos ESP32 forman parte del espacio de integración del laboratorio.
 
-Eso obliga a pensar en conectividad, disponibilidad, dispositivos distribuidos y qué debe seguir funcionando cuando un nodo o una conexión falla.
+La dirección es local siempre que resulte posible, con separación entre viviendas y una gestión que permita entender qué sucede en cada ubicación. No se da por resuelto el funcionamiento sin conexión por el simple hecho de utilizar componentes locales.
 
-## Garage access
+## Cómo funciona: observar, interpretar y actuar
 
-Uno de los casos conecta una puerta de garaje con un relé de contacto seco y sensores de estado. El objetivo no es únicamente abrir o cerrar: es conocer el estado real, poder automatizar acciones y evitar asumir que una orden equivale a una acción completada.
+**Acceso al garaje.** El caso combina contacto seco y sensores de estado. La orden de actuación y la observación de la puerta cumplen funciones diferentes; la segunda permite comprobar el resultado de la primera.
 
-## Energy monitoring
+**Consumo energético.** La medición puede aportar señales sobre estados y ciclos de electrodomésticos. El interés está en convertirlas en eventos útiles para avisos, histórico o reglas domésticas.
 
-Medir consumo permite inferir estados y ciclos de electrodomésticos y generar automatizaciones sin modificar el aparato original.
+**Presencia y rutinas.** NFC y sensores permiten registrar actividades mediante una interacción física sencilla. El evento puede iniciar un registro o una automatización sin convertir cada acción cotidiana en una sesión de uso de la app.
 
-La información energética puede convertirse en eventos útiles para avisos, histórico o reglas domésticas.
+**Varias viviendas.** La arquitectura en exploración contempla dispositivos y nodos distribuidos con una capa central de gestión. La separación lógica conserva el contexto de cada ubicación.
 
-## Presence & routines
+## Decisiones: el estado físico es parte del modelo
 
-Etiquetas NFC, sensores y otros eventos físicos permiten registrar actividades sin depender siempre de abrir una aplicación. Es una forma sencilla de experimentar con interfaces donde el mundo físico es parte de la UI.
+**Distinguir orden y confirmación.** Un comando enviado y un cambio observado deben poder contarse como cosas diferentes. Esto evita presentar como completada una acción cuyo resultado aún no se conoce.
 
-## Siguiente dirección
+**Elegir qué debe seguir funcionando localmente.** La capa central es útil para gestionar, pero cada caso necesita revisar qué pasa si pierde conectividad. Esa decisión forma parte del diseño, no se resuelve solo eligiendo un protocolo.
 
-El objetivo es construir patrones reutilizables para sensores, energía, accesos y nodos remotos, manteniendo una arquitectura local, sencilla y observable.
+**Empezar por rutinas concretas.** Un sensor aporta valor cuando su señal permite una acción o una explicación útil. La expansión del laboratorio debe seguir esos casos, no el número de dispositivos disponibles.
+
+## Estado actual y resultado
+
+Es un laboratorio activo. Los casos de garaje, energía y rutinas marcan el trabajo de integración; la arquitectura entre viviendas permanece en exploración. La documentación no acredita todavía una validación completa de fallos de conectividad ni una medición de ahorro energético.
+
+El resultado que se busca demostrar es trazabilidad entre un evento físico, la regla aplicada y el estado observado después.
+
+## Siguiente evolución
+
+El siguiente paso es convertir un caso doméstico en un patrón reproducible: señal de entrada, comportamiento esperado, confirmación y respuesta ante una desconexión. Documentar esa prueba permitiría reutilizarlo sin asumir que todas las viviendas tienen las mismas condiciones.
+
+La operación y observabilidad conectan con [AnderData Systems](/proyectos/anderdata-systems/); aquí el criterio adicional es que el estado del software refleje el del dispositivo.
