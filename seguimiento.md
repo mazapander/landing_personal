@@ -322,3 +322,16 @@ La jerarquía de navegación prima la intención de un potencial cliente. Los co
 
 - `npm run check`, 7 pruebas unitarias, build de 12 páginas y 4 smoke tests.
 - Los smoke tests verifican que Proyectos muestra Servicios y Arquitectura, mientras Sobre mí muestra Cómo trabajo y Notas.
+
+
+## AnderData V3 — Fase 5: Project stories + SEO
+
+Estado: implementación terminada y validación funcional superada; QA visual pendiente por falta de navegador ejecutable.
+
+- Ampliadas las seis historias prioritarias desde la base `56e6d9956dddf1f44ef652f6dcb8997e998f1014`.
+- SEO específico por historia, índice desde headings, lectura con ancho acotado, enlaces contextuales y tecnologías al final.
+- Conservadas rutas, canonical, sitemap, datos estructurados y navegación global.
+- Contrato y mapa SEO en `docs/PROJECT_STORIES_SEO.md`; seis fichas para futuros casos en `docs/PROJECT_STORY_DECISIONS.md`.
+- `npm run verify`: 0 errores/avisos de Astro, 7 unit tests, build de 23 páginas y 5 smoke tests. `git diff --check` correcto.
+- Chromium no pudo descargarse (timeout/502); las siete anchuras siguen pendientes de inspección visual. No se afirma publicación en producción.
+- Próxima fase: Fase 6 — Ideas. Imágenes OG propias y polish global permanecen en Fase 7.

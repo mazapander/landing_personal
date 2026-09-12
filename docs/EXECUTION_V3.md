@@ -202,7 +202,26 @@ El objetivo es pasar de “así digo que trabajo” a “aquí puedes ver cómo 
 
 ## Fase 5 — Project stories + SEO
 
-**Estado:** NEXT
+**Estado:** DONE — implementación y verificación funcional; revisión visual pendiente por entorno
+
+Entregado:
+
+- [x] seis historias ampliadas con problema, motivación, funcionamiento, decisiones, estado y siguiente evolución;
+- [x] títulos SEO y descripciones específicos, conservando rutas y metadatos sociales existentes;
+- [x] enlaces contextuales entre proyectos, automatizaciones y proceso;
+- [x] índice automático desde H2, lectura responsive y tecnologías secundarias;
+- [x] plantilla editorial reutilizable;
+- [x] seis fichas de decisiones con fuentes y evidencia pendiente para Building how I build;
+- [x] validación de las seis rutas: SEO único, canonical, sitemap, H1, anclas, enlaces y breadcrumb;
+- [ ] revisión visual en 320, 375, 430, 768, 1024, 1280 y 1440 px: navegador no disponible y descarga de Chromium fallida (timeout/502).
+
+Documentación: [`PROJECT_STORIES_SEO.md`](./PROJECT_STORIES_SEO.md), [`PROJECT_STORY_DECISIONS.md`](./PROJECT_STORY_DECISIONS.md).
+
+Verificación local: `npm ci` y `npm run verify` completados; Astro check sobre 61 archivos con 0 errores/avisos, 7 unit tests, 23 páginas estáticas y 5 smoke tests. `git diff --check` correcto. Sin cambios de dependencias. No se ha verificado despliegue en producción ni indexación.
+
+Decisión de alcance: historias basadas en el contenido ya documentado en el repositorio; no se inventan benchmarks ni se presenta como completada una integración propuesta. Open Graph gráfico específico por proyecto permanece en Fase 7.
+
+Siguiente fase: **Fase 6 — Ideas**.
 
 **Objetivo:** convertir proyectos fuertes en activos de descubrimiento.
 

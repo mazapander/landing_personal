@@ -153,3 +153,10 @@ Transformo procesos y datos dispersos en soluciones digitales que se pueden usar
 Mi recomendación es usar la primera: equilibra tu perfil técnico, producto y consultoría sin venderte únicamente como desarrollador freelance.
 
 El siguiente paso sería ejecutar el commit 1, manteniendo estos textos como borrador hasta que los retoques.
+
+
+## AnderData V3 — Fase 5
+
+Las seis páginas de proyectos prioritarios pasan de resúmenes a historias con decisiones, funcionamiento, estado y próximos pasos. Se añade `seoTitle` opcional, índice automático de lectura y enlazado contextual. Tecnologías trasladadas al final. Plantilla editorial y fichas de decisiones documentadas para futuras ampliaciones.
+
+Verificado con Astro check, 7 tests unitarios, build y 5 smoke tests. Revisión visual pendiente por descarga fallida de Chromium. Rutas y dependencias conservadas.

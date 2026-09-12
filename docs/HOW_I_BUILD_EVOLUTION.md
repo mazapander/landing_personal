@@ -141,3 +141,8 @@ Antes de publicar un artefacto real:
 - enlaces cruzados a proyectos reales.
 
 Hasta entonces, la página actual debe entenderse como **framework overview**.
+
+
+## Material recopilado en Fase 5
+
+El [registro de decisiones de Project stories](./PROJECT_STORY_DECISIONS.md) reúne seis fichas con problema, decisión documentada, consecuencia y evidencia pendiente. Sirve como punto de partida para elegir casos; no acredita todavía benchmarks, contratos originales ni sesiones de revisión con agentes.
