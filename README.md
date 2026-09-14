@@ -253,6 +253,10 @@ Mantener un único dominio principal mejora marca, SEO y medición en Umami.
 
 ---
 
+## Publicar Ideas
+
+Las notas viven en `frontend/src/content/notes/` y se publican bajo `/ideas/`. Copia `template.md`, completa categoría, fecha y proyectos relacionados, redacta la nota y cambia `draft` a `false`. El índice, los enlaces de vuelta desde proyectos y el sitemap se generan en el build. Guía completa: [Ideas](docs/IDEAS.md).
+
 ## Actualizar contenido
 
 Editar:

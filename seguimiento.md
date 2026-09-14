@@ -335,3 +335,18 @@ Estado: implementación terminada y validación funcional superada; QA visual pe
 - `npm run verify`: 0 errores/avisos de Astro, 7 unit tests, build de 23 páginas y 5 smoke tests. `git diff --check` correcto.
 - Chromium no pudo descargarse (timeout/502); las siete anchuras siguen pendientes de inspección visual. No se afirma publicación en producción.
 - Próxima fase: Fase 6 — Ideas. Imágenes OG propias y polish global permanecen en Fase 7.
+
+
+## AnderData V3 — Fase 6: Ideas
+
+Estado: implementación terminada y validación funcional superada; QA visual pendiente por descarga fallida de navegador.
+
+- Integradas Notas en `/ideas/`, conservando la colección `notes` y la edición Markdown.
+- Tres categorías y tres notas iniciales basadas en decisiones de proyectos: comparación de datos de vivienda, orden frente a estado observado y separación de dominio/solver.
+- Relaciones bidireccionales desde `projects` en las notas, con borradores filtrados.
+- SEO, breadcrumbs y sitemap generados; `/notas/` redirige mediante fallback estático y 301 configurado para Nginx.
+- Sin dependencias, CMS, filtros o paginación. Guía editorial en `docs/IDEAS.md`.
+- Agente independiente utilizado como alternativa a Ponytail; revisión final sin bloqueantes. Corregidos metadatos YAML detectados en revisión.
+- `npm run verify`: 0 errores/avisos, 7 unit tests, build estático y 7 smoke tests. `git diff --check` correcto.
+- Revisión visual pendiente por timeout al descargar Chromium Headless. Contenedor/301 y producción no verificados.
+- Próxima fase: Fase 7 — Polish.

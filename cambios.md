@@ -160,3 +160,10 @@ El siguiente paso sería ejecutar el commit 1, manteniendo estos textos como bor
 Las seis páginas de proyectos prioritarios pasan de resúmenes a historias con decisiones, funcionamiento, estado y próximos pasos. Se añade `seoTitle` opcional, índice automático de lectura y enlazado contextual. Tecnologías trasladadas al final. Plantilla editorial y fichas de decisiones documentadas para futuras ampliaciones.
 
 Verificado con Astro check, 7 tests unitarios, build y 5 smoke tests. Revisión visual pendiente por descarga fallida de Chromium. Rutas y dependencias conservadas.
+
+
+## AnderData V3 — Fase 6
+
+Ideas pasa del placeholder a un índice de notas con páginas de lectura estáticas. Se conservan los Markdown de `notes`, añadiendo categoría y referencias a proyectos que generan enlaces en ambas direcciones. Primera tanda de tres notas; plantilla y guía de publicación actualizadas.
+
+`/notas/` redirige a Ideas y sale del sitemap; las notas públicas entran en él. SEO reutiliza BaseLayout. Sin dependencias adicionales. Validación: Astro check, 7 pruebas unitarias y 7 smoke tests correctos. Revisión visual y prueba del contenedor Nginx pendientes por entorno.

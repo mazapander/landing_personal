@@ -248,14 +248,33 @@ Además, esta fase debe empezar a recopilar artefactos reutilizables para futuro
 
 ## Fase 6 — Ideas
 
+**Estado:** DONE — implementación y verificación funcional; revisión visual pendiente por entorno
+
 **Objetivo:** construir autoridad temática sin obligación editorial artificial.
 
-Scope:
+Entregado:
 
-- [ ] migrar Notas dentro de Ideas;
-- [ ] taxonomía mínima;
-- [ ] enlazado entre notas y proyectos;
-- [ ] páginas pensadas para long-tail SEO.
+- [x] Notas integrado en Ideas conservando la colección Markdown existente;
+- [x] índice y detalle estáticos con título, descripción, canonical y breadcrumb;
+- [x] taxonomía mínima: Datos, Sistemas, Desarrollo;
+- [x] relaciones declaradas una vez en cada nota y enlaces en ambas direcciones;
+- [x] tres notas centradas en preguntas concretas sobre vivienda, domótica y optimización;
+- [x] borradores excluidos de rutas, índice, relaciones y sitemap;
+- [x] `/notas/` redirige a Ideas (fallback HTML de Astro y 301 en configuración Nginx);
+- [x] guía editorial y plantilla actualizadas;
+- [x] revisión independiente mediante agente como alternativa a Ponytail, no disponible;
+- [ ] revisión visual en 320, 375, 430, 768, 1024, 1280 y 1440 px: descarga de Chromium Headless bloqueada por timeout.
+
+Decisiones de simplificación:
+
+- reutilizar Astro Content, BaseLayout y estilos de lectura;
+- no introducir CMS, filtros, búsqueda, paginación ni archivos de categorías;
+- no añadir dependencias ni capas de datos nuevas;
+- fechas editoriales, sin programación de publicaciones: la visibilidad depende de `draft`.
+
+Verificación: `npm run verify` correcto; Astro check sobre 62 archivos sin errores/avisos, 7 pruebas unitarias y 7 smoke tests. Build estático completado (`25 page(s)` según Astro). `git diff --check` correcto. El redirect HTML está comprobado; el 301 requiere desplegar Nginx y no se ha probado en contenedor aquí. No se afirma publicación en producción.
+
+Guía: [`IDEAS.md`](./IDEAS.md). Próxima fase: **Fase 7 — Polish**, incluyendo la revisión visual pendiente.
 
 ## Fase 7 — Polish
 

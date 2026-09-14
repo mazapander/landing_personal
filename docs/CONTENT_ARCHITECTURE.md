@@ -211,6 +211,12 @@ frente a una nube de logos o una lista de herramientas sin contexto.
 
 Debe optimizarse para SEO de long tail y lectura, no para cantidad de publicaciones.
 
+### Implementación Fase 6
+
+Colección `notes` conservada con publicación en `/ideas/:id/`. Categorías mínimas: Datos, Sistemas y Desarrollo. El campo `projects` genera relaciones bidireccionales con proyectos publicados. No se crean páginas de categoría. `/notas/` redirige a `/ideas/`.
+
+Guía de publicación y alcance: [`IDEAS.md`](./IDEAS.md).
+
 ## 8. SEO
 
 La estrategia SEO se apoya en problemas y proyectos concretos, no en posicionar principalmente “consultor IA” o “freelance data”.
