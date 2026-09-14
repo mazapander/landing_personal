@@ -5,6 +5,7 @@ import { siteUrl } from './src/lib/site.mjs'
 
 export default defineConfig({
   site: siteUrl,
+  redirects: { '/notas/': '/ideas/' },
   integrations: [react()],
   envDir: '..',
   vite: {

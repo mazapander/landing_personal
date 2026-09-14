@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import path from 'node:path'
 import test from 'node:test'
+import { ideaPath } from '../src/lib/idea-paths.mjs'
 import { automationPath } from '../src/lib/automation-paths.mjs'
 import { projectPath } from '../src/lib/project-paths.mjs'
 import { groupTechnologies } from '../src/lib/technology-groups.mjs'
@@ -16,6 +17,7 @@ test('crea rutas públicas estables para proyectos y automatizaciones', () => {
   assert.equal(projectPath('automatización'), '/proyectos/automatizaci%C3%B3n/')
   assert.equal(automationPath('vehicle-daily-report'), '/automations/vehicle-daily-report/')
   assert.equal(automationPath('reports/daily'), '/automations/reports/daily/')
+  assert.equal(ideaPath('datos/comparación'), '/ideas/datos/comparaci%C3%B3n/')
 })
 
 test('mantiene los contenidos clave del mapa AnderData sin acoplar el test al número total de piezas', () => {
@@ -74,11 +76,14 @@ test('el sitemap incluye proyectos y automatizaciones públicas y excluye borrad
   const urls = sitemapUrls(
     [{ id: 'caso-publico', data: { draft: false } }, { id: 'borrador', data: { draft: true } }],
     [{ id: 'flow-publico', data: { draft: false } }, { id: 'flow-borrador', data: { draft: true } }],
+    [{ id: 'nota-publica', data: { draft: false } }, { id: 'nota-borrador', data: { draft: true } }],
   )
 
   assert.equal(urls[0], 'https://anderdata.es/')
   assert.ok(urls.includes('https://anderdata.es/automations/'))
   assert.ok(urls.includes('https://anderdata.es/proyectos/caso-publico/'))
   assert.ok(urls.includes('https://anderdata.es/automations/flow-publico/'))
+  assert.ok(urls.includes('https://anderdata.es/ideas/nota-publica/'))
+  assert.ok(!urls.includes('https://anderdata.es/notas/'))
   assert.ok(!urls.some((url) => url.includes('borrador')))
 })

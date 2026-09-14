@@ -1,0 +1,13 @@
+.ideas-index { width: var(--page-width); max-width: 960px; margin-inline: auto; padding: clamp(3rem, 8vw, 6rem) 0; }
+.ideas-intro { max-width: 720px; margin-bottom: 3rem; }
+.ideas-intro h1 { margin: .8rem 0 1.5rem; font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -.045em; text-wrap: balance; }
+.ideas-intro > p:last-child { color: var(--color-text-secondary); line-height: 1.7; font-size: var(--text-lead); }
+.ideas-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-text-primary); }
+.ideas-list li { padding: 2rem 0; border-bottom: 1px solid var(--color-border); }
+.ideas-meta { display: block; font-family: var(--font-mono); font-size: .75rem; color: var(--color-text-secondary); }
+.ideas-list h2 { margin: .65rem 0; max-width: 32ch; font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.2; letter-spacing: -.025em; }
+.ideas-list article > p:last-child { max-width: 70ch; line-height: 1.7; color: var(--color-text-secondary); }
+.ideas-list a:hover { color: var(--color-accent); }
+.idea-story { max-width: 760px; }
+.idea-story header time { margin-top: 1rem; }
+.idea-story section a { text-decoration: underline; text-underline-offset: .2em; }

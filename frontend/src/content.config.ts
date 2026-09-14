@@ -1,4 +1,4 @@
-import { defineCollection } from 'astro:content'
+import { defineCollection, reference } from 'astro:content'
 import { glob } from 'astro/loaders'
 import { z } from 'astro/zod'
 
@@ -40,7 +40,14 @@ const services = defineCollection({
 
 const notes = defineCollection({
   loader: glob({ base: './src/content/notes', pattern: '**/*.md' }),
-  schema: z.object({ title: z.string(), description: z.string(), publishedAt: z.coerce.date(), draft: z.boolean().default(false) }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    publishedAt: z.coerce.date(),
+    category: z.enum(['Datos', 'Sistemas', 'Desarrollo']),
+    projects: z.array(reference('projects')).default([]),
+    draft: z.boolean().default(false),
+  }),
 })
 
 export const collections = { projects, automations, services, notes }

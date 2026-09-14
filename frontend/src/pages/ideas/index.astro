@@ -1,16 +1,26 @@
 ---
+import { getCollection } from 'astro:content'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import { ideaPath } from '@/lib/idea-paths.mjs'
+import '@/styles/ideas.css'
+
+const notes = (await getCollection('notes', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime() || a.id.localeCompare(b.id))
 ---
 
-<BaseLayout title="Ideas — Ander Fernández" description="Notas y aprendizajes sobre Data, IA, producto, arquitectura y cosas que estoy construyendo.">
-  <section class="not-found">
-    <p>Ideas</p>
-    <h1>Notas de trabajo, aprendizajes y decisiones que merece la pena guardar.</h1>
-    <p>Estoy convirtiendo esta parte de la web en un cuaderno público. Mientras crece, las notas convivirán con aprendizajes de proyectos y experimentos del Lab.</p>
-    <nav class="page-context" aria-label="Explorar ideas">
-      <a href="/notas/">Ver notas <span aria-hidden="true">→</span></a>
-      <a href="/como-trabajo/">Cómo trabajo <span aria-hidden="true">→</span></a>
-      <a href="/lab/">Ir al Lab <span aria-hidden="true">→</span></a>
-    </nav>
+<BaseLayout title="Ideas sobre datos, sistemas y desarrollo | AnderData" description="Notas prácticas sobre comparación de datos, sistemas observables y decisiones de software, conectadas con los proyectos de AnderData.">
+  <section class="ideas-index">
+    <header class="ideas-intro">
+      <p class="projects-stamp">AD / IDEAS</p>
+      <h1>Decisiones que merece la pena guardar.</h1>
+      <p>Un cuaderno sobre datos, sistemas y desarrollo. Preguntas concretas, criterios para resolverlas y proyectos donde seguir explorando.</p>
+    </header>
+    {notes.length > 0 ? <ul class="ideas-list">{notes.map((note) => <li>
+      <article>
+        <p class="ideas-meta">{note.data.category} · <time datetime={note.data.publishedAt.toISOString().slice(0, 10)}>{note.data.publishedAt.toLocaleDateString('es-ES', { timeZone: 'UTC', year: 'numeric', month: 'long', day: 'numeric' })}</time></p>
+        <h2><a href={ideaPath(note.id)}>{note.data.title}</a></h2>
+        <p>{note.data.description}</p>
+      </article>
+    </li>)}</ul> : <p>Las primeras notas están en preparación. Mientras tanto, puedes <a href="/proyectos/">explorar los proyectos</a>.</p>}
   </section>
 </BaseLayout>

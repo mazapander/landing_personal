@@ -17,8 +17,10 @@ const routes = [
   '/lab/',
   '/como-trabajo/',
   '/ideas/',
+  '/ideas/comparar-datos-vivienda/',
+  '/ideas/domotica-orden-y-estado/',
+  '/ideas/separar-dominio-solver/',
   '/sobre-mi/',
-  '/notas/',
   '/contacto/',
 ]
 
@@ -63,7 +65,6 @@ test('los enlaces internos generados y los ficheros SEO existen', () => {
   assert.match(sitemap, /proyectos\/basketball-intelligence/)
   assert.match(sitemap, /automations\/vehicle-daily-report/)
   assert.match(fs.readFileSync(path.join(dist, '404.html'), 'utf8'), /noindex,follow/)
-  assert.match(html('/notas/'), /noindex,follow/)
 })
 
 test('la cabecera conserva una navegación principal estable de tres universos', () => {
@@ -126,4 +127,43 @@ test('las seis historias tienen SEO único, índice navegable y enlaces resolubl
   }
   assert.equal(titles.size, stories.length)
   assert.equal(descriptions.size, stories.length)
+})
+
+
+test('Ideas publica notas y relaciones en ambas direcciones sin exponer borradores', () => {
+  const index = html('/ideas/')
+  const sitemap = fs.readFileSync(path.join(dist, 'sitemap.xml'), 'utf8')
+  assert.ok(!sitemap.includes('/notas/'))
+  assert.ok(!fs.existsSync(outputPath('/ideas/template/')))
+  assert.ok(!index.includes('/ideas/template/'))
+  assert.ok(!sitemap.includes('/ideas/template/'))
+  const linkedProjects = {
+    'comparar-datos-vivienda': ['ia-compra-pisos'],
+    'domotica-orden-y-estado': ['connected-home-lab', 'anderdata-systems'],
+    'separar-dominio-solver': ['industrial-cutting-optimizer'],
+  }
+  for (const [slug, projects] of Object.entries(linkedProjects)) {
+    const route = `/ideas/${slug}/`
+    const page = html(route)
+    assert.ok(index.includes(`href="${route}"`))
+    assert.ok(sitemap.includes(`https://anderdata.es${route}`))
+    assert.ok(page.includes(`rel="canonical" href="https://anderdata.es${route}"`))
+    assert.equal((page.match(/<h1[ >]/g) || []).length, 1)
+    assert.doesNotMatch(page, /noindex/)
+    assert.match(page, /<time[^>]*datetime="\d{4}-\d{2}-\d{2}"/)
+    assert.match(page, /href="\/ideas\/" aria-current="page"/)
+    for (const project of projects) {
+      assert.ok(page.includes(`href="/proyectos/${project}/"`))
+      assert.ok(html(`/proyectos/${project}/`).includes(`href="${route}"`))
+    }
+    const schemas = [...page.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map((match) => JSON.parse(match[1]))
+    const breadcrumbs = schemas.find((schema) => schema['@type'] === 'BreadcrumbList')
+    assert.equal(breadcrumbs.itemListElement.at(-1).item, `https://anderdata.es${route}`)
+  }
+})
+
+test('la ruta antigua de Notas redirige a Ideas en el build estático', () => {
+  const redirect = html('/notas/')
+  assert.match(redirect, /http-equiv="refresh"/i)
+  assert.match(redirect, /url=\/ideas\//i)
 })
