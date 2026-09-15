@@ -16,10 +16,16 @@ const anderData = experience.find(({ id }) => id === 'anderdata')
 <BaseLayout title="Sobre mí — Ander Fernández" description="Trayectoria profesional y proyectos personales alrededor de producto, datos, IA y software.">
   <div class="about">
     <header class="about-hero">
-      <p class="about-eyebrow">Sobre mí</p>
-      <h1>Construyo, pruebo y aprendo alrededor de producto, datos e IA.</h1>
-      <p>{profile.description}</p>
-      <a class="about-button" href="/proyectos/" data-track-event="cta_click" data-track-location="about_hero">Ver proyectos</a>
+      <div class="about-hero__copy">
+        <p class="about-eyebrow">Sobre mí</p>
+        <h1>Construyo, pruebo y aprendo alrededor de producto, datos e IA.</h1>
+        <p>{profile.description}</p>
+        <a class="about-button" href="/proyectos/" data-track-event="cta_click" data-track-location="about_hero">Ver proyectos</a>
+      </div>
+      <figure class="about-portrait">
+        <img src={profile.avatar} alt={`Retrato de ${profile.name}`} width="400" height="400" loading="eager" />
+        <figcaption><span>AD / PROFILE</span><strong>{profile.name}</strong><small>{profile.location}</small></figcaption>
+      </figure>
     </header>
 
     <section class="about-section" aria-labelledby="experiencia">
@@ -70,7 +76,7 @@ const anderData = experience.find(({ id }) => id === 'anderdata')
       <div class="about-technologies">
         {Object.entries(technologyGroups).map(([category, tools]) => <section>
           <h3>{category}</h3>
-          <ul>{tools.map((tool) => <li title={tool.description}>{tool.name}</li>)}</ul>
+          <ul>{tools.map((tool) => <li title={tool.description}><img src={tool.icon} alt="" width="20" height="20" loading="lazy" /><span>{tool.name}</span></li>)}</ul>
         </section>)}
       </div>
     </section>

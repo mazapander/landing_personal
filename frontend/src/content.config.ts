@@ -16,6 +16,12 @@ const projects = defineCollection({
     architecture: z.array(z.object({ title: z.string(), description: z.string() })).default([]),
     capabilities: z.array(z.string()).default([]),
     links: z.array(z.object({ label: z.string(), url: z.url() })).default([]),
+    visual: z.object({
+      label: z.string(),
+      nodes: z.array(z.string()).min(2).max(5),
+      outcome: z.string(),
+      tone: z.enum(['coral', 'violet', 'green', 'amber']).default('coral'),
+    }).optional(),
   }),
 })
 

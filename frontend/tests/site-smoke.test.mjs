@@ -70,7 +70,7 @@ test('los enlaces internos generados y los ficheros SEO existen', () => {
 test('la cabecera conserva una navegación principal estable de tres universos', () => {
   const page = html('/')
   assert.match(page, /class="site-brand"/)
-  assert.match(page, /class="site-brand__mark"[^>]*>AF</)
+  assert.match(page, /class="site-brand__mark"[^>]*><img src="\/companies\/anderdata\.svg"/)
   assert.match(page, /class="site-brand__name"[^>]*>ANDERDATA</)
   assert.match(page, /<nav class="site-nav" aria-label="Navegación principal">/)
   const primaryNav = page.match(/<nav class="site-nav"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || ''
@@ -81,6 +81,29 @@ test('la cabecera conserva una navegación principal estable de tres universos',
   assert.doesNotMatch(primaryNav, /Servicios|Lab|Cómo trabajo|Automations/)
   assert.match(page, /class="site-header__external"[^>]*href="https:\/\/github\.com\/mazapander"/)
   assert.match(page, /class="site-mobile-menu"/)
+})
+
+test('la capa visual usa la identidad real y hace legibles los proyectos', () => {
+  const homePage = html('/')
+  const projectsPage = html('/proyectos/')
+  const aboutPage = html('/sobre-mi/')
+
+  assert.match(homePage, /home-hero__brand-stamp[\s\S]*?\/companies\/anderdata\.svg/)
+  assert.ok((homePage.match(/class="project-visual /g) || []).length >= 7)
+  assert.ok((projectsPage.match(/class="project-visual /g) || []).length >= 4)
+  assert.match(aboutPage, /src="\/profile\.jpg" alt="Retrato de Ander Fernández"/)
+  assert.match(aboutPage, /class="about-technologies"[\s\S]*?src="\/tech\/python\.svg"/)
+
+  for (const route of [
+    '/proyectos/ia-compra-pisos/',
+    '/proyectos/basketball-intelligence/',
+    '/proyectos/anderdata-systems/',
+    '/proyectos/connected-home-lab/',
+    '/proyectos/basketball-video-tagger/',
+    '/proyectos/industrial-cutting-optimizer/',
+  ]) {
+    assert.match(html(route), /class="project-visual /, `${route} debe incluir un mapa visual`)
+  }
 })
 
 test('el universo activo se mantiene estable en proyectos, automations, ideas y perfil', () => {

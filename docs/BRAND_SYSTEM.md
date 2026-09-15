@@ -225,6 +225,13 @@ Prioridad:
 
 Evitar mockups genéricos y renders decorativos que no demuestren nada.
 
+### Evidencia visual de proyecto
+
+- La marca canónica es `/companies/anderdata.svg`; no se reutiliza el favicon histórico como logotipo.
+- Cuando no existe una captura real publicable, usar un mapa de sistema corto: entrada → transformación → resultado.
+- El mapa debe describir el proyecto concreto y no una arquitectura genérica.
+- Los logotipos tecnológicos apoyan la lectura; nunca sustituyen la explicación del problema.
+
 ## 10. Regla de unicidad
 
 Antes de aceptar una decisión visual, preguntar:

@@ -8,6 +8,11 @@ stack:
   - Python
   - IA
   - Datos
+visual:
+  label: De fuentes públicas a una señal comparable
+  nodes: [Fuentes públicas, Contexto normalizado, Indicadores, Comparación]
+  outcome: Una decisión inmobiliaria con contexto
+  tone: coral
 architecture:
   - title: Fuentes de información
     description: El caso parte de datos y señales dispersas que necesitan una estructura común.

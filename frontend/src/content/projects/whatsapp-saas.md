@@ -11,6 +11,11 @@ stack:
   - PostgreSQL
   - Docker
   - LangChain
+visual:
+  label: De una conversación a una cita gestionada
+  nodes: [Mensaje, Reglas, Agenda, Recordatorio]
+  outcome: Reservas trazables con menos trabajo manual
+  tone: green
 architecture:
   - title: Canal conversacional
     description: WhatsApp concentra las interacciones de reserva y las respuestas guiadas.

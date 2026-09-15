@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+type Visual = NonNullable<CollectionEntry<'projects'>['data']['visual']>
+
+interface Props {
+  visual: Visual
+  stack?: string[]
+  compact?: boolean
+}
+
+const { visual, stack = [], compact = false } = Astro.props
+const iconByTechnology: Record<string, string> = {
+  Python: 'python',
+  SQL: 'sql',
+  PostgreSQL: 'postgresql',
+  FastAPI: 'fastapi',
+  Docker: 'docker',
+  React: 'react',
+  TypeScript: 'typescript',
+  IA: 'OpenAI',
+  'Computer Vision': 'UltralyticsYOLO',
+}
+const tools = stack
+  .map((name) => ({ name, icon: iconByTechnology[name] }))
+  .filter((tool) => tool.icon)
+  .slice(0, compact ? 3 : 4)
+---
+
+<div class:list={['project-visual', `project-visual--${visual.tone}`, { 'project-visual--compact': compact }]} style={`--flow-columns: ${visual.nodes.length}`} role="group" aria-label={`${visual.label}. Resultado: ${visual.outcome}`}>
+  <div class="project-visual__topline">
+    <span>System map</span>
+    <span>{String(visual.nodes.length).padStart(2, '0')} pasos</span>
+  </div>
+  <p class="project-visual__label">{visual.label}</p>
+  <ol class="project-visual__flow">
+    {visual.nodes.map((node, index) => <li><span>{String(index + 1).padStart(2, '0')}</span><strong>{node}</strong></li>)}
+  </ol>
+  <div class="project-visual__result"><span aria-hidden="true">↳</span><strong>{visual.outcome}</strong></div>
+  {tools.length > 0 && <ul class="project-visual__tools" aria-label="Tecnologías principales">
+    {tools.map((tool) => <li><img src={`/tech/${tool.icon}.svg`} alt="" width="22" height="22" loading="lazy" /><span>{tool.name}</span></li>)}
+  </ul>}
+</div>

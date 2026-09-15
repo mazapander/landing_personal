@@ -10,6 +10,11 @@ stack:
   - PostgreSQL
   - Video
   - Computer Vision
+visual:
+  label: El partido convertido en información revisable
+  nodes: [Datos FEB, Vídeo etiquetado, Modelos de visión]
+  outcome: Análisis conectado con la acción original
+  tone: violet
 architecture:
   - title: Structured data
     description: StatsFEB construye histórico y contexto sobre partidos, jugadores y competiciones.

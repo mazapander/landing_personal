@@ -350,3 +350,9 @@ Estado: implementación terminada y validación funcional superada; QA visual pe
 - `npm run verify`: 0 errores/avisos, 7 unit tests, build estático y 7 smoke tests. `git diff --check` correcto.
 - Revisión visual pendiente por timeout al descargar Chromium Headless. Contenedor/301 y producción no verificados.
 - Próxima fase: Fase 7 — Polish.
+
+## AnderData V3 — Fase 7
+
+La primera pasada de Polish acerca el portfolio al público sin cambiar su carácter editorial: identidad real, retrato, logos tecnológicos y mapas de sistema que resumen cada proyecto antes del texto largo.
+
+`npm run verify` supera Astro check, 7 pruebas unitarias, el build estático de 25 páginas y 8 smoke tests. La QA visual multiancho sigue pendiente porque el navegador remoto no alcanza el servidor local.

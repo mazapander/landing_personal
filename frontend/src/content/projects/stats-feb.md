@@ -10,6 +10,11 @@ stack:
   - PostgreSQL
   - FastAPI
   - Docker
+visual:
+  label: De fuentes FEB a un histórico consultable
+  nodes: [Partidos, Ingesta, Modelo, Analytics]
+  outcome: Equipos y jugadores comparables por temporada
+  tone: violet
 architecture:
   - title: Captura y modelado
     description: El flujo reúne datos de partidos y los transforma en un modelo consultable.

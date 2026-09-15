@@ -10,6 +10,11 @@ stack:
   - Networking
   - PostgreSQL
   - Observability
+visual:
+  label: La base que mantiene los productos operables
+  nodes: [Acceso seguro, Servicios, Observabilidad, Alertas]
+  outcome: Sistemas desplegados y diagnosticables
+  tone: green
 architecture:
   - title: Secure access
     description: Separación entre servicios públicos y privados, acceso remoto controlado e identidad para reducir exposición innecesaria.

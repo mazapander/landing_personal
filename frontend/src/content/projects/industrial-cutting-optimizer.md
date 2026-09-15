@@ -10,6 +10,11 @@ stack:
   - OR-Tools
   - Optimization
   - APIs
+visual:
+  label: Del stock disponible a una propuesta revisable
+  nodes: [Stock, Restricciones, Solver, Revisión humana]
+  outcome: Plan de corte válido antes de optimizar
+  tone: coral
 architecture:
   - title: Domain constraints
     description: Piezas, barras, calidades de material y restricciones se modelan antes de pedir al solver una solución.

@@ -11,6 +11,11 @@ stack:
   - SQLite
   - FFmpeg
   - Video
+visual:
+  label: Del partido completo a ejemplos reutilizables
+  nodes: [Vídeo, Etiquetas, Clips, Dataset]
+  outcome: Material revisable para análisis y ML
+  tone: violet
 architecture:
   - title: Video library
     description: Galería de partidos con metadata, histórico y estado de revisión.

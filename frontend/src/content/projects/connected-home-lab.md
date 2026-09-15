@@ -10,6 +10,11 @@ stack:
   - MQTT
   - ESP32
   - Automation
+visual:
+  label: Del evento físico a un estado confirmado
+  nodes: [Sensor, Evento, Regla local, Estado observado]
+  outcome: Automatización doméstica trazable
+  tone: amber
 architecture:
   - title: Multi-home
     description: Un sistema central con dispositivos y nodos distribuidos entre distintas ubicaciones, manteniendo separación lógica por vivienda.

@@ -1,5 +1,6 @@
 export const projectFamilies = [
   {
+    projectId: 'ia-compra-pisos',
     index: '01',
     type: 'PRODUCT',
     title: 'IA Compra Pisos',
@@ -8,6 +9,7 @@ export const projectFamilies = [
     items: ['Housing data', 'Decision context', 'Data product'],
   },
   {
+    projectId: 'basketball-intelligence',
     index: '02',
     type: 'LAB',
     title: 'Basketball Intelligence',
@@ -16,6 +18,7 @@ export const projectFamilies = [
     items: ['StatsFEB', 'Video Tagger', 'Motion Lab'],
   },
   {
+    projectId: 'anderdata-systems',
     index: '03',
     type: 'SYSTEM',
     title: 'AnderData Systems',
@@ -24,6 +27,7 @@ export const projectFamilies = [
     items: ['Vehicle tracking', 'Secure access', 'Observability'],
   },
   {
+    projectId: 'connected-home-lab',
     index: '04',
     type: 'LAB',
     title: 'Connected Home',

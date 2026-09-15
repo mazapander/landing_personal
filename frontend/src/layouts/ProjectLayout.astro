@@ -4,6 +4,7 @@ import { projectPath } from '@/lib/project-paths.mjs'
 import { absoluteUrl } from '@/lib/site.mjs'
 import { ideaPath } from '@/lib/idea-paths.mjs'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import ProjectVisual from '@/components/Projects/ProjectVisual.astro'
 
 interface Props { project: CollectionEntry<'projects'> }
 const { project } = Astro.props
@@ -24,6 +25,7 @@ const breadcrumbSchema = JSON.stringify({ '@context': 'https://schema.org', '@ty
       <h1>{project.data.title}</h1>
       <p>{project.data.description}</p>
     </header>
+    {project.data.visual && <ProjectVisual visual={project.data.visual} stack={project.data.stack} />}
     <div class="case-study__reading">
       {sections.length > 0 && <aside class="case-study__outline">
         <nav aria-label="En esta historia"><p>En esta historia</p><ul>{sections.map((heading) => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ul></nav>

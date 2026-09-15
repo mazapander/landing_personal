@@ -3,12 +3,17 @@ import { getCollection } from 'astro:content'
 import { home } from '@/data/home'
 import { labExtensions, projectFamilies } from '@/data/project-families'
 import { projectPath } from '@/lib/project-paths.mjs'
+import ProjectVisual from '@/components/Projects/ProjectVisual.astro'
 
 const contentProjects = await getCollection('projects', ({ data }) => !data.draft)
 const currentBuildingIds = ['ia-compra-pisos', 'basketball-intelligence', 'anderdata-systems']
 const currentBuilding = currentBuildingIds
   .map((id) => contentProjects.find((project) => project.id === id))
   .filter(Boolean)
+const familyProjects = projectFamilies.map((family) => ({
+  ...family,
+  project: contentProjects.find((project) => project.id === family.projectId),
+}))
 ---
 
 <div class="home-v3">
@@ -30,7 +35,7 @@ const currentBuilding = currentBuildingIds
       </div>
 
       <div class="home-hero__brand-stamp" aria-hidden="true">
-        <img src="/favicon.svg" alt="" width="520" height="520" loading="eager" />
+        <img src="/companies/anderdata.svg" alt="" width="520" height="520" loading="eager" />
         <span>ANDERDATA / 2026</span>
       </div>
     </div>
@@ -52,8 +57,9 @@ const currentBuilding = currentBuildingIds
           <div class="building-copy">
             <h3><a href={projectPath(project.id)}>{project.data.title}</a></h3>
             <p>{project.data.description}</p>
+            <span class="building-status"><span aria-hidden="true"></span>{project.data.status}</span>
           </div>
-          <span class="building-status"><span aria-hidden="true"></span>{project.data.status}</span>
+          {project.data.visual && <ProjectVisual visual={project.data.visual} stack={project.data.stack} compact />}
           <a class="building-arrow" href={projectPath(project.id)} aria-label={`Abrir ${project.data.title}`}>→</a>
         </article>
       ))}
@@ -70,12 +76,12 @@ const currentBuilding = currentBuildingIds
     </header>
 
     <div class="family-grid">
-      {projectFamilies.map((family) => (
+      {familyProjects.map((family) => (
         <a class="family-link" href={family.href} data-track-event="project_family_open" data-track-location="home_families" data-track-project={family.title}>
           <div class="family-meta"><span>{family.index}</span><span>AD / {family.type}</span></div>
+          {family.project?.data.visual && <ProjectVisual visual={family.project.data.visual} stack={family.project.data.stack} compact />}
           <h3>{family.title}</h3>
           <p>{family.description}</p>
-          <ul aria-label={`Piezas de ${family.title}`}>{family.items.map((item) => <li>{item}</li>)}</ul>
           <span class="family-arrow" aria-hidden="true">→</span>
         </a>
       ))}

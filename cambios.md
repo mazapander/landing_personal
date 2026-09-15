@@ -167,3 +167,12 @@ Verificado con Astro check, 7 tests unitarios, build y 5 smoke tests. Revisión 
 Ideas pasa del placeholder a un índice de notas con páginas de lectura estáticas. Se conservan los Markdown de `notes`, añadiendo categoría y referencias a proyectos que generan enlaces en ambas direcciones. Primera tanda de tres notas; plantilla y guía de publicación actualizadas.
 
 `/notas/` redirige a Ideas y sale del sitemap; las notas públicas entran en él. SEO reutiliza BaseLayout. Sin dependencias adicionales. Validación: Astro check, 7 pruebas unitarias y 7 smoke tests correctos. Revisión visual y prueba del contenedor Nginx pendientes por entorno.
+
+## AnderData V3 — Fase 7: capa visual pública
+
+- Sustituida la marca textual y el favicon incorrecto por el logotipo real de AnderData.
+- Añadidos mapas visuales de sistema a la portada, el índice y las ocho historias de proyecto.
+- Incorporados el retrato real y los logotipos tecnológicos en Sobre mí.
+- La visualización es declarativa y reutilizable, sin dependencias ni capturas inventadas.
+- Validación: Astro check sin errores ni avisos, 7 pruebas unitarias, build de 25 páginas y 8 smoke tests.
+- La inspección visual del servidor local sigue bloqueada por el aislamiento de red del navegador remoto.
