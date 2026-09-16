@@ -5,6 +5,12 @@ description: Una descripción específica del problema y del enfoque, sin promet
 status: Borrador
 draft: true
 stack: []
+# Opcional. Añade recursos reales cuando estén disponibles.
+# media:
+#   logo: { src: /projects/nombre/logo.svg, alt: Logo de Nombre }
+#   cover: { src: /projects/nombre/cover.webp, alt: Vista principal del proyecto, caption: Descripción breve }
+#   gallery:
+#     - { src: /projects/nombre/detalle.webp, alt: Detalle de la interfaz }
 ---
 
 ## El problema

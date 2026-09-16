@@ -6,10 +6,11 @@ type Visual = NonNullable<CollectionEntry<'projects'>['data']['visual']>
 interface Props {
   visual: Visual
   stack?: string[]
+  logo?: { src: string; alt: string }
   compact?: boolean
 }
 
-const { visual, stack = [], compact = false } = Astro.props
+const { visual, stack = [], logo, compact = false } = Astro.props
 const iconByTechnology: Record<string, string> = {
   Python: 'python',
   SQL: 'sql',
@@ -29,7 +30,7 @@ const tools = stack
 
 <div class:list={['project-visual', `project-visual--${visual.tone}`, { 'project-visual--compact': compact }]} style={`--flow-columns: ${visual.nodes.length}`} role="group" aria-label={`${visual.label}. Resultado: ${visual.outcome}`}>
   <div class="project-visual__topline">
-    <span>System map</span>
+    <span>{logo ? <img src={logo.src} alt={logo.alt} loading="lazy" /> : 'System map'}</span>
     <span>{String(visual.nodes.length).padStart(2, '0')} pasos</span>
   </div>
   <p class="project-visual__label">{visual.label}</p>

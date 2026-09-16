@@ -351,8 +351,10 @@ Estado: implementación terminada y validación funcional superada; QA visual pe
 - Revisión visual pendiente por timeout al descargar Chromium Headless. Contenedor/301 y producción no verificados.
 - Próxima fase: Fase 7 — Polish.
 
-## AnderData V3 — Fase 7
+## AnderData V3 — Fase 7: visual y media-ready
 
-La primera pasada de Polish acerca el portfolio al público sin cambiar su carácter editorial: identidad real, retrato, logos tecnológicos y mapas de sistema que resumen cada proyecto antes del texto largo.
+La web conserva la dirección Hybrid Lab y reduce densidad visible: banda de actividad en Inicio, portadas de caso en dos columnas, resúmenes rápidos, señales técnicas y descripciones acotadas.
 
-`npm run verify` supera Astro check, 7 pruebas unitarias, el build estático de 25 páginas y 8 smoke tests. La QA visual multiancho sigue pendiente porque el navegador remoto no alcanza el servidor local.
+Los proyectos admiten `logo`, `cover` y galería desde el Markdown. Las imágenes reales sustituyen automáticamente al mapa de sistema; no se generan fotografías ni capturas ficticias.
+
+Validación: Astro check sobre 64 archivos sin errores ni avisos, 7 pruebas unitarias, build estático de 25 páginas y 8 smoke tests.

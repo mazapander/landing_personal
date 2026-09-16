@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import ProjectVisual from './ProjectVisual.astro'
+
+type Project = CollectionEntry<'projects'>['data']
+
+interface Props {
+  project: Project
+  compact?: boolean
+  gallery?: boolean
+}
+
+const { project, compact = false, gallery = false } = Astro.props
+const media = project.media
+const hero = media?.cover ?? media?.gallery?.[0]
+const logo = media?.logo
+const fit = media?.fit ?? 'cover'
+---
+
+<div class:list={['project-media', { 'project-media--compact': compact }]}>
+  {hero ? (
+    <figure class={`project-media__cover project-media__cover--${fit}`}>
+      <img src={hero.src} alt={hero.alt} loading={compact ? 'lazy' : 'eager'} />
+      <div class="project-media__overlay">
+        {logo && <img src={logo.src} alt={logo.alt} class="project-media__logo" loading="lazy" />}
+        <span>{project.status}</span>
+      </div>
+      {hero.caption && <figcaption>{hero.caption}</figcaption>}
+    </figure>
+  ) : project.visual ? (
+    <ProjectVisual visual={project.visual} stack={project.stack} logo={logo} compact={compact} />
+  ) : logo ? (
+    <div class="project-media__logo-only"><img src={logo.src} alt={logo.alt} loading="lazy" /></div>
+  ) : null}
+
+  {gallery && media?.gallery && media.gallery.length > 0 && (
+    <div class="project-media__gallery" aria-label="Imágenes del proyecto">
+      {media.gallery.map((image) => (
+        <figure>
+          <img src={image.src} alt={image.alt} loading="lazy" />
+          {image.caption && <figcaption>{image.caption}</figcaption>}
+        </figure>
+      ))}
+    </div>
+  )}
+</div>

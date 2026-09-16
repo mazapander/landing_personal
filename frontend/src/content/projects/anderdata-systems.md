@@ -15,6 +15,10 @@ visual:
   nodes: [Acceso seguro, Servicios, Observabilidad, Alertas]
   outcome: Sistemas desplegados y diagnosticables
   tone: green
+media:
+  logo:
+    src: /companies/anderdata.svg
+    alt: Logo de AnderData
 architecture:
   - title: Secure access
     description: Separación entre servicios públicos y privados, acceso remoto controlado e identidad para reducir exposición innecesaria.

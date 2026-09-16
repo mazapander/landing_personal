@@ -89,6 +89,7 @@ test('la capa visual usa la identidad real y hace legibles los proyectos', () =>
   const aboutPage = html('/sobre-mi/')
 
   assert.match(homePage, /home-hero__brand-stamp[\s\S]*?\/companies\/anderdata\.svg/)
+  assert.match(homePage, /class="home-hero__activity" aria-label="Proyectos activos"/)
   assert.ok((homePage.match(/class="project-visual /g) || []).length >= 7)
   assert.ok((projectsPage.match(/class="project-visual /g) || []).length >= 4)
   assert.match(aboutPage, /src="\/profile\.jpg" alt="Retrato de Ander Fernández"/)
@@ -102,8 +103,14 @@ test('la capa visual usa la identidad real y hace legibles los proyectos', () =>
     '/proyectos/basketball-video-tagger/',
     '/proyectos/industrial-cutting-optimizer/',
   ]) {
-    assert.match(html(route), /class="project-visual /, `${route} debe incluir un mapa visual`)
+    const page = html(route)
+    assert.match(page, /class="case-study__hero"/, `${route} debe tener una portada visual`)
+    assert.match(page, /class="case-study__quickfacts"/, `${route} debe exponer un resumen escaneable`)
+    assert.match(page, /class="project-media"/, `${route} debe reservar un soporte para media`)
+    assert.match(page, /class="project-visual /, `${route} debe incluir un mapa visual`)
   }
+
+  assert.match(html('/proyectos/anderdata-systems/'), /class="project-visual__topline"[\s\S]*?src="\/companies\/anderdata\.svg"/)
 })
 
 test('el universo activo se mantiene estable en proyectos, automations, ideas y perfil', () => {

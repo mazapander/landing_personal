@@ -170,9 +170,9 @@ Ideas pasa del placeholder a un índice de notas con páginas de lectura estáti
 
 ## AnderData V3 — Fase 7: capa visual pública
 
-- Sustituida la marca textual y el favicon incorrecto por el logotipo real de AnderData.
-- Añadidos mapas visuales de sistema a la portada, el índice y las ocho historias de proyecto.
-- Incorporados el retrato real y los logotipos tecnológicos en Sobre mí.
-- La visualización es declarativa y reutilizable, sin dependencias ni capturas inventadas.
-- Validación: Astro check sin errores ni avisos, 7 pruebas unitarias, build de 25 páginas y 8 smoke tests.
-- La inspección visual del servidor local sigue bloqueada por el aislamiento de red del navegador remoto.
+- Identidad real de AnderData en cabecera, hero y favicon; retrato y logos tecnológicos en Sobre mí.
+- Mapas visuales para comprender proyectos sin depender del texto largo.
+- Soporte de `logo`, `cover` y galería por proyecto, con fallback automático al mapa del sistema.
+- Inicio incorpora una banda de actividad y las historias abren con una composición visual de dos columnas.
+- Menos densidad mediante resúmenes, señales técnicas y descripciones limitadas a dos líneas.
+- Sin dependencias nuevas, fotografías genéricas ni capturas inventadas.

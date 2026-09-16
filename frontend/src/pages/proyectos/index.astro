@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content'
 import { projectPath } from '@/lib/project-paths.mjs'
 import BaseLayout from '@/layouts/BaseLayout.astro'
-import ProjectVisual from '@/components/Projects/ProjectVisual.astro'
+import ProjectMedia from '@/components/Projects/ProjectMedia.astro'
 
 const projects = await getCollection('projects', ({ data }) => !data.draft)
 const projectById = new Map(projects.map((project) => [project.id, project]))
@@ -69,7 +69,7 @@ const basketball = projectById.get('basketball-intelligence')
               <h3>{project.data.title}</h3>
               <p>{project.data.description}</p>
             </div>
-            {project.data.visual && <ProjectVisual visual={project.data.visual} stack={project.data.stack} compact />}
+            {(project.data.visual || project.data.media) && <ProjectMedia project={project.data} compact />}
             <span class="project-feature-row__arrow" aria-hidden="true">↗</span>
           </a>
         ))}
@@ -125,7 +125,9 @@ const basketball = projectById.get('basketball-intelligence')
             <div>
               <p>{project.data.status}</p>
               <h3>{project.data.title}</h3>
-              <p>{project.data.description}</p>
+              <ul class="system-row__signals" aria-label={`Capas de ${project.data.title}`}>
+                {project.data.architecture.slice(0, 3).map((item) => <li>{item.title}</li>)}
+              </ul>
             </div>
             <span aria-hidden="true">↗</span>
           </a>

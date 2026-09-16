@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 import { home } from '@/data/home'
 import { labExtensions, projectFamilies } from '@/data/project-families'
 import { projectPath } from '@/lib/project-paths.mjs'
-import ProjectVisual from '@/components/Projects/ProjectVisual.astro'
+import ProjectMedia from '@/components/Projects/ProjectMedia.astro'
 
 const contentProjects = await getCollection('projects', ({ data }) => !data.draft)
 const currentBuildingIds = ['ia-compra-pisos', 'basketball-intelligence', 'anderdata-systems']
@@ -38,6 +38,13 @@ const familyProjects = projectFamilies.map((family) => ({
         <img src="/companies/anderdata.svg" alt="" width="520" height="520" loading="eager" />
         <span>ANDERDATA / 2026</span>
       </div>
+
+      <nav class="home-hero__activity" aria-label="Proyectos activos">
+        <span>NOW / BUILDING</span>
+        {currentBuilding.map((project) => project && (
+          <a href={projectPath(project.id)}><i aria-hidden="true"></i>{project.data.title}</a>
+        ))}
+      </nav>
     </div>
   </section>
 
@@ -59,7 +66,7 @@ const familyProjects = projectFamilies.map((family) => ({
             <p>{project.data.description}</p>
             <span class="building-status"><span aria-hidden="true"></span>{project.data.status}</span>
           </div>
-          {project.data.visual && <ProjectVisual visual={project.data.visual} stack={project.data.stack} compact />}
+          {(project.data.visual || project.data.media) && <ProjectMedia project={project.data} compact />}
           <a class="building-arrow" href={projectPath(project.id)} aria-label={`Abrir ${project.data.title}`}>→</a>
         </article>
       ))}
@@ -79,7 +86,7 @@ const familyProjects = projectFamilies.map((family) => ({
       {familyProjects.map((family) => (
         <a class="family-link" href={family.href} data-track-event="project_family_open" data-track-location="home_families" data-track-project={family.title}>
           <div class="family-meta"><span>{family.index}</span><span>AD / {family.type}</span></div>
-          {family.project?.data.visual && <ProjectVisual visual={family.project.data.visual} stack={family.project.data.stack} compact />}
+          {family.project && (family.project.data.visual || family.project.data.media) && <ProjectMedia project={family.project.data} compact />}
           <h3>{family.title}</h3>
           <p>{family.description}</p>
           <span class="family-arrow" aria-hidden="true">→</span>

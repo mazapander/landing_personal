@@ -282,7 +282,12 @@ Solo después de que estructura y contenido funcionen.
 
 - [x] identidad real de AnderData en cabecera, hero y favicon;
 - [x] retrato real y logotipos tecnológicos en Sobre mí;
-- [x] mapas visuales reutilizables en Inicio, índice y ocho historias de proyecto;
+- [x] mapas visuales reutilizables en Inicio, índice e historias de proyecto;
+- [x] soporte declarativo para logo, portada y galería por proyecto;
+- [x] fallback automático al mapa del sistema;
+- [x] portada de cada caso en dos columnas con resumen escaneable;
+- [x] banda de actividad en el hero con acceso a trabajo actual;
+- [x] descripciones secundarias limitadas a dos líneas;
 - [x] hover/focus conservados en navegación y accesos;
 - [x] accesibilidad estructural y textos alternativos verificados por smoke tests;
 - [ ] revisión visual completa en navegador: el navegador remoto no puede acceder al servidor local;
@@ -293,7 +298,7 @@ Solo después de que estructura y contenido funcionen.
 - [ ] revisión de Core Web Vitals;
 - [ ] limpiar CSS y componentes que hayan quedado obsoletos.
 
-Decisión visual: los mapas explican entradas, transformación y resultado con datos declarativos del contenido. No se fabrican capturas de producto; cuando existan interfaces públicas estables, podrán sustituir o acompañar estos mapas con evidencia real.
+Decisión visual: no se fabrican capturas ni identidades de proyecto. Las imágenes reales sustituyen automáticamente al diagrama cuando se declaran; hasta entonces se mantiene el mapa del sistema.
 
 ## Formato de cierre de fase
 

@@ -22,6 +22,12 @@ const projects = defineCollection({
       outcome: z.string(),
       tone: z.enum(['coral', 'violet', 'green', 'amber']).default('coral'),
     }).optional(),
+    media: z.object({
+      logo: z.object({ src: z.string(), alt: z.string() }).optional(),
+      cover: z.object({ src: z.string(), alt: z.string(), caption: z.string().optional() }).optional(),
+      gallery: z.array(z.object({ src: z.string(), alt: z.string(), caption: z.string().optional() })).max(6).default([]),
+      fit: z.enum(['cover', 'contain']).default('cover'),
+    }).optional(),
   }),
 })
 

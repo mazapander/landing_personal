@@ -232,6 +232,19 @@ Evitar mockups genéricos y renders decorativos que no demuestren nada.
 - El mapa debe describir el proyecto concreto y no una arquitectura genérica.
 - Los logotipos tecnológicos apoyan la lectura; nunca sustituyen la explicación del problema.
 
+Los recursos se declaran en el frontmatter y pueden añadirse sin modificar las vistas:
+
+```yaml
+media:
+  logo: { src: /projects/mi-proyecto/logo.svg, alt: Logo de Mi Proyecto }
+  cover: { src: /projects/mi-proyecto/cover.webp, alt: Vista principal del producto }
+  gallery:
+    - { src: /projects/mi-proyecto/detail.webp, alt: Detalle de la interfaz, caption: Qué demuestra la captura }
+  fit: cover
+```
+
+`cover` tiene prioridad. Si solo existe `gallery`, la primera imagen funciona también como portada. Mientras no haya recursos reales, el mapa del sistema actúa como evidencia visual honesta.
+
 ## 10. Regla de unicidad
 
 Antes de aceptar una decisión visual, preguntar:
