@@ -361,3 +361,7 @@ La prioridad es que una persona entienda en menos de 10 segundos:
 3. qué impacto ha generado;
 4. dónde puede ver proyectos;
 5. cómo puede contactar.
+
+## Evidencia y progreso de proyectos
+
+Consulta [PROJECT_EVIDENCE.md](docs/PROJECT_EVIDENCE.md) para añadir hitos, fechas, capturas optimizadas y medir los recorridos. El [plan de Ideas](docs/IDEAS_ROADMAP.md) organiza 18 piezas por proyecto y evidencia necesaria.

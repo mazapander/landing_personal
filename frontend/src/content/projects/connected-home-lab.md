@@ -27,6 +27,63 @@ capabilities:
   - Automatización de accesos y rutinas domésticas.
   - Monitorización de energía y estados de dispositivos.
   - Diseño de nodos distribuidos y control central.
+updatedAt: "2026-09-28"
+updateSummary: "Historia actualizada con diagramas del caso e hitos verificables."
+facts:
+- value: Home Assistant
+  label: plataforma del laboratorio
+- value: Orden ≠ estado
+  label: criterio de confirmación
+- value: Local first
+  label: dirección de diseño
+milestones:
+- title: Modelo de orden y confirmación definido
+  description: Separación entre una orden enviada y un cambio físico observado.
+  status: done
+  evidence:
+    label: Ver el caso documentado
+    href: /ideas/domotica-orden-y-estado/
+- title: Integración de garaje, energía y rutinas
+  description: Casos activos de sensores y automatización doméstica.
+  status: in-progress
+- title: Prueba ante desconexión
+  description: Documentar el resultado observado cuando se pierde la señal.
+  status: planned
+- title: Patrón entre viviendas
+  description: Reutilizar el caso conservando contexto y separación por ubicación.
+  status: planned
+evidence:
+- title: 'Garaje: actuar y comprobar'
+  kind: Diagrama documentado
+  caption: Diseño documentado del caso de garaje. El sensor confirma el estado, no el envío de la
+    orden.
+  steps:
+  - title: Orden
+    detail: Solicitud de actuación
+  - title: Contacto seco
+    detail: Acciona el mecanismo
+  - title: Sensor
+    detail: Observa el estado físico
+  - title: Confirmación
+    detail: Relaciona orden y observación
+  source:
+    label: Ver explicación
+    href: /ideas/domotica-orden-y-estado/
+- title: Qué mostrar cuando falta una señal
+  kind: Diagrama documentado
+  caption: Escenario de diseño para la futura prueba de desconexión; no es una prueba ya ejecutada.
+  steps:
+  - title: Última observación
+    detail: Estado conocido y su fecha
+  - title: Pérdida de señal
+    detail: Falta confirmación actual
+  - title: Estado desconocido
+    detail: Conservar el límite de información
+  - title: Nueva observación
+    detail: Actualizar el estado confirmado
+  source:
+    label: Ver explicación
+    href: /ideas/domotica-orden-y-estado/
 ---
 
 ## El problema: una orden no confirma lo que ha ocurrido
@@ -35,11 +92,15 @@ Una aplicación puede indicar que ha enviado una orden sin saber si el dispositi
 
 Connected Home Lab explora cómo conectar esas señales con software útil y mantenible. El centro del proyecto son sensores, energía, accesos y rutinas cotidianas.
 
+## Estado actual y resultado
+
+El laboratorio trabaja sobre garaje, energía y rutinas con Home Assistant. El criterio de orden y confirmación está documentado; la integración y la arquitectura entre viviendas siguen en desarrollo. El siguiente entregable es una prueba de desconexión de un caso doméstico.
+
 ## Por qué construirlo
 
 La motivación es integrar dispositivos y eventos físicos sin depender siempre de abrir una aplicación. Home Assistant proporciona la plataforma; Zigbee, MQTT y nodos ESP32 forman parte del espacio de integración del laboratorio.
 
-La dirección es local siempre que resulte posible, con separación entre viviendas y una gestión que permita entender qué sucede en cada ubicación. No se da por resuelto el funcionamiento sin conexión por el simple hecho de utilizar componentes locales.
+La dirección es local siempre que resulte posible, con separación entre viviendas y una gestión que permita entender qué sucede en cada ubicación. La prueba de desconexión figura como un hito explícito del laboratorio.
 
 ## Cómo funciona: observar, interpretar y actuar
 
@@ -58,12 +119,6 @@ La dirección es local siempre que resulte posible, con separación entre vivien
 **Elegir qué debe seguir funcionando localmente.** La capa central es útil para gestionar, pero cada caso necesita revisar qué pasa si pierde conectividad. Esa decisión forma parte del diseño, no se resuelve solo eligiendo un protocolo.
 
 **Empezar por rutinas concretas.** Un sensor aporta valor cuando su señal permite una acción o una explicación útil. La expansión del laboratorio debe seguir esos casos, no el número de dispositivos disponibles.
-
-## Estado actual y resultado
-
-Es un laboratorio activo. Los casos de garaje, energía y rutinas marcan el trabajo de integración; la arquitectura entre viviendas permanece en exploración. La documentación no acredita todavía una validación completa de fallos de conectividad ni una medición de ahorro energético.
-
-El resultado que se busca demostrar es trazabilidad entre un evento físico, la regla aplicada y el estado observado después.
 
 ## Siguiente evolución
 

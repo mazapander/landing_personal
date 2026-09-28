@@ -10,7 +10,7 @@ const links = [
 const isCurrent = (label: string) => {
   if (label === 'Proyectos') return pathname.startsWith('/proyectos') || pathname.startsWith('/lab') || pathname.startsWith('/automations') || pathname.startsWith('/como-trabajo')
   if (label === 'Ideas') return pathname.startsWith('/ideas') || pathname.startsWith('/notas')
-  if (label === 'Sobre mí') return pathname.startsWith('/sobre-mi') || pathname.startsWith('/contacto')
+  if (label === 'Sobre mí') return pathname.startsWith('/sobre-mi')
   return false
 }
 ---
@@ -27,8 +27,8 @@ const isCurrent = (label: string) => {
       ))}
     </nav>
 
-    <a class="site-header__external" href="https://github.com/mazapander" target="_blank" rel="noreferrer" data-track-event="profile_open" data-track-location="header">
-      GitHub <span aria-hidden="true">↗</span>
+    <a class="site-header__external" href="/contacto/" aria-current={pathname.startsWith('/contacto') ? 'page' : undefined} data-track-event="contact_open" data-track-location="header">
+      Contacto <span aria-hidden="true">→</span>
     </a>
 
     <details class="site-mobile-menu">
@@ -37,7 +37,7 @@ const isCurrent = (label: string) => {
         {links.map(([label, href]) => (
           <a href={href} aria-current={isCurrent(label) ? 'page' : undefined} data-track-event="navigation_open" data-track-location="mobile_menu">{label}</a>
         ))}
-        <a href="https://github.com/mazapander" target="_blank" rel="noreferrer" data-track-event="profile_open" data-track-location="mobile_menu">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="/contacto/" aria-current={pathname.startsWith('/contacto') ? 'page' : undefined} data-track-event="contact_open" data-track-location="mobile_menu">Contacto <span aria-hidden="true">→</span></a>
       </nav>
     </details>
   </div>

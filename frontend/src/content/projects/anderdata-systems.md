@@ -31,6 +31,69 @@ capabilities:
   - Acceso privado y exposición controlada de aplicaciones.
   - Monitorización de infraestructura y servicios.
   - Integración de sistemas con alertas y reporting.
+updatedAt: "2026-09-28"
+updateSummary: "Historia actualizada con diagramas del caso e hitos verificables."
+facts:
+- value: Docker
+  label: servicios autoalojados
+- value: Histórico + informes
+  label: seguimiento de vehículos
+- value: Acceso controlado
+  label: operación del laboratorio
+milestones:
+- title: Servicios autoalojados en funcionamiento
+  description: Base de operación con Ubuntu, Docker, persistencia y acceso controlado.
+  status: done
+  evidence:
+    label: Ver el caso documentado
+    href: '#estado-actual-y-resultado'
+- title: Seguimiento y reporting de vehículos
+  description: Posiciones, histórico, alertas e informes documentados.
+  status: done
+  evidence:
+    label: Ver el caso documentado
+    href: /automations/vehicle-daily-report/
+- title: Monitorización de infraestructura
+  description: Señales del host y aplicaciones para diagnóstico.
+  status: done
+  evidence:
+    label: Ver el caso documentado
+    href: /automations/infrastructure-health-check/
+- title: Patrones de despliegue reutilizables
+  description: Unificar incorporación, datos, acceso y alertas de nuevos servicios.
+  status: in-progress
+evidence:
+- title: De una posición a un informe
+  kind: Diagrama documentado
+  caption: Flujo funcional descrito en el caso de reporting. Se omiten ubicaciones y datos personales.
+  steps:
+  - title: Posición
+    detail: Evento de entrada
+  - title: Histórico
+    detail: Recorridos conservados
+  - title: Automatización
+    detail: Procesa eventos y kilómetros
+  - title: Informe
+    detail: Salida de uso del vehículo
+  source:
+    label: Ver explicación
+    href: /automations/vehicle-daily-report/
+- title: Una señal útil para operar
+  kind: Diagrama documentado
+  caption: Mapa del chequeo de infraestructura documentado; no expresa un SLA ni una disponibilidad
+    medida.
+  steps:
+  - title: Host y servicios
+    detail: Estado y recursos
+  - title: Comprobación
+    detail: Interpretar la señal de salud
+  - title: Alerta
+    detail: Hacer visible la incidencia
+  - title: Diagnóstico
+    detail: Volver al servicio afectado
+  source:
+    label: Ver explicación
+    href: /automations/infrastructure-health-check/
 ---
 
 ## El problema: una aplicación necesita seguir funcionando
@@ -38,6 +101,10 @@ capabilities:
 Desplegar una demo resuelve el primer acceso. Mantener varios productos encendidos introduce otras preguntas: quién puede entrar, dónde persisten los datos, cómo detectar una caída y cómo revisar un comportamiento inesperado.
 
 AnderData Systems es la infraestructura propia donde esas preguntas se convierten en trabajo de operación. Da soporte a productos y experimentos sin convertir cada despliegue en un entorno completamente distinto.
+
+## Estado actual y resultado
+
+La infraestructura está en funcionamiento: servicios autoalojados, monitorización de Ubuntu y aplicaciones, y seguimiento de vehículos con histórico, alertas e informes. La siguiente evolución unifica los patrones de despliegue y diagnóstico para incorporar servicios.
 
 ## Por qué construir una base compartida
 
@@ -62,12 +129,6 @@ El [informe diario de vehículos](/automations/vehicle-daily-report/) explica es
 **Observar para poder actuar.** Saber que un proceso arrancó no basta para diagnosticar un sistema. La monitorización del host y de servicios aporta contexto sobre disponibilidad, recursos y estado operativo.
 
 La arquitectura pública se describe mediante capacidades y decisiones. Los ejemplos se mantienen libres de configuración de acceso y datos de localización personales.
-
-## Estado actual y resultado
-
-La infraestructura está en funcionamiento. El caso documenta servicios autoalojados, seguimiento de vehículos con histórico, alertas e informes, y monitorización de Ubuntu y aplicaciones.
-
-No se publica un objetivo de disponibilidad cumplido ni un ahorro operativo medido. La evidencia descrita es funcional: sistemas desplegados y flujos de información utilizados para observarlos y producir reportes.
 
 ## Siguiente evolución
 

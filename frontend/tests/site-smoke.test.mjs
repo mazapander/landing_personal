@@ -79,7 +79,7 @@ test('la cabecera conserva una navegación principal estable de tres universos',
   assert.match(primaryNav, /Ideas/)
   assert.match(primaryNav, /Sobre mí/)
   assert.doesNotMatch(primaryNav, /Servicios|Lab|Cómo trabajo|Automations/)
-  assert.match(page, /class="site-header__external"[^>]*href="https:\/\/github\.com\/mazapander"/)
+  assert.match(page, /class="site-header__external"[^>]*href="\/contacto\/"/)
   assert.match(page, /class="site-mobile-menu"/)
 })
 
@@ -196,4 +196,25 @@ test('la ruta antigua de Notas redirige a Ideas en el build estático', () => {
   const redirect = html('/notas/')
   assert.match(redirect, /http-equiv="refresh"/i)
   assert.match(redirect, /url=\/ideas\//i)
+})
+
+
+test('los cuatro pilares exponen hitos, diagramas, metadatos y OG reales', () => {
+  for (const slug of stories.slice(0, 4)) {
+    const page = html(`/proyectos/${slug}/`)
+    assert.match(page, /id="timeline-title"/)
+    assert.equal((page.match(/Diagrama documentado/g) || []).length, 2)
+    assert.doesNotMatch(page, /<span>capas<|<span>capacidades<|<span>tecnologías</)
+    assert.ok(page.indexOf('Estado actual y resultado</h2>') < page.indexOf('>Cómo funciona:', page.indexOf('Estado actual y resultado</h2>')))
+    const image = fs.readFileSync(path.join(dist, `og/${slug}.png`))
+    assert.equal(image.readUInt32BE(16), 1200)
+    assert.equal(image.readUInt32BE(20), 630)
+    assert.match(page, /"@type":"CreativeWork"/)
+    assert.ok(page.includes(`https://anderdata.es/og/${slug}.png`))
+  }
+  assert.match(html('/sobre-mi/'), /"@type":"ProfilePage"/)
+  assert.match(html('/ideas/comparar-datos-vivienda/'), /"@type":"TechArticle"/)
+  const home = html('/')
+  assert.match(home, /<source[^>]*type="image\/avif"/)
+  assert.match(home, /<source[^>]*type="image\/webp"/)
 })

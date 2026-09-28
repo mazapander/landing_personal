@@ -15,17 +15,35 @@ export function trackEvent(name, attributes, location, tracker) {
   return data
 }
 
-export function trackClick(event, location, tracker) {
-  const element = event.target.closest?.('[data-track-event]')
-  if (!element) return false
+export function funnelEvent(source, href) {
+  if (!href) return undefined
+  let url
+  try { url = new URL(href, `https://anderdata.es${source}`) } catch { return undefined }
+  if (url.hostname === 'github.com') return 'github_exit'
+  if (url.origin !== 'https://anderdata.es') return undefined
+  const destination = url.pathname
+  const isProject = (path) => /^\/proyectos\/[^/]+\/?$/.test(path)
+  if (source === '/' && isProject(destination)) return 'home_to_project'
+  if (isProject(source) && isProject(destination) && source.replace(/\/$/, '') !== destination.replace(/\/$/, '')) return 'project_to_project'
+  if (isProject(source) && /^\/ideas\/[^/]+/.test(destination)) return 'project_to_idea'
+  if (/^\/sobre-mi\/?$/.test(source) && /^\/contacto\/?$/.test(destination)) return 'about_to_contact'
+  return undefined
+}
 
-  trackEvent(element.dataset.trackEvent, {
+export function trackClick(event, location, tracker) {
+  const element = event.target.closest?.('[data-track-event], a[href]')
+  if (!element) return false
+  const destination = element.getAttribute('href')
+  const attributes = {
     placement: element.dataset.trackLocation,
     project: element.dataset.trackProject,
     service: element.dataset.trackService,
-    destination: element.getAttribute('href'),
-  }, location, tracker)
-  return true
+    destination,
+  }
+  const funnel = funnelEvent(location.pathname, destination)
+  if (funnel) trackEvent(funnel, attributes, location, tracker)
+  if (element.dataset.trackEvent) trackEvent(element.dataset.trackEvent, attributes, location, tracker)
+  return Boolean(funnel || element.dataset.trackEvent)
 }
 
 export function attachAnalytics() {

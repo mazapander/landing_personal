@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import { Picture } from 'astro:assets'
 import ProjectVisual from './ProjectVisual.astro'
 
 type Project = CollectionEntry<'projects'>['data']
@@ -15,12 +16,13 @@ const media = project.media
 const hero = media?.cover ?? media?.gallery?.[0]
 const logo = media?.logo
 const fit = media?.fit ?? 'cover'
+const galleryImages = media?.gallery?.filter((image) => image.src.src !== hero?.src.src) ?? []
 ---
 
 <div class:list={['project-media', { 'project-media--compact': compact }]}>
   {hero ? (
     <figure class={`project-media__cover project-media__cover--${fit}`}>
-      <img src={hero.src} alt={hero.alt} loading={compact ? 'lazy' : 'eager'} />
+      <Picture src={hero.src} alt={hero.alt} formats={['avif', 'webp']} widths={[400, 800, 1200]} sizes="(max-width: 760px) 100vw, 60vw" loading={compact ? 'lazy' : 'eager'} />
       <div class="project-media__overlay">
         {logo && <img src={logo.src} alt={logo.alt} class="project-media__logo" loading="lazy" />}
         <span>{project.status}</span>
@@ -33,11 +35,11 @@ const fit = media?.fit ?? 'cover'
     <div class="project-media__logo-only"><img src={logo.src} alt={logo.alt} loading="lazy" /></div>
   ) : null}
 
-  {gallery && media?.gallery && media.gallery.length > 0 && (
+  {gallery && galleryImages.length > 0 && (
     <div class="project-media__gallery" aria-label="Imágenes del proyecto">
-      {media.gallery.map((image) => (
+      {galleryImages.map((image) => (
         <figure>
-          <img src={image.src} alt={image.alt} loading="lazy" />
+          <Picture src={image.src} alt={image.alt} formats={['avif', 'webp']} widths={[400, 800, 1200]} sizes="(max-width: 760px) 100vw, 50vw" loading="lazy" />
           {image.caption && <figcaption>{image.caption}</figcaption>}
         </figure>
       ))}

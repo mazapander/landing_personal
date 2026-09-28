@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from 'astro:content'
+interface Props { evidence: CollectionEntry<'projects'>['data']['evidence'] }
+const { evidence } = Astro.props
+---
+{evidence.length > 0 && <section class="project-evidence" aria-labelledby="evidence-title">
+  <h2 id="evidence-title">El proyecto, de un vistazo</h2>
+  <div class="project-evidence__grid">{evidence.map((item, index) => <figure>
+    <p class="projects-stamp">AD / {String(index + 1).padStart(2, '0')} · {item.kind}</p>
+    <h3>{item.title}</h3>
+    <ol>{item.steps.map((step) => <li><strong>{step.title}</strong><span>{step.detail}</span></li>)}</ol>
+    <figcaption>{item.caption} <a href={item.source.href}>{item.source.label} →</a></figcaption>
+  </figure>)}</div>
+</section>}

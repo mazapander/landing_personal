@@ -1,5 +1,7 @@
 FROM node:22-alpine AS builder
 
+RUN apk add --no-cache font-dejavu
+
 WORKDIR /app
 
 ARG PUBLIC_UMAMI_WEBSITE_ID

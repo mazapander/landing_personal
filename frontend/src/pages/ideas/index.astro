@@ -15,6 +15,9 @@ const notes = (await getCollection('notes', ({ data }) => !data.draft))
       <h1>Decisiones que merece la pena guardar.</h1>
       <p>Un cuaderno sobre datos, sistemas y desarrollo. Preguntas concretas, criterios para resolverlas y proyectos donde seguir explorando.</p>
     </header>
+    <nav class="idea-clusters" aria-label="Explorar por proyecto">
+      <a href="/proyectos/ia-compra-pisos/">Vivienda</a><a href="/proyectos/basketball-intelligence/">Basketball / CV</a><a href="/proyectos/anderdata-systems/">Systems / self-hosting</a><a href="/proyectos/connected-home-lab/">Connected Home</a><a href="/automations/">Automations</a>
+    </nav>
     {notes.length > 0 ? <ul class="ideas-list">{notes.map((note) => <li>
       <article>
         <p class="ideas-meta">{note.data.category} · <time datetime={note.data.publishedAt.toISOString().slice(0, 10)}>{note.data.publishedAt.toLocaleDateString('es-ES', { timeZone: 'UTC', year: 'numeric', month: 'long', day: 'numeric' })}</time></p>
