@@ -29,6 +29,13 @@ capabilities:
 links:
   - label: Perfil de GitHub
     url: https://github.com/mazapander
+facts:
+- value: FEB
+  label: competiciones
+- value: Boxscores
+  label: datos de partido
+- value: Informes
+  label: equipos y jugadores
 ---
 
 ## El problema

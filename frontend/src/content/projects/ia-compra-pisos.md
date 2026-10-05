@@ -22,6 +22,61 @@ capabilities:
   - Normalización de información inmobiliaria.
   - Priorización de señales para análisis posterior.
   - Base preparada para iterar sobre criterios de decisión.
+updatedAt: "2026-09-28"
+updateSummary: "Historia actualizada con diagramas del caso e hitos verificables."
+facts:
+- value: Vivienda
+  label: dominio de análisis
+- value: Fuentes públicas
+  label: origen del contexto
+- value: Precio + esfuerzo
+  label: pregunta de producto
+milestones:
+- title: Criterios de comparación definidos
+  description: Territorio, periodo, unidad y fuente forman el contrato de comparación.
+  status: done
+  evidence:
+    label: Ver el caso documentado
+    href: /ideas/comparar-datos-vivienda/
+- title: Normalización y análisis
+  description: Estructurar las señales para comparar vivienda con su contexto.
+  status: in-progress
+- title: Comparación reproducible
+  description: Publicar un ejemplo con fuentes, periodos y criterios visibles.
+  status: planned
+evidence:
+- title: Qué hace comparable un dato
+  kind: Diagrama documentado
+  caption: Contrato de comparación descrito en la nota del proyecto; no representa un resultado de
+    mercado.
+  steps:
+  - title: Fuente
+    detail: Procedencia y definición
+  - title: Territorio y periodo
+    detail: Mismo ámbito de observación
+  - title: Unidad
+    detail: Precio, superficie o índice
+  - title: Comparación
+    detail: Señales con contexto compatible
+  source:
+    label: Ver explicación
+    href: /ideas/comparar-datos-vivienda/
+- title: Del precio a la pregunta de compra
+  kind: Diagrama documentado
+  caption: Mapa del enfoque de análisis documentado. La demostración reproducible figura como próximo
+    hito.
+  steps:
+  - title: Precio aislado
+    detail: Una cifra de partida
+  - title: Contexto territorial
+    detail: Qué se está comparando
+  - title: Esfuerzo
+    detail: Qué representa para la compra
+  - title: Criterio revisable
+    detail: Volver a la fuente y a sus límites
+  source:
+    label: Ver explicación
+    href: '#cómo-funciona-de-la-fuente-a-una-señal-revisable'
 ---
 
 ## El problema: comparar viviendas sin un contexto común
@@ -29,6 +84,10 @@ capabilities:
 Un precio de venta aislado explica poco. Para interpretar una vivienda hace falta situarla en un territorio, entender qué se está comparando y conocer de dónde procede la información. Cuando esas señales están dispersas, una comparación puede mezclar ámbitos geográficos, periodos y criterios distintos sin que el lector lo perciba.
 
 IA Compra Pisos nace para explorar esa distancia entre disponer de datos y poder utilizarlos en una decisión. La pregunta de producto es concreta: ¿qué contexto ayuda a entender un precio y el esfuerzo que representa?
+
+## Estado actual y resultado
+
+La base editorial del proyecto fija los criterios de comparación: fuente, territorio, periodo y unidad. La normalización y el análisis están en evolución. El siguiente entregable es una comparación reproducible con su contexto visible.
 
 ## Por qué construirlo
 
@@ -52,10 +111,6 @@ Este es el flujo que guía el caso. La [ingesta periódica de datos](/automation
 **Usar IA sobre una base revisable.** Clasificar o resumir puede ayudar a explorar información, pero no resuelve las inconsistencias de origen. La dirección técnica empieza por estructurar datos y criterios, y reserva la IA como apoyo a la lectura.
 
 **Priorizar una pregunta de usuario.** Añadir indicadores tiene sentido cuando mejora una comparación. El criterio de producto es qué decisión aclara cada dato, no cuántas métricas caben en pantalla.
-
-## Estado actual y resultado
-
-El caso continúa en evolución. La documentación disponible define la dirección de análisis y normalización; no aporta todavía una evaluación pública de precisión, ahorro de tiempo o impacto en decisiones de compra. Por eso esta historia explica el enfoque sin atribuirle resultados cuantitativos.
 
 ## Siguiente evolución
 

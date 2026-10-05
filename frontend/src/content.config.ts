@@ -4,11 +4,26 @@ import { z } from 'astro/zod'
 
 const projects = defineCollection({
   loader: glob({ base: './src/content/projects', pattern: '**/*.md' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     seoTitle: z.string().optional(),
     description: z.string(),
     status: z.string(),
+    updatedAt: z.coerce.date().optional(),
+    updateSummary: z.string().optional(),
+    facts: z.array(z.object({ value: z.string(), label: z.string() })).max(3).default([]),
+    milestones: z.array(z.object({
+      title: z.string(), description: z.string(),
+      status: z.enum(['done', 'in-progress', 'planned']),
+      date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+      evidence: z.object({ label: z.string(), href: z.string().regex(/^(\/(?!\/)|https:\/\/|#)/) }).optional(),
+    })).default([]),
+    evidence: z.array(z.object({
+      title: z.string(), caption: z.string(),
+      kind: z.enum(['Diagrama documentado', 'Resultado observado']),
+      steps: z.array(z.object({ title: z.string(), detail: z.string() })).min(2).max(5),
+      source: z.object({ label: z.string(), href: z.string().regex(/^(\/(?!\/)|https:\/\/|#)/) }),
+    })).default([]),
     stack: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
@@ -24,8 +39,8 @@ const projects = defineCollection({
     }).optional(),
     media: z.object({
       logo: z.object({ src: z.string(), alt: z.string() }).optional(),
-      cover: z.object({ src: z.string(), alt: z.string(), caption: z.string().optional() }).optional(),
-      gallery: z.array(z.object({ src: z.string(), alt: z.string(), caption: z.string().optional() })).max(6).default([]),
+      cover: z.object({ src: image(), alt: z.string(), caption: z.string().optional() }).optional(),
+      gallery: z.array(z.object({ src: image(), alt: z.string(), caption: z.string().optional() })).max(6).default([]),
       fit: z.enum(['cover', 'contain']).default('cover'),
     }).optional(),
   }),

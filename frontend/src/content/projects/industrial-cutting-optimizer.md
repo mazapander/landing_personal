@@ -30,6 +30,13 @@ capabilities:
 links:
   - label: Repositorio público
     url: https://github.com/mazapander/CortesMateriaPrima
+facts:
+- value: Stock
+  label: selección de barras
+- value: Restricciones
+  label: compatibilidad de piezas
+- value: Propuesta
+  label: revisión humana
 ---
 
 ## El problema: aprovechar material bajo restricciones reales

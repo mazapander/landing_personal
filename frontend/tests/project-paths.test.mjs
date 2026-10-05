@@ -87,3 +87,17 @@ test('el sitemap incluye proyectos y automatizaciones públicas y excluye borrad
   assert.ok(!urls.includes('https://anderdata.es/notas/'))
   assert.ok(!urls.some((url) => url.includes('borrador')))
 })
+
+
+test('el funnel clasifica recorridos internos y salidas sin confundir dominios', async () => {
+  const { funnelEvent } = await import('../src/lib/analytics.mjs')
+  assert.equal(funnelEvent('/', '/proyectos/stats-feb/'), 'home_to_project')
+  assert.equal(funnelEvent('/proyectos/stats-feb/', '/proyectos/basketball-intelligence/'), 'project_to_project')
+  assert.equal(funnelEvent('/proyectos/stats-feb/', '#estado'), undefined)
+  assert.equal(funnelEvent('/proyectos/stats-feb/', '/proyectos/stats-feb/'), undefined)
+  assert.equal(funnelEvent('/proyectos/stats-feb/', '/ideas/una-nota/'), 'project_to_idea')
+  assert.equal(funnelEvent('/sobre-mi/', '/contacto/'), 'about_to_contact')
+  assert.equal(funnelEvent('/', 'https://github.com/mazapander'), 'github_exit')
+  assert.equal(funnelEvent('/', 'https://example.com/proyectos/stats-feb/'), undefined)
+  assert.equal(funnelEvent('/', '/proyectos/'), undefined)
+})

@@ -30,6 +30,13 @@ capabilities:
 links:
   - label: Landing comercial
     url: https://citas.anderdata.es/comercial
+facts:
+- value: WhatsApp
+  label: canal de atención
+- value: Citas
+  label: gestión de agenda
+- value: Recordatorios
+  label: automatización
 ---
 
 ## El problema

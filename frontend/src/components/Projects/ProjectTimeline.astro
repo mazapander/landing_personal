@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content'
+interface Props { milestones: CollectionEntry<'projects'>['data']['milestones'] }
+const { milestones } = Astro.props
+const states = { done: ['✓', 'Completado'], 'in-progress': ['◐', 'En curso'], planned: ['○', 'Previsto'] }
+const completed = milestones.filter((item) => item.status === 'done').length
+---
+{milestones.length > 0 && <section class="project-timeline" aria-labelledby="timeline-title">
+  <div class="project-timeline__heading"><div><p class="projects-stamp">AD / BUILD LOG</p><h2 id="timeline-title">En qué punto está</h2></div><p>{completed} de {milestones.length} hitos completados</p></div>
+  <p class="project-timeline__intro">Lo que ya existe, lo que estoy construyendo y los próximos pasos del proyecto.</p>
+  <ol class="project-timeline__list">
+    {milestones.map((item) => <li class={`project-timeline__item project-timeline__item--${item.status}`}>
+      <span class="project-timeline__marker" aria-hidden="true">{states[item.status][0]}</span>
+      <div><div class="project-timeline__meta"><span>{states[item.status][1]}</span>{item.date && <time datetime={item.date}>{new Date(`${item.date}T00:00:00Z`).toLocaleDateString('es-ES', { timeZone: 'UTC', day: 'numeric', month: 'short', year: 'numeric' })}</time>}</div>
+      <h3>{item.title}</h3><p>{item.description}</p>
+      {item.evidence && <a href={item.evidence.href}>{item.evidence.label} <span aria-hidden="true">→</span></a>}</div>
+    </li>)}
+  </ol>
+</section>}

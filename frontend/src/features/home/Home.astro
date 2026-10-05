@@ -1,4 +1,6 @@
 ---
+import { Picture } from 'astro:assets'
+import portrait from '@/assets/ander-portrait.jpg'
 import { getCollection } from 'astro:content'
 import { home } from '@/data/home'
 import { labExtensions, projectFamilies } from '@/data/project-families'
@@ -27,7 +29,7 @@ const familyProjects = projectFamilies.map((family) => ({
       <div class="home-hero__content">
         <p class="home-hero__identity">Ander Fernández <span>/</span> Product · Data · AI · Engineering</p>
         <h1 id="home-title">I build things with <span>software, data &amp; AI.</span></h1>
-        <p class="home-lead">Curiosidad, problemas reales y ganas de llevar ideas hasta algo que funciona.</p>
+        <p class="home-lead">Construyo productos de datos para entender la vivienda, visión por computador para baloncesto y automatizaciones sobre mis propios sistemas.</p>
         <div class="home-actions">
           <a class="home-action home-action--primary" href={home.hero.primaryCta.href} data-track-event="cta_click" data-track-location="home_hero_projects">{home.hero.primaryCta.label} <span aria-hidden="true">→</span></a>
           <a class="home-action home-action--quiet" href="https://github.com/mazapander" target="_blank" rel="noreferrer" data-track-event="profile_open" data-track-location="home_hero">GitHub <span aria-hidden="true">↗</span></a>
@@ -52,9 +54,9 @@ const familyProjects = projectFamilies.map((family) => ({
     <header class="home-section-heading">
       <div>
         <p class="home-kicker">AD / NOW</p>
-        <h2 id="building-title">Currently building</h2>
+        <h2 id="building-title">En construcción</h2>
       </div>
-      <p>Trabajo vivo. Proyectos que todavía cambian mientras los construyo.</p>
+      <p>Productos de datos, herramientas y sistemas que voy construyendo y documentando.</p>
     </header>
 
     <div class="building-list">
@@ -106,6 +108,11 @@ const familyProjects = projectFamilies.map((family) => ({
     </div>
   </section>
 
+  <section class="home-person" aria-labelledby="person-title">
+    <Picture src={portrait} alt="Retrato de Ander Fernández" formats={['avif', 'webp']} widths={[160, 320]} sizes="160px" width={160} loading="lazy" />
+    <div><p class="home-kicker">AD / BEHIND THE LAB</p><h2 id="person-title">Soy Ander.</h2><p>Ingeniero y product manager de datos e IA. Conecto producto y desarrollo construyendo herramientas para problemas que me encuentro de verdad.</p><a href="/sobre-mi/">Sobre mí →</a></div>
+  </section>
+  <section class="home-updates" aria-labelledby="updates-title"><p class="home-kicker">AD / BUILD LOG</p><h2 id="updates-title">Últimas actualizaciones</h2><p>Cambios en las historias del laboratorio.</p><ul>{contentProjects.filter((project) => project.data.updatedAt && project.data.updateSummary).sort((a, b) => b.data.updatedAt!.getTime() - a.data.updatedAt!.getTime() || a.id.localeCompare(b.id)).slice(0, 4).map((project) => <li><time datetime={project.data.updatedAt!.toISOString().slice(0, 10)}>{project.data.updatedAt!.toLocaleDateString('es-ES', { timeZone: 'UTC' })}</time><div><a href={projectPath(project.id)}>{project.data.title} →</a><p>{project.data.updateSummary}</p></div></li>)}</ul></section>
   <section class="home-note" aria-labelledby="note-title">
     <p class="home-kicker">AD / NOTES</p>
     <div>

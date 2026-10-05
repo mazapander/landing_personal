@@ -9,7 +9,8 @@ const { title = 'Ander Fernández — Product, Data, AI & Engineering', descript
 const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID
 const canonical = absoluteUrl(Astro.url.pathname)
 const imageUrl = absoluteUrl(image)
-const schema = JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url: canonical, inLanguage: 'es' })
+const personSchema = JSON.stringify({ '@context': 'https://schema.org', '@type': 'Person', '@id': absoluteUrl('/sobre-mi/#person'), name: 'Ander Fernández', url: absoluteUrl('/sobre-mi/'), image: absoluteUrl('/profile.jpg'), sameAs: ['https://github.com/mazapander'], jobTitle: 'Product Manager de datos e IA' }).replace(/</g, '\\u003c')
+const schema = JSON.stringify({ '@context': 'https://schema.org', '@type': Astro.url.pathname.startsWith('/sobre-mi') ? 'ProfilePage' : 'WebPage', name: title, description, url: canonical, inLanguage: 'es', ...(Astro.url.pathname.startsWith('/sobre-mi') ? { mainEntity: { '@id': absoluteUrl('/sobre-mi/#person') } } : {}) })
 ---
 <!doctype html>
 <html lang="es">
@@ -36,7 +37,8 @@ const schema = JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebP
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageUrl} />
-    <script is:inline type="application/ld+json" set:html={schema}></script>
+    <script is:inline type="application/ld+json" set:html={schema.replace(/</g, '\\u003c')}></script>
+    <script is:inline type="application/ld+json" set:html={personSchema}></script>
     <slot name="head" />
     {umamiWebsiteId && <script is:inline defer src="https://u.anderdata.es/script.js" data-website-id={umamiWebsiteId}></script>}
   </head>

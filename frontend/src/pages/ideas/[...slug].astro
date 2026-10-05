@@ -15,6 +15,7 @@ const { note } = Astro.props
 const { Content } = await render(note)
 const projects = (await getCollection('projects', ({ data }) => !data.draft))
   .filter((project) => note.data.projects.some((reference) => reference.id === project.id))
+const articleSchema = JSON.stringify({ '@context': 'https://schema.org', '@type': 'TechArticle', headline: note.data.title, description: note.data.description, datePublished: note.data.publishedAt.toISOString().slice(0, 10), author: { '@id': absoluteUrl('/sobre-mi/#person') }, mainEntityOfPage: absoluteUrl(ideaPath(note.id)), inLanguage: 'es', about: projects.map((project) => ({ '@type': 'CreativeWork', name: project.data.title, url: absoluteUrl(projectPath(project.id)) })) }).replace(/</g, '\\u003c')
 const breadcrumbSchema = JSON.stringify({
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: [
@@ -26,7 +27,7 @@ const breadcrumbSchema = JSON.stringify({
 ---
 
 <BaseLayout title={`${note.data.title} | AnderData`} description={note.data.description}>
-  <Fragment slot="head"><script is:inline type="application/ld+json" set:html={breadcrumbSchema}></script></Fragment>
+  <Fragment slot="head"><script is:inline type="application/ld+json" set:html={breadcrumbSchema}></script><script is:inline type="application/ld+json" set:html={articleSchema}></script></Fragment>
   <article class="case-study idea-story">
     <nav aria-label="Miga de pan"><ol><li><a href="/">Inicio</a></li><li><a href="/ideas/">Ideas</a></li><li aria-current="page">{note.data.title}</li></ol></nav>
     <header>

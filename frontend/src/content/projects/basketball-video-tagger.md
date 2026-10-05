@@ -31,6 +31,13 @@ capabilities:
 links:
   - label: Repositorio público
     url: https://github.com/mazapander/Etiquetador_Acciones_basket
+facts:
+- value: Vídeo
+  label: material de origen
+- value: Acciones
+  label: etiquetado temporal
+- value: Clips
+  label: salida revisable
 ---
 
 ## El problema: un partido completo es difícil de reutilizar

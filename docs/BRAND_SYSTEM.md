@@ -237,9 +237,9 @@ Los recursos se declaran en el frontmatter y pueden añadirse sin modificar las 
 ```yaml
 media:
   logo: { src: /projects/mi-proyecto/logo.svg, alt: Logo de Mi Proyecto }
-  cover: { src: /projects/mi-proyecto/cover.webp, alt: Vista principal del producto }
+  cover: { src: ../../assets/projects/mi-proyecto/cover.webp, alt: Vista principal del producto }
   gallery:
-    - { src: /projects/mi-proyecto/detail.webp, alt: Detalle de la interfaz, caption: Qué demuestra la captura }
+    - { src: ../../assets/projects/mi-proyecto/detail.webp, alt: Detalle de la interfaz, caption: Qué demuestra la captura }
   fit: cover
 ```
 
@@ -273,3 +273,7 @@ Orden de decisión:
 3. enfatizar;
 4. diferenciar;
 5. animar, solo si sigue siendo necesario.
+
+## Evidencia, hitos y lenguaje editorial
+
+Aplicar `PROJECT_EVIDENCE.md` para timeline, capturas optimizadas, fechas, OG y medición. Español para contenido y navegación; inglés para nombres técnicos, productos y stamps. `IDEAS_ROADMAP.md` define los clusters y las evidencias necesarias para las próximas notas.
