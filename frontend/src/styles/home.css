@@ -7,7 +7,7 @@
 .home-hero::after { content: ''; position: absolute; right: 0; bottom: 0; left: 0; height: 4px; background: var(--color-signal); }
 .home-hero__inner { position: relative; width: var(--page-width); min-height: inherit; margin-inline: auto; padding: clamp(2rem, 4vw, 3.25rem) 0 clamp(7.5rem, 12vw, 9.5rem); }
 .home-hero__content { position: relative; z-index: 2; display: flex; min-height: clamp(540px, 65svh, 720px); max-width: 930px; flex-direction: column; justify-content: center; align-items: flex-start; padding: clamp(3rem, 7vw, 6rem) 0 1rem; }
-.home-hero h1 { max-width: 15ch; color: var(--color-on-ink); font-size: var(--text-h1); line-height: .88; }
+.home-hero h1 { max-width: 15ch; color: var(--color-on-ink); font-size: clamp(3.2rem, 2rem + 4.5vw, 6.1rem); line-height: .88; }
 .home-hero h1 span { color: var(--color-signal); }
 .home-lead { max-width: 49ch; margin-top: clamp(1.5rem, 3vw, 2.25rem); color: var(--color-on-ink-muted) !important; font-size: var(--text-lead); line-height: 1.55; }
 .home-actions { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; margin-top: 2rem; }
