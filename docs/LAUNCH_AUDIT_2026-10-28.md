@@ -10,7 +10,8 @@ Este documento separa **cambios implementados** de **hechos que requieren valida
 - [x] Añadir experiencia en Kutxabank desde septiembre de 2026 y finalizar el periodo Tubacex.
 - [x] Incorporar la titulación de ingeniería y el máster UCAM; no se inventan certificaciones.
 - [x] Revisar presentación de la foto existente; sustitución real pendiente de recibir una imagen definitiva.
-- [x] Revisar listado de tecnologías, incluir herramientas utilizadas en proyectos y suavizar descripciones demasiado enfáticas.
+- [x] Revisar redacción de las tecnologías existentes y suavizar afirmaciones demasiado enfáticas.
+- [ ] Completar tecnologías aún ausentes (por ejemplo n8n y Keycloak) tras revisar nivel y fechas reales de uso.
 - [x] Eliminar enlaces a repositorios privados de fichas públicas.
 - [x] Incorporar App Cantera como borrador privado, no visible al visitante.
 
