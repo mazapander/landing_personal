@@ -2,9 +2,9 @@ import type { Profile, SocialLink } from '@/types/profile'
 
 export const profile = {
   name: 'Ander Fernández',
-  headline: 'Product · Data · AI · Engineering',
-  description: 'Trabajo en la intersección entre producto, datos e IA. En AnderData documento proyectos, experimentos y herramientas que construyo para aprender, probar ideas y resolver problemas concretos.',
-  location: 'Bilbo',
+  headline: 'Producto · Datos · IA · Ingeniería',
+  description: 'Soy ingeniero y trabajo en la gestión técnica de proyectos de datos. En AnderData comparto herramientas y experimentos personales de software, análisis de datos e IA, con sus decisiones y aprendizajes.',
+  location: 'España',
   avatar: '/profile.jpg',
 } satisfies Profile
 
