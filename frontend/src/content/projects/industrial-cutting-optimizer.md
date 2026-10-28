@@ -4,7 +4,6 @@ seoTitle: "Industrial Cutting Optimizer: optimización de cortes y stock"
 description: "Optimización de cortes de materia prima: asignar piezas a barras, modelar restricciones y revisar propuestas de stock con control humano."
 status: Prototype
 featured: false
-externalUrl: https://github.com/mazapander/CortesMateriaPrima
 stack:
   - Python
   - OR-Tools
@@ -27,9 +26,6 @@ capabilities:
   - Optimización de materia prima y reducción de desperdicio.
   - Separación entre dominio, solver e integración.
   - Base preparada para integración con fuentes de stock o ERP.
-links:
-  - label: Repositorio público
-    url: https://github.com/mazapander/CortesMateriaPrima
 facts:
 - value: Stock
   label: selección de barras
@@ -70,7 +66,7 @@ La separación entre dominio, solver e integración permite comparar estrategias
 
 ## Estado actual y resultado
 
-Es un prototipo con repositorio público. La documentación describe selección de barras desde la interfaz y separación del dominio y el solver. OR-Tools y la adaptación a fuentes de stock forman parte de la dirección técnica; no se afirma una integración ERP completada.
+Es un prototipo cuyo repositorio de trabajo es privado. La documentación describe selección de barras desde la interfaz y separación del dominio y el solver. OR-Tools y la adaptación a fuentes de stock forman parte de la dirección técnica; no se afirma una integración ERP completada.
 
 Tampoco se atribuye al prototipo un porcentaje de reducción de desperdicio ni un óptimo demostrado. Esos resultados requieren comparar ejecuciones sobre el mismo stock, demanda y restricciones.
 
