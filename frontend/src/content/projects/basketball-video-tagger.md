@@ -2,8 +2,10 @@
 title: Basketball Video Tagger
 seoTitle: "Basketball Video Tagger: etiquetar vídeo y exportar clips"
 description: "Etiquetado de partidos de baloncesto con acciones, rangos temporales y exportación de clips. Del vídeo completo a ejemplos revisables para análisis y ML."
-status: Building
+status: En desarrollo
 featured: false
+updatedAt: "2026-10-28"
+updateSummary: "Revisada la documentación del flujo v1 de etiquetado y exportación de clips."
 externalUrl: https://github.com/mazapander/Etiquetador_Acciones_basket
 stack:
   - Python
