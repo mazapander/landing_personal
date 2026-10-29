@@ -40,9 +40,9 @@ export const projectFamilies = [
 export const labExtensions = [
   {
     type: 'AUTOMATION',
-    title: 'Automation Library',
-    description: 'Sistemas conectados para transformar notas, audios y eventos en información útil, sin perder trazabilidad.',
-    href: '/lab/',
+    title: 'Second Brain',
+    description: 'Notas manuscritas, audios y extracción con IA organizados en Obsidian, con evolución hacia un agente contextual.',
+    href: '/proyectos/second-brain/',
   },
   {
     type: 'SYSTEM',
