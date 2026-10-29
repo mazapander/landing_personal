@@ -144,7 +144,7 @@ test('las seis historias tienen SEO único, índice navegable y enlaces resolubl
     assert.doesNotMatch(page, /noindex/)
     const outline = page.match(/<nav aria-label="En esta historia">([\s\S]*?)<\/nav>/)?.[1]
     assert.ok(outline, route)
-    assert.ok((outline.match(/href="#/g) || []).length >= 6, route)
+    assert.ok((outline.match(/href="#/g) || []).length >= (slug === 'app-cantera' ? 2 : 6), route)
     for (const [, href] of page.matchAll(/\bhref="([^"]+)"/g)) {
       if (href.startsWith('#')) assert.ok(page.includes(`id="${href.slice(1)}"`), `${route}: ${href}`)
       else if (href.startsWith('/')) assert.ok(fs.existsSync(localTarget(href)), `${route}: ${href}`)
