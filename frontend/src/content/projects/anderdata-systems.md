@@ -31,8 +31,9 @@ capabilities:
   - Acceso privado y exposición controlada de aplicaciones.
   - Monitorización de infraestructura y servicios.
   - Integración de sistemas con alertas y reporting.
-updatedAt: "2026-09-28"
-updateSummary: "Historia actualizada con diagramas del caso e hitos verificables."
+  - Acceso asistido a herramientas conectadas mediante MCP con controles de permisos.
+updatedAt: "2026-10-29"
+updateSummary: "ChatGPT conectado con n8n y Home Assistant mediante MCP para facilitar el trabajo con sistemas y automatizaciones."
 facts:
 - value: Docker
   label: servicios autoalojados
@@ -97,6 +98,8 @@ evidence:
 ---
 
 ## El problema: una aplicación necesita seguir funcionando
+
+Además de operar los servicios, el laboratorio está incorporando conexiones MCP con ChatGPT para interactuar con n8n y Home Assistant. Esto reduce la fricción para revisar y evolucionar automatizaciones; no implica que el asistente tenga acceso sin límites ni que todas las acciones estén automatizadas. La vertiente de notas y conocimiento se documenta de forma independiente en [Second Brain](/proyectos/second-brain/).
 
 Desplegar una demo resuelve el primer acceso. Mantener varios productos encendidos introduce otras preguntas: quién puede entrar, dónde persisten los datos, cómo detectar una caída y cómo revisar un comportamiento inesperado.
 

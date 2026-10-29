@@ -2,8 +2,8 @@
 title: IA Compra Pisos
 seoTitle: "IA Compra Pisos: análisis de vivienda con datos públicos"
 description: "Análisis de vivienda con datos públicos: cómo estructurar precios, contexto y criterios comparables para apoyar una decisión de compra."
-status: Caso en evolución
-featured: true
+status: En pausa · revisión de visualización
+featured: false
 stack:
   - Python
   - IA
@@ -22,8 +22,8 @@ capabilities:
   - Normalización de información inmobiliaria.
   - Priorización de señales para análisis posterior.
   - Base preparada para iterar sobre criterios de decisión.
-updatedAt: "2026-09-28"
-updateSummary: "Historia actualizada con diagramas del caso e hitos verificables."
+updatedAt: "2026-10-29"
+updateSummary: "La ingesta de datos funciona; se pausa el desarrollo para replantear los análisis y simplificar las visualizaciones."
 facts:
 - value: Vivienda
   label: dominio de análisis
@@ -87,7 +87,7 @@ IA Compra Pisos nace para explorar esa distancia entre disponer de datos y poder
 
 ## Estado actual y resultado
 
-La base editorial del proyecto fija los criterios de comparación: fuente, territorio, periodo y unidad. La normalización y el análisis están en evolución. El siguiente entregable es una comparación reproducible con su contexto visible.
+La ingesta de datos se ha probado y funciona. Sin embargo, la combinación de fuentes y la representación gráfica necesitan una revisión para que el resultado sea comprensible y útil. El desarrollo está temporalmente en pausa mientras se replantea la capa de análisis y visualización. La base editorial del proyecto fija los criterios de comparación: fuente, territorio, periodo y unidad. La normalización y el análisis están en evolución. El siguiente entregable es una comparación reproducible con su contexto visible.
 
 ## Por qué construirlo
 

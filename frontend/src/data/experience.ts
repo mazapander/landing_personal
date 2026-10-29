@@ -2,10 +2,23 @@ import type { Experience } from '@/types/profile'
 
 export const experience = [
   {
+    id: 'kutxabank',
+    company: 'Kutxabank',
+    role: 'Technical Project Manager · Data',
+    period: 'Septiembre 2026 — Actualidad',
+    location: 'Sector financiero',
+    logo: '/companies/kutxabank-placeholder.svg',
+    description: 'Gestión técnica de proyectos de datos y coordinación entre necesidades de negocio y equipos tecnológicos.',
+    highlights: [
+      'Seguimiento técnico, planificación y coordinación de iniciativas de datos.',
+      'Trabajo transversal con equipos y responsables de diferentes áreas.',
+    ],
+  },
+  {
     id: 'tubacex',
     company: 'TUBACEX',
     role: 'Technical Product Owner / AI & Data Project Manager',
-    period: '2023 — Actualidad',
+    period: '2023 — Agosto 2026',
     location: 'Entorno industrial internacional',
     logo: '/companies/tubacex.svg',
     description: 'Liderazgo técnico de iniciativas corporativas de datos, IA, BI, gobierno del dato y automatización en entorno industrial.',

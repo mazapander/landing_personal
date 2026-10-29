@@ -1,9 +1,8 @@
 ---
 title: StatsFEB
 description: Plataforma de analítica de baloncesto para recopilar partidos, modelar datos y generar informes avanzados sobre equipos y jugadores.
-status: Portfolio
+status: En desarrollo
 featured: true
-externalUrl: https://github.com/mazapander
 stack:
   - Python
   - SQL
@@ -26,9 +25,6 @@ capabilities:
   - Histórico de más de 1.000 partidos y 3.000 jugadores.
   - Modelado de datos y consultas analíticas.
   - Generación automática de informes avanzados.
-links:
-  - label: Perfil de GitHub
-    url: https://github.com/mazapander
 facts:
 - value: FEB
   label: competiciones

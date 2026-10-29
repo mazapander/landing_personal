@@ -7,7 +7,7 @@ export const technologies = [
     "icon": "/tech/python.svg",
     "since": "2020-01-15",
     "category": "Data & Backend",
-    "description": "Empezó siendo el lenguaje de mi TFG y me especialicé en el para temas de Data e IA... A dia de hoy lo uso en practicamente todos mis proyectos",
+    "description": "Empecé a usarlo en el TFG y hoy es uno de mis lenguajes principales para datos, automatización y aplicaciones de IA.",
     "top": true,
     "accent": "#3776ab"
   },
@@ -17,7 +17,7 @@ export const technologies = [
     "icon": "/tech/sql.svg",
     "since": "2019-06-01",
     "category": "Data",
-    "description": "He usado desde entornos enterprise como MSQL y Oracle hasta otros motores diferentes como Postgres o mysql. Me gusta la optimización de queries y estandarización de bases de datos.",
+    "description": "Consultas, modelado y optimización en motores corporativos y proyectos propios, incluyendo Oracle, SQL Server y PostgreSQL.",
     "top": true,
     "accent": "#336791"
   },
@@ -37,7 +37,7 @@ export const technologies = [
     "icon": "/tech/react.svg",
     "since": "2024-09-01",
     "category": "Frontend",
-    "description": "Framework moderno que uso como frontend en mis apps, sin ser ningun experto pero con conocimientos base para poder entender arquitecturas y como desarrollar interfaces.",
+    "description": "Interfaz de aplicaciones personales: componentes, estados, integración con APIs y desarrollo de productos web.",
     "top": true,
     "accent": "#61dafb"
   },
@@ -47,7 +47,7 @@ export const technologies = [
     "icon": "/tech/typescript.svg",
     "since": "2025-03-01",
     "category": "Frontend",
-    "description": "Frontend más robusto para proyectos React y productos con lógica compleja, lo uso para mejorar la calidad y mantenibilidad del código.",
+    "description": "Tipado para mantener interfaces y contratos de datos claros en proyectos React y Node.js.",
     "top": false,
     "accent": "#3178c6"
   },
@@ -57,7 +57,7 @@ export const technologies = [
     "icon": "/tech/docker.svg",
     "since": "2022-05-14",
     "category": "Infra",
-    "description": "Despliegue de servicios, entornos reproducibles y arquitectura self-hosted, me gusta la gestion de contenedores y mi propio servidor para pruebas y despliegues de aplicaciones y su infraestructura.",
+    "description": "Despliegue de servicios y plataformas autoalojadas, con entornos reproducibles y operación mediante contenedores.",
     "top": true,
     "accent": "#2496ed"
   },
@@ -67,7 +67,7 @@ export const technologies = [
     "icon": "/tech/fastapi.svg",
     "since": "2025-08-15",
     "category": "Backend",
-    "description": "APIs rápidas para productos de datos, automatización e integraciones, antes usaba Flask pero me resulta mas comodo este framework en el que todavia me estoy formando.",
+    "description": "APIs e integraciones para aplicaciones de datos; lo utilizo en proyectos propios y sigo profundizando en sus patrones.",
     "top": true,
     "accent": "#009688"
   },
@@ -77,7 +77,7 @@ export const technologies = [
     "icon": "/tech/qlik.svg",
     "since": "2023-02-01",
     "category": "BI",
-    "description": "Dashboards, adopción analítica, reporting corporativo y estandarización de KPIs, me gusta porque permite dashboards mas profesionales que Power BI y me gusta las opciones de governanza de accesos y control de la plataforma que ofrece.",
+    "description": "BI corporativo, diseño de indicadores, reporting y gobierno de accesos a analítica.",
     "top": true,
     "accent": "#009845"
   },
@@ -87,7 +87,7 @@ export const technologies = [
     "icon": "/tech/pentaho.svg",
     "since": "2023-01-01",
     "category": "ETL",
-    "description": "Estandarización de pipelines ETL, controles internos y monitorización de cargas, la herramienta que se usaba en mi ultima experiencia.",
+    "description": "Diseño y mantenimiento de procesos ETL y control de cargas en entornos corporativos.",
     "top": false,
     "accent": "#cc0000"
   },
@@ -97,7 +97,7 @@ export const technologies = [
     "icon": "/tech/datahub.svg",
     "since": "2024-01-01",
     "category": "Data Governance",
-    "description": "Catálogo, ownership, definiciones de KPI y gobierno del dato empresarial, herramienta open source que se definió como primer acercamiento al data governance corporativo.",
+    "description": "Catálogo de datos, ownership y definiciones compartidas de indicadores para iniciativas de gobierno del dato.",
     "top": true,
     "accent": "#533fd7"
   },
@@ -107,7 +107,7 @@ export const technologies = [
     "icon": "/tech/jira.svg",
     "since": "2022-01-01",
     "category": "Delivery",
-    "description": "Gestión de demanda, delivery, visibilidad de proyectos y automatización de reporting. Herramienta que me parece imprescindible y que me encanta programar flujos, automatizaciones y definir metodos de trabajo. Ademas me he peleado con la API para diferentes soluciones usando IA agnostica a Attlassian.",
+    "description": "Planificación y seguimiento de proyectos, flujos de trabajo y automatizaciones integradas mediante API.",
     "top": true,
     "accent": "#0052cc"
   },
@@ -117,7 +117,7 @@ export const technologies = [
     "icon": "/tech/langchain.svg",
     "since": "2023-05-01",
     "category": "AI",
-    "description": "Construcción de agentes, flujos con LLMs y aplicaciones GenAI controladas, Framework de vanguardia en el que me formo activamente para conocer bien los metodos para crear agentes y las capacidades del mismo.",
+    "description": "Experimentación con agentes y aplicaciones LLM; evaluación de patrones de integración y orquestación.",
     "top": false,
     "accent": "#f5a524"
   },
@@ -127,7 +127,7 @@ export const technologies = [
     "icon": "/tech/azure.svg",
     "since": "2023-01-01",
     "category": "Cloud",
-    "description": "Servicios cloud, integración corporativa y despliegue de soluciones empresariales, conocimiento basico de las herramientas y algun que otro proyecto con ellas, aunque con ganas de seguir aprendiendo al respecto.",
+    "description": "Experiencia inicial con servicios cloud e integraciones empresariales; conocimiento en evolución.",
     "top": false,
     "accent": "#0078d4"
   }

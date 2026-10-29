@@ -27,8 +27,8 @@ capabilities:
   - Automatización de accesos y rutinas domésticas.
   - Monitorización de energía y estados de dispositivos.
   - Diseño de nodos distribuidos y control central.
-updatedAt: "2026-09-28"
-updateSummary: "Historia actualizada con diagramas del caso e hitos verificables."
+updatedAt: "2026-10-29"
+updateSummary: "Nuevos sensores y automatizaciones; Home Assistant conectado a ChatGPT mediante MCP para facilitar la gestión."
 facts:
 - value: Home Assistant
   label: plataforma del laboratorio
@@ -94,7 +94,7 @@ Connected Home Lab explora cómo conectar esas señales con software útil y man
 
 ## Estado actual y resultado
 
-El laboratorio trabaja sobre garaje, energía y rutinas con Home Assistant. El criterio de orden y confirmación está documentado; la integración y la arquitectura entre viviendas siguen en desarrollo. El siguiente entregable es una prueba de desconexión de un caso doméstico.
+El laboratorio sigue incorporando sensores y automatizaciones domésticas. También se ha conectado Home Assistant con ChatGPT mediante MCP para facilitar la consulta y el trabajo con la plataforma. El laboratorio trabaja sobre garaje, energía y rutinas con Home Assistant. El criterio de orden y confirmación está documentado; la integración y la arquitectura entre viviendas siguen en desarrollo. El siguiente entregable es una prueba de desconexión de un caso doméstico.
 
 ## Por qué construirlo
 

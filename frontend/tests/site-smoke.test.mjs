@@ -19,7 +19,6 @@ const routes = [
   '/ideas/',
   '/ideas/comparar-datos-vivienda/',
   '/ideas/domotica-orden-y-estado/',
-  '/ideas/separar-dominio-solver/',
   '/sobre-mi/',
   '/contacto/',
 ]
@@ -101,7 +100,7 @@ test('la capa visual usa la identidad real y hace legibles los proyectos', () =>
     '/proyectos/anderdata-systems/',
     '/proyectos/connected-home-lab/',
     '/proyectos/basketball-video-tagger/',
-    '/proyectos/industrial-cutting-optimizer/',
+    '/proyectos/app-cantera/',
   ]) {
     const page = html(route)
     assert.match(page, /class="case-study__hero"/, `${route} debe tener una portada visual`)
@@ -125,7 +124,7 @@ test('el universo activo se mantiene estable en proyectos, automations, ideas y 
   assert.match(profileNav, /href="\/sobre-mi\/" aria-current="page"/)
 })
 
-const stories = ['ia-compra-pisos', 'basketball-intelligence', 'anderdata-systems', 'connected-home-lab', 'basketball-video-tagger', 'industrial-cutting-optimizer']
+const stories = ['ia-compra-pisos', 'basketball-intelligence', 'anderdata-systems', 'connected-home-lab', 'basketball-video-tagger', 'app-cantera']
 
 test('las seis historias tienen SEO único, índice navegable y enlaces resolubles', () => {
   const titles = new Set()
@@ -145,7 +144,7 @@ test('las seis historias tienen SEO único, índice navegable y enlaces resolubl
     assert.doesNotMatch(page, /noindex/)
     const outline = page.match(/<nav aria-label="En esta historia">([\s\S]*?)<\/nav>/)?.[1]
     assert.ok(outline, route)
-    assert.ok((outline.match(/href="#/g) || []).length >= 6, route)
+    assert.ok((outline.match(/href="#/g) || []).length >= (slug === 'app-cantera' ? 2 : 6), route)
     for (const [, href] of page.matchAll(/\bhref="([^"]+)"/g)) {
       if (href.startsWith('#')) assert.ok(page.includes(`id="${href.slice(1)}"`), `${route}: ${href}`)
       else if (href.startsWith('/')) assert.ok(fs.existsSync(localTarget(href)), `${route}: ${href}`)
@@ -167,10 +166,12 @@ test('Ideas publica notas y relaciones en ambas direcciones sin exponer borrador
   assert.ok(!fs.existsSync(outputPath('/ideas/template/')))
   assert.ok(!index.includes('/ideas/template/'))
   assert.ok(!sitemap.includes('/ideas/template/'))
+  assert.ok(!sitemap.includes('/ideas/separar-dominio-solver/'))
+  assert.ok(!sitemap.includes('/proyectos/industrial-cutting-optimizer/'))
+  assert.ok(!index.includes('/ideas/separar-dominio-solver/'))
   const linkedProjects = {
     'comparar-datos-vivienda': ['ia-compra-pisos'],
     'domotica-orden-y-estado': ['connected-home-lab', 'anderdata-systems'],
-    'separar-dominio-solver': ['industrial-cutting-optimizer'],
   }
   for (const [slug, projects] of Object.entries(linkedProjects)) {
     const route = `/ideas/${slug}/`
