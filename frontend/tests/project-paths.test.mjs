@@ -24,7 +24,7 @@ test('mantiene los contenidos clave del mapa AnderData sin acoplar el test al nÃ
   const projectsDirectory = path.join(import.meta.dirname, '../src/content/projects')
   const publishedProjects = fs.readdirSync(projectsDirectory).filter((file) => file.endsWith('.md') && file !== 'template.md')
 
-  for (const expected of ['ia-compra-pisos.md', 'basketball-intelligence.md', 'anderdata-systems.md', 'connected-home-lab.md', 'industrial-cutting-optimizer.md']) {
+  for (const expected of ['ia-compra-pisos.md', 'basketball-intelligence.md', 'anderdata-systems.md', 'connected-home-lab.md', 'app-cantera.md']) {
     assert.ok(publishedProjects.includes(expected), `falta ${expected}`)
   }
   assert.match(fs.readFileSync(path.join(projectsDirectory, 'template.md'), 'utf8'), /draft: true/)
