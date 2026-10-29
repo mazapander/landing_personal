@@ -3,7 +3,7 @@
 ## Prioridades comunicadas por el propietario
 
 1. **Basketball Intelligence**: prioridad actual. Avances en etiquetado de partidos y orientación hacia identificación automática de acciones, preparación de clips y datasets. Reconocimiento automático no validado como resultado final.
-2. **App Cantera**: plataforma de gestión de equipos en proceso de adaptación/despliegue en varios clubes. La documentación del repositorio describe PWA, API Node, Postgres, roles y flujos de invitación; no se publican identidades de clubes ni datos de jugadores.
+2. **App Cantera**: plataforma de gestión de equipos en pruebas con un par de clubes. No publicar identidades de clubes, resultados internos ni datos de jugadores.
 3. **Second Brain**: cadena funcional de captura, transcripción y publicación en Obsidian. Evolución prevista hacia agente contextual; indexación semántica todavía en trabajo.
 4. **AnderData Systems + Connected Home**: integración de MCP con ChatGPT, nuevas automatizaciones domésticas y flujos n8n; presentación por casos de uso, no por inventario de herramientas.
 5. **IA Compra Pisos**: ingesta de datos operativa según el propietario; proyecto en pausa para replantear presentación gráfica y combinación de datos.
