@@ -1,21 +1,21 @@
 export const projectFamilies = [
   {
-    projectId: 'ia-compra-pisos',
-    index: '01',
-    type: 'PRODUCT',
-    title: 'IA Compra Pisos',
-    description: 'Datos públicos y señales de contexto para entender mejor una decisión inmobiliaria.',
-    href: '/proyectos/ia-compra-pisos/',
-    items: ['Housing data', 'Decision context', 'Data product'],
-  },
-  {
     projectId: 'basketball-intelligence',
-    index: '02',
+    index: '01',
     type: 'LAB',
     title: 'Basketball Intelligence',
-    description: 'Un ecosistema que conecta datos estructurados, vídeo etiquetado y computer vision aplicada al baloncesto.',
+    description: 'Datos FEB, etiquetado temporal, recortes de vídeo y experimentación para detectar acciones de baloncesto.',
     href: '/proyectos/basketball-intelligence/',
     items: ['StatsFEB', 'Video Tagger', 'Motion Lab'],
+  },
+  {
+    projectId: 'app-cantera',
+    index: '02',
+    type: 'PRODUCT',
+    title: 'App Cantera',
+    description: 'Una aplicación para coordinar equipos de cantera: calendario, asistencia, carga y acceso por roles.',
+    href: '/proyectos/app-cantera/',
+    items: ['PWA', 'Clubes', 'Seguimiento'],
   },
   {
     projectId: 'anderdata-systems',
@@ -41,7 +41,7 @@ export const labExtensions = [
   {
     type: 'AUTOMATION',
     title: 'Automation Library',
-    description: 'Flujos n8n y pequeñas automatizaciones documentadas como piezas reutilizables.',
+    description: 'Sistemas conectados para transformar notas, audios y eventos en información útil, sin perder trazabilidad.',
     href: '/lab/',
   },
   {
