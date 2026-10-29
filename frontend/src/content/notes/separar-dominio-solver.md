@@ -3,6 +3,7 @@ title: "Por qué separar las reglas de corte del solver de optimización"
 description: "Cómo mantener restricciones, selección de stock y revisión humana al comparar estrategias para asignar piezas a barras de materia prima."
 publishedAt: 2026-09-12
 category: Desarrollo
+draft: true
 projects:
   - industrial-cutting-optimizer
 ---
