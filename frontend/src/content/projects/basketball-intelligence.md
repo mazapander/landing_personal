@@ -2,7 +2,7 @@
 title: Basketball Intelligence
 seoTitle: "Basketball Intelligence: datos y análisis de vídeo de baloncesto"
 description: "Datos de competiciones, etiquetado de partidos y visión por computador: un laboratorio de análisis de baloncesto con evidencia revisable."
-status: Active lab
+status: Desarrollo prioritario
 featured: true
 stack:
   - Python
@@ -21,13 +21,14 @@ architecture:
   - title: Labelled video
     description: El etiquetador convierte partidos completos en acciones y segmentos temporales revisables.
   - title: Computer vision
-    description: Motion Lab explora cómo detectar y medir acciones a partir de vídeo para reducir trabajo manual.
+    description: Motion Lab explora cómo reconocer acciones a partir de vídeo, con la intención de reducir etiquetado manual; la detección automática sigue siendo experimental.
 capabilities:
   - Ingesta y modelado de datos deportivos.
   - Herramientas de etiquetado temporal y generación de clips.
   - Experimentación con modelos de visión por computador.
-updatedAt: "2026-09-28"
-updateSummary: "Historia actualizada con diagramas del caso e hitos verificables."
+  - Preparación y revisión de clips por acciones etiquetadas.
+updatedAt: "2026-10-29"
+updateSummary: "El foco pasa al etiquetado de partidos, generación de recortes y exploración de detección automática de acciones."
 facts:
 - value: StatsFEB
   label: datos de competición
