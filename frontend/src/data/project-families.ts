@@ -13,7 +13,7 @@ export const projectFamilies = [
     index: '02',
     type: 'PRODUCT',
     title: 'App Cantera',
-    description: 'Una aplicación para coordinar equipos de cantera: calendario, asistencia, carga y acceso por roles.',
+    description: 'Aplicación de gestión de cantera en pruebas con un par de clubes.',
     href: '/proyectos/app-cantera/',
     items: ['PWA', 'Clubes', 'Seguimiento'],
   },
