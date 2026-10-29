@@ -9,8 +9,8 @@ const projectById = new Map(projects.map((project) => [project.id, project]))
 const pick = (ids: string[]) => ids.map((id) => projectById.get(id)).filter(Boolean)
 
 const featured = pick([
-  'ia-compra-pisos',
   'basketball-intelligence',
+  'app-cantera',
   'anderdata-systems',
   'connected-home-lab',
 ])
@@ -27,6 +27,7 @@ const systems = pick([
 
 const moreBuilt = pick([
   'whatsapp-saas',
+  'ia-compra-pisos',
   'industrial-cutting-optimizer',
 ])
 
@@ -40,7 +41,7 @@ const basketball = projectById.get('basketball-intelligence')
   <div class="projects-index">
     <header class="projects-intro">
       <p class="projects-stamp">AD / PROJECTS / INDEX</p>
-      <h1>Things I've built.</h1>
+      <h1>Lo que estoy construyendo.</h1>
       <p class="projects-intro__lead">Productos, sistemas y experimentos nacidos de problemas que parecían suficientemente interesantes como para construir algo alrededor.</p>
 
       <nav class="projects-subnav" aria-label="Explorar proyectos">
@@ -55,7 +56,7 @@ const basketball = projectById.get('basketball-intelligence')
       <header class="projects-section__heading">
         <p class="projects-stamp">AD / FEATURED / 01</p>
         <div>
-          <h2 id="featured-title">Four stories worth starting with.</h2>
+          <h2 id="featured-title">Cuatro proyectos para empezar.</h2>
           <p>No son los únicos proyectos. Son los que mejor explican cómo conecto producto, datos, software y sistemas.</p>
         </div>
       </header>
