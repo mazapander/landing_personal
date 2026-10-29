@@ -16,4 +16,4 @@ services:
       - "4321:80"
 networks:
   apps:
-    external: true
+    #external: true

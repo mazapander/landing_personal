@@ -7,7 +7,7 @@ export const experience = [
     role: 'Technical Project Manager · Data',
     period: 'Septiembre 2026 — Actualidad',
     location: 'Sector financiero',
-    logo: '/companies/kutxabank-placeholder.svg',
+    logo: '/companies/kutxabank.svg',
     description: 'Gestión técnica de proyectos de datos y coordinación entre necesidades de negocio y equipos tecnológicos.',
     highlights: [
       'Seguimiento técnico, planificación y coordinación de iniciativas de datos.',
