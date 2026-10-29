@@ -8,7 +8,7 @@ import { projectPath } from '@/lib/project-paths.mjs'
 import ProjectMedia from '@/components/Projects/ProjectMedia.astro'
 
 const contentProjects = await getCollection('projects', ({ data }) => !data.draft)
-const currentBuildingIds = ['basketball-intelligence', 'app-cantera', 'anderdata-systems']
+const currentBuildingIds = ['basketball-intelligence', 'app-cantera', 'second-brain']
 const currentBuilding = currentBuildingIds
   .map((id) => contentProjects.find((project) => project.id === id))
   .filter(Boolean)
