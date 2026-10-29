@@ -2,7 +2,7 @@ name: Landing — validar antes de publicar
 
 on:
   pull_request:
-    branches: [master]
+    branches: [master, feat/revision-landing-oct-2026]
   push:
     branches: [master]
 
