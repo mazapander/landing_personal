@@ -4,6 +4,7 @@ seoTitle: "Industrial Cutting Optimizer: optimización de cortes y stock"
 description: "Optimización de cortes de materia prima: asignar piezas a barras, modelar restricciones y revisar propuestas de stock con control humano."
 status: Prototype
 featured: false
+draft: true
 stack:
   - Python
   - OR-Tools
