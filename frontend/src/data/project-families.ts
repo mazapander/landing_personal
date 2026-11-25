@@ -13,7 +13,7 @@ export const projectFamilies = [
     index: '02',
     type: 'PRODUCT',
     title: 'App Cantera',
-    description: 'Aplicación de gestión de cantera en pruebas con un par de clubes.',
+    description: 'Gestión de equipos de baloncesto, scouting y pizarra de jugadas. Ya está en pruebas con clubes.',
     href: '/proyectos/app-cantera/',
     items: ['PWA', 'Clubes', 'Seguimiento'],
   },

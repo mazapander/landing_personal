@@ -1,8 +1,10 @@
 ---
 title: SaaS de citas por WhatsApp
-description: Producto multicliente para gestionar reservas, recordatorios y conversaciones por WhatsApp combinando reglas deterministas, plantillas, botones e IA.
+description: Gestiona reservas, cambios y recordatorios por WhatsApp con un flujo que sigue por texto si una plantilla falla durante la conversación.
 status: En desarrollo
 featured: true
+updatedAt: "2026-11-25"
+updateSummary: "El flujo de citas puede seguir por texto dentro de la ventana de atención. La app ya crea, versiona y retira las plantillas de WhatsApp automáticamente."
 externalUrl: https://citas.anderdata.es/comercial
 stack:
   - TypeScript
@@ -11,6 +13,7 @@ stack:
   - PostgreSQL
   - Docker
   - LangChain
+  - Twilio
 visual:
   label: De una conversación a una cita gestionada
   nodes: [Mensaje, Reglas, Agenda, Recordatorio]
@@ -18,35 +21,35 @@ visual:
   tone: green
 architecture:
   - title: Canal conversacional
-    description: WhatsApp concentra las interacciones de reserva y las respuestas guiadas.
+    description: WhatsApp ofrece botones cuando hay una plantilla utilizable y puede mostrar las mismas opciones en texto durante la ventana de atención.
   - title: Reglas e IA
-    description: Las reglas deterministas resuelven los flujos repetibles; la IA se reserva para el lenguaje natural.
-  - title: Operación multicliente
-    description: La solución separa la configuración y la operativa de cada negocio.
+    description: Las reglas controlan los pasos de la reserva y el modelo ayuda a interpretar mensajes en lenguaje natural.
+  - title: Plantillas definidas en código
+    description: La aplicación sincroniza con Twilio las versiones de las plantillas y conserva la versión activa mientras se aprueba su sustituta.
 capabilities:
-  - Gestión de reservas y recordatorios.
-  - Conversaciones con plantillas, botones y reglas.
-  - Automatización de procesos repetibles con apoyo de IA.
+  - Reservas, cambios de cita, cancelaciones y recordatorios.
+  - Continuidad del flujo por texto si falta una plantilla válida dentro de la ventana de atención de WhatsApp.
+  - Alta, solicitud de aprobación, activación y retirada automatizadas de las plantillas gestionadas por la app.
 links:
-  - label: Landing comercial
+  - label: Web del producto
     url: https://citas.anderdata.es/comercial
 facts:
-- value: WhatsApp
-  label: canal de atención
-- value: Citas
-  label: gestión de agenda
-- value: Recordatorios
-  label: automatización
+  - value: WhatsApp
+    label: canal de atención
+  - value: Citas
+    label: gestión de agenda
+  - value: Recordatorios
+    label: automatización
 ---
 
 ## El problema
 
-Las reservas y el seguimiento por mensajería suelen depender de procesos manuales difíciles de mantener cuando aumenta el volumen de conversaciones.
+Uno de los fallos que más tiempo me ha llevado resolver aparecía en mitad de una reserva. Si la plantilla que mostraba los huecos no estaba disponible, la conversación se interrumpía y alguien tenía que retomarla.
 
-## El enfoque
+## Cómo sigue la conversación
 
-El producto combina una interfaz de gestión con un flujo conversacional en WhatsApp. Las reglas cubren los casos previstos y la IA interviene solo cuando aporta flexibilidad al diálogo.
+Dentro de la ventana de atención de 24 horas, si la plantilla falta, no está aprobada o falla al enviarse, la app puede mandar el mismo paso en texto con opciones numeradas. La persona puede seguir eligiendo su cita en la misma conversación.
 
-## Estado actual
+## Cómo se gestionan las plantillas
 
-El caso sigue en desarrollo. La prioridad es consolidar una operativa reutilizable para negocios con procesos de cita y seguimiento.
+Las plantillas se definen y versionan en código. La app las crea en Twilio, solicita su aprobación y mantiene la versión anterior activa hasta que la nueva está aprobada. Entonces activa la nueva versión y retira la anterior. Así, la gestión habitual queda automatizada y se conserva el paso de aprobación de WhatsApp.
