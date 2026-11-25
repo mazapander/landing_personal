@@ -1,4 +1,4 @@
-const recipient = 'ander.fernandez.gonzalbo@gmail.com'
+const recipient = 'ander@anderdata.es'
 
 export function contactMailto({ name, email, service, message }) {
   const subject = service ? `Consulta web: ${service}` : 'Consulta desde la web'
