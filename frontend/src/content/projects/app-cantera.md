@@ -1,52 +1,53 @@
 ---
 title: "App Cantera"
-seoTitle: "App Cantera: coordinación y gestión de equipos deportivos"
-description: "Aplicación de gestión de cantera en pruebas con un par de clubes."
-status: "En pruebas con un par de clubes"
+seoTitle: "App Cantera: gestión de equipos, scouting y pizarra de baloncesto"
+description: "Una app para coordinar equipos de baloncesto, preparar el scouting del rival y dibujar jugadas y ejercicios."
+status: "Preproducción · En pruebas con clubes"
 featured: true
 draft: false
-updatedAt: "2026-10-29"
-updateSummary: "La aplicación está en pruebas con un par de clubes."
+updatedAt: "2026-11-25"
+updateSummary: "Scouting con vídeo y pizarra de jugadas ya integrados. Varios clubes están probando la app y estoy preparando una demo pública."
 stack:
   - React
   - TypeScript
   - Node.js
   - PostgreSQL
   - Docker
+  - Keycloak
 visual:
-  label: De la planificación al seguimiento
-  nodes: [Calendario, Asistencia, Carga, Seguimiento]
-  outcome: Coordinación y contexto compartido para el equipo
+  label: De la preparación al seguimiento del equipo
+  nodes: [Calendario, Asistencia, Scouting, Pizarra]
+  outcome: Sesiones, informes y jugadas en un mismo sitio
   tone: green
 architecture:
   - title: Aplicación web
-    description: PWA React para calendario, disponibilidad, asistencia y seguimiento.
+    description: PWA para el calendario, la asistencia, el seguimiento de carga y la preparación de partidos.
   - title: API y datos
-    description: API Node y PostgreSQL autohospedado para permisos, datos y operaciones de equipos.
-  - title: Roles
-    description: Diferentes permisos para jugadores, staff y responsables según club y equipo.
+    description: API Node y PostgreSQL autohospedado para gestionar la actividad y los contenidos de los equipos.
+  - title: Acceso por club y equipo
+    description: Keycloak gestiona la identidad y la aplicación aplica los permisos de jugadores, staff y responsables.
 capabilities:
-  - Planificación y consulta de actividades por equipo.
-  - Registro de asistencia, percepción del esfuerzo y molestias.
-  - Gestión de equipos, perfiles e invitaciones.
-  - Diseño para aislar datos y permisos por organización.
+  - Planificación de sesiones y registro de asistencia, esfuerzo y molestias.
+  - Informes de scouting con vídeo, documentos y comentarios ligados a un momento del vídeo.
+  - Pizarra de media pista o pista completa para dibujar jugadas y ejercicios paso a paso.
+  - Listín de jugadas por equipo y material de scouting con acceso reservado al staff cuando corresponde.
 facts:
-  - value: "React / PWA"
-    label: interfaz
-  - value: "API + Postgres"
-    label: plataforma de datos
+  - value: "Scouting"
+    label: vídeo e informes
+  - value: "Pizarra"
+    label: jugadas y ejercicios
   - value: "Multi-rol"
-    label: acceso
+    label: acceso por equipo
 ---
 
 ## El problema
 
-La organización deportiva reparte calendario, asistencia, disponibilidad y seguimiento del esfuerzo entre conversaciones y documentos. La aplicación reúne esas tareas en una interfaz común.
+Como entrenador, preparo sesiones, reviso vídeo y hago seguimiento de los jugadores. Es fácil acabar con el calendario en un sitio, los cortes del rival en otro y las jugadas repartidas entre mensajes y documentos.
 
-## Qué se está construyendo
+## Qué permite hacer
 
-Una PWA con calendario y seguimiento para personas con distintos roles. El repositorio documenta una transición desde una versión de datos anterior hacia API Node y PostgreSQL, con la autenticación y los permisos separados de la lógica del cliente.
+Además de llevar el calendario, la asistencia y la carga, el staff puede preparar el scouting de un rival, adjuntar material y dejar un comentario en el segundo exacto del vídeo en el que ocurre la acción. En la pizarra puede dibujar movimientos por pasos y guardar las jugadas en el listín del equipo. La misma pizarra sirve para preparar los ejercicios de un entrenamiento.
 
 ## Estado actual
 
-La aplicación está en pruebas con un par de clubes. No se publican detalles de los clubes, resultados de las pruebas, capturas ni información de jugadores.
+La app está en preproducción y ya la están probando varios clubes. Estoy preparando una demo pública con datos ficticios para que cualquiera pueda cacharrear con la app.

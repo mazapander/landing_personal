@@ -1,47 +1,55 @@
 ---
 title: StatsFEB
-description: Plataforma de analítica de baloncesto para recopilar partidos, modelar datos y generar informes avanzados sobre equipos y jugadores.
+description: "Analítica de baloncesto FEB con un histórico de partidos y jugadores, fichas interactivas en desarrollo y comparativas de jornada."
 status: En desarrollo
 featured: true
+updatedAt: "2026-11-25"
+updateSummary: "He reforzado el cruce de jugadores entre fuentes FEB. Estoy desarrollando fichas interactivas de jugador, fichas de scouting e informes de jornada."
 stack:
   - Python
   - SQL
   - PostgreSQL
   - FastAPI
+  - React
   - Docker
 visual:
-  label: De fuentes FEB a un histórico consultable
-  nodes: [Partidos, Ingesta, Modelo, Analytics]
+  label: De los datos FEB a los informes
+  nodes: [Partidos, Identidad, Histórico, Informes]
   outcome: Equipos y jugadores comparables por temporada
   tone: violet
 architecture:
   - title: Captura y modelado
-    description: El flujo reúne datos de partidos y los transforma en un modelo consultable.
+    description: La ingesta reúne datos de partidos, equipos y competiciones en un histórico consultable.
+  - title: Identidad de jugadores
+    description: El boxscore sirve de referencia para cruzar las fuentes del partido y dejar constancia de los casos sin resolver.
   - title: Análisis e informes
-    description: La capa de análisis convierte el histórico en información de equipos y jugadores.
-  - title: Servicio de producto
-    description: El proyecto se prepara como una plataforma accesible mediante servicios y despliegue reproducible.
+    description: El histórico alimenta los informes y las fichas de jugador y jornada que estoy desarrollando.
 capabilities:
   - Histórico de más de 1.000 partidos y 3.000 jugadores.
-  - Modelado de datos y consultas analíticas.
-  - Generación automática de informes avanzados.
+  - Cruce de jugadores entre boxscore, mapa de tiro y acciones destacadas con trazabilidad del origen.
+  - Fichas de jugador en desarrollo con mapa de tiro, evolución entre temporadas y contexto de minutos en pista.
+  - Prototipo de informe de jornada para comparar los partidos entre sí y a cada equipo con su rendimiento habitual.
 facts:
-- value: FEB
-  label: competiciones
-- value: Boxscores
-  label: datos de partido
-- value: Informes
-  label: equipos y jugadores
+  - value: FEB
+    label: competiciones
+  - value: Boxscores
+    label: referencia de partido
+  - value: Informes
+    label: equipos y jugadores
 ---
 
 ## El problema
 
-Los datos deportivos están repartidos entre fuentes y formatos que dificultan comparar partidos, jugadores y temporadas de forma consistente.
+El boxscore, el mapa de tiro y las acciones destacadas de un mismo partido pueden identificar de formas distintas al mismo jugador. Si ese cruce falla, un tiro puede acabar fuera de su ficha y el histórico deja de ser fiable.
 
-## El enfoque
+## Cómo se resuelve la identidad
 
-StatsFEB reúne la captura, el modelado y la explotación analítica en un mismo flujo. El objetivo es pasar de datos de partido a informes que ayuden a entender el rendimiento.
+He reforzado el cruce de jugadores usando la lista del boxscore como referencia de cada partido. El sistema guarda de dónde viene la identificación y deja pendientes los casos ambiguos. También comprueba las fichas oficiales de la FEB y conserva los perfiles ya verificados si una consulta posterior falla.
 
-## Resultado actual
+## Fichas de jugador
 
-La base reúne más de 1.000 partidos y 3.000 jugadores de categorías FEB. A partir de ese histórico se generan análisis e informes avanzados de manera automatizada.
+Estoy trabajando en una ficha más visual que permite explorar el tiro por zonas, comparar etapas por equipo y temporada y ver en qué tramos del partido suele jugar. El siguiente paso es abrirla desde un buscador con filtros por temporada, liga y equipo.
+
+## Scouting e informes de jornada
+
+Estoy preparando fichas de scouting y probando un formato de informe que arranca por la jornada completa. El prototipo de Segunda FEB compara los partidos entre sí, la jornada con las anteriores y a cada equipo con su propio rendimiento habitual. A partir de ahí, el informe entra en los partidos y actuaciones que más se salieron de lo habitual.
