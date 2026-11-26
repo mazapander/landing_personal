@@ -2,11 +2,15 @@
 title: "App Cantera"
 seoTitle: "App Cantera: gestión de equipos, scouting y pizarra de baloncesto"
 description: "Una app para coordinar equipos de baloncesto, preparar el scouting del rival y dibujar jugadas y ejercicios."
-status: "Preproducción · En pruebas con clubes"
+status: "Demo pública · En pruebas con clubes"
 featured: true
+externalUrl: "https://democanteras.anderdata.es/"
+links:
+  - label: "Entrar en la demo pública"
+    url: "https://democanteras.anderdata.es/"
 draft: false
-updatedAt: "2026-11-25"
-updateSummary: "Scouting con vídeo y pizarra de jugadas ya integrados. Varios clubes están probando la app y estoy preparando una demo pública."
+updatedAt: "2026-11-26"
+updateSummary: "Ya se puede probar App Cantera en una demo pública: equipos, calendario, asistencia, seguimiento, scouting con vídeo y pizarra táctica."
 stack:
   - React
   - TypeScript
@@ -50,4 +54,8 @@ Además de llevar el calendario, la asistencia y la carga, el staff puede prepar
 
 ## Estado actual
 
-La app está en preproducción y ya la están probando varios clubes. Estoy preparando una demo pública con datos ficticios para que cualquiera pueda cacharrear con la app.
+La app sigue evolucionando y ya la están probando varios clubes. También hay una [demo pública](https://democanteras.anderdata.es/) para explorar sus módulos y probar los flujos disponibles sin necesitar acceso a los datos de un club real.
+
+## Prueba la demo
+
+Entra en **[democanteras.anderdata.es](https://democanteras.anderdata.es/)** y descubre cómo se conectan la organización del equipo, los entrenamientos y la preparación de partidos. Si entrenas o trabajas en un club, me interesa especialmente saber qué te resulta útil y qué mejorarías.
