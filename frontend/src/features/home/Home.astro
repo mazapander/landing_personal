@@ -61,6 +61,7 @@ const familyProjects = projectFamilies.map((family) => ({
             <h3><a href={projectPath(project.id)}>{project.data.title}</a></h3>
             <p>{project.data.description}</p>
             <span class="building-status"><span aria-hidden="true"></span>{project.data.status}</span>
+            {project.id === 'app-cantera' && <a href="https://democanteras.anderdata.es/" target="_blank" rel="noopener noreferrer" data-track-event="project_open" data-track-location="home_building_demo" data-track-project="app-cantera">Probar demo pública ↗</a>}
           </div>
           {(project.data.visual || project.data.media) && <ProjectMedia project={project.data} compact />}
           <a class="building-arrow" href={projectPath(project.id)} aria-label={`Abrir ${project.data.title}`}>→</a>
